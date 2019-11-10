@@ -1,0 +1,2 @@
+// DO NOT TRY TO COMPILE THIS CODE! IT WON'T WORK!
+// single or all
