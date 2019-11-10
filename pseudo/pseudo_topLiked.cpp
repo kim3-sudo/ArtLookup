@@ -5,7 +5,7 @@
 /* ####################### */
 
 /*
-SELECT * FROM database /* looking at the likes column */ DESC */limited to 10 items*/;
+SELECT * FROM database /* looking at the likes column */ DESC /*limited to 10 items*/;
 Push that to an array
 Return the array
 */
