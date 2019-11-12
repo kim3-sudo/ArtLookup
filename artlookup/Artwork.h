@@ -11,7 +11,6 @@
 
 using namespace std;
 
-
 #ifndef ARTWORK_H
 #define ARTWORK_H
 
