@@ -27,14 +27,10 @@ Artwork::Artwork(){
   Postconditions: Relevant data is stored in member variables including ArtistInfo, ArtSetting and ArtStyle structs
 */
 //This is very long MICHAELA!!! (Not mad just need your help)
-<<<<<<< HEAD
-Artwork::Artwork(int artIdFromDB, string titleFromDB, string urlFromDB, int numLikesFromDB, string authorFromDB, string birthDeathFromDB, int dateFromDB, string locationFromDB, string timeframeFromDB, string techniqueFromDB, string schoolFromDB, string typeFromDB, string formFromDB){
-=======
-Artwork::Artwork(int artIdFromDB, string titleFromDB, string urlFromDB, 
-  int numLikesFromDB, string authorFromDB, string birthDeathFromDB, int dateFromDB, 
+Artwork::Artwork(int artIdFromDB, string titleFromDB, string urlFromDB,
+  int numLikesFromDB, string authorFromDB, string birthDeathFromDB, int dateFromDB,
   string locationFromDB, string timeframeFromDB, string techniqueFromDB, string schoolFromDB, string typeFromDB, string formFromDB)
 {
->>>>>>> c1ee1382e1b1bd59aee2d5c44c576020bd72265b
   artId = artIdFromDB;  //Alternate solution this->artId = artId
   title = titleFromDB;
   url = urlFromDB;
