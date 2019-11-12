@@ -46,4 +46,4 @@ Class ArtLookup {
     ArtStyle artStyle;
 };
 
-#endif ARTWORK_H
+#endif //ARTWORK_H
