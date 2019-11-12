@@ -8,6 +8,12 @@
 #include <cppconn/statement.h>
 #include <cppconn/prepared_statement.h>
 
+using sql::driver;
+using sql::mysql;
+using sql::Statement;
+using sql::ResultSet;
+using std::auto_ptr;
+
 #ifndef ARTDBCOMMUNICATOR_H
 #define ARTDBCOMMUNICATOR_H
 
