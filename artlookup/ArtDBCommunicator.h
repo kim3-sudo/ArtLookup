@@ -10,6 +10,7 @@
 
 using sql::driver;
 using sql::mysql;
+using sql::Connection;
 using sql::Statement;
 using sql::ResultSet;
 using std::auto_ptr;
@@ -17,14 +18,20 @@ using std::auto_ptr;
 #ifndef ARTDBCOMMUNICATOR_H
 #define ARTDBCOMMUNICATOR_H
 
+#define HOST "localhost"
+#define USER "schultz4"
+#define DB "Team5"
+#define PASS "S218269"
+
 class ArtDBCommunicator{
   public:
-
+    ArtDBCommunicator();
   private:
-    const string password;
-    const string DBname;
-    const string address;
-    const string DBUsername;
+    auto_ptr<Connection> establishConnection();
+    const string password = PASS;
+    const string DBName = DB;
+    const string address = HOST;
+    const string DBUsername = USER;
 };
 
 #endif ARTDBCOMMUNICATOR_H
