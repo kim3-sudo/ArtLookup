@@ -1,3 +1,4 @@
+
 //File Name: Artwork.cpp
 //Author: Ryan, Michaela, and Sejin
 //Email Address: schultz4@kenyon.edu, kim3@kenyon.edu, brydon1@kenyon.edu
@@ -7,9 +8,8 @@
 
 #include "Artwork.h"
 
-//Default constructor artId is set to -1 all other variables are set to
-//appropriate 'empty' values
 Artwork::Artwork(){
+<<<<<<< HEAD
   artId = -1;
   title = "";
   url = "";
@@ -18,15 +18,15 @@ Artwork::Artwork(){
   ArtistInfo artistInfo{ "", "" };
   ArtSetting setting{ 0, "", "" };
   ArtStyle style{ "", "", "", "" };
+=======
+
+>>>>>>> d965691d567d6566cb1338c8cb348b28f53094b8
 }
 
-/*
-  Preconditions: All variables must come from the art table in the Team5 sql
-  database. The parameters are listed in the same order as the respective
-  columns
-  Postconditions: Relevant data is stored in member variables including ArtistInfo, ArtSetting and ArtStyle structs
-*/
-Artwork::Artwork(int artIdFromDB, string authorFromDB, string birthDeathFromDB, string titleFromDB, string techniqueFromDB, string locationFromDB, string urlFromDB, string formFromDB, string typeFromDB, string schoolFromDB, string timeframeFromDB, int dateFromDB, int numLikesFromDB)
+
+Artwork::Artwork(int artIdFromDB, string authorFromDB, string birthDeathFromDB, string titleFromDB, string techniqueFromDB, 
+  string locationFromDB, string urlFromDB, string formFromDB, string typeFromDB, string schoolFromDB, string timeframeFromDB, 
+  int dateFromDB, int numLikesFromDB)
 {
   artId = artIdFromDB;  //Alternate solution this->artId = artId
   title = titleFromDB;
@@ -46,10 +46,8 @@ Artwork::Artwork(int artIdFromDB, string authorFromDB, string birthDeathFromDB, 
   artStyle.form = formFromDB;
 }
 
-/*
-  Preconditions: None
-  Postconditions: The member variable numLikes will be incremented
-*/
-void Artwork::incrementLikes(){
+
+void Artwork::incrementLikes()
+{
   numLikes++;
 }
