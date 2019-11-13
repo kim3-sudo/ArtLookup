@@ -25,13 +25,20 @@ struct ArtStyle {
     string form;
   };
 
-Class ArtLookup {
+Class ArtLookup{
   public:
     ArtLookup();
-    ArtLookup(int artId, string title, string url, int numLikes,
-      string author, string birthDeath, int date, string location,
-      string timeframe, string technique, string school, string type,
-      string form);
+    //Preconditions: All variables must come from the art table in the Team5 sql
+    //database. The parameters are listed in the same order as the respective
+    //columns
+    //Postconditions: Relevant data is stored in member variables including ArtistInfo, ArtSetting and ArtStyle structs
+
+
+    ArtLookup(int artId, string author, string birthDeath, string title, string technique, string location, string url, string form, string type,
+    string school,string timeframe, int date, int numLikes);
+    //Preconditions: None
+    //Postconditions: The member variable numLikes will be incremented
+
     //Mutator
     void incrementLikes();
 
