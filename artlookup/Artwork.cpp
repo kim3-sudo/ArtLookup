@@ -1,4 +1,3 @@
-
 //File Name: Artwork.cpp
 //Author: Ryan, Michaela, and Sejin
 //Email Address: schultz4@kenyon.edu, kim3@kenyon.edu, brydon1@kenyon.edu
@@ -9,7 +8,6 @@
 #include "Artwork.h"
 
 Artwork::Artwork(){
-<<<<<<< HEAD
   artId = -1;
   title = "";
   url = "";
@@ -18,14 +16,10 @@ Artwork::Artwork(){
   ArtistInfo artistInfo{ "", "" };
   ArtSetting setting{ 0, "", "" };
   ArtStyle style{ "", "", "", "" };
-=======
-
->>>>>>> d965691d567d6566cb1338c8cb348b28f53094b8
 }
 
-
-Artwork::Artwork(int artIdFromDB, string authorFromDB, string birthDeathFromDB, string titleFromDB, string techniqueFromDB, 
-  string locationFromDB, string urlFromDB, string formFromDB, string typeFromDB, string schoolFromDB, string timeframeFromDB, 
+Artwork::Artwork(int artIdFromDB, string authorFromDB, string birthDeathFromDB, string titleFromDB, string techniqueFromDB,
+  string locationFromDB, string urlFromDB, string formFromDB, string typeFromDB, string schoolFromDB, string timeframeFromDB,
   int dateFromDB, int numLikesFromDB)
 {
   artId = artIdFromDB;  //Alternate solution this->artId = artId
