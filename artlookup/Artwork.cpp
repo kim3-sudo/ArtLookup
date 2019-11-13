@@ -3,7 +3,7 @@
 //Email Address: schultz4@kenyon.edu, kim3@kenyon.edu, brydon1@kenyon.edu
 //Assignment: Project 3
 //Description: Data representation of a piece of art
-//Last Changed: November 12, 2019
+//Last Changed: November 13, 2019
 
 #include "Artwork.h"
 
