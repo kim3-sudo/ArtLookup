@@ -12,7 +12,7 @@
 Artwork::Artwork(){
   artId = -1;
   title = "";
-  url = ""
+  url = "";
   numLikes = 0;
 
   ArtistInfo artistInfo{ "", "" };
