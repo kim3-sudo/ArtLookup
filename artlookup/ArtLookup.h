@@ -12,6 +12,7 @@ class ArtLookup: public ArtDBCommunicator{
   	vector<Artwork> lookupSingle(string search, string colName);
   	Artwork[10] topLikedLookup();
   private:
+    vector<string> columnNames;
 };
 
 #endif //ART_LOOKUP_H
