@@ -28,7 +28,6 @@ class ArtLookup : ArtDBCommunicator{
   public:
   	vector<Artwork> lookupAll(string search);
   	vector<Artwork> lookupSingle(string search, string colName);
-  	// Maybe return array of size 10????
   	Artwork[10] topLikedLookup();
   private:
 };
