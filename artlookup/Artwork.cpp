@@ -9,7 +9,6 @@
 #include "Artwork.h"
 
 Artwork::Artwork(){
-<<<<<<< HEAD
   artId = -1;
   title = "";
   url = "";
@@ -18,9 +17,6 @@ Artwork::Artwork(){
   ArtistInfo artistInfo{ "", "" };
   ArtSetting setting{ 0, "", "" };
   ArtStyle style{ "", "", "", "" };
-=======
-
->>>>>>> d965691d567d6566cb1338c8cb348b28f53094b8
 }
 
 
