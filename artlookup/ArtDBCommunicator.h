@@ -26,8 +26,8 @@ using std::auto_ptr;
 class ArtDBCommunicator{
   public:
     ArtDBCommunicator();
-  private:
     auto_ptr<Connection> establishConnection();
+  private:
     const string password = PASS;
     const string DBName = DB;
     const string address = HOST;
