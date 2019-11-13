@@ -34,4 +34,4 @@ class ArtDBCommunicator{
     const string DBUsername = USER;
 };
 
-#endif //ARTDBCOMMUNICATOR_H
+#endif ARTDBCOMMUNICATOR_H
