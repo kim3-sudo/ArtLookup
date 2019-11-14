@@ -35,7 +35,7 @@ class Artwork{
     //Postconditions: Relevant data is stored in member variables including ArtistInfo, ArtSetting and ArtStyle structs
 
 
-    ArtLookup(int artId, string author, string birthDeath, string title, string technique, string location, string url, string form, string type,
+    Artwork(int artId, string author, string birthDeath, string title, string technique, string location, string url, string form, string type,
     string school,string timeframe, int date, int numLikes);
     //Preconditions: None
     //Postconditions: The member variable numLikes will be incremented

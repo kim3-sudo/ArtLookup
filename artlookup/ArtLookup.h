@@ -12,7 +12,7 @@ class ArtLookup: public ArtDBCommunicator{
   	vector<Artwork> lookupSingle(string search, string colName);
 
   	// You cannot return an array; you can only return a pointer to an array
-  	vector<artwork> topLikedLookup();
+  	vector<Artwork> topLikedLookup();
   private:
     vector<string> columnNames;
 };
