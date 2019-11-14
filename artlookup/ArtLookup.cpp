@@ -10,19 +10,19 @@
 
 vector<Artwork> ArtLookup::lookupAll(string search){
 
-  vector<Artwork> authorMatches = lookupSingle(search, "Author");
-  vector<Artwork> lifespanMatches = lookupSingle(search, "Born-Diec"); //Do we want the user to be able to lookup by lifespan of artist
-  vector<Artwork> titleMatches = lookupSingle(search, "Title");
-  vector<Artwork> dateMatches = lookupSingle(search, "Date");
-  vector<Artwork> techniqueMatches = lookupSingle(search, "Technique");
-  vector<Artwork> locationMatches = lookupSingle(search, "Location");
-  vector<Artwork> formMatches = lookupSingle(search, "Form");
-  vector<Artwork> typeMatches = lookupSingle(search, "Type");
-  vector<Artwork> schoolMatches = lookupSingle(search, "School");
-  vector<Artwork> timeframeMatches = lookupSingle(search, "Timeframe");
+  vector<Artwork> authorMatches = lookupSingle(search, "Author"),
+                  lifespanMatches = lookupSingle(search, "Born-Diec"),
+                   //Do we want the user to be able to lookup by lifespan of artist
+                  titleMatches = lookupSingle(search, "Title"),
+                  dateMatches = lookupSingle(search, "Date"),
+                  techniqueMatches = lookupSingle(search, "Technique"),
+                  locationMatches = lookupSingle(search, "Location"),
+                  formMatches = lookupSingle(search, "Form"),
+                  typeMatches = lookupSingle(search, "Type"),
+                  schoolMatches = lookupSingle(search, "School"),
+                  timeframeMatches = lookupSingle(search, "Timeframe");
 
-  //concatenate vectors https://stackoverflow.com/questions/201718/concatenating-two-stdvectors
-  //vector1.insert( vector1.end(), vector2.begin(), vector2.end() );
+  //concatenate vectors https://stackoverflow.com/questions/201718/concatenating-two-stdvectors vector1.insert( vector1.end(), vector2.begin(), vector2.end() );
   vector<Artwork> allMatches = authorMatches;
   allMatches.insert( allMatches.end(), lifespanMatches.begin(), lifespanMatches.end() );
   allMatches.insert( allMatches.end(), titleMatches.begin(), titleMatches.end() );
@@ -35,8 +35,8 @@ vector<Artwork> ArtLookup::lookupAll(string search){
   allMatches.insert( allMatches.end(), timeframeMatches.begin(), timeframeMatches.end() );
 
   return allMatches;
-
 }
+
 vector<Artwork> Artlookup::lookupSingle(string search, string colName){
   auto_ptr<Connection> connectionToDB = establishConnection();
   auto_ptr<Statement> sqlStatement(conectionToDB->createStatement());
@@ -45,29 +45,65 @@ vector<Artwork> Artlookup::lookupSingle(string search, string colName){
   sqlStatement->execute("SELECT * FROM art WHERE " + colName + " like '%" + search + "%'");
 
   auto_ptr<ResultSet> searchMatches;
+  string colNames[13]= {"artId","Author","Born-Diec","Title","Technique","Location","URL","Form", "Type", "School", "Timeframe", "Date", "Likes"};
+  string strResults[11]; // hold results with str type
+  int intResults[2]; // hold results for artId and Likes
+
   do {
     searchMatches.reset(stmt->getResultSet());
+
+    // add artId val to intResults
+    intResults[0] = searchMatches -> getstring(colNames[0]);
+    // add string vals to strResults
+    for (int i=1;i<12;i++){
+      strResults[i-1] = searchMatches -> getstring(colNames[i]);
+    }
+    // add Likes val to intResults
+    intResults[1] = searchMatches -> getstring(colNames[12]);
+
     while (searchMatches->next()) {
       //The column "Likes" has yet to be created
       //I am unsure if we are allowed to split this command up into differnet
       //lines like I did. Probably but I never do it so I don't know for sure.
       //Creates artwork
-      Artwork artwork = Artwork(searchMatches -> getstring("artId"),
-      searchMatches -> getstring("Author"),
-      searchMatches -> getstring("Born-Diec"), //This misspelling is on purpose
-      searchMatches -> getstring("Title"), searchMatches -> getstring("Date"),
-      searchMatches -> getstring("Technique"),
-      searchMatches -> getstring("Location"),
-      searchMatches -> getstring("URL"), searchMatches -> getstring("Form"), searchMatches -> getstring("Type"), searchMatches -> getstring("School"), searchMatches -> getstring("Timeframe"),
-      searchMatches -> getstring("Likes"))
+      Artwork artwork = Artwork(intResults[0],
+                                strResults[0], 
+                                strResults[1],
+                                strResults[2],
+                                strResults[3],
+                                strResults[4],
+                                strResults[5],
+                                strResults[6],
+                                strResults[7],
+                                strResults[8],
+                                strResults[9],
+                                strResults[10],
+                                strResults[11],
+                                intResults[1]);
 
 	    artworkResultList.push_back(artwork);
     }
   } while (sqlStatement->getMoreResults());
-
   return artworkResultList
 }
 // Maybe return array of size 10????
 vector<Artwork> Artlookup::topLikedLookup(){
 
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
