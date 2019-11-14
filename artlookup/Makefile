@@ -4,7 +4,7 @@ HEADER	= Artwork.h ArtDBCommunicator.h
 OUT	= Artwork
 CC	 = g++
 FLAGS	 = -g -c -Wall
-LFLAGS   = 
+CFLAGS 	 = -std=c++14
 
 all: TestArtApp
 
@@ -12,16 +12,16 @@ TestArtApp: $(TEST_OBJS)
 	$(CC) -g $(TEST_OBJS) -L/usr/lib -o $(OUT) -L/usr/local/lib -lcgicc -lmysqlcppconn
 
 ArtLookupTests.o: ArtLookupTests.cpp Artwork.h ArtLookup.h
-	$(CC) $(FLAGS) ArtLookupTests.cpp -std=c11
+	$(CC) $(FLAGS) ArtLookupTests.cpp $(CFLAGS)
 
 Artwork.o: Artwork.cpp Artwork.h
-	$(CC) $(FLAGS) Artwork.cpp -std=c11
+	$(CC) $(FLAGS) Artwork.cpp $(CFLAGS)
 
 ArtDBCommunicator.o: ArtDBCommunicator.cpp ArtDBCommunicator.h
-	$(CC) $(FLAGS) ArtDBCommunicator.cpp -std=c11
+	$(CC) $(FLAGS) ArtDBCommunicator.cpp $(CFLAGS)
 
 ArtLookup.o: ArtLookup.cpp ArtLookup.h ArtDBCommunicator.h
-	$(CC) $(FLAGS) ArtLookup.cpp -std=c11
+	$(CC) $(FLAGS) ArtLookup.cpp $(CFLAGS)
 
 clean:
 	rm -f TestArtApp $(OUT)
