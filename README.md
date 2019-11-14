@@ -11,5 +11,9 @@ If you'd like to access the dummy version of the website (remember, it's a dummy
 # Files
 ## /psuedo
 Some pseudo-C++ code. None of this code is truly functional, and it includes a lot of English.
+## /artlookup
+The primary folder for C++ code and SQL query commands.
+## /html
+The HTML, CSS, and JS files required for the webpage.
 ## The License
 The software here is licensed under the MIT license, which can be found in the LICENSE file in /ArtLookup. Some other package licenses may not be present here.
