@@ -1,5 +1,7 @@
 #include <string>
 
+using std::string;
+
 #include "mysql_connection.h"
 #include "mysql_driver.h"
 #include <cppconn/driver.h>
@@ -35,7 +37,7 @@ class ArtDBCommunicator{
     ArtDBCommunicator();
 
     // ERROR: template<class> class std::auto_ptr is deprecated 
-    auto_ptr<Connection> establishConnection();
+    sql::auto_ptr<Connection> establishConnection();
   private:
     const string password = PASS;
     const string DBName = DB;
