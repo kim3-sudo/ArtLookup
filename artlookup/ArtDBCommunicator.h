@@ -37,7 +37,7 @@ class ArtDBCommunicator{
     ArtDBCommunicator();
 
     // ERROR: template<class> class std::auto_ptr is deprecated 
-    sql::auto_ptr<Connection> establishConnection();
+    std::auto_ptr<Connection> establishConnection();
   private:
     const string password = PASS;
     const string DBName = DB;
