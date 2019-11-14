@@ -10,13 +10,17 @@
 
 // ERROR: has not been declared
 sql::Driver *driver;
+sql::Connection *connection;
+sql::Statement *stm;
+sql::ResultSet *res;
+
 
 // ERROR: namespace 'sql::mysql' not allowed in using-declaration
-using sql::mysql;
-using sql::Connection;
-using sql::Statement;
-using sql::ResultSet;
-using std::auto_ptr;
+//using sql::mysql;
+//using sql::Connection;
+//using sql::Statement;
+//using sql::ResultSet;
+//using std::auto_ptr;
 
 #ifndef ARTDBCOMMUNICATOR_H
 #define ARTDBCOMMUNICATOR_H
