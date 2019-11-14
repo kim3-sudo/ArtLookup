@@ -62,12 +62,9 @@ vector<Artwork> Artlookup::lookupSingle(string search, string colName){
     intResults[1] = searchMatches -> getstring(colNames[12]);
 
     while (searchMatches->next()) {
-      //The column "Likes" has yet to be created
-      //I am unsure if we are allowed to split this command up into differnet
-      //lines like I did. Probably but I never do it so I don't know for sure.
       //Creates artwork
       Artwork artwork = Artwork(intResults[0],
-                                strResults[0], 
+                                strResults[0],
                                 strResults[1],
                                 strResults[2],
                                 strResults[3],
@@ -84,8 +81,10 @@ vector<Artwork> Artlookup::lookupSingle(string search, string colName){
 	    artworkResultList.push_back(artwork);
     }
   } while (sqlStatement->getMoreResults());
+
   return artworkResultList
 }
+
 // Maybe return array of size 10????
 vector<Artwork> Artlookup::topLikedLookup(){
 
@@ -99,11 +98,3 @@ vector<Artwork> Artlookup::topLikedLookup(){
 
 
 }
-
-
-
-
-
-
-
-

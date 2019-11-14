@@ -25,9 +25,9 @@ struct ArtStyle {
     string form;
   };
 
-Class ArtLookup{
+Class Artwork{
   public:
-    ArtLookup();
+    Artwork();
     //Preconditions: All variables must come from the art table in the Team5 sql
     //database. The parameters are listed in the same order as the respective
     //columns
