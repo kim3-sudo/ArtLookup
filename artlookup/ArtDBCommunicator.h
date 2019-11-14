@@ -9,7 +9,7 @@
 #include <cppconn/prepared_statement.h>
 
 // ERROR: has not been declared
-using sql::driver;
+sql::Driver *driver;
 
 // ERROR: namespace 'sql::mysql' not allowed in using-declaration
 using sql::mysql;
