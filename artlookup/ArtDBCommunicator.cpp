@@ -13,10 +13,10 @@ ArtDBCommunicator::ArtDBCommunicator(){
 }
 
 // Changed name from establishConnection
-auto_ptr<Connection> ArtDBCommunicator::establishDBConnection(){
+std::auto_ptr<sql::Connection> ArtDBCommunicator::establishDBConnection(){
 
-  Driver* driver = mysql::get_driver_instance();
-  auto_ptr<Connection> con(driver->connect(url, user, pass));
+  sql::Driver* driver = sql::mysql::get_driver_instance();
+  std::auto_ptr<sql::Connection> con(driver->connect(url, user, pass));
   con->setSchema(database);
 
   return con;
