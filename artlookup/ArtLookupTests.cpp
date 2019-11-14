@@ -10,7 +10,7 @@ int main() {
   //Creates an art lookup to test
   ArtLookup testLookup = ArtLookup();
 
-  vector<Artwork> titleIsJokingCouple testLookup.lookupSingle("Joking Couple", "Title");
+  vector<Artwork> titleIsJokingCouple(testLookup.lookupSingle("Joking Couple", "Title"));
 
   cout << "PREDICTED OUTPUT" << endl;
   cout << "artId: 3" << endl;
@@ -28,7 +28,11 @@ int main() {
   cout << "Likes: NULL" << endl;
 
   cout << "\nACTUAL OUTPUT" << endl;
-  Artwork = Artwork();
+
+  // Unqualified Id
+  //Artwork = Artwork();
+  Artwork theArt;
+
   string colNames[13]= {"artId","Author","Born-Diec","Title","Technique","Location","URL","Form", "Type", "School", "Timeframe", "Date", "Likes"};
   for(int i=0; i<titleIsJokingCouple.size(); i++){
     artwork = titleisJoking.at(i);
