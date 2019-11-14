@@ -28,9 +28,9 @@ int main() {
   cout << "Likes: NULL" << endl;
 
   cout << "\nACTUAL OUTPUT" << endl;
-  Artwork artwork = Artwork();
+  Artwork = Artwork();
   string colNames[13]= {"artId","Author","Born-Diec","Title","Technique","Location","URL","Form", "Type", "School", "Timeframe", "Date", "Likes"};
-  for(i=0; i<titleIsJokingCouple.size(); i++){
+  for(int i=0; i<titleIsJokingCouple.size(); i++){
     artwork = titleisJoking.at(i);
     cout << "PREDICTED OUTPUT" << endl;
     cout << "artId: " << artwork.artId << endl;

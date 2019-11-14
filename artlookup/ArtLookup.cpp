@@ -138,7 +138,4 @@ vector<Artwork> Artlookup::topLikedLookup(){
   } while (sqlStatement->getMoreResults());
   return artworkResultList
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 91df89e0d4ac3ecc40216217f1d6471313189b70

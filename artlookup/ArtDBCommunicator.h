@@ -8,7 +8,10 @@
 #include <cppconn/statement.h>
 #include <cppconn/prepared_statement.h>
 
+// ERROR: has not been declared
 using sql::driver;
+
+// ERROR: namespace 'sql::mysql' not allowed in using-declaration
 using sql::mysql;
 using sql::Connection;
 using sql::Statement;
@@ -26,6 +29,8 @@ using std::auto_ptr;
 class ArtDBCommunicator{
   public:
     ArtDBCommunicator();
+
+    // ERROR: template<class> class std::auto_ptr is deprecated 
     auto_ptr<Connection> establishConnection();
   private:
     const string password = PASS;
@@ -34,4 +39,4 @@ class ArtDBCommunicator{
     const string DBUsername = USER;
 };
 
-#endif ARTDBCOMMUNICATOR_H
+#endif //ARTDBCOMMUNICATOR_H

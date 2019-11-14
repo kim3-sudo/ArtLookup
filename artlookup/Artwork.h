@@ -1,5 +1,5 @@
 //#using <iostream>
-#using <string>
+#include <string>
 
 using namespace std;
 
@@ -25,7 +25,8 @@ struct ArtStyle {
     string form;
   };
 
-Class Artwork{
+// Uppercase class does not work
+class Artwork{
   public:
     Artwork();
     //Preconditions: All variables must come from the art table in the Team5 sql
