@@ -31,11 +31,13 @@ int main() {
 
   // Unqualified Id
   //Artwork = Artwork();
-  Artwork theArt;
+  Artwork artwork;
 
   string colNames[13]= {"artId","Author","Born-Diec","Title","Technique","Location","URL","Form", "Type", "School", "Timeframe", "Date", "Likes"};
   for(int i=0; i<titleIsJokingCouple.size(); i++){
-    artwork = titleisJoking.at(i);
+    artwork = titleIsJokingCouple;
+
+    //artwork = titleisJoking.at(i);
     cout << "PREDICTED OUTPUT" << endl;
     cout << "artId: " << artwork.artId << endl;
     cout << "Author: " << artwork.ArtistInfo.author << endl;
