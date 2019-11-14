@@ -1,5 +1,5 @@
-#include "ArtDBCommunicator"
-#include "Artwork.h"
+//#include "ArtDBCommunicator"
+//#include "Artwork.h"
 #include "ArtLookup.h"
 
 #include <iostream>
@@ -47,7 +47,5 @@ int main() {
     cout << "Date: " << artwork.Artsetting.date << endl;
     cout << "Likes: " << artwork.numLikes << endl;
   }
-
-
 
 }
