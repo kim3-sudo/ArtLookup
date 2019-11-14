@@ -16,7 +16,7 @@ ArtDBCommunicator::ArtDBCommunicator(){
 auto_ptr<Connection> ArtDBCommunicator::establishDBConnection(){
 
   sql::Driver* driver = sql::mysql::get_driver_instance();
-  std::auto_ptr<sql::Connection> con(driver->connect(url, user, pass));
+  std::unique_ptr<sql::Connection> con(driver->connect(url, user, pass));
   con->setSchema(database);
 
   return con;
