@@ -9,11 +9,10 @@ using namespace std;
 struct ArtistInfo {
   string author;
   string birthDeath;
-
   };
 
 struct ArtSetting {
-    int date;
+    string date;
     string location;
     string timeframe;
   };
