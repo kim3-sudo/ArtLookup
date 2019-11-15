@@ -40,20 +40,23 @@ vector<Artwork> ArtLookup::lookupAll(string search){
 // EDIT break this up differently because with topTenLiked, the only difference is the command going into the execute function
 // Also, search need not be an input for topTenLiked
 
-vector<Artwork> Artlookup::lookupSingle(string search, string colName){
-  auto_ptr<Connection> connectionToDB = establishConnection();
-  auto_ptr<Statement> sqlStatement(conectionToDB->createStatement());
+vector<Artwork> ArtLookup::lookupSingle(string search, string colName){
+  //auto_ptr<Connection> connectionToDB = establishConnection();
+  //auto_ptr<Statement> sqlStatement(conectionToDB->createStatement());
+  std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
+  std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
 
   vector<Artwork> artworkResultList;
   sqlStatement->execute("SELECT * FROM art WHERE " + colName + " like '%" + search + "%';");
 
-  auto_ptr<ResultSet> searchMatches;
+  //auto_ptr<ResultSet> searchMatches;
+  std::unique_ptr<sql::ResultSet> searchMatches;
   string colNames[13]= {"artId","Author","Born-Diec","Title","Technique","Location","URL","Form", "Type", "School", "Timeframe", "Date", "Likes"};
   string strResults[11]; // hold results with str type
   int intResults[2]; // hold results for artId and Likes
 
   do {
-    searchMatches.reset(stmt->getResultSet());
+    searchMatches.reset(sqlStatement->getResultSet());
 
     // add artId val to intResults
     intResults[0] = searchMatches -> getstring(colNames[0]);
@@ -85,24 +88,27 @@ vector<Artwork> Artlookup::lookupSingle(string search, string colName){
     }
   } while (sqlStatement->getMoreResults());
 
-  return artworkResultList
+  return artworkResultList;
 }
 
 // Maybe return array of size 10????
-vector<Artwork> Artlookup::topLikedLookup(){
-  auto_ptr<Connection> connectionToDB = establishConnection();
-  auto_ptr<Statement> sqlStatement(conectionToDB->createStatement());
+vector<Artwork> ArtLookup::topLikedLookup(){
+  //auto_ptr<Connection> connectionToDB = establishConnection();
+  //auto_ptr<Statement> sqlStatement(conectionToDB->createStatement());
+  std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
+  std::unique_ptr<sql::Statement> sqlStatement(conectionToDB->createStatement());
 
   vector<Artwork> artworkResultList;
   sqlStatement->execute("SELECT * FROM art ORDER BY Likes,Title ASC LIMIT 10;");
 
-  auto_ptr<ResultSet> searchMatches;
+  //auto_ptr<ResultSet> searchMatches;
+  std::unique_ptr<sql::ResultSet> searchMatches;
   string colNames[13]= {"artId","Author","Born-Diec","Title","Technique","Location","URL","Form", "Type", "School", "Timeframe", "Date", "Likes"};
   string strResults[11]; // hold results with str type
   int intResults[2]; // hold results for artId and Likes
 
   do {
-    searchMatches.reset(stmt->getResultSet());
+    searchMatches.reset(sqlStatement->getResultSet());
 
     // add artId val to intResults
     intResults[0] = searchMatches -> getstring(colNames[0]);

@@ -20,7 +20,7 @@ Artwork::Artwork(){
 
 Artwork::Artwork(int artIdFromDB, string authorFromDB, string birthDeathFromDB, string titleFromDB, string techniqueFromDB,
   string locationFromDB, string urlFromDB, string formFromDB, string typeFromDB, string schoolFromDB, string timeframeFromDB,
-  int dateFromDB, int numLikesFromDB)
+  string dateFromDB, int numLikesFromDB)
 {
   artId = artIdFromDB;  //Alternate solution this->artId = artId
   title = titleFromDB;
