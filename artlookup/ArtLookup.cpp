@@ -59,30 +59,18 @@ vector<Artwork> ArtLookup::lookupSingle(string search, string colName){
     searchMatches.reset(sqlStatement->getResultSet());
 
     // add artId val to intResults
-    intResults[0] = searchMatches -> getstring(colNames[0]);
+    intResults[0] = searchMatches -> getString(colNames[0]);
     // add string vals to strResults
-    for (int i=1;i<12;i++){
-      strResults[i-1] = searchMatches -> getstring(colNames[i]);
+    for (int i=1;i<11;i++){
+      strResults[i-1] = searchMatches -> getString(colNames[i]);
     }
     // add Likes val to intResults
-    intResults[1] = searchMatches -> getstring(colNames[12]);
+    intResults[1] = searchMatches -> getString(colNames[12]);
 
     while (searchMatches->next()) {
       //Creates artwork
-      Artwork artwork = Artwork(intResults[0],
-                                strResults[0],
-                                strResults[1],
-                                strResults[2],
-                                strResults[3],
-                                strResults[4],
-                                strResults[5],
-                                strResults[6],
-                                strResults[7],
-                                strResults[8],
-                                strResults[9],
-                                strResults[10],
-                                strResults[11],
-                                intResults[1]);
+
+      Artwork artwork = Artwork(intResults[0],strResults[0],strResults[1],strResults[2],strResults[3],strResults[4],strResults[5],strResults[6],strResults[7],strResults[8],strResults[9],strResults[10],intResults[1]);
 
 	    artworkResultList.push_back(artwork);
     }
@@ -96,7 +84,7 @@ vector<Artwork> ArtLookup::topLikedLookup(){
   //auto_ptr<Connection> connectionToDB = establishConnection();
   //auto_ptr<Statement> sqlStatement(conectionToDB->createStatement());
   std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
-  std::unique_ptr<sql::Statement> sqlStatement(conectionToDB->createStatement());
+  std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
 
   vector<Artwork> artworkResultList;
   sqlStatement->execute("SELECT * FROM art ORDER BY Likes,Title ASC LIMIT 10;");
@@ -111,13 +99,13 @@ vector<Artwork> ArtLookup::topLikedLookup(){
     searchMatches.reset(sqlStatement->getResultSet());
 
     // add artId val to intResults
-    intResults[0] = searchMatches -> getstring(colNames[0]);
+    intResults[0] = searchMatches -> getString(colNames[0]);
     // add string vals to strResults
     for (int i=1;i<12;i++){
-      strResults[i-1] = searchMatches -> getstring(colNames[i]);
+      strResults[i-1] = searchMatches -> getString(colNames[i]);
     }
     // add Likes val to intResults
-    intResults[1] = searchMatches -> getstring(colNames[12]);
+    intResults[1] = searchMatches -> getString(colNames[12]);
 
     while (searchMatches->next()) {
       //The column "Likes" has yet to be created
@@ -142,6 +130,6 @@ vector<Artwork> ArtLookup::topLikedLookup(){
       artworkResultList.push_back(artwork);
     }
   } while (sqlStatement->getMoreResults());
-  return artworkResultList
+  return artworkResultList;
 }
 
