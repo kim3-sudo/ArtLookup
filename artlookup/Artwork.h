@@ -28,6 +28,9 @@ struct ArtStyle {
 // Uppercase class does not work
 class Artwork{
   public:
+    //int getArtId();
+    // MAKE MEMBER ACCESSOR FUNCTIONS
+
     Artwork();
     //Preconditions: All variables must come from the art table in the Team5 sql
     //database. The parameters are listed in the same order as the respective
@@ -43,7 +46,7 @@ class Artwork{
     //Mutator
     void incrementLikes();
 
-  private:
+  //private:
     int artId;
     int numLikes;
     string title;

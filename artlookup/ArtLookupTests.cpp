@@ -30,27 +30,35 @@ int main() {
   cout << "\nACTUAL OUTPUT" << endl;
 
   // Unqualified Id
-  //Artwork = Artwork();
+  //Artwork artwork = Artwork();
   Artwork artwork;
 
+
+
+// issues with unsigned in comparison for(uint i=0; i < titleIsJokingCouple.size(); i++){
   string colNames[13]= {"artId","Author","Born-Diec","Title","Technique","Location","URL","Form", "Type", "School", "Timeframe", "Date", "Likes"};
-  for(int i=0; i<titleIsJokingCouple.size(); i++){
-    artwork = titleIsJokingCouple;
+  for(uint i=0; i < titleIsJokingCouple.size(); i++){
+    artwork = titleIsJokingCouple.at(i);
 
     //artwork = titleisJoking.at(i);
+
+
     cout << "PREDICTED OUTPUT" << endl;
-    cout << "artId: " << artwork.artId << endl;
-    cout << "Author: " << artwork.ArtistInfo.author << endl;
-    cout << "Born-Diec: " << artwork.ArtistInfo.birthDeath << endl;
+    cout << "artId: " << artwork.getArtId() << endl;
+
+
+
+    cout << "Author: " << artwork.artistInfo.author << endl;
+    cout << "Born-Diec: " << artwork.artistInfo.birthDeath << endl;
     cout << "Title: " << artwork.title << endl;
-    cout << "Technique: " << artwork.ArtStyle.technique << endl;
-    cout << "Location: " << artwork.ArtSetting.location << endl;
+    cout << "Technique: " << artwork.artStyle.technique << endl;
+    cout << "Location: " << artwork.artSetting.location << endl;
     cout << "URL: " << artwork.url << endl;
-    cout << "Form: " << artwork.ArtStyle.form << endl;
-    cout << "Type: " << artwork.ArtStyle.type << endl;
-    cout << "School: " << artwork.ArtStyle.school << endl;
-    cout << "Timeframe: " << artwork.ArtSetting.Timeframe << endl;
-    cout << "Date: " << artwork.Artsetting.date << endl;
+    cout << "Form: " << artwork.artStyle.form << endl;
+    cout << "Type: " << artwork.artStyle.type << endl;
+    cout << "School: " << artwork.artStyle.school << endl;
+    cout << "Timeframe: " << artwork.artSetting.Timeframe << endl;
+    cout << "Date: " << artwork.artsetting.date << endl;
     cout << "Likes: " << artwork.numLikes << endl;
   }
 
