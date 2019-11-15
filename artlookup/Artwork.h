@@ -39,7 +39,7 @@ class Artwork{
 
 
     Artwork(int artId, string author, string birthDeath, string title, string technique, string location, string url, string form, string type,
-    string school,string timeframe, int date, int numLikes);
+    string school,string timeframe, string date, int numLikes);
     //Preconditions: None
     //Postconditions: The member variable numLikes will be incremented
 
