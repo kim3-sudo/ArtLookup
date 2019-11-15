@@ -44,7 +44,7 @@ int main() {
 
 
     cout << "PREDICTED OUTPUT" << endl;
-    cout << "artId: " << artwork.getArtId() << endl;
+    cout << "artId: " << artwork.artId << endl;
 
 
 
@@ -57,8 +57,8 @@ int main() {
     cout << "Form: " << artwork.artStyle.form << endl;
     cout << "Type: " << artwork.artStyle.type << endl;
     cout << "School: " << artwork.artStyle.school << endl;
-    cout << "Timeframe: " << artwork.artSetting.Timeframe << endl;
-    cout << "Date: " << artwork.artsetting.date << endl;
+    cout << "Timeframe: " << artwork.artSetting.timeframe << endl;
+    cout << "Date: " << artwork.artSetting.date << endl;
     cout << "Likes: " << artwork.numLikes << endl;
   }
 
