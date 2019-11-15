@@ -59,13 +59,13 @@ vector<Artwork> ArtLookup::lookupSingle(string search, string colName){
     searchMatches.reset(sqlStatement->getResultSet());
 
     // add artId val to intResults
-    intResults[0] = searchMatches -> getString(colNames[0]);
+    intResults[0] = searchMatches -> getInt(colNames[0]);
     // add string vals to strResults
     for (int i=1;i<11;i++){
       strResults[i-1] = searchMatches -> getString(colNames[i]);
     }
     // add Likes val to intResults
-    intResults[1] = searchMatches -> getString(colNames[12]);
+    intResults[1] = searchMatches -> getInt(colNames[12]);
 
     while (searchMatches->next()) {
       //Creates artwork
@@ -99,33 +99,20 @@ vector<Artwork> ArtLookup::topLikedLookup(){
     searchMatches.reset(sqlStatement->getResultSet());
 
     // add artId val to intResults
-    intResults[0] = searchMatches -> getString(colNames[0]);
+    intResults[0] = searchMatches -> getInt(colNames[0]);
     // add string vals to strResults
     for (int i=1;i<12;i++){
       strResults[i-1] = searchMatches -> getString(colNames[i]);
     }
     // add Likes val to intResults
-    intResults[1] = searchMatches -> getString(colNames[12]);
+    intResults[1] = searchMatches -> getInt(colNames[12]);
 
     while (searchMatches->next()) {
       //The column "Likes" has yet to be created
       //I am unsure if we are allowed to split this command up into differnet
       //lines like I did. Probably but I never do it so I don't know for sure.
       //Creates artwork
-      Artwork artwork = Artwork(intResults[0],
-                                strResults[0], 
-                                strResults[1],
-                                strResults[2],
-                                strResults[3],
-                                strResults[4],
-                                strResults[5],
-                                strResults[6],
-                                strResults[7],
-                                strResults[8],
-                                strResults[9],
-                                strResults[10],
-                                strResults[11],
-                                intResults[1]);
+      Artwork artwork = Artwork(intResults[0],strResults[0],strResults[1],strResults[2],strResults[3],strResults[4],strResults[5],strResults[6],strResults[7],strResults[8],strResults[9],strResults[10],intResults[1]);
 
       artworkResultList.push_back(artwork);
     }
