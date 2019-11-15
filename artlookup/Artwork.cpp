@@ -14,7 +14,7 @@ Artwork::Artwork(){
   numLikes = 0;
 
   ArtistInfo artistInfo{ "", "" };
-  ArtSetting setting{ 0, "", "" };
+  ArtSetting setting{ "", "", "" };
   ArtStyle style{ "", "", "", "" };
 }
 
