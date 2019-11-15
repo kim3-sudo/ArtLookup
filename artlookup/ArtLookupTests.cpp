@@ -12,6 +12,8 @@ int main() {
 
   vector<Artwork> titleIsJokingCouple(testLookup.lookupSingle("Joking Couple", "Title"));
 
+  cout << "Size: " << titleIsJokingCouple.size() << endl;
+
   cout << "PREDICTED OUTPUT" << endl;
   cout << "artId: 3" << endl;
   cout << "Author: AACHEN, Hans Von" << endl;
