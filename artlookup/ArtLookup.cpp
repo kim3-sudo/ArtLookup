@@ -11,8 +11,9 @@
 
 vector<Artwork> ArtLookup::lookupGeneral(string search){
   Query query; // Create query object for commands
+  string authorCommand = query.matchSingleCol(search,colNames[1]), titleCommand = query.matchSingleCol(search,colNames[3]);
 
-  vector<Artwork> authorMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[1]))), titleMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[3]))), techniqueMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[4]))), locationMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[5]))), formMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[7]))), typeMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[8]))), schoolMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[9]))), timeframeMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[10]))), dateMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[11])));
+  vector<Artwork> authorMatches(lookupSingleCommand(authorCommand)), titleMatches(lookupSingleCommand(titleCommand)), techniqueMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[4]))), locationMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[5]))), formMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[7]))), typeMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[8]))), schoolMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[9]))), timeframeMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[10]))), dateMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[11])));
 
   //Concatenate vectors https://stackoverflow.com/questions/201718/concatenating-two-stdvectors vector1.insert( vector1.end(), vector2.begin(), vector2.end() );
   vector<Artwork> allMatches = authorMatches;
@@ -32,18 +33,16 @@ vector<Artwork> ArtLookup::lookupGeneral(string search){
 // General search
 vector<Artwork> ArtLookup::lookupSingleCommand(string command){
   std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
-  std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
-
-  vector<Artwork> artworkResultList;
+  std::unique_ptr<sql::Statement> sqlStatement = connectionToDB->createStatement();
 
   sqlStatement->execute(command);
- 
-  std::unique_ptr<sql::ResultSet> searchMatches;
-
-  string strResults[11]; // hold results with str type
-  int intResults[2]; // hold results for artId and Likes
-  Artwork *artwork; // use pointer to dynamically create and destroy Artwork objects
   
+  std::unique_ptr<sql::ResultSet> searchMatches; // Create ResultSet object
+  int intResults[2]; // hold results for artId and Likes
+  string strResults[11]; // hold results with str type
+  Artwork *artwork; // use pointer to dynamically create and destroy Artwork objects
+  vector<Artwork> artworkResultList; // Vector to hold Artwork objects from search
+
   do {
     searchMatches.reset(sqlStatement->getResultSet());    
     while (searchMatches->next()) {
