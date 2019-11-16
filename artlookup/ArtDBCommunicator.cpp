@@ -8,9 +8,9 @@
 #include "ArtDBCommunicator.h"
 
 //Default Constructor.
-// ArtDBCommunicator::ArtDBCommunicator(){
+/*ArtDBCommunicator::ArtDBCommunicator(){
 
-// }
+  }*/
 
 // Changed name from establishConnection
 std::unique_ptr<sql::Connection> ArtDBCommunicator::establishDBConnection(){

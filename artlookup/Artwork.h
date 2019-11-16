@@ -31,11 +31,11 @@ class Artwork{
     // Accessor Member Functions
     int getArtId();
     int getNumLikes();
-    int getTitle();
-    int getUrl();
-    int getArtistInfo();
-    int getArtSetting();
-    int getArtStyle();
+    string getTitle();
+    string getUrl();
+    ArtistInfo getArtistInfo();
+    ArtSetting getArtSetting();
+    ArtStyle getArtStyle();
 
     void print();
     // Prints first three details about art

@@ -1,9 +1,8 @@
-
 #include "ArtLookup.h"
 #include "Query.h"
 #include <iostream>
 
-using std::cout
+using std::cout;
 
 //using namespace std;
 
@@ -43,7 +42,7 @@ int main() {
   //for(uint i=0; i < titleIsJokingCouple.size(); i++){
   //  artwork = titleIsJokingCouple.at(i);
 
-  for(int i=0; i < titleIsAllegory.size(); i++){
+  for(uint i=0; i < titleIsAllegory.size(); i++){
     artwork = titleIsAllegory.at(i);
 
     cout << "PREDICTED OUTPUT" << endl;

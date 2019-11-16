@@ -18,23 +18,23 @@ int Artwork::getNumLikes(){
   return numLikes;
 }
 
-int Artwork::getTitle(){
+string Artwork::getTitle(){
   return title;
 }
 
-int Artwork::getUrl(){
+string Artwork::getUrl(){
   return url;
 }
 
-int Artwork::getArtistInfo(){
+ArtistInfo Artwork::getArtistInfo(){
     return artistInfo;
 }
 
-int Artwork::getArtSetting(){
+ArtSetting Artwork::getArtSetting(){
     return artSetting;
 }
 
-int Artwork::getArtStyle(){
+ArtStyle Artwork::getArtStyle(){
     return artStyle;
 }
 

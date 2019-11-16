@@ -20,7 +20,7 @@ using std::string;
 
 class ArtDBCommunicator{
   public:
-    ArtDBCommunicator();
+  //ArtDBCommunicator();
     // Default Constructor
 
     std::unique_ptr<sql::Connection> establishDBConnection();
