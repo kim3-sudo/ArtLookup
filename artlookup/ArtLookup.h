@@ -9,12 +9,15 @@
 class ArtLookup: public ArtDBCommunicator{
   public:
   	vector<Artwork> lookupAll(string search);
-  	vector<Artwork> lookupSingle(string search, string colName);
-
-  	// You cannot return an array; you can only return a pointer to an array
-  	vector<Artwork> topLikedLookup();
+	//vector<Artwork> lookupSingle(string search, string colName);
+	vector<Artwork> lookupSingle(string command, string colName);
+  	
+  	// Maybe delete topLikedLookup altogether
+  	//vector<Artwork> topLikedLookup();
+  	ArtLookup();
+  	// Default Constructor
   private:
-    vector<string> columnNames;
+    vector<string> colNames;
 };
 
 #endif //ART_LOOKUP_H

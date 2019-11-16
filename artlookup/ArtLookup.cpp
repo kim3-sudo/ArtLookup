@@ -51,6 +51,79 @@ vector<Artwork> ArtLookup::lookupAll(string search){
 
 
 
+
+// This is going to be the general
+vector<Artwork> ArtLookup::lookupSingle(string command, string colName){
+  //auto_ptr<Connection> connectionToDB = establishConnection();
+  //auto_ptr<Statement> sqlStatement(conectionToDB->createStatement());
+  std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
+  std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
+
+  vector<Artwork> artworkResultList;
+  //string hardCommand, addStrCommand;
+
+  //hardCommand = "SELECT * FROM art WHERE Title LIKE '%Joking Couple%';";
+  //addStrCommand = "SELECT * FROM art WHERE " + colName + " LIKE '%" + search + "%';";
+  
+  //sqlStatement->execute("SELECT * FROM art WHERE " + colName + " LIKE '%" + search + "%';");
+  sqlStatement->execute(command);
+  //cout << hardCommand << endl;
+  //cout << addStrCommand << endl;
+  //sqlStatement->execute(addStrCommand);
+
+  
+  //auto_ptr<ResultSet> searchMatches;
+  std::unique_ptr<sql::ResultSet> searchMatches;
+
+  //string colNames[13]= {"artId","Author","Born-Diec","Title","Technique","Location","URL","Form", "Type", "School", "Timeframe", "Date", "Likes"};
+  string strResults[11]; // hold results with str type
+  int intResults[2]; // hold results for artId and Likes
+  
+  do {
+    searchMatches.reset(sqlStatement->getResultSet());
+    
+    // add artId val to intResults
+
+    if(!searchMatches->next()){
+      cout << "No results : ( \n";
+    }else{
+    // PROBLEM????
+    intResults[0] = searchMatches -> getInt(colNames[0]);
+    // add string vals to strResults
+    }    
+    
+    for (int i=1;i<11;i++){
+      strResults[i-1] = searchMatches -> getString(colNames[i]);
+    }
+    
+    // add Likes val to intResults
+    intResults[1] = searchMatches -> getInt(colNames[12]);
+
+    while (searchMatches->next()) {
+      //Creates artwork
+      cout << "Made art\n";
+
+      Artwork artwork = Artwork(intResults[0],strResults[0],strResults[1],strResults[2],strResults[3],strResults[4],strResults[5],strResults[6],strResults[7],strResults[8],strResults[9],strResults[10],intResults[1]);
+
+      artworkResultList.push_back(artwork);
+      }
+    //} while (false);
+  } while (sqlStatement->getMoreResults());
+  return artworkResultList;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 vector<Artwork> ArtLookup::lookupSingle(string search, string colName){
   //auto_ptr<Connection> connectionToDB = establishConnection();
   //auto_ptr<Statement> sqlStatement(conectionToDB->createStatement());
@@ -73,12 +146,9 @@ vector<Artwork> ArtLookup::lookupSingle(string search, string colName){
   //auto_ptr<ResultSet> searchMatches;
   std::unique_ptr<sql::ResultSet> searchMatches;
 
-  
-  string colNames[13]= {"artId","Author","Born-Diec","Title","Technique","Location","URL","Form", "Type", "School", "Timeframe", "Date", "Likes"};
+  //string colNames[13]= {"artId","Author","Born-Diec","Title","Technique","Location","URL","Form", "Type", "School", "Timeframe", "Date", "Likes"};
   string strResults[11]; // hold results with str type
   int intResults[2]; // hold results for artId and Likes
-
-
   
   do {
     searchMatches.reset(sqlStatement->getResultSet());
@@ -111,6 +181,7 @@ vector<Artwork> ArtLookup::lookupSingle(string search, string colName){
   } while (sqlStatement->getMoreResults());
   return artworkResultList;
 }
+*/
 
 
 
@@ -118,8 +189,7 @@ vector<Artwork> ArtLookup::lookupSingle(string search, string colName){
 
 
 
-
-// Maybe return array of size 10????
+/*
 vector<Artwork> ArtLookup::topLikedLookup(){
   //auto_ptr<Connection> connectionToDB = establishConnection();
   //auto_ptr<Statement> sqlStatement(conectionToDB->createStatement());
@@ -131,7 +201,7 @@ vector<Artwork> ArtLookup::topLikedLookup(){
 
   //auto_ptr<ResultSet> searchMatches;
   std::unique_ptr<sql::ResultSet> searchMatches;
-  string colNames[13]= {"artId","Author","Born-Diec","Title","Technique","Location","URL","Form", "Type", "School", "Timeframe", "Date", "Likes"};
+  //string colNames[13]= {"artId","Author","Born-Diec","Title","Technique","Location","URL","Form", "Type", "School", "Timeframe", "Date", "Likes"};
   string strResults[11]; // hold results with str type
   int intResults[2]; // hold results for artId and Likes
 
@@ -159,4 +229,24 @@ vector<Artwork> ArtLookup::topLikedLookup(){
   } while (sqlStatement->getMoreResults());
   return artworkResultList;
 }
+*/
+
+ArtLookup::ArtLookup(){
+  colNames.push_back("artId");
+  colNames.push_back("Author");
+  colNames.push_back("Born-Diec");
+  colNames.push_back("Title");
+  colNames.push_back("Technique");
+  colNames.push_back("Location");
+  colNames.push_back("URL");
+  colNames.push_back("Form");
+  colNames.push_back("Type");
+  colNames.push_back("School");
+  colNames.push_back("Timeframe");
+  colNames.push_back("Date");
+  colNames.push_back("Likes");
+}
+
+
+
 
