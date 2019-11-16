@@ -10,7 +10,7 @@ class ArtLookup: public ArtDBCommunicator{
   public:
   	vector<Artwork> lookupAll(string search);
 	//vector<Artwork> lookupSingle(string search, string colName);
-	vector<Artwork> lookupSingle(string command, string colName);
+	vector<Artwork> lookupSingle(string command);
   	
   	// Maybe delete topLikedLookup altogether
   	//vector<Artwork> topLikedLookup();
