@@ -20,8 +20,11 @@ Artwork.o: Artwork.cpp Artwork.h
 ArtDBCommunicator.o: ArtDBCommunicator.cpp ArtDBCommunicator.h
 	$(CC) $(FLAGS) ArtDBCommunicator.cpp $(CFLAGS)
 
-ArtLookup.o: ArtLookup.cpp ArtLookup.h ArtDBCommunicator.h
+ArtLookup.o: ArtLookup.cpp ArtLookup.h ArtDBCommunicator.h Query.h
 	$(CC) $(FLAGS) ArtLookup.cpp $(CFLAGS)
+
+Query.o: Query.cpp Query.h
+	$(CC) $(FLAGS) Query.cpp $(CFLAGS)
 
 clean:
 	rm -f TestArtApp $(OUT)
