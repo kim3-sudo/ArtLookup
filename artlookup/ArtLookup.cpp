@@ -4,47 +4,83 @@
 //Assignment: Project 3
 //Description: Inherits from ArtDBCommunicator. Communicates specifically
 //with art table in our database
-//Last Changed: November 13, 2019
+//Last Changed: November 16, 2019
 
 #include "ArtLookup.h"
 #include "Query.h"
 
-// COME BACK AND FIX!!!!
-
 vector<Artwork> ArtLookup::lookupGeneral(string search){
+  Query query; // Create query object for commands
 
-  //vector<Artwork> authorMatches; // Default returned
-  //vector<Artwork> authorMatches = lookupSingle(search, "Author");
-  Query query;
+  vector<Artwork> authorMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[1]))), titleMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[3]))), techniqueMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[4]))), locationMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[5]))), formMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[7]))), typeMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[8]))), schoolMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[9]))), timeframeMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[10]))), dateMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[11])));
 
-  // FINISH EDITING; lookupSingleCommand should have one string input which is command
-  vector<Artwork> authorMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[1]))), titleMatches(lookupSingleCommand(query.matchSingleCol(search, colNames[3]))), dateMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[11]))), techniqueMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[4]))), locationMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[5]))), formMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[7]))), typeMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[8]))), schoolMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[9]))), timeframeMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[10])));// Add search by likes
-    
-
-
-  //concatenate vectors https://stackoverflow.com/questions/201718/concatenating-two-stdvectors vector1.insert( vector1.end(), vector2.begin(), vector2.end() );
+  //Concatenate vectors https://stackoverflow.com/questions/201718/concatenating-two-stdvectors vector1.insert( vector1.end(), vector2.begin(), vector2.end() );
   vector<Artwork> allMatches = authorMatches;
   //allMatches.insert( allMatches.end(), lifespanMatches.begin(), lifespanMatches.end() );
-
-  
   allMatches.insert( allMatches.end(), titleMatches.begin(), titleMatches.end() );
-  allMatches.insert( allMatches.end(), dateMatches.begin(), dateMatches.end() );
   allMatches.insert( allMatches.end(), techniqueMatches.begin(), techniqueMatches.end() );
   allMatches.insert( allMatches.end(), locationMatches.begin(), locationMatches.end() );
   allMatches.insert( allMatches.end(), formMatches.begin(), formMatches.end() );
   allMatches.insert( allMatches.end(), typeMatches.begin(), typeMatches.end() );
   allMatches.insert( allMatches.end(), schoolMatches.begin(), schoolMatches.end() );
   allMatches.insert( allMatches.end(), timeframeMatches.begin(), timeframeMatches.end() );
-    
+  allMatches.insert( allMatches.end(), dateMatches.begin(), dateMatches.end() );
 
-  //return authorMatches;
   return allMatches;
 }
 
+// General search
+vector<Artwork> ArtLookup::lookupSingleCommand(string command){
+  std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
+  std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
 
+  vector<Artwork> artworkResultList;
 
+  sqlStatement->execute(command);
+ 
+  std::unique_ptr<sql::ResultSet> searchMatches;
 
+  string strResults[11]; // hold results with str type
+  int intResults[2]; // hold results for artId and Likes
+  Artwork *artwork; // use pointer to dynamically create and destroy Artwork objects
+  
+  do {
+    searchMatches.reset(sqlStatement->getResultSet());    
+    while (searchMatches->next()) {
+      // Get results
+      intResults[0] = searchMatches -> getInt(colNames[0]); // artId
+      for (int i=1;i<11;i++){
+        strResults[i-1] = searchMatches -> getString(colNames[i]);
+      }
+      intResults[1] = searchMatches -> getInt(colNames[12]); // Likes
 
+      //Use pointer to dynamically create artwork
+      artwork = new Artwork(intResults[0],strResults[0],strResults[1],strResults[2],strResults[3],strResults[4],strResults[5],strResults[6],strResults[7],strResults[8],strResults[9],strResults[10],intResults[1]);
+      
+      artworkResultList.push_back(*(artwork));
+      delete artwork; // Deallocate memory in artwork once finished with object
+    }
+  } while (sqlStatement->getMoreResults());
+  return artworkResultList;
+}
+
+ArtLookup::ArtLookup(){
+  colNames.push_back("artId");
+  colNames.push_back("Author");
+  colNames.push_back("Born-Diec");
+  colNames.push_back("Title");
+  colNames.push_back("Technique");
+  colNames.push_back("Location");
+  colNames.push_back("URL");
+  colNames.push_back("Form");
+  colNames.push_back("Type");
+  colNames.push_back("School");
+  colNames.push_back("Timeframe");
+  colNames.push_back("Date");
+  colNames.push_back("Likes");
+}
+
+/****** OLD CODE ****************************************************/
 
 /*
 vector<Artwork> ArtLookup::lookupGeneral(string search){
@@ -79,60 +115,6 @@ vector<Artwork> ArtLookup::lookupGeneral(string search){
   return allMatches;
 }
 */
-
-// EDIT break this up differently because with topTenLiked, the only difference is the command going into the execute function
-// Also, search need not be an input for topTenLiked
-
-// This is going to be the general
-vector<Artwork> ArtLookup::lookupSingleCommand(string command){
-  std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
-  std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
-
-  vector<Artwork> artworkResultList;
-
-  sqlStatement->execute(command);
- 
-  std::unique_ptr<sql::ResultSet> searchMatches;
-
-  string strResults[11]; // hold results with str type
-  int intResults[2]; // hold results for artId and Likes
-  Artwork *artwork;
-  
-  do {
-    searchMatches.reset(sqlStatement->getResultSet());    
-    while (searchMatches->next()) {
-      // Get results
-      intResults[0] = searchMatches -> getInt(colNames[0]);
-      for (int i=1;i<11;i++){
-	strResults[i-1] = searchMatches -> getString(colNames[i]);
-      }
-      intResults[1] = searchMatches -> getInt(colNames[12]);
-
-      //Create artwork
-      //cout << "Made art\n";
-
-      artwork = new Artwork(intResults[0],strResults[0],strResults[1],strResults[2],strResults[3],strResults[4],strResults[5],strResults[6],strResults[7],strResults[8],strResults[9],strResults[10],intResults[1]);
-      
-      // Created for testing purposes
-      //artwork -> print();
-      
-      artworkResultList.push_back(*(artwork));
-      delete artwork;
-    }
-  } while (sqlStatement->getMoreResults());
-  return artworkResultList;
-}
-
-
-
-
-
-
-
-
-
-
-
 
 /*
 vector<Artwork> ArtLookup::lookupSingle(string search, string colName){
@@ -194,12 +176,6 @@ vector<Artwork> ArtLookup::lookupSingle(string search, string colName){
 }
 */
 
-
-
-
-
-
-
 /*
 vector<Artwork> ArtLookup::topLikedLookup(){
   //auto_ptr<Connection> connectionToDB = establishConnection();
@@ -242,21 +218,7 @@ vector<Artwork> ArtLookup::topLikedLookup(){
 }
 */
 
-ArtLookup::ArtLookup(){
-  colNames.push_back("artId");
-  colNames.push_back("Author");
-  colNames.push_back("Born-Diec");
-  colNames.push_back("Title");
-  colNames.push_back("Technique");
-  colNames.push_back("Location");
-  colNames.push_back("URL");
-  colNames.push_back("Form");
-  colNames.push_back("Type");
-  colNames.push_back("School");
-  colNames.push_back("Timeframe");
-  colNames.push_back("Date");
-  colNames.push_back("Likes");
-}
+
 
 
 

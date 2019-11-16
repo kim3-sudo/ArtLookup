@@ -8,7 +8,35 @@
 #include "Artwork.h"
 #include <iostream>
 
-using namespace std;
+using std::cout;
+
+int Artwork::getArtId(){
+  return artId;
+}
+
+int Artwork::getNumLikes(){
+  return numLikes;
+}
+
+int Artwork::getTitle(){
+  return title;
+}
+
+int Artwork::getUrl(){
+  return url;
+}
+
+int Artwork::getArtistInfo(){
+    return artistInfo;
+}
+
+int Artwork::getArtSetting(){
+    return artSetting;
+}
+
+int Artwork::getArtStyle(){
+    return artStyle;
+}
 
 void Artwork::print(){
   cout << "Art Id: " << artId << endl;
@@ -16,12 +44,17 @@ void Artwork::print(){
   cout << "Num Likes: " << numLikes << endl;
 }
 
+void Artwork::incrementLikes(){
+  numLikes++;
+}
+
 Artwork::Artwork(){
   artId = -1;
-  title = "Test";
+  title = "";
   url = "";
   numLikes = 0;
 
+  // Figure out how not to declare structs within constructor
   ArtistInfo artistInfo{ "", "" };
   ArtSetting setting{ "", "", "" };
   ArtStyle style{ "", "", "", "" };
@@ -49,8 +82,3 @@ Artwork::Artwork(int artIdFromDB, string authorFromDB, string birthDeathFromDB, 
   artStyle.form = formFromDB;
 }
 
-
-void Artwork::incrementLikes()
-{
-  numLikes++;
-}

@@ -8,18 +8,14 @@
 #include "ArtDBCommunicator.h"
 
 //Default Constructor.
-ArtDBCommunicator::ArtDBCommunicator(){
+// ArtDBCommunicator::ArtDBCommunicator(){
 
-}
+// }
 
 // Changed name from establishConnection
-//std::auto_ptr<sql::Connection> ArtDBCommunicator::establishDBConnection(){
 std::unique_ptr<sql::Connection> ArtDBCommunicator::establishDBConnection(){
-
   sql::Driver* driver = sql::mysql::get_driver_instance();
-  //std::auto_ptr<sql::Connection> con(driver->connect(url, user, pass));
   std::unique_ptr<sql::Connection> con(driver->connect(address, DBUsername, password));
   con->setSchema(DBName);
-
   return con;
 }

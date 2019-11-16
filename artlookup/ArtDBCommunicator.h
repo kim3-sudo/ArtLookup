@@ -10,20 +10,6 @@ using std::string;
 #include <cppconn/statement.h>
 #include <cppconn/prepared_statement.h>
 
-// ERROR: has not been declared
-// sql::Driver *driver;
-// sql::Connection *connection;
-// sql::Statement *stm;
-// sql::ResultSet *res;
-
-
-// ERROR: namespace 'sql::mysql' not allowed in using-declaration
-//using sql::mysql;
-//using sql::Connection;
-//using sql::Statement;
-//using sql::ResultSet;
-//using std::auto_ptr;
-
 #ifndef ARTDBCOMMUNICATOR_H
 #define ARTDBCOMMUNICATOR_H
 
@@ -35,10 +21,11 @@ using std::string;
 class ArtDBCommunicator{
   public:
     ArtDBCommunicator();
+    // Default Constructor
 
-    // ERROR: template<class> class std::auto_ptr is deprecated 
-    //std::auto_ptr<sql::Connection> establishConnection();
     std::unique_ptr<sql::Connection> establishDBConnection();
+    // Returns sql Connection object to allow for communication with art database
+    
   private:
     const string password = PASS;
     const string DBName = DB;

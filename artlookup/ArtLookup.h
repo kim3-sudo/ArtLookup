@@ -9,13 +9,17 @@
 class ArtLookup: public ArtDBCommunicator{
   public:
   	vector<Artwork> lookupGeneral(string search);
-	//vector<Artwork> lookupSingle(string search, string colName);
-	vector<Artwork> lookupSingleCommand(string command);
+    // Returns vector of Artwork results, comparing values in all columns to search
+
+	  //vector<Artwork> lookupSingle(string search, string colName);
+	  vector<Artwork> lookupSingleCommand(string command);
+    // Returns vector of Artwork results given a valid SQL command
   	
   	// Maybe delete topLikedLookup altogether
-  	//vector<Artwork> topLikedLookup();
+    // We can call lookupSingleCommand(topLikedCommand) instead
+  	// vector<Artwork> topLikedLookup();
 	
-	ArtLookup();
+	  ArtLookup();
   	// Default Constructor
   private:
     vector<string> colNames;

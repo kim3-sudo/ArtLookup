@@ -1,10 +1,11 @@
-//#include "ArtDBCommunicator"
-//#include "Artwork.h"
+
 #include "ArtLookup.h"
 #include "Query.h"
 #include <iostream>
 
-using namespace std;
+using std::cout
+
+//using namespace std;
 
 int main() {
   //Creates an art lookup to test
@@ -34,7 +35,6 @@ int main() {
   */
   cout << "\nACTUAL OUTPUT" << endl;
 
-  // Unqualified Id
   //Artwork artwork = Artwork();
   Artwork artwork;
 
@@ -43,26 +43,23 @@ int main() {
   //for(uint i=0; i < titleIsJokingCouple.size(); i++){
   //  artwork = titleIsJokingCouple.at(i);
 
-  for(uint i=0; i < titleIsAllegory.size(); i++){
+  for(int i=0; i < titleIsAllegory.size(); i++){
     artwork = titleIsAllegory.at(i);
 
     cout << "PREDICTED OUTPUT" << endl;
-
-
-    //cout << "test: " << titleIsJokingCouple.at(i).artId << endl << endl;
-    cout << "artId: " << artwork.artId << endl;
-    cout << "Author: " << artwork.artistInfo.author << endl;
-    cout << "Born-Diec: " << artwork.artistInfo.birthDeath << endl;
-    cout << "Title: " << artwork.title << endl;
-    cout << "Technique: " << artwork.artStyle.technique << endl;
-    cout << "Location: " << artwork.artSetting.location << endl;
-    cout << "URL: " << artwork.url << endl;
-    cout << "Form: " << artwork.artStyle.form << endl;
-    cout << "Type: " << artwork.artStyle.type << endl;
-    cout << "School: " << artwork.artStyle.school << endl;
-    cout << "Timeframe: " << artwork.artSetting.timeframe << endl;
-    cout << "Date: " << artwork.artSetting.date << endl;
-    cout << "Likes: " << artwork.numLikes << endl;
+    cout << "artId: " << artwork.getArtId() << endl;
+    cout << "Author: " << artwork.getArtistInfo().author << endl;
+    cout << "Born-Diec: " << artwork.getArtistInfo().birthDeath << endl;
+    cout << "Title: " << artwork.getTitle() << endl;
+    cout << "Technique: " << artwork.getArtStyle().technique << endl;
+    cout << "Location: " << artwork.getArtSetting().location << endl;
+    cout << "URL: " << artwork.getUrl() << endl;
+    cout << "Form: " << artwork.getArtStyle().form << endl;
+    cout << "Type: " << artwork.getArtStyle().type << endl;
+    cout << "School: " << artwork.getArtStyle().school << endl;
+    cout << "Timeframe: " << artwork.getArtSetting().timeframe << endl;
+    cout << "Date: " << artwork.getArtSetting().date << endl;
+    cout << "Likes: " << artwork.getNumLikes() << endl;
   }
   
 }
