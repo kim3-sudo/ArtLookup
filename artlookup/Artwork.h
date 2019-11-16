@@ -30,6 +30,11 @@ class Artwork{
     //int getArtId();
     // MAKE MEMBER ACCESSOR FUNCTIONS
 
+
+    void print();
+    // Prints first three details about art
+    // Testing purposes
+    
     Artwork();
     //Preconditions: All variables must come from the art table in the Team5 sql
     //database. The parameters are listed in the same order as the respective

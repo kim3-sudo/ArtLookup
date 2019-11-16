@@ -12,7 +12,7 @@ int main() {
   
   // vector<Artwork> titleIsJokingCouple(testLookup.lookupSingle("Joking Couple", "Title"));
 
-  vector<Artwork> titleIsJokingCouple(testLookup.lookupSingle("SELECT * FROM art WHERE Title = 'Joking Couple';"));
+  vector<Artwork> titleIsJokingCouple(testLookup.lookupSingleCommand("SELECT * FROM art WHERE Title = 'Joking Couple';"));
 
   cout << "Size: " << titleIsJokingCouple.size() << endl;
 
@@ -37,9 +37,7 @@ int main() {
   //Artwork artwork = Artwork();
   Artwork artwork;
 
-
-
-// issues with unsigned in comparison for(uint i=0; i < titleIsJokingCouple.size(); i++){
+  // issues with unsigned in comparison for(uint i=0; i < titleIsJokingCouple.size(); i++){
   string colNames[13]= {"artId","Author","Born-Diec","Title","Technique","Location","URL","Form", "Type", "School", "Timeframe", "Date", "Likes"};
   for(uint i=0; i < titleIsJokingCouple.size(); i++){
     artwork = titleIsJokingCouple.at(i);
@@ -48,6 +46,9 @@ int main() {
 
 
     cout << "PREDICTED OUTPUT" << endl;
+
+
+    cout << "test: " << titleIsJokingCouple.at(i).artId << endl << endl;
     cout << "artId: " << artwork.artId << endl;
 
 

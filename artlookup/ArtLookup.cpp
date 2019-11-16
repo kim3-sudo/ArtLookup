@@ -8,31 +8,28 @@
 
 #include "ArtLookup.h"
 
-
 // COME BACK AND FIX!!!!
-vector<Artwork> ArtLookup::lookupAll(string search){
 
-  vector<Artwork> authorMatches; // Default returned
+vector<Artwork> ArtLookup::lookupGeneral(string search){
+
+  //vector<Artwork> authorMatches; // Default returned
   //vector<Artwork> authorMatches = lookupSingle(search, "Author");
 
 
-  /*  vector<Artwork> authorMatches = lookupSingle(search, "Author"),
-                  lifespanMatches = lookupSingle(search, "Born-Diec"),
-                   //Do we want the user to be able to lookup by lifespan of artist
-                  titleMatches = lookupSingle(search, "Title"),
-                  dateMatches = lookupSingle(search, "Date"),
-                  techniqueMatches = lookupSingle(search, "Technique"),
-                  locationMatches = lookupSingle(search, "Location"),
-                  formMatches = lookupSingle(search, "Form"),
-                  typeMatches = lookupSingle(search, "Type"),
-                  schoolMatches = lookupSingle(search, "School"),
-                  timeframeMatches = lookupSingle(search, "Timeframe");
-  */
+  // FINISH EDITING; lookupSingleCommand should have one string input which is command
+  vector<Artwork> authorMatches = lookupSingleCommand(search, "Author"),
+                  titleMatches = lookupSingleCommand(search, "Title"),
+                  dateMatches = lookupSingleCommand(search, "Date"),
+                  techniqueMatches = lookupSingleCommand(search, "Technique"),
+                  locationMatches = lookupSingleCommand(search, "Location"),
+                  formMatches = lookupSingleCommand(search, "Form"),
+                  typeMatches = lookupSingleCommand(search, "Type"),
+                  schoolMatches = lookupSingleCommand(search, "School"),
+                  timeframeMatches = lookupSingleCommand(search, "Timeframe");
+  
   //concatenate vectors https://stackoverflow.com/questions/201718/concatenating-two-stdvectors vector1.insert( vector1.end(), vector2.begin(), vector2.end() );
-
-  /*
   vector<Artwork> allMatches = authorMatches;
-  allMatches.insert( allMatches.end(), lifespanMatches.begin(), lifespanMatches.end() );
+  //allMatches.insert( allMatches.end(), lifespanMatches.begin(), lifespanMatches.end() );
   allMatches.insert( allMatches.end(), titleMatches.begin(), titleMatches.end() );
   allMatches.insert( allMatches.end(), dateMatches.begin(), dateMatches.end() );
   allMatches.insert( allMatches.end(), techniqueMatches.begin(), techniqueMatches.end() );
@@ -41,20 +38,55 @@ vector<Artwork> ArtLookup::lookupAll(string search){
   allMatches.insert( allMatches.end(), typeMatches.begin(), typeMatches.end() );
   allMatches.insert( allMatches.end(), schoolMatches.begin(), schoolMatches.end() );
   allMatches.insert( allMatches.end(), timeframeMatches.begin(), timeframeMatches.end() );
-  */
-
-  return authorMatches;
-//return allMatches;
+  
+  //return authorMatches;
+  return allMatches;
 }
+
+
+
+
+
+
+/*
+vector<Artwork> ArtLookup::lookupGeneral(string search){
+
+  //vector<Artwork> authorMatches; // Default returned
+  //vector<Artwork> authorMatches = lookupSingle(search, "Author");
+
+
+  vector<Artwork> authorMatches = lookupSingle(search, "Author"),
+                  titleMatches = lookupSingle(search, "Title"),
+                  dateMatches = lookupSingle(search, "Date"),
+                  techniqueMatches = lookupSingle(search, "Technique"),
+                  locationMatches = lookupSingle(search, "Location"),
+                  formMatches = lookupSingle(search, "Form"),
+                  typeMatches = lookupSingle(search, "Type"),
+                  schoolMatches = lookupSingle(search, "School"),
+                  timeframeMatches = lookupSingle(search, "Timeframe");
+  
+  //concatenate vectors https://stackoverflow.com/questions/201718/concatenating-two-stdvectors vector1.insert( vector1.end(), vector2.begin(), vector2.end() );
+  vector<Artwork> allMatches = authorMatches;
+  //allMatches.insert( allMatches.end(), lifespanMatches.begin(), lifespanMatches.end() );
+  allMatches.insert( allMatches.end(), titleMatches.begin(), titleMatches.end() );
+  allMatches.insert( allMatches.end(), dateMatches.begin(), dateMatches.end() );
+  allMatches.insert( allMatches.end(), techniqueMatches.begin(), techniqueMatches.end() );
+  allMatches.insert( allMatches.end(), locationMatches.begin(), locationMatches.end() );
+  allMatches.insert( allMatches.end(), formMatches.begin(), formMatches.end() );
+  allMatches.insert( allMatches.end(), typeMatches.begin(), typeMatches.end() );
+  allMatches.insert( allMatches.end(), schoolMatches.begin(), schoolMatches.end() );
+  allMatches.insert( allMatches.end(), timeframeMatches.begin(), timeframeMatches.end() );
+  
+  //return authorMatches;
+  return allMatches;
+}
+*/
 
 // EDIT break this up differently because with topTenLiked, the only difference is the command going into the execute function
 // Also, search need not be an input for topTenLiked
 
-
-
-
 // This is going to be the general
-vector<Artwork> ArtLookup::lookupSingle(string command){
+vector<Artwork> ArtLookup::lookupSingleCommand(string command){
   std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
   std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
 
@@ -66,39 +98,29 @@ vector<Artwork> ArtLookup::lookupSingle(string command){
 
   string strResults[11]; // hold results with str type
   int intResults[2]; // hold results for artId and Likes
+  Artwork *artwork;
   
   do {
-    searchMatches.reset(sqlStatement->getResultSet());
-
-    if(!searchMatches->next()){
-      cout << "No results : ( \n";
-    }else{
-    // PROBLEM????
-      cout << "Getting int results"  << endl;
-    intResults[0] = searchMatches -> getInt(colNames[0]);
-    // add string vals to strResults
-    }    
-    
-    for (int i=1;i<11;i++){
-      strResults[i-1] = searchMatches -> getString(colNames[i]);
-    }
-
-    // WARNING: strResults is printing the author, not id as expected
-    // FIX ME!!!!!!!!!!!!!!!!!
-    cout << "Id: " << strResults[0] << endl;
-    
-    // add Likes val to intResults
-    intResults[1] = searchMatches -> getInt(colNames[12]);
-
+    searchMatches.reset(sqlStatement->getResultSet());    
     while (searchMatches->next()) {
-      //Creates artwork
-      cout << "Made art\n";
-
-      Artwork artwork = Artwork(intResults[0],strResults[0],strResults[1],strResults[2],strResults[3],strResults[4],strResults[5],strResults[6],strResults[7],strResults[8],strResults[9],strResults[10],intResults[1]);
-
-      artworkResultList.push_back(artwork);
+      // Get results
+      intResults[0] = searchMatches -> getInt(colNames[0]);
+      for (int i=1;i<11;i++){
+	strResults[i-1] = searchMatches -> getString(colNames[i]);
       }
-    //} while (false);
+      intResults[1] = searchMatches -> getInt(colNames[12]);
+
+      //Create artwork
+      //cout << "Made art\n";
+
+      artwork = new Artwork(intResults[0],strResults[0],strResults[1],strResults[2],strResults[3],strResults[4],strResults[5],strResults[6],strResults[7],strResults[8],strResults[9],strResults[10],intResults[1]);
+      
+      // Created for testing purposes
+      //artwork -> print();
+      
+      artworkResultList.push_back(*(artwork));
+      delete artwork;
+    }
   } while (sqlStatement->getMoreResults());
   return artworkResultList;
 }

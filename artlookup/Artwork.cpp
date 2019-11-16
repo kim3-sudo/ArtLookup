@@ -6,10 +6,19 @@
 //Last Changed: November 13, 2019
 
 #include "Artwork.h"
+#include <iostream>
+
+using namespace std;
+
+void Artwork::print(){
+  cout << "Art Id: " << artId << endl;
+  cout << "Title: " << title << endl;
+  cout << "Num Likes: " << numLikes << endl;
+}
 
 Artwork::Artwork(){
   artId = -1;
-  title = "";
+  title = "Test";
   url = "";
   numLikes = 0;
 
