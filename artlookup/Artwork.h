@@ -28,7 +28,7 @@ struct ArtStyle {
 class Artwork{
   public:
 
-    // Accessor Member Functions
+    // Accessor Member Functions; all return data member
     int getArtId();
     int getNumLikes();
     string getTitle();
