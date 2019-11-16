@@ -1,4 +1,4 @@
-TEST_OBJS = ArtLookupTests.o Artwork.o ArtDBCommunicator.o ArtLookup.o
+TEST_OBJS = ArtLookupTests.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
 SOURCE	= Artwork.cpp
 HEADER	= Artwork.h ArtDBCommunicator.h
 OUT	= Artwork
@@ -11,7 +11,7 @@ all: TestArtApp
 TestArtApp: $(TEST_OBJS)
 	$(CC) -g $(TEST_OBJS) -L/usr/lib -o $(OUT) -L/usr/local/lib -lcgicc -lmysqlcppconn
 
-ArtLookupTests.o: ArtLookupTests.cpp Artwork.h ArtLookup.h
+ArtLookupTests.o: ArtLookupTests.cpp Artwork.h ArtLookup.h Query.h
 	$(CC) $(FLAGS) ArtLookupTests.cpp $(CFLAGS)
 
 Artwork.o: Artwork.cpp Artwork.h

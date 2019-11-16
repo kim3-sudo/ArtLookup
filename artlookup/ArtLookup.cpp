@@ -7,6 +7,7 @@
 //Last Changed: November 13, 2019
 
 #include "ArtLookup.h"
+#include "Query.h"
 
 // COME BACK AND FIX!!!!
 
@@ -14,22 +15,18 @@ vector<Artwork> ArtLookup::lookupGeneral(string search){
 
   //vector<Artwork> authorMatches; // Default returned
   //vector<Artwork> authorMatches = lookupSingle(search, "Author");
-
+  Query query;
 
   // FINISH EDITING; lookupSingleCommand should have one string input which is command
-  vector<Artwork> authorMatches = lookupSingleCommand(search, "Author"),
-                  titleMatches = lookupSingleCommand(search, "Title"),
-                  dateMatches = lookupSingleCommand(search, "Date"),
-                  techniqueMatches = lookupSingleCommand(search, "Technique"),
-                  locationMatches = lookupSingleCommand(search, "Location"),
-                  formMatches = lookupSingleCommand(search, "Form"),
-                  typeMatches = lookupSingleCommand(search, "Type"),
-                  schoolMatches = lookupSingleCommand(search, "School"),
-                  timeframeMatches = lookupSingleCommand(search, "Timeframe");
-  
+  vector<Artwork> authorMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[1]))), titleMatches(lookupSingleCommand(query.matchSingleCol(search, colNames[3]))), dateMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[11]))), techniqueMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[4]))), locationMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[5]))), formMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[7]))), typeMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[8]))), schoolMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[9]))), timeframeMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[10])));// Add search by likes
+    
+
+
   //concatenate vectors https://stackoverflow.com/questions/201718/concatenating-two-stdvectors vector1.insert( vector1.end(), vector2.begin(), vector2.end() );
   vector<Artwork> allMatches = authorMatches;
   //allMatches.insert( allMatches.end(), lifespanMatches.begin(), lifespanMatches.end() );
+
+  
   allMatches.insert( allMatches.end(), titleMatches.begin(), titleMatches.end() );
   allMatches.insert( allMatches.end(), dateMatches.begin(), dateMatches.end() );
   allMatches.insert( allMatches.end(), techniqueMatches.begin(), techniqueMatches.end() );
@@ -38,7 +35,8 @@ vector<Artwork> ArtLookup::lookupGeneral(string search){
   allMatches.insert( allMatches.end(), typeMatches.begin(), typeMatches.end() );
   allMatches.insert( allMatches.end(), schoolMatches.begin(), schoolMatches.end() );
   allMatches.insert( allMatches.end(), timeframeMatches.begin(), timeframeMatches.end() );
-  
+    
+
   //return authorMatches;
   return allMatches;
 }
