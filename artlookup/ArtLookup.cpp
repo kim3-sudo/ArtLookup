@@ -11,9 +11,9 @@
 
 vector<Artwork> ArtLookup::lookupGeneral(string search){
   Query query; // Create query object for commands
-  string authorCommand = query.matchSingleCol(search,colNames[1]), titleCommand = query.matchSingleCol(search,colNames[3]);
+  string authorCommand = query.matchSingleCol(search,colNames[1]), titleCommand = query.matchSingleCol(search,colNames[3]), techniqueCommand = query.matchSingleCol(search,colNames[4]), locationCommand = query.matchSingleCol(search,colNames[5]), formCommand = query.matchSingleCol(search,colNames[7]), typeCommand = query.matchSingleCol(search,colNames[9]), schoolCommand = query.matchSingleCol(search,colNames[9]), timeframeCommand = query.matchSingleCol(search,colNames[10]), dateCommand = = query.matchSingleCol(search,colNames[11]);
 
-  vector<Artwork> authorMatches(lookupSingleCommand(authorCommand)), titleMatches(lookupSingleCommand(titleCommand)), techniqueMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[4]))), locationMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[5]))), formMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[7]))), typeMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[8]))), schoolMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[9]))), timeframeMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[10]))), dateMatches(lookupSingleCommand(query.matchSingleCol(search,colNames[11])));
+  vector<Artwork> authorMatches = lookupSingleCommand(authorCommand), titleMatches = lookupSingleCommand(titleCommand), techniqueMatches = lookupSingleCommand(techniqueCommand), locationMatches = lookupSingleCommand(locationCommand), formMatches = lookupSingleCommand(formCommand), typeMatches = lookupSingleCommand(typeCommand), schoolMatches = lookupSingleCommand(schoolCommand), timeframeMatches = lookupSingleCommand(timeframeCommand), dateMatches = lookupSingleCommand(dateCommand);
 
   //Concatenate vectors https://stackoverflow.com/questions/201718/concatenating-two-stdvectors vector1.insert( vector1.end(), vector2.begin(), vector2.end() );
   vector<Artwork> allMatches = authorMatches;
