@@ -12,7 +12,8 @@
 // COME BACK AND FIX!!!!
 vector<Artwork> ArtLookup::lookupAll(string search){
 
-  vector<Artwork> authorMatches = lookupSingle(search, "Author");
+  vector<Artwork> authorMatches; // Default returned
+  //vector<Artwork> authorMatches = lookupSingle(search, "Author");
 
 
   /*  vector<Artwork> authorMatches = lookupSingle(search, "Author"),
@@ -53,41 +54,27 @@ vector<Artwork> ArtLookup::lookupAll(string search){
 
 
 // This is going to be the general
-vector<Artwork> ArtLookup::lookupSingle(string command, string colName){
-  //auto_ptr<Connection> connectionToDB = establishConnection();
-  //auto_ptr<Statement> sqlStatement(conectionToDB->createStatement());
+vector<Artwork> ArtLookup::lookupSingle(string command){
   std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
   std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
 
   vector<Artwork> artworkResultList;
-  //string hardCommand, addStrCommand;
 
-  //hardCommand = "SELECT * FROM art WHERE Title LIKE '%Joking Couple%';";
-  //addStrCommand = "SELECT * FROM art WHERE " + colName + " LIKE '%" + search + "%';";
-  
-  //sqlStatement->execute("SELECT * FROM art WHERE " + colName + " LIKE '%" + search + "%';");
   sqlStatement->execute(command);
-  //cout << hardCommand << endl;
-  //cout << addStrCommand << endl;
-  //sqlStatement->execute(addStrCommand);
-
-  
-  //auto_ptr<ResultSet> searchMatches;
+ 
   std::unique_ptr<sql::ResultSet> searchMatches;
 
-  //string colNames[13]= {"artId","Author","Born-Diec","Title","Technique","Location","URL","Form", "Type", "School", "Timeframe", "Date", "Likes"};
   string strResults[11]; // hold results with str type
   int intResults[2]; // hold results for artId and Likes
   
   do {
     searchMatches.reset(sqlStatement->getResultSet());
-    
-    // add artId val to intResults
 
     if(!searchMatches->next()){
       cout << "No results : ( \n";
     }else{
     // PROBLEM????
+      cout << "Getting int results"  << endl;
     intResults[0] = searchMatches -> getInt(colNames[0]);
     // add string vals to strResults
     }    
@@ -95,6 +82,10 @@ vector<Artwork> ArtLookup::lookupSingle(string command, string colName){
     for (int i=1;i<11;i++){
       strResults[i-1] = searchMatches -> getString(colNames[i]);
     }
+
+    // WARNING: strResults is printing the author, not id as expected
+    // FIX ME!!!!!!!!!!!!!!!!!
+    cout << "Id: " << strResults[0] << endl;
     
     // add Likes val to intResults
     intResults[1] = searchMatches -> getInt(colNames[12]);

@@ -12,7 +12,7 @@ int main() {
   
   // vector<Artwork> titleIsJokingCouple(testLookup.lookupSingle("Joking Couple", "Title"));
 
-  vector<Artwork> titleIsJokingCouple(testLookup.lookupSingle("Joking Couple", "Title"));
+  vector<Artwork> titleIsJokingCouple(testLookup.lookupSingle("SELECT * FROM art WHERE Title = 'Joking Couple';"));
 
   cout << "Size: " << titleIsJokingCouple.size() << endl;
 
