@@ -19,8 +19,6 @@ class JSCommunicator{
     string print(Artwork artwork);
 };
 
-//string intToStr(int num);
-
 int main(){
   Cgicc cgi; // Ajax object
   //char *cstr;
@@ -29,12 +27,16 @@ int main(){
   string searchVal = **itSearch;
   ArtLookup artLookup;
   Query query;
-  vector<Artwork> searchByTitle(artLookup.lookupSingleCommand(query.matchSingleCol(searchVal,"Title")));
-  string colNames[13]= {"artId","Author","Born-Diec","Title","Technique","Location","URL","Form", "Type", "School", "Timeframe", "Date", "Likes"},result("Content-Type: text/plain\n\n");
+  //Vector of artworks. Created using matchSingleCol query for our lookupSingleCommand function.
+  vector<Artwork> searchByTitle(artlookup.lookupSingleCommand(query.matchSingleCol(searchVal,"Title")));
+
+  //string colNames[13]= {"artId","Author","Born-Diec","Title","Technique","Location","URL","Form", "Type", "School", "Timeframe", "Date", "Likes"},result("Content-Type: text/plain\n\n");
 
   Artwork artwork;
   JSCommunicator jSCommunicator;
-  for (uint i=0;i<searchByTitle.size();i++){
+
+  //Sends artwork data to JavaScript
+  for (uint i=0;i<searchByTitle.size()){
     artwork = searchByTitle.at(i);
     result += jSCommunicator.print(artwork);
   }
@@ -45,9 +47,8 @@ int main(){
 
 string JSCommunicator::print(Artwork artwork){
   string result, sep(" * ");
-  result += sep + to_string(artwork.getArtId()) + sep + artwork.getArtistInfo().author + sep + artwork.getArtistInfo().birthDeath + sep + artwork.getTitle() + sep + artwork.getArtStyle().technique + sep + artwork.getArtSetting().location + sep + artwork.getUrl() + sep + artwork.getArtStyle().form + sep + artwork.getArtStyle().type + sep + artwork.getArtStyle().school + sep + artwork.getArtSetting().timeframe + sep + artwork.getArtSetting().date + sep + to_string(artwork.getNumLikes());
+  result +=  to_string(artwork.getArtId()) + sep + artwork.getArtistInfo().author + sep + artwork.getArtistInfo().birthDeath + sep + artwork.getTitle() + sep + artwork.getArtStyle().technique + sep + artwork.getArtSetting().location + sep + artwork.getUrl() + sep + artwork.getArtStyle().form + sep + artwork.getArtStyle().type + sep + artwork.getArtStyle().school + sep + artwork.getArtSetting().timeframe + sep + artwork.getArtSetting().date + sep + to_string(artwork.getNumLikes()) + sep;
   // For some reason date not sending
-
   
    return result;
 }
