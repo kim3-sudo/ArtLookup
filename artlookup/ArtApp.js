@@ -31,6 +31,4 @@ function buildGallery(list){
   } else {
 
     }
-
-
 }
