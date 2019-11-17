@@ -22,7 +22,7 @@ function processResults(results) {
 }
 
 function buildGallery(list){
-  var artData = list.split(",");
+  var artData = list.split("*^");
 
   if (artData.length < 1) {
 	  return "<h3>Internal Error</h3>";
