@@ -14,6 +14,14 @@
 using namespace cgicc;
 using std::cout;
 
+class JSCommunicator(){
+  string print(Artwork artwork){
+    string result, sep("*");
+    result += artwork.getArtId() + sep + artwork.getArtistInfo().author + sep + artwork.getArtistInfo().birthDeath + sep + artwork.getTitle() + sep + artwork.getArtStyle().technique + sep + artwork.getArtSetting().location + sep + artwork.getUrl() + sep + artwork.getArtStyle().form + sep + artwork.getArtStyle().type + sep + artwork.getArtStyle().school + sep + artwork.getArtSetting().timeframe + sep + artwork.getArtSetting().date + sep + artwork.getNumLikes()
+    return result;
+  }
+}
+
 int main(){
   Cgicc cgi; // Ajax object
   char *cstr;
@@ -23,18 +31,15 @@ int main(){
   Artlookup artlookup;
   Query query;
   vector<Artwork> searchByTitle(artlookup.lookupSingleCommand(query.matchSingleCol(searchVal,"Title")));
-  string colNames[13]; // FINISH ME!!!!!!!
-  
-  cout << "Content-Type: text/plain\n\n";
+  string colNames[13]= {"artId","Author","Born-Diec","Title","Technique","Location","URL","Form", "Type", "School", "Timeframe", "Date", "Likes"},result("Content-Type: text/plain\n\n");
 
-
-
-
-
-
-
-
-  //cout << results << endl;
+  Artwork artwork;
+  JSCommunicator jSCommunicator;
+  for (uint i=0;i<searchByTitle.size()){
+    artwork = searchByTitle.at(i);
+    result += jSCommunicator.print(artwork);
+  }
+  cout << result;
 
   return 0;
 }
