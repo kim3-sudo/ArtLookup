@@ -1,5 +1,4 @@
 #include "ArtLookup.h"
-#include "Query.h"
 #include <iostream>
 
 int main(){
