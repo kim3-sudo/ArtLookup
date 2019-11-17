@@ -22,18 +22,22 @@ function processResults(results) {
 }
 
 function buildGallery(list){
-  var artData = list.split(",");
+  var artData = list.split(" * ");
 
   if (artData.length < 1) {
 	  return "<h3>Internal Error</h3>";
   } else {
 
-    var result = '<div class="container">';
-
-    var listLength = artData.length;
-    for (var i = 6; i < listLength; i+=13) {
-      <div class="col-sm-6 col-md-4 col-lg-3 item"><a data-lightbox="photos" href=artData[i]><img class="img-fluid" src=artData[i]></a></div>
-    }
+      var result = '<div class="container">';
+     
+      var listLength = artData.length;
+      console.log("Appending Results: \n\n");
+      for (var i = 6; i < listLength; i+=13){
+	  console.log(i);
+	  console.log("ArtData[i]: ");
+	  console.log(artData[i]);
+	  result += '<div class="col-sm-6 col-md-4 col-lg-3 item"><a data-lightbox="photos" href=' + artData[i] + '><img class="img-fluid" src=' + artData[i] + '></a></div>'
+      }
 
     result += "</div>";
 
