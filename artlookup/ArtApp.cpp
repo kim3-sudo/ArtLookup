@@ -28,7 +28,7 @@ int main(){
   ArtLookup artLookup = ArtLookup();
   Query query;
   //Vector of artworks. Created using matchSingleCol query for our lookupSingleCommand function.
-  vector<Artwork> searchByTitle(artlookup.lookupSingleCommand(query.matchSingleCol(searchVal,"Title")));
+  vector<Artwork> searchByTitle(artLookup.lookupSingleCommand(query.matchSingleCol(searchVal,"Title")));
 
   //string colNames[13]= {"artId","Author","Born-Diec","Title","Technique","Location","URL","Form", "Type", "School", "Timeframe", "Date", "Likes"}
 
