@@ -10,7 +10,7 @@ int main() {
   //Creates an art lookup to test
   ArtLookup testLookup = ArtLookup();
   Query query;
-  
+
   // vector<Artwork> titleIsJokingCouple(testLookup.lookupSingle("Joking Couple", "Title"));
   vector<Artwork> titleIsAllegory(testLookup.lookupSingleCommand(query.matchSingleCol("Allegory","Title")));
   //vector<Artwork> titleIsJokingCouple(testLookup.lookupSingleCommand("SELECT * FROM art WHERE Title = 'Joking Couple';"));
@@ -32,7 +32,7 @@ int main() {
   cout << "Date: " << endl;
   cout << "Likes: NULL" << endl;
   */
-  cout << "\nACTUAL OUTPUT" << endl;
+  //cout << "\nACTUAL OUTPUT" << endl;
 
   //Artwork artwork = Artwork();
   Artwork artwork;
@@ -45,7 +45,7 @@ int main() {
   for(uint i=0; i < titleIsAllegory.size(); i++){
     artwork = titleIsAllegory.at(i);
 
-    cout << "PREDICTED OUTPUT" << endl;
+    cout << "Artworks where title is like 'Allegory'" << endl;
     cout << "artId: " << artwork.getArtId() << endl;
     cout << "Author: " << artwork.getArtistInfo().author << endl;
     cout << "Born-Diec: " << artwork.getArtistInfo().birthDeath << endl;
@@ -60,5 +60,5 @@ int main() {
     cout << "Date: " << artwork.getArtSetting().date << endl;
     cout << "Likes: " << artwork.getNumLikes() << endl;
   }
-  
+
 }
