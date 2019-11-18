@@ -38,10 +38,10 @@ function buildGallery(list){
       var listLength = artData.length;
       console.log("Appending Results: \n\n");
       for (var i = 7; i < listLength; i+=13){
-	  console.log(i);
-	  console.log("ArtData[i]: ");
-	  console.log(artData[i]);
-	  result += '<div class="col-sm-6 col-md-4 col-lg-3 item"><a data-lightbox="photos" href=' + artData[i] + '><img class="img-fluid" src=' + artData[i] + '></a></div>'
+    	  console.log(i);
+    	  console.log("ArtData[i]: ");
+    	  console.log(artData[i]);
+    	  result += '<div class="col-sm-6 col-md-4 col-lg-3 item"><a data-lightbox="photos" href=' + artData[i] + '><img class="img-fluid" src=' + artData[i] + '></a></div>'
       }
     result += "</div>";
 
