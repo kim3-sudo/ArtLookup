@@ -32,17 +32,17 @@ int main(){
 
   //string colNames[13]= {"artId","Author","Born-Diec","Title","Technique","Location","URL","Form", "Type", "School", "Timeframe", "Date", "Likes"}
 
-  string result = "Content-Type: test/plain\n\n";
-
   Artwork artwork;
   JSCommunicator jSCommunicator;
 
   //Sends artwork data to JavaScript
+  string result = "";
   for (uint i=0;i<searchByTitle.size(); i++){
     artwork = searchByTitle.at(i);
     result += jSCommunicator.print(artwork);
   }
-  cout << result;
+  cout << "Content-Type: text/plain\n\n";
+  cout << result << endl;
 
   return 0;
 }
