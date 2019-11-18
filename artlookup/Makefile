@@ -16,7 +16,7 @@ ArtApp: $(REAL_OBJS)
 TestArtApp: $(TEST_OBJS)
 	$(CC) $(TEST_OBJS) -o testArtApp -L/usr/local/lib -lcgicc -lmysqlcppconn
 
-ArtApp.o: ArtApp.cpp ArtLookup.h
+ArtApp.o: ArtApp.cpp ArtLookup.h Query.h
 	$(CC) $(FLAGS) ArtApp.cpp $(CFLAGS)
 
 ArtLookupTests.o: ArtLookupTests.cpp ArtLookup.h
