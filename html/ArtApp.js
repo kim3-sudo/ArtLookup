@@ -36,7 +36,7 @@ function buildGallery(list){
       var result = '<div class="container">';
 
       var listLength = artData.length;
-      console.log("Length of artData List: " list length);
+      console.log("Length of artData List: " listLength);
       console.log("Appending Results: \n\n");
       for (var i = 7; i < listLength; i+=13){
     	  console.log(i);
