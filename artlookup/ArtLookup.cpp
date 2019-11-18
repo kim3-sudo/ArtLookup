@@ -37,7 +37,7 @@ vector<Artwork> ArtLookup::lookupSingleCommand(string command){
   std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
 
   sqlStatement->execute(command);
-  
+
   std::unique_ptr<sql::ResultSet> searchMatches; // Create ResultSet object
   int intResults[2]; // hold results for artId and Likes
   string strResults[11]; // hold results with str type
@@ -45,18 +45,18 @@ vector<Artwork> ArtLookup::lookupSingleCommand(string command){
   vector<Artwork> artworkResultList; // Vector to hold Artwork objects from search
 
   do {
-    searchMatches.reset(sqlStatement->getResultSet());    
+    searchMatches.reset(sqlStatement->getResultSet());
     while (searchMatches->next()) {
       // Get results
       intResults[0] = searchMatches -> getInt(colNames[0]); // artId
-      for (int i=1;i<11;i++){
+      for (int i=1;i<12;i++){
         strResults[i-1] = searchMatches -> getString(colNames[i]);
       }
       intResults[1] = searchMatches -> getInt(colNames[12]); // Likes
 
       //Use pointer to dynamically create artwork
       artwork = new Artwork(intResults[0],strResults[0],strResults[1],strResults[2],strResults[3],strResults[4],strResults[5],strResults[6],strResults[7],strResults[8],strResults[9],strResults[10],intResults[1]);
-      
+
       artworkResultList.push_back(*(artwork));
       delete artwork; // Deallocate memory in artwork once finished with object
     }
@@ -98,7 +98,7 @@ vector<Artwork> ArtLookup::lookupGeneral(string search){
                   typeMatches = lookupSingle(search, "Type"),
                   schoolMatches = lookupSingle(search, "School"),
                   timeframeMatches = lookupSingle(search, "Timeframe");
-  
+
   //concatenate vectors https://stackoverflow.com/questions/201718/concatenating-two-stdvectors vector1.insert( vector1.end(), vector2.begin(), vector2.end() );
   vector<Artwork> allMatches = authorMatches;
   //allMatches.insert( allMatches.end(), lifespanMatches.begin(), lifespanMatches.end() );
@@ -110,7 +110,7 @@ vector<Artwork> ArtLookup::lookupGeneral(string search){
   allMatches.insert( allMatches.end(), typeMatches.begin(), typeMatches.end() );
   allMatches.insert( allMatches.end(), schoolMatches.begin(), schoolMatches.end() );
   allMatches.insert( allMatches.end(), timeframeMatches.begin(), timeframeMatches.end() );
-  
+
   //return authorMatches;
   return allMatches;
 }
@@ -128,24 +128,24 @@ vector<Artwork> ArtLookup::lookupSingle(string search, string colName){
 
   //hardCommand = "SELECT * FROM art WHERE Title LIKE '%Joking Couple%';";
   addStrCommand = "SELECT * FROM art WHERE " + colName + " LIKE '%" + search + "%';";
-  
+
   //sqlStatement->execute("SELECT * FROM art WHERE " + colName + " LIKE '%" + search + "%';");
   sqlStatement->execute(addStrCommand);
   //cout << hardCommand << endl;
   //cout << addStrCommand << endl;
   //sqlStatement->execute(addStrCommand);
 
-  
+
   //auto_ptr<ResultSet> searchMatches;
   std::unique_ptr<sql::ResultSet> searchMatches;
 
   //string colNames[13]= {"artId","Author","Born-Diec","Title","Technique","Location","URL","Form", "Type", "School", "Timeframe", "Date", "Likes"};
   string strResults[11]; // hold results with str type
   int intResults[2]; // hold results for artId and Likes
-  
+
   do {
     searchMatches.reset(sqlStatement->getResultSet());
-    
+
     // add artId val to intResults
 
     if(!searchMatches->next()){
@@ -154,12 +154,12 @@ vector<Artwork> ArtLookup::lookupSingle(string search, string colName){
     // PROBLEM????
     intResults[0] = searchMatches -> getInt(colNames[0]);
     // add string vals to strResults
-    }    
-    
+    }
+
     for (int i=1;i<11;i++){
       strResults[i-1] = searchMatches -> getString(colNames[i]);
     }
-    
+
     // add Likes val to intResults
     intResults[1] = searchMatches -> getInt(colNames[12]);
 
@@ -217,9 +217,3 @@ vector<Artwork> ArtLookup::topLikedLookup(){
   return artworkResultList;
 }
 */
-
-
-
-
-
-
