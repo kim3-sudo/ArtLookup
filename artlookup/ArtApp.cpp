@@ -25,18 +25,20 @@ int main(){
   // Ajax object to receive info from web page
   form_iterator itSearch = cgi.getElement("searchVal");
   string searchVal = **itSearch;
-  ArtLookup artLookup;
+  ArtLookup artLookup = ArtLookup();
   Query query;
   //Vector of artworks. Created using matchSingleCol query for our lookupSingleCommand function.
   vector<Artwork> searchByTitle(artlookup.lookupSingleCommand(query.matchSingleCol(searchVal,"Title")));
 
-  //string colNames[13]= {"artId","Author","Born-Diec","Title","Technique","Location","URL","Form", "Type", "School", "Timeframe", "Date", "Likes"},result("Content-Type: text/plain\n\n");
+  //string colNames[13]= {"artId","Author","Born-Diec","Title","Technique","Location","URL","Form", "Type", "School", "Timeframe", "Date", "Likes"}
+
+  string result = "Content-Type: test/plain\n\n";
 
   Artwork artwork;
   JSCommunicator jSCommunicator;
 
   //Sends artwork data to JavaScript
-  for (uint i=0;i<searchByTitle.size()){
+  for (uint i=0;i<searchByTitle.size(); i++){
     artwork = searchByTitle.at(i);
     result += jSCommunicator.print(artwork);
   }
