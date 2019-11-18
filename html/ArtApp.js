@@ -26,7 +26,7 @@ function processResults(results) {
 //Parses art data from c++. Appends all photos to photo gallery
 function buildGallery(list){
 
-  var artData = list.split("*^");
+  var artData = list.split("*");
 
   //If there is nothing from c++ return "Internal Error"
   if (artData.length < 1) {
@@ -34,7 +34,7 @@ function buildGallery(list){
   } else {
 
       var result = '<div class="container">';
-     
+
       var listLength = artData.length;
       console.log("Appending Results: \n\n");
       for (var i = 6; i < listLength; i+=13){
