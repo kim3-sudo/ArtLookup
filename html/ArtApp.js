@@ -9,11 +9,12 @@ $(document).ready(function () {
 function getMatches(){
     //$('.photo-gallery').empty();
 	
+    /*
     $('.page').hide();
     console.log("pick!"+$(this).attr('data-page'));
 	$(this).parents(".dropdown").find('.selection').text($(this).text());
 	$('#'+$(this).attr('data-page')).show();
-    
+    */
     
     $('home').hide();
     console.log("hide the homepage");
@@ -25,7 +26,7 @@ function getMatches(){
     $.ajax({
     	url: '/cgi-bin/brydon1_artAppComplete.cgi?searchVal='+$('#search-field').val(),
     	dataType: 'text',
-    	success: processResults,
+    	success: //processResults,
     	error: function(){alert("Error: Something went wrong");}
     });
 }
