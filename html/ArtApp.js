@@ -7,7 +7,16 @@ $(document).ready(function () {
 //Empties photo gallery and then fills with new images from our c++ file
 //through the function processResults
 function getMatches(){
-    $('.photo-gallery').empty();
+   //$('.photo-gallery').empty();
+    
+    //for the new hiding for the homepage
+    $('.page').hide();
+    console.log("pick!"+$(this).attr('data-page'));
+    $(this).parents(".dropdown").find('.selection').text($(this).text());
+	$('#'+$(this).attr('data-page')).show();
+    
+    
+    
     $.ajax({
     	url: '/cgi-bin/brydon1_artAppComplete.cgi?searchVal='+$('#search-field').val(),
     	dataType: 'text',
