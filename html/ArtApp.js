@@ -8,21 +8,21 @@ $(document).ready(function () {
 //through the function processResults
 function getMatches(){
     //$('.photo-gallery').empty();
-	
+
     /*
     $('.page').hide();
     console.log("pick!"+$(this).attr('data-page'));
 	$(this).parents(".dropdown").find('.selection').text($(this).text());
 	$('#'+$(this).attr('data-page')).show();
     */
-    
+
     $('#home').hide();
     console.log("hide the homepage");
     $('#'+$(this).attr('search')).show();
     //what this *should* do: hide the home, display the search page
-    
-    
-    
+
+
+
     $.ajax({
     	url: '/cgi-bin/brydon1_artAppComplete.cgi?searchVal='+$('#search-field').val(),
     	dataType: 'text',
@@ -65,3 +65,11 @@ function buildGallery(list){
     return result;
   }
 }
+
+
+
+//Login Function
+//id's login-email login-password
+
+//Signup Function
+//id's signup-email signup-password signup-password-repeated
