@@ -16,7 +16,7 @@ function getMatches(){
 	$('#'+$(this).attr('data-page')).show();
     */
     
-    $('home').hide();
+    $('#home').hide();
     console.log("hide the homepage");
     $('#'+$(this).attr('search')).show();
     //what this *should* do: hide the home, display the search page
