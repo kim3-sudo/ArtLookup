@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-  //getMatches when search button is clicked
+  // getMatches when search button is clicked
   $(".action-button").click(getMatches);
 });
 
@@ -26,7 +26,7 @@ function getMatches(){
     $.ajax({
     	url: '/cgi-bin/brydon1_artAppComplete.cgi?searchVal='+$('#search-field').val(),
     	dataType: 'text',
-    	success: //processResults,
+    	success: processResults,
     	error: function(){alert("Error: Something went wrong");}
     });
 }
