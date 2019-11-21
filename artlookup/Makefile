@@ -48,4 +48,4 @@ PutHTML:
 	ls -l /var/www/html/class/softdev/$(USER)/ArtApp
 
 clean:
-	rm -f ArtApp TestArtApp $(OUT) testArtwork
+	rm -f ArtApp TestArtApp $(OUT)
