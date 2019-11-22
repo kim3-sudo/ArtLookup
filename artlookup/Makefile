@@ -6,7 +6,7 @@ OUT	= ArtApp
 CC	 = g++
 FLAGS	 = -g -c -Wall
 CFLAGS 	 = -std=c++14
-USER     = kim3
+USER     = brydon1
 
 all: ArtApp TestArtApp PutCGI PutHTML
 
@@ -48,4 +48,4 @@ PutHTML:
 	ls -l /var/www/html/class/softdev/$(USER)/ArtApp
 
 clean:
-	rm -f ArtApp TestArtApp $(OUT) testArtwork
+	rm -f ArtApp TestArtApp $(OUT)
