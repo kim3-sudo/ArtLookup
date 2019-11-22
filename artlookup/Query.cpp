@@ -13,11 +13,9 @@ string Query::matchSingleCol(string searchItem, string colName){
 }
 
 string Query::findUser(string username){
-	// EQUALITY IN SQL???
-	return "SELECT * FROM users WHERE userName == '" + username + "'";
+	return "SELECT * FROM users WHERE userName = '" + username + "'";
 }
 
 string Query::addUser(string username, string password, string email){
-	return "INSERT INTO `users`(`userId`, `userName`, `password`, `email`) VALUES (NULL,'" + username
-		+ "','" + password + "','" + email"');";
+	return "INSERT INTO `users`(`userId`, `userName`, `password`, `email`) VALUES (NULL,'" + username + "','" + password + "','" + email + "');";
 }
