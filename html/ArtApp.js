@@ -19,6 +19,7 @@ function getMatches(){
     $('#home').hide();
     console.log("hide the homepage");
     $('#search').show();
+    document.body.style.background = 'white';
     //$('#'+$(this).attr('search')).show();
     console.log("Show seach page");
     //what this *should* do: hide the home, display the search page
