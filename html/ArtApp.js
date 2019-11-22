@@ -18,10 +18,10 @@ function getMatches(){
 
     $('#home').hide();
     console.log("hide the homepage");
-    $('#'+$(this).attr('search')).show();
+    $('#search').show();
+    //$('#'+$(this).attr('search')).show();
+    console.log("Show seach page");
     //what this *should* do: hide the home, display the search page
-
-
 
     $.ajax({
     	url: '/cgi-bin/brydon1_artAppComplete.cgi?searchVal='+$('#search-field').val(),
