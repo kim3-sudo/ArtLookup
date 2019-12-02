@@ -1,8 +1,17 @@
+var searchCategory;  //Category to be searched by: Title, Author ...
 
 $(document).ready(function () {
+  //When an item in the dropdown is clicked set the category
+  $(".dropdown-item").click(setCategory);
   // getMatches when search button is clicked
   $(".action-button").click(getMatches);
 });
+
+
+function setCategory(){
+  //Set the category to the text of the dropdown-item
+  searchCategory = $(this).text();
+}
 
 //Empties photo gallery and then fills with new images from our c++ file
 //through the function processResults
