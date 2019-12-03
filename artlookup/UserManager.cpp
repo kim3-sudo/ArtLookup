@@ -9,7 +9,7 @@
 #include "Query.h"
 
 void UserManager::addMember(Member member){
-	std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
+	std::unique_ptr<sql::Connection> connectionToDB = ArtDBCommunicator::establishDBConnection();
 	std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
 	Query query;
 

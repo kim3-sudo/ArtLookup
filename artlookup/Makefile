@@ -1,5 +1,6 @@
 TEST_OBJS = ArtLookupTests.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
 REAL_OBJS = ArtApp.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
+ADD_MEMBER_OBJS = AddMember.o Member.o UserManager.o
 SOURCE	= Artwork.cpp
 HEADER	= Artwork.h ArtDBCommunicator.h
 OUT	= ArtApp
@@ -13,8 +14,8 @@ all: ArtApp AddMember TestArtApp PutCGI PutHTML
 ArtApp: $(REAL_OBJS)
 	$(CC) $(REAL_OBJS) -o $(OUT) -L/usr/local/lib -lcgicc -lmysqlcppconn
 
-AddMember: AddMember.o Member.o UserManager.o
-	$(CC) AddMember.o Member.o UserManager.o -o AddMember -L/usr/local/lib -lcgicc -lmysqlcppconn
+AddMember: $(ADD_MEMBER_OBJS)
+	$(CC) $(ADD_MEMBER_OBJS) -o AddMember -L/usr/local/lib -lcgicc -lmysqlcppconn
 
 TestArtApp: $(TEST_OBJS)
 	$(CC) $(TEST_OBJS) -o testArtApp -L/usr/local/lib -lcgicc -lmysqlcppconn
@@ -46,9 +47,11 @@ Member.o: Member.cpp Member.h
 UserManager.o: UserManager.cpp UserManager.h Query.h ArtDBCommunicator.h Member.h
 	$(CC) $(FLAGS) UserManager.cpp $(CFLAGS)
 
-PutCGI: ArtApp
+PutCGI: ArtApp AddMember
 	chmod 757 ArtApp
+	chmod 757 AddMember
 	cp ArtApp /usr/lib/cgi-bin/$(USER)_artAppComplete.cgi
+	cp AddMember /usr/lib/cgi-bin/$(USER)_artAppComplete.cgi
 
 	echo "Current contents of your cgi-bin directory: "
 	ls -l /usr/lib/cgi-bin/
