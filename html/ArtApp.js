@@ -6,6 +6,20 @@ $(document).ready(function () {
   $(".dropdown-item").click(setCategory);
   // getMatches when search button is clicked
   $(".action-button").click(getMatches);
+  
+  //maybe this is code for a dropdown menu that works this time?
+  $(".dropdown-menu a").click(function(){
+    console.log("pick!"+$(this).text());
+    if($(this).hasClass("main-menu")){
+      $(this).parents(".dropdown").find('.selection').text($(this).text());
+      operation=$(this).text();
+      console.log("Main-menu")
+      changeOperation(operation);
+    } else if ($(this).hasClass("add-item")){
+      $(this).parents(".dropdown").find('.selection').text($(this).text());
+      console.log($(this).text());
+    }
+  });
 });
 
   // Outer layer of click event probably unnecessary
