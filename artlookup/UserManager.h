@@ -10,8 +10,7 @@ class UserManager: public ArtDBCommunicator{
     void addMember(Member member);
     // add member to user table in sql database
 
-    // Maybe change input to member?? Probably not
-    bool isValidMember(string in_username, string password);
+    bool isValidMember(Member member);
     // Returns true if there is a member with username in_username and 
     // password in_password; false otherwise
   
