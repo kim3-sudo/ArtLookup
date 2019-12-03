@@ -47,7 +47,7 @@ int main(){
   Artwork artwork;
   string result = "";
   for (uint i = 0; i < searchResults.size(); i++){
-    artwork = searchByTitle.at(i);
+    artwork = searchResults.at(i);
     result += jSCommunicator.print(artwork);
   }
   cout << "Content-Type: text/plain\n\n";
