@@ -8,6 +8,7 @@ $(document).ready(function () {
   $(".action-button").click(getMatches);
   
   //trying to add dropdown js - again
+  /*
   $(".dropdown-menu a").click(function(){
     console.log("pick!"+$(this).text());
     if ( $(this).hasClass("main-menu") ) {
@@ -23,6 +24,7 @@ $(document).ready(function () {
       console.log($(this).text());
     } 	
   });
+  */
 });
 
   // Outer layer of click event probably unnecessary
