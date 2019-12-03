@@ -1,8 +1,8 @@
 #include "ArtLookup.h"
 #include "Query.h"
 #include <iostream>
-// Maybe unnecessary
-#include <string>
+
+//#include <string> no compiler errors, so probably good to remove...check?
 
 
 // Stuff for Ajax
