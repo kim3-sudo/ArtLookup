@@ -23,8 +23,7 @@ void UserManager::addMember(Member member){
 // Maybe change input to member?? Probably not
 bool UserManager::isValidMember(Member member){
 	// FINISH ME!!!!!!
-
-
+	return True;
 }
 // Returns true if there is a member with username in_username and 
 // password in_password; false otherwise
