@@ -31,16 +31,41 @@
                 </ul>
                 
                 
-                <!-- tester comment begin 
-                <div class="main-menu dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="main-menu dropdown-item" role="presentation" href="#">Title</a>
-                    <a class="main-menu dropdown-item" role="presentation" href="#">Author</a>
-                    <a class="main-menu dropdown-item" role="presentation" href="#">Date</a>
-                    <a class="main-menu dropdown-item" role="presentation" href="#">Location</a>
-                    <a class="main-menu dropdown-item" role="presentation" href="#">Technique</a>
-                    <a class="main-menu dropdown-item" role="presentation" href="#">School</a>
-                </div>
-                 tester comment end -->
+                <!-- tester comment begin -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle selection" href="#" id="searchtype" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Find Last
+                    </a>
+                    <div class="main-menu dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="main-menu dropdown-item" role="presentation" href="#">Title</a>
+                        <a class="main-menu dropdown-item" role="presentation" href="#">Author</a>
+                        <a class="main-menu dropdown-item" role="presentation" href="#">Date</a>
+                        <a class="main-menu dropdown-item" role="presentation" href="#">Location</a>
+                        <a class="main-menu dropdown-item" role="presentation" href="#">Technique</a>
+                        <a class="main-menu dropdown-item" role="presentation" href="#">School</a>
+                    </div>
+                </li>
+                <!-- tester comment end -->
+                
+                <!--tester comment begin-->
+                <script>
+                    $(".dropdown-menu a").click(function(){
+                        console.log("pick!"+$(this).text());
+                        if ( $(this).hasClass("main-menu") ) {
+                            $(this).parents(".dropdown").find('.selection').text($(this).text());
+                            operation=$(this).text();
+                            console.log("Main-menu");
+                            changeOperation(operation);	    
+                        } else if ($(this).hasClass("add-item")) {
+                            $(this).parents(".dropdown").find('.selection').text($(this).text());
+                            console.log($(this).text());
+                        } else if ($(this).hasClass("edit-item")) {
+                            $(this).parents(".dropdown").find('.selection').text($(this).text());
+                            console.log($(this).text());
+                        } 	
+                    });
+                </script>
+                <!--tester comment end-->
                 
                 <!-- tester comment begin 
                 <div class="dropdown">
@@ -71,7 +96,7 @@
                 </script>
                 tester comment end -->
                 
-                <!--tester comment begin-->
+                <!--tester comment begin
                 <div class="dropdown">
                     <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">
                     <span id="selected">Chose option</span><span class="caret"></span></a>
@@ -82,15 +107,15 @@
                         <li><a href="#">Option 4</a></li>
                     </ul>
                 </div>
-                <!--tester comment end-->
+                tester comment end-->
                 
-                <!--tester comment begin-->
+                <!--tester comment begin
                 <script>
                     $('.dropdown-menu a').click(function(){
                         $('#selected').text($(this).text());
                     });
                 </script>
-                <!--tester comment end-->
+                tester comment end-->
                 
                 <form class="form-inline ml-auto" target="_self">
                     <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" type="search" id="search-field2" name="search" placeholder="search for art" style="width: 255px;"></div>
