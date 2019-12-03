@@ -1,8 +1,8 @@
 #include "ArtLookup.h"
 #include "Query.h"
 #include <iostream>
-// Maybe unnecessary
-#include <string>
+
+//#include <string>
 
 
 // Stuff for Ajax
