@@ -5,7 +5,9 @@ $(document).ready(function () {
   $(".dropdown-item").click(setCategory);
   // getMatches when search button is clicked
   $(".action-button").click(getMatches);
-  $("#submit-user-credentials").click(addMember);
+  $("start-signup").click(function() {
+    $("#submit-user-credentials").click(addMember);
+  });
 });
 
 function setCategory(){
