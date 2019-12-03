@@ -6,18 +6,24 @@ OUT	= ArtApp
 CC	 = g++
 FLAGS	 = -g -c -Wall
 CFLAGS 	 = -std=c++14
-USER     = schultz4
+USER     = brydon1
 
-all: ArtApp TestArtApp PutCGI PutHTML
+all: ArtApp AddMember TestArtApp PutCGI PutHTML
 
 ArtApp: $(REAL_OBJS)
 	$(CC) $(REAL_OBJS) -o $(OUT) -L/usr/local/lib -lcgicc -lmysqlcppconn
+
+AddMember: AddMember.o Member.o UserManager.o
+	$(CC) AddMember.o Member.o UserManager.o -o AddMember -L/usr/local/lib -lcgicc -lmysqlcppconn
 
 TestArtApp: $(TEST_OBJS)
 	$(CC) $(TEST_OBJS) -o testArtApp -L/usr/local/lib -lcgicc -lmysqlcppconn
 
 ArtApp.o: ArtApp.cpp ArtLookup.h Query.h
 	$(CC) $(FLAGS) ArtApp.cpp $(CFLAGS)
+
+AddMember.o: AddMember.cpp Member.h UserManager.h
+	$(CC) $(FLAGS) AddMember.cpp $(CFLAGS)
 
 ArtLookupTests.o: ArtLookupTests.cpp ArtLookup.h
 	$(CC) $(FLAGS) ArtLookupTests.cpp $(CFLAGS)
@@ -34,6 +40,12 @@ ArtLookup.o: ArtLookup.cpp ArtLookup.h ArtDBCommunicator.h Query.h
 Query.o: Query.cpp Query.h
 	$(CC) $(FLAGS) Query.cpp $(CFLAGS)
 
+Member.o: Member.cpp Member.h
+	$(CC) $(FLAGS) Member.cpp $(CFLAGS)
+
+UserManager.o: UserManager.cpp UserManager.h Query.h ArtDBCommunicator.h Member.h
+	$(CC) $(FLAGS) UserManager.cpp $(CFLAGS)
+
 PutCGI: ArtApp
 	chmod 757 ArtApp
 	cp ArtApp /usr/lib/cgi-bin/$(USER)_artAppComplete.cgi
@@ -48,4 +60,4 @@ PutHTML:
 	ls -l /var/www/html/class/softdev/$(USER)/ArtApp
 
 clean:
-	rm -f ArtApp TestArtApp $(OUT)
+	rm -f ArtApp AddMember TestArtApp $(OUT)
