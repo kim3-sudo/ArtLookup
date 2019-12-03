@@ -2,7 +2,7 @@
 #include "Query.h"
 #include <iostream>
 
-//#include <string> no compiler errors, so probably good to remove...check?
+#include <string>
 
 
 // Stuff for Ajax
