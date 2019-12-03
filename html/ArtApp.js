@@ -2,13 +2,15 @@ var searchCategory;  //Category to be searched by: Title, Author ...
 
 $(document).ready(function () {
   //When an item in the dropdown is clicked set the category
+  console.log("ready!");
   $(".dropdown-item").click(setCategory);
   // getMatches when search button is clicked
   $(".action-button").click(getMatches);
 
   // not sure if this will work
-  $("#start-signup").onclick = function() { 
+  $("#start-signup").click(function() { 
     console.log("Is this even working???");
+
     $("#submit-user-credentials").click(addMember);
   };
 });
