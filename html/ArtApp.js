@@ -17,6 +17,7 @@ function setCategory(){
 // Otherwise, shows error message
 
 function addMember(){
+  console.log("Clicked-signup");
   userName = $('#signup-email').val();
   password1 = $('#signup-password').val();
   password2 = $('#signup-password-repeated').val();
