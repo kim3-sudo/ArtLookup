@@ -11,12 +11,12 @@ $(document).ready(function () {
   //trying to add dropdown js - again
   
   
-  //testing comment begin - S Kim
-	//dropdown menu
+  /*//testing comment begin - S Kim
+  //dropdown menu
   $('.dropdown-menu a').click(function(){
     $('#selectedtype').text($(this).text());
   });
-  //testing comment end
+  *///testing comment end
   
   
   
