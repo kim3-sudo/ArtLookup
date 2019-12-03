@@ -7,10 +7,6 @@ $(document).ready(function () {
   // getMatches when search button is clicked
   $(".action-button").click(getMatches);
   
-  $('.dropdown-menu a').click(function(){
-    $('#selected').text($(this).text());
-  });
-  
   //trying to add dropdown js - again
   /*
   $(".dropdown-menu a").click(function(){
@@ -30,6 +26,11 @@ $(document).ready(function () {
   });
   */
 });
+
+  //dropdown menu
+  $('.dropdown-menu a').click(function(){
+    $('#selectedtype').text($(this).text());
+  });
 
   // Outer layer of click event probably unnecessary
   $("#start-signup").click(function() {
