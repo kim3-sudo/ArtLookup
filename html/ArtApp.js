@@ -1,9 +1,17 @@
+var searchCategory;  //Category to be searched by: Title, Author ...
 
 $(document).ready(function () {
+  //When an item in the dropdown is clicked set the category
+  $(".dropdown-item").click(setCategory);
   // getMatches when search button is clicked
   $(".action-button").click(getMatches);
   $("#submit-signup").click(addMember);
 });
+
+function setCategory(){
+  //Set the category to the text of the dropdown-item
+  searchCategory = $(this).text();
+}
 
 // Adds member to user table in SQL database if user does not already exist;
 // Otherwise, shows error message
@@ -33,7 +41,6 @@ function isUsernameAvailable(results){
     alert("Username is not available.");
   }
 }
-
 
 //Empties photo gallery and then fills with new images from our c++ file
 //through the function processResults
