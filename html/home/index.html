@@ -49,6 +49,13 @@
                 </div>
                 <!-- tester comment end -->
                 
+                <!-- for the dropdown menu? -->
+                <script>
+                    $('.dropdown-menu a').click(function(){
+                        $('#selectedtype').text($(this).text());
+                    });
+                </script>
+                
                 <!--
                 <div class="main-menu dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="main-menu dropdown-item" role="presentation" href="#">Title</a>
