@@ -6,14 +6,15 @@ $(document).ready(function () {
   $(".dropdown-item").click(setCategory);
   // getMatches when search button is clicked
   $(".action-button").click(getMatches);
-	
+  
+	/*
 	//dropdown menu
   $('.dropdown-menu a').click(function(){
     $('#selectedtype').text($(this).text());
   });
-  
+  */
   //trying to add dropdown js - again
-  /*
+  //testing comment begin
   $(".dropdown-menu a").click(function(){
     console.log("pick!"+$(this).text());
     if ( $(this).hasClass("main-menu") ) {
@@ -29,7 +30,7 @@ $(document).ready(function () {
       console.log($(this).text());
     } 	
   });
-  */
+  //testing comment end
 });
 
   
