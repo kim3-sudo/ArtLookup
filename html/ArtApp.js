@@ -8,7 +8,7 @@ $(document).ready(function () {
   $(".action-button").click(getMatches);
 
   // Outer layer of click event probably unnecessary
-  $("#start-signup").click(function() { 
+  $("#start-signup").click(function() {
     $("#submit-user-credentials").click(addMember);
   });
 });
@@ -23,10 +23,12 @@ function setCategory(){
 
 function addMember(){
   console.log("Clicked-signup");
+
   username = $('#signup-username').val();
   email = $('#signup-email').val();
   password1 = $('#signup-password').val();
   password2 = $('#signup-password-repeated').val();
+
   if (password1 === password2) { // strict equality with ===
 
     $.ajax({
@@ -49,31 +51,22 @@ function isUsernameAvailable(results){
   }
 }
 
-//Empties photo gallery and then fills with new images from our c++ file
-//through the function processResults
+//Switches to search page and displays the photos related to the user's search
 function getMatches(){
-    //$('.photo-gallery').empty();
-
-    /*
-    $('.page').hide();
-    console.log("pick!"+$(this).attr('data-page'));
-	$(this).parents(".dropdown").find('.selection').text($(this).text());
-	$('#'+$(this).attr('data-page')).show();
-    */
-
+    //Hides the search page and shows the homepage
     $('#home').hide();
     console.log("hide the homepage");
     $('#search').show();
-    //document.body.style.background = 'white';
-    //$('#'+$(this).attr('search')).show();
     console.log("Show seach page");
-    //what this *should* do: hide the home, display the search page
 
+    var searchTerm = $('#search-field').val();
+
+    //Sends search term and category to C++ then calls processResults
     $.ajax({
-    	url: '/cgi-bin/brydon1_artAppComplete.cgi?searchVal='+$('#search-field').val(),
+    	url: '/cgi-bin/brydon1_artAppComplete.cgi?searchVal='+searchTerm+'&searchCategory='+searchCategory',
     	dataType: 'text',
     	success: processResults,
-    	error: function(){alert("Error: Something went wrong");}
+    	error: function(){alert("Error: Could not search");}
     });
 }
 
