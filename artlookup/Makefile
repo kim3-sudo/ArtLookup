@@ -1,6 +1,6 @@
 TEST_OBJS = ArtLookupTests.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
 REAL_OBJS = ArtApp.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
-ADD_MEMBER_OBJS = AddMember.o Member.o UserManager.o
+ADD_MEMBER_OBJS = AddMember.o Member.o UserManager.o ArtDBCommunicator.o Query.o
 SOURCE	= Artwork.cpp
 HEADER	= Artwork.h ArtDBCommunicator.h
 OUT	= ArtApp
