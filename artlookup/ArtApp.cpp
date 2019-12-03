@@ -33,25 +33,21 @@ int main(){
   Query query;
   vector<Artwork> searchResults;
 
-  //Vector of artworks. Created using matchSingleCol query for our lookupSingleCommand function.
+  //If the user didn't choose to search by category use general lookup to get
+  //search results
   if( searchCategory == "" ){
-    //Search all query
+    searchResults = artLookup.lookupGeneral( searchVal );
   }
+  //Else lookup using the category they specified to get search results
   else {
     searchResults = artLookup.lookupSingleCommand( query.matchSingleCol( searchVal, searchCategory ) );
     //vector<Artwork> searchResults = artLookup.lookupSingleCommand( query.matchSingleCol( searchVal, searchCategory ) );
   }
 
-  //string colNames[13]= {"artId","Author","Born-Diec","Title","Technique","Location","URL","Form", "Type", "School", "Timeframe", "Date", "Likes"}
-
-  Artwork artwork;
-
-  // I am just adding this to get rid of errors for now
-  vector<Artwork> searchByTitle = artLookup.lookupSingleCommand( query.matchSingleCol( searchVal, searchCategory ) );
-
   //Sends artwork data to JavaScript
+  Artwork artwork;
   string result = "";
-  for (uint i=0;i<searchResults.size(); i++){
+  for (uint i = 0; i < searchResults.size(); i++){
     artwork = searchByTitle.at(i);
     result += jSCommunicator.print(artwork);
   }
