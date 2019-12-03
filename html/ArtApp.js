@@ -6,6 +6,7 @@ $(document).ready(function () {
   // getMatches when search button is clicked
   $(".action-button").click(getMatches);
   $("#start-signup").click(function() {
+    console.log("Is this even working???");
     $("#submit-user-credentials").click(addMember);
   });
 });
