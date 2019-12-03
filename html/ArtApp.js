@@ -48,9 +48,12 @@ function addMember(){
 }
 
 function isUsernameAvailable(results){
+
   if (results == 'T'){
+    console.log("Signup successful");
     alert("Signup successful."); // Maybe change to close modal
   } else {
+    console.log("Signup failure.");
     alert("Username is not available.");
   }
 }
