@@ -10,6 +10,10 @@ class Member{
     Member();
     //Member(string memberId, string username, string password, string email);
     Member(string username, string password, string email);
+    string getUsername();
+    string getPassword();
+    string getEmail();
+
 
     // void likeArtwork(Artwork artwork);
     // //void likeComment(Comment comment);
