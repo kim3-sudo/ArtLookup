@@ -63,7 +63,7 @@ function getMatches(){
 
     //Sends search term and category to C++ then calls processResults
     $.ajax({
-    	url: '/cgi-bin/brydon1_artAppComplete.cgi?searchVal='+searchTerm+'&searchCategory='+searchCategory',
+    	url: '/cgi-bin/brydon1_artAppComplete.cgi?searchVal='+searchTerm+'&searchCategory='+searchCategory,
     	dataType: 'text',
     	success: processResults,
     	error: function(){alert("Error: Could not search");}
