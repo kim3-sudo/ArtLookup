@@ -14,7 +14,7 @@ $(document).ready(function () {
   });
   */
   //trying to add dropdown js - again
-  //testing comment begin
+  /*//testing comment begin
   $(".dropdown-menu a").click(function(){
     console.log("pick!"+$(this).text());
     if ( $(this).hasClass("main-menu") ) {
@@ -30,7 +30,7 @@ $(document).ready(function () {
       console.log($(this).text());
     } 	
   });
-  //testing comment end
+  *///testing comment end
 });
 
   
