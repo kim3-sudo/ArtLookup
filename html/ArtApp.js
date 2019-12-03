@@ -6,12 +6,6 @@ $(document).ready(function () {
   $(".dropdown-item").click(setCategory);
   // getMatches when search button is clicked
   $(".action-button").click(getMatches);
-  
-  //new code that *might* get the dropdown to do what I want it to do...
-  $(".dropdown-menu li a").click(function(){
-    $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
-    $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
-    
 });
 
   // Outer layer of click event probably unnecessary
