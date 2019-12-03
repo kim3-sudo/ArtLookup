@@ -7,10 +7,8 @@ $(document).ready(function () {
   // getMatches when search button is clicked
   $(".action-button").click(getMatches);
 
-  // not sure if this will work
+  // Outer layer of click event probably unnecessary
   $("#start-signup").click(function() { 
-    console.log("Is this even working???");
-
     $("#submit-user-credentials").click(addMember);
   });
 });
@@ -25,13 +23,14 @@ function setCategory(){
 
 function addMember(){
   console.log("Clicked-signup");
-  userName = $('#signup-email').val();
+  username = $('#signup-username').val();
+  email = $('#signup-email').val();
   password1 = $('#signup-password').val();
   password2 = $('#signup-password-repeated').val();
   if (password1 === password2) { // strict equality with ===
 
     $.ajax({
-      url: '/cgi-bin/brydon1_artAppComplete.cgi?userName='+userName+'&password='+password1,
+      url: '/cgi-bin/brydon1_artAppComplete.cgi?userName='+username+'&email='+email+'&password='+password1,
       dataType: 'text',
       success: isUsernameAvailable, // cgi should return character T if username not taken; F otherwise
       error: function(){alert("Error: Something went wrong");}

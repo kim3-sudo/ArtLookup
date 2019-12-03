@@ -8,17 +8,30 @@
 #include "Member.h"
 
 Member::Member(){
-	m_memberId = 0;
+	//m_memberId = 0;
     m_username = "";
     m_password = "";
     m_email = "";
 }
 
-Member::Member(string memberId, string username, string password, string email){
-	m_memberId = memberId;
+
+// I want to not input a memberId
+//Member::Member(string memberId, string username, string password, string email){
+Member::Member(string username, string password, string email){
+	//m_memberId = memberId;
     m_username = username;
     m_password = password;
     m_email = email;
+}
+
+string Member::getUsername(){
+	return m_username;
+}
+string Member::getPassword(){
+	return m_password;
+}
+string Member::getEmail(){
+	return m_email;
 }
 
 // void Member::likeArtwork(Artwork artwork){
