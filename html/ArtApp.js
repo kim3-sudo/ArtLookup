@@ -2,7 +2,38 @@
 $(document).ready(function () {
   // getMatches when search button is clicked
   $(".action-button").click(getMatches);
+  $("#submit-signup").click(addMember);
 });
+
+// Adds member to user table in SQL database if user does not already exist;
+// Otherwise, shows error message
+
+function addMember(){
+  userName = $('#signup-email').val();
+  password1 = $('#signup-password').val();
+  password2 = $('#signup-password-repeated').val();
+  if (password1 === password2) { // strict equality with ===
+
+    $.ajax({
+      url: '/cgi-bin/brydon1_artAppComplete.cgi?userName='+userName+'&password='+password1,
+      dataType: 'text',
+      success: isUsernameAvailable, // cgi should return character T if username not taken; F otherwise
+      error: function(){alert("Error: Something went wrong");}
+    });
+
+  } else {
+    alert("Passwords do not match."); // I think this is how you do this??
+  }
+}
+
+function isUsernameAvailable(results){
+  if (results == 'T'){
+    alert("Signup successful."); // Maybe change to close modal
+  } else {
+    alert("Username is not available.");
+  }
+}
+
 
 //Empties photo gallery and then fills with new images from our c++ file
 //through the function processResults
