@@ -32,13 +32,13 @@
                     <a class="nav-link dropdown-toggle selection" href="#" id="searchtype" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Select type...
                     </a>
-                    <div class="main-menu dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="main-menu dropdown-item" role="presentation" href="#">Title</a>
-                        <a class="main-menu dropdown-item" role="presentation" href="#">Author</a>
-                        <a class="main-menu dropdown-item" role="presentation" href="#">Date</a>
-                        <a class="main-menu dropdown-item" role="presentation" href="#">Location</a>
-                        <a class="main-menu dropdown-item" role="presentation" href="#">Technique</a>
-                        <a class="main-menu dropdown-item" role="presentation" href="#">School</a>
+                    <div class="select-menu dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="select-menu dropdown-item" role="presentation" href="#">Title</a>
+                        <a class="select-menu dropdown-item" role="presentation" href="#">Author</a>
+                        <a class="select-menu dropdown-item" role="presentation" href="#">Date</a>
+                        <a class="select-menu dropdown-item" role="presentation" href="#">Location</a>
+                        <a class="select-menu dropdown-item" role="presentation" href="#">Technique</a>
+                        <a class="select-menu dropdown-item" role="presentation" href="#">School</a>
                     </div>
                 </li>
                 </ul>
@@ -65,18 +65,20 @@
                 <script>
                     $(".dropdown-menu a").click(function(){
                         console.log("pick!"+$(this).text());
-                        if ( $(this).hasClass("main-menu") ) {
+                        if ( $(this).hasClass("select-menu") ) {
                             $(this).parents(".dropdown").find('.selection').text($(this).text());
                             operation=$(this).text();
                             console.log("Main-menu");
-                            changeOperation(operation);	    
+                            changeOperation(operation);
+                            /*
                         } else if ($(this).hasClass("add-item")) {
                             $(this).parents(".dropdown").find('.selection').text($(this).text());
                             console.log($(this).text());
                         } else if ($(this).hasClass("edit-item")) {
                             $(this).parents(".dropdown").find('.selection').text($(this).text());
                             console.log($(this).text());
-                        } 	
+                        }
+                        */
                     });
                 </script>
                 <!--tester comment end-->
