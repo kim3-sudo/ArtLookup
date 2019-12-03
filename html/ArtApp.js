@@ -7,7 +7,22 @@ $(document).ready(function () {
   // getMatches when search button is clicked
   $(".action-button").click(getMatches);
   
-  
+  $(".dropdown-menu a").click(function(){
+    console.log("pick!"+$(this).text());
+    if ( $(this).hasClass("select-menu") ) {
+      $(this).parents(".dropdown").find('.selection').text($(this).text());
+      operation=$(this).text();
+      console.log("Main-menu");
+      changeOperation(operation);
+    } /*else if ($(this).hasClass("add-item")) {
+    $(this).parents(".dropdown").find('.selection').text($(this).text());
+    console.log($(this).text());
+    } else if ($(this).hasClass("edit-item")) {
+    $(this).parents(".dropdown").find('.selection').text($(this).text());
+    console.log($(this).text());
+    }
+    */
+  });
   //trying to add dropdown js - again
   
   
