@@ -25,12 +25,16 @@ function addMember(){
   console.log("Clicked-signup");
 
   username = $('#signup-username').val();
+  console.log(username);
   email = $('#signup-email').val();
+  console.log(email);
   password1 = $('#signup-password').val();
+  console.log(password1);
   password2 = $('#signup-password-repeated').val();
+  console.log(password2);
 
   if (password1 === password2) { // strict equality with ===
-
+    console.log("Sending info to server");
     $.ajax({
       url: '/cgi-bin/brydon1_artAppComplete.cgi?userName='+username+'&email='+email+'&password='+password1,
       dataType: 'text',
