@@ -31,19 +31,23 @@ int main(){
 
   ArtLookup artLookup;
   Query query;
+  vector<Artwork> searchResults;
 
   //Vector of artworks. Created using matchSingleCol query for our lookupSingleCommand function.
   if( searchCategory == "" ){
     //Search all query
   }
-  else{
-
-    vector<Artwork> searchResults( artLookup.lookupSingleCommand( query.matchSingleCol( searchVal, searchCategory ) ) )
+  else {
+    searchResults = artLookup.lookupSingleCommand( query.matchSingleCol( searchVal, searchCategory ) );
+    //vector<Artwork> searchResults = artLookup.lookupSingleCommand( query.matchSingleCol( searchVal, searchCategory ) );
   }
 
   //string colNames[13]= {"artId","Author","Born-Diec","Title","Technique","Location","URL","Form", "Type", "School", "Timeframe", "Date", "Likes"}
 
   Artwork artwork;
+
+  // I am just adding this to get rid of errors for now
+  vector<Artwork> searchByTitle = artLookup.lookupSingleCommand( query.matchSingleCol( searchVal, searchCategory ) );
 
   //Sends artwork data to JavaScript
   string result = "";
@@ -66,7 +70,7 @@ string JSCommunicator::print(Artwork artwork){
 
 //Precondition:
 //Postcondition: Value of element is returned as a string
-string JSCOmmunicator::getElement(string element, Cgicc &cgi){
+string JSCommunicator::getElement(string element, Cgicc &cgi){
 
   form_iterator itElement = cgi.getElement(element);
   string returnElement = **itElement;
