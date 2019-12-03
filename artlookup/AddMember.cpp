@@ -4,7 +4,7 @@
 #include "UserManager.h"
 #include <iostream>
 // Maybe unnecessary
-#include <string>
+//#include <string>
 
 // Stuff for Ajax
 #include "cgicc/Cgicc.h"
