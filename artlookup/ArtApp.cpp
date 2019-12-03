@@ -17,27 +17,37 @@ using std::cout;
 class JSCommunicator{
   public:
     string print(Artwork artwork);
+    string getElement(string element, Cgicc &cgi);
 };
 
 int main(){
   Cgicc cgi; // Ajax object
-  //char *cstr;
-  // Ajax object to receive info from web page
-  form_iterator itSearch = cgi.getElement("searchVal");
-  string searchVal = **itSearch;
-  ArtLookup artLookup = ArtLookup();
+
+  JSCommunicator jSCommunicator;
+
+  //Receive info from web page
+  string searchVal = jSCommunicator.getElement("searchVal", cgi);
+  string searchCategory = jSCommunicator.getElement("searchCategory", cgi);
+
+  ArtLookup artLookup;
   Query query;
+
   //Vector of artworks. Created using matchSingleCol query for our lookupSingleCommand function.
-  vector<Artwork> searchByTitle(artLookup.lookupSingleCommand(query.matchSingleCol(searchVal,"Title")));
+  if( searchCategory == "" ){
+    //Search all query
+  }
+  else{
+
+    vector<Artwork> searchResults( artLookup.lookupSingleCommand( query.matchSingleCol( searchVal, searchCategory ) ) )
+  }
 
   //string colNames[13]= {"artId","Author","Born-Diec","Title","Technique","Location","URL","Form", "Type", "School", "Timeframe", "Date", "Likes"}
 
   Artwork artwork;
-  JSCommunicator jSCommunicator;
 
   //Sends artwork data to JavaScript
   string result = "";
-  for (uint i=0;i<searchByTitle.size(); i++){
+  for (uint i=0;i<searchResults.size(); i++){
     artwork = searchByTitle.at(i);
     result += jSCommunicator.print(artwork);
   }
@@ -50,7 +60,16 @@ int main(){
 string JSCommunicator::print(Artwork artwork){
   string result, sep("*");
   result +=  to_string(artwork.getArtId()) + sep + artwork.getArtistInfo().author + sep + artwork.getArtistInfo().birthDeath + sep + artwork.getTitle() + sep + artwork.getArtStyle().technique + sep + artwork.getArtSetting().location + sep + artwork.getUrl() + sep + artwork.getArtStyle().form + sep + artwork.getArtStyle().type + sep + artwork.getArtStyle().school + sep + artwork.getArtSetting().timeframe + sep + artwork.getArtSetting().date + sep + to_string(artwork.getNumLikes()) + sep;
-  // For some reason date not sending
 
    return result;
+}
+
+//Precondition:
+//Postcondition: Value of element is returned as a string
+string JSCOmmunicator::getElement(string element, Cgicc &cgi){
+
+  form_iterator itElement = cgi.getElement(element);
+  string returnElement = **itElement;
+
+  return returnElement;
 }
