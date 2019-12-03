@@ -5,10 +5,12 @@ $(document).ready(function () {
   $(".dropdown-item").click(setCategory);
   // getMatches when search button is clicked
   $(".action-button").click(getMatches);
-  $("#start-signup").click(function() {
+
+  // not sure if this will work
+  $("#start-signup").onclick = function() { 
     console.log("Is this even working???");
     $("#submit-user-credentials").click(addMember);
-  });
+  };
 });
 
 function setCategory(){
