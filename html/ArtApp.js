@@ -12,7 +12,7 @@ $(document).ready(function () {
     console.log("Is this even working???");
 
     $("#submit-user-credentials").click(addMember);
-  };
+  });
 });
 
 function setCategory(){
