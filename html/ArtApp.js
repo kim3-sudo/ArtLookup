@@ -7,14 +7,20 @@ $(document).ready(function () {
   // getMatches when search button is clicked
   $(".action-button").click(getMatches);
   
-	/*
+  
+  //trying to add dropdown js - again
+  
+  
+  //testing comment begin - S Kim
 	//dropdown menu
   $('.dropdown-menu a').click(function(){
     $('#selectedtype').text($(this).text());
   });
-  */
-  //trying to add dropdown js - again
-  /*//testing comment begin
+  //testing comment end
+  
+  
+  
+  /*//testing comment begin - S Kim
   $(".dropdown-menu a").click(function(){
     console.log("pick!"+$(this).text());
     if ( $(this).hasClass("main-menu") ) {
