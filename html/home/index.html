@@ -31,7 +31,7 @@
                 </ul>
                 
                 
-                <!-- tester comment begin -->
+                <!-- tester comment begin 
                 <div class="main-menu dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="main-menu dropdown-item" role="presentation" href="#">Title</a>
                     <a class="main-menu dropdown-item" role="presentation" href="#">Author</a>
@@ -40,7 +40,7 @@
                     <a class="main-menu dropdown-item" role="presentation" href="#">Technique</a>
                     <a class="main-menu dropdown-item" role="presentation" href="#">School</a>
                 </div>
-                <!-- tester comment end -->
+                 tester comment end -->
                 
                 <!-- tester comment begin 
                 <div class="dropdown">
@@ -59,15 +59,38 @@
                         <li><a href="#">School</a></li>
                     </ul>
                 </div>
-                tester comment end -->
+                 tester comment end -->
+                
                 
                 <!-- for the dropdown menu? -->
+                <!-- tester comment begin
                 <script>
                     $('.dropdown-menu a').click(function(){
                         $('#selectedtype').text($(this).text());
                     });
                 </script>
+                tester comment end -->
                 
+                <!--tester comment begin-->
+                <div class="dropdown">
+                    <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">
+                    <span id="selected">Chose option</span><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Option 1</a></li>
+                        <li><a href="#">Option 2</a></li>
+                        <li><a href="#">Option 3</a></li>
+                        <li><a href="#">Option 4</a></li>
+                    </ul>
+                </div>
+                <!--tester comment end-->
+                
+                <!--tester comment begin-->
+                <script>
+                    $('.dropdown-menu a').click(function(){
+                        $('#selected').text($(this).text());
+                    });
+                </script>
+                <!--tester comment end-->
                 
                 <form class="form-inline ml-auto" target="_self">
                     <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" type="search" id="search-field2" name="search" placeholder="search for art" style="width: 255px;"></div>
