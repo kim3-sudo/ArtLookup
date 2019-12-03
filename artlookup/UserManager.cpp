@@ -18,12 +18,10 @@ void UserManager::addMember(Member member){
 	sqlStatement->execute(command);
 }
 
-// add member to user table in sql database
-
 // Maybe change input to member?? Probably not
 bool UserManager::isValidMember(Member member){
 	// FINISH ME!!!!!!
-	return True;
+	return true;
 }
 // Returns true if there is a member with username in_username and 
 // password in_password; false otherwise
