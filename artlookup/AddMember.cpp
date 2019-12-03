@@ -4,7 +4,7 @@
 #include "UserManager.h"
 #include <iostream>
 
-//#include <string> //confirmed that we don't need strings here...ready to remove.
+#include <string> //so that it's not a cstring
 
 // Stuff for Ajax
 #include "cgicc/Cgicc.h"
