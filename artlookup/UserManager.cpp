@@ -3,7 +3,7 @@
 //Email Address: schultz4@kenyon.edu, kim3@kenyon.edu, brydon1@kenyon.edu
 //Assignment: Project 3
 //Description: Manages users in user database
-//Last Changed: November 21, 2019
+//Last Changed: Dec 4, 2019
 
 #include "UserManager.h"
 #include "Query.h"
@@ -21,18 +21,41 @@ void UserManager::addMember(Member member){
 // Maybe change input to member?? Probably not
 // How do we want this one to work????
 bool UserManager::isExistingMember(Member member){
-	// FINISH ME!!!!!!
+	std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
+	std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
+	Query query;
+	string repeatUsersCommand = query.findUsers(member.getUsername(),member.getEmail());
+	sqlStatement->execute(repeatUsersCommand);
+	int count(0);
+	
+	do{
+		searchMatches.reset(sqlStatement->getResultSet());
+		count ++;
+	} while (sqlStatement->getMoreResults());
+	cout << count << endl;
 
+	//std::unique_ptr<sql::ResultSet> searchMatches; // Create ResultSet object
+	
+	// searchMatches.reset(sqlStatement->getResultSet())
+  
 
+ //  do {
+ //    searchMatches.reset(sqlStatement->getResultSet());
+ //    while (searchMatches->next()) {
+ //      // Get results
+ //      intResults[0] = searchMatches -> getInt(colNames[0]); // artId
+ //      for (int i=1;i<12;i++){
+ //        strResults[i-1] = searchMatches -> getString(colNames[i]);
+ //      }
+ //      intResults[1] = searchMatches -> getInt(colNames[12]); // Likes
 
+ //      //Use pointer to dynamically create artwork
+ //      artwork = new Artwork(intResults[0],strResults[0],strResults[1],strResults[2],strResults[3],strResults[4],strResults[5],strResults[6],strResults[7],strResults[8],strResults[9],strResults[10],intResults[1]);
 
-
-
-
-
-
-
-
+ //      artworkResultList.push_back(*(artwork));
+ //      delete artwork; // Deallocate memory in artwork once finished with object
+ //    }
+ //  } while (sqlStatement->getMoreResults());
 
 	return true;
 }
@@ -40,6 +63,11 @@ bool UserManager::isExistingMember(Member member){
 // password in_password; false otherwise
 
 UserManager::UserManager(){
-	// Default Constructor
-	// Maybe delete?
+	userColNames.push_back("userId");
+	userColNames.push_back("userName");
+	userColNames.push_back("password");
+	userColNames.push_back("email");
 }
+
+
+
