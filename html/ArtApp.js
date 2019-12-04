@@ -108,12 +108,11 @@ function isUsernameAvailable(results){
 function getMatches(){
     //Hides the search page and shows the homepage
     ajaxUser = brydon1;
+    var searchTerm = $('#search-field2').val();
     $('#home').hide();
     console.log("hide the homepage");
     $('#search').show();
     console.log("Show seach page");
-
-    var searchTerm = $('#search-field2').val();
     console.log("Search Term: "+ searchTerm);
 
     //Sends search term and category to C++ then calls processResults
