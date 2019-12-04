@@ -1,6 +1,6 @@
 var searchCategory;  //Category to be searched by: Title, Author ...
 
-var ajaxUser = "schultz4"; //Your username for ajax calls
+var ajaxUser = "brydon1"; //Your username for ajax calls
 
 
 $(document).ready(function () {
@@ -107,10 +107,13 @@ function isUsernameAvailable(results){
   }
 }
 
+
+
+
+
 //Switches to search page and displays the photos related to the user's search
 function getMatches(){
     //Hides the search page and shows the homepage
-    ajaxUser = "brydon1";
     var searchTerm = $('#search-field2').val();
     $('#home').hide();
     console.log("hide the homepage");
