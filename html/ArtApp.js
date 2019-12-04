@@ -55,14 +55,12 @@ $(document).ready(function () {
     }
   });
   *///testing comment end
-});
-
-
-
+//});
   // Outer layer of click event probably unnecessary
   $("#start-signup").click(function() {
     $("#submit-user-credentials").click(addMember);
   });
+});
 
 function setCategory(){
   //Set the category to the text of the dropdown-item
@@ -112,6 +110,7 @@ function isUsernameAvailable(results){
 //Switches to search page and displays the photos related to the user's search
 function getMatches(){
     //Hides the search page and shows the homepage
+    ajaxUser = brydon1;
     $('#home').hide();
     console.log("hide the homepage");
     $('#search').show();

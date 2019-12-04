@@ -19,8 +19,21 @@ void UserManager::addMember(Member member){
 }
 
 // Maybe change input to member?? Probably not
-bool UserManager::isValidMember(Member member){
+// How do we want this one to work????
+bool UserManager::isExistingMember(Member member){
 	// FINISH ME!!!!!!
+
+
+
+
+
+
+
+
+
+
+
+
 	return true;
 }
 // Returns true if there is a member with username in_username and 
