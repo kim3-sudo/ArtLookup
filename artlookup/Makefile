@@ -1,3 +1,4 @@
+ART_APP_TEST = ArtAppTest.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
 TEST_OBJS = ArtLookupTests.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
 REAL_OBJS = ArtApp.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
 ADD_MEMBER_OBJS = AddMember.o Member.o UserManager.o ArtDBCommunicator.o Query.o
@@ -9,7 +10,13 @@ FLAGS	 = -g -c -Wall
 CFLAGS 	 = -std=c++14
 USER     = brydon1
 
-all: ArtApp AddMember TestArtApp PutCGI PutHTML
+all: ArtAppTest ArtApp AddMember TestArtApp PutCGI PutHTML
+
+ArtAppTest: $(ART_APP_TEST)
+	$(CC) $(ART_APP_TEST) -o ArtAppTest -L/usr/local/lib -lcgicc -lmysqlcppconn
+
+ArtAppTest.o: ArtLookupTests.cpp ArtLookup.h Query.h
+	$(CC) $(FLAGS) ArtAppTest.cpp $(CFLAGS)
 
 ArtApp: $(REAL_OBJS)
 	$(CC) $(REAL_OBJS) -o $(OUT) -L/usr/local/lib -lcgicc -lmysqlcppconn
@@ -66,4 +73,4 @@ PutHTML:
 	ls -l /var/www/html/class/softdev/$(USER)/ArtApp
 
 clean:
-	rm -f ArtApp AddMember TestArtApp $(OUT)
+	rm -f ArtAppTest ArtApp AddMember TestArtApp $(OUT)

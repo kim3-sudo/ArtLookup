@@ -6,7 +6,10 @@ var ajaxUser = "brydon1"; //Your username for ajax calls
 $(document).ready(function () {
   console.log("ready!");
 
-  //When an item in the dropdown is clicked set the category
+
+
+
+
   $(".dropdown-item").click(setCategory);
   // getMatches when search button is clicked
   $(".action-button").click(getMatches);
@@ -59,9 +62,15 @@ $(document).ready(function () {
 //});
   // Outer layer of click event probably unnecessary
   $("#start-signup").click(function() {
+    console.log("Tell me I am not crazy");
     $("#submit-user-credentials").click(addMember);
   });
 });
+
+
+
+
+
 
 function setCategory(){
   //Set the category to the text of the dropdown-item
@@ -107,6 +116,10 @@ function isUsernameAvailable(results){
     alert("Username is not available.");
   }
 }
+
+
+
+
 
 //Switches to search page and displays the photos related to the user's search
 function getMatches(){
