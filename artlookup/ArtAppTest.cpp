@@ -21,7 +21,7 @@ class JSCommunicator{
 
 int main(){
   // Cgicc cgi; // Ajax object
-  // JSCommunicator jSCommunicator;
+  JSCommunicator jSCommunicator;
 
   // //Receive info from web page
   // string searchVal = jSCommunicator.getElement("searchVal", cgi);
