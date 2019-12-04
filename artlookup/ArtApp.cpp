@@ -21,7 +21,6 @@ int main(){
   JSCommunicator jSCommunicator;
 
   //Receive info from web page
-<<<<<<< Updated upstream
   form_iterator itsearchVal = cgi.getElement("searchVal");
   string searchVal = **itsearchVal;
   //string searchVal = jSCommunicator.getElement("searchVal", cgi);
@@ -36,11 +35,6 @@ int main(){
 
   exit(1);
 
-=======
-  string searchVal = jSCommunicator.getElement("searchVal", cgi);
-  string searchCategory = jSCommunicator.getElement("searchCategory", cgi);
-  cout << searchVal + searchCategory << endl;
->>>>>>> Stashed changes
   ArtLookup artLookup;
   Query query;
   vector<Artwork> searchResults;
@@ -64,10 +58,6 @@ int main(){
     result += jSCommunicator.print(artwork);
   }
   //cout << "Content-Type: text/plain\n\n";
-<<<<<<< Updated upstream
-=======
-  cout << searchVal + searchCategory << endl;
->>>>>>> Stashed changes
   cout << result << endl;
 
   return 0;

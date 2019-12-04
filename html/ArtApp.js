@@ -133,13 +133,8 @@ function getMatches(){
 //Empties photo gallery (again?) builds new gallery using buildGallery function
 function processResults(results) {
     console.log("Results:"+results);
-<<<<<<< Updated upstream
-    $('.photo-gallery').empty();
-    $('.photo-gallery').append(buildGallery(results));
-=======
     //$('#artworkResults').empty();
     $('#artworkResults').append( showPhotos( results ));
->>>>>>> Stashed changes
 }
 
 //Parses art data from c++. Appends all photos to photo gallery
@@ -158,13 +153,6 @@ function showPhotos(list){
       console.log("Length of artData List: ");
       console.log(listLength);
       console.log("Appending Results: \n\n");
-<<<<<<< Updated upstream
-      for (var i = 7; i < listLength; i+=13){
-    	  console.log(i);
-    	  console.log("ArtData[i]: ");
-    	  console.log(artData[i]);
-    	  result += '<div class="col-sm-6 col-md-4 col-lg-3 item"><a data-lightbox="photos" href=' + artData[i] + '><img class="img-fluid" src=' + artData[i] + '></a></div>'
-=======
 
       for (var i = 7; i < listLength; i+=13){
         console.log(i);
@@ -175,7 +163,6 @@ function showPhotos(list){
         result += '<img class="img-fluid" src=' + artData[i] + ' height="100%">';
         //Creates description
         result += '<p style="padding-top: 8px;">DESCRIPTION OF ARTWORK STILL NEEDS TO BE CREATED.</p>'
->>>>>>> Stashed changes
       }
     result += '<button class="btn btn-warning text-center" type="button" style="margin-top: 0px;margin-bottom: 10px;">like!</button><form><div class="form-group"><input class="form-control" type="text" placeholder="comment here!"><button class="btn btn-light" type="button" style="margin-bottom: 70px;margin-top: 10px;">submit</button></div></form></div></div></div>';
 
