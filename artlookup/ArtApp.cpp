@@ -1,5 +1,6 @@
 #include "ArtLookup.h"
 #include "Query.h"
+#include "JSCommunicator.h"
 #include <iostream>
 #include <string>
 
@@ -13,20 +14,26 @@
 using namespace cgicc;
 using std::cout;
 
-class JSCommunicator{
-  public:
-    string print(Artwork artwork);
-    string getElement(string element, Cgicc &cgi);
-};
-
 int main(){
+  cout << "Content-Type: text/plain\n\n";
   Cgicc cgi; // Ajax object
 
   JSCommunicator jSCommunicator;
 
   //Receive info from web page
-  string searchVal = jSCommunicator.getElement("searchVal", cgi);
-  string searchCategory = jSCommunicator.getElement("searchCategory", cgi);
+  form_iterator itsearchVal = cgi.getElement("searchVal");
+  string searchVal = **itsearchVal;
+  //string searchVal = jSCommunicator.getElement("searchVal", cgi);
+  form_iterator itsearchCategory = cgi.getElement("searchCategory");
+  string searchCategory= **itsearchCategory;
+  //string searchCategory = jSCommunicator.getElement("searchCategory", cgi);
+
+  //cout << "Content-Type: text/plain\n\n";
+  string result = "Hello";
+  //result += searchVal + searchCategory;
+  cout << result << endl;
+
+  exit(1);
 
   ArtLookup artLookup;
   Query query;
@@ -42,33 +49,16 @@ int main(){
     searchResults = artLookup.lookupSingleCommand( query.matchSingleCol( searchVal, searchCategory ) );
     //vector<Artwork> searchResults = artLookup.lookupSingleCommand( query.matchSingleCol( searchVal, searchCategory ) );
   }
-
+  cout << searchVal + searchCategory << endl;
   //Sends artwork data to JavaScript
   Artwork artwork;
-  string result = "";
+  //string result = "";
   for (uint i = 0; i < searchResults.size(); i++){
     artwork = searchResults.at(i);
     result += jSCommunicator.print(artwork);
   }
-  cout << "Content-Type: text/plain\n\n";
+  //cout << "Content-Type: text/plain\n\n";
   cout << result << endl;
 
   return 0;
-}
-
-string JSCommunicator::print(Artwork artwork){
-  string result, sep("*");
-  result +=  to_string(artwork.getArtId()) + sep + artwork.getArtistInfo().author + sep + artwork.getArtistInfo().birthDeath + sep + artwork.getTitle() + sep + artwork.getArtStyle().technique + sep + artwork.getArtSetting().location + sep + artwork.getUrl() + sep + artwork.getArtStyle().form + sep + artwork.getArtStyle().type + sep + artwork.getArtStyle().school + sep + artwork.getArtSetting().timeframe + sep + artwork.getArtSetting().date + sep + to_string(artwork.getNumLikes()) + sep;
-
-   return result;
-}
-
-//Precondition:
-//Postcondition: Value of element is returned as a string
-string JSCommunicator::getElement(string element, Cgicc &cgi){
-
-  form_iterator itElement = cgi.getElement(element);
-  string returnElement = **itElement;
-
-  return returnElement;
 }
