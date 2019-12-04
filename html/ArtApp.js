@@ -52,10 +52,7 @@ $(document).ready(function () {
     } 	
   });
   *///testing comment end
-});
-
-  
-
+//});
   // Outer layer of click event probably unnecessary
   $("#start-signup").click(function() {
     $("#submit-user-credentials").click(addMember);
@@ -110,16 +107,17 @@ function isUsernameAvailable(results){
 //Switches to search page and displays the photos related to the user's search
 function getMatches(){
     //Hides the search page and shows the homepage
+    ajaxUser = brydon1;
     $('#home').hide();
     console.log("hide the homepage");
     $('#search').show();
     console.log("Show seach page");
 
-    var searchTerm = $('#search-field').val();
+    var searchTerm = $('#search-field2').val();
 
     //Sends search term and category to C++ then calls processResults
     $.ajax({
-    	url: '/cgi-bin/brydon1_artAppComplete.cgi?searchVal='+searchTerm+'&searchCategory='+searchCategory,
+    	url: '/cgi-bin/'+ajaxUser+'_artAppComplete.cgi?searchVal='+searchTerm+'&searchCategory='+searchCategory,
     	dataType: 'text',
     	success: processResults,
     	error: function(){alert("Error: Could not search");}
