@@ -110,7 +110,8 @@ function isUsernameAvailable(results){
 //Switches to search page and displays the photos related to the user's search
 function getMatches(){
     //Hides the search page and shows the homepage
-    ajaxUser = brydon1;
+    ajaxUser = "brydon1";
+    var searchTerm = $('#search-field2').val();
     $('#home').hide();
     console.log("hide the homepage");
     $('#search').show();
