@@ -7,7 +7,7 @@ OUT	= ArtApp
 CC	 = g++
 FLAGS	 = -g -c -Wall
 CFLAGS 	 = -std=c++14
-USER     = brydon1
+USER     = schultz4
 
 all: ArtApp AddMember TestArtApp PutCGI PutHTML
 
@@ -46,6 +46,9 @@ Member.o: Member.cpp Member.h
 
 UserManager.o: UserManager.cpp UserManager.h Query.h ArtDBCommunicator.h Member.h
 	$(CC) $(FLAGS) UserManager.cpp $(CFLAGS)
+
+JSCommunicator.o: JSCommunicator.cpp JSCommunicator.h Artwork.h
+	$(CC) $(FLAGS) JSCommunicator.cpp $(CFLAGS)
 
 PutCGI: ArtApp AddMember
 	chmod 757 ArtApp
