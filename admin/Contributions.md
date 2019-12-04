@@ -2,7 +2,15 @@
 
 Branches allow you to more easily revert and track changes. If you make a giant mistake and everything is breaking, you can just kill the branch, saving yourself from making tons of `git revert`s and muddying the project with commits.
 
-To use:
+ 
+## tl;dr
+
+1. Make or checkout a branch.
+2. Make edits to the branch.
+3. When you're done, make a pull request and merge the branch into the origin branch or the master branch.
+4. Delete the branch.
+
+## Longer and more detailed docs:
 
 1. At the beginning of your coding session, feature addition, or bug fix, make a new branch.
   * In Git Bash, use the command `git checkout -b <branch>`, where <branch> represents the name of your new branch. Don't use spaces!
@@ -23,13 +31,6 @@ To use:
     5. If merging the branch would cause a merge conflict, you'll be prompted to resolve these now; GitHub will report that your branch cannot automatically be merged. Otherwise, you'll see that the active branch has no conflicts with the base branch.
     6. Click the button to merge the pull request, then confirm the merge.
     7. If everything works correctly, you'll see that your branch has been successfully merged, and that the branch can now safely closed and deleted. Please delete your merged branches!
- 
-## tl;dr
-
-1. Make or checkout a branch.
-2. Make edits to the branch.
-3. When you're done, make a pull request and merge the branch into the origin branch or the master branch.
-4. Delete the branch.
 
 ## Merging and Branch Management Cheat Sheet
 
