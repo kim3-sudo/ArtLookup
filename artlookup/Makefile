@@ -60,8 +60,8 @@ JSCommunicator.o: JSCommunicator.cpp JSCommunicator.h Artwork.h
 PutCGI: ArtApp AddMember
 	chmod 757 ArtApp
 	chmod 757 AddMember
-	cp ArtApp /usr/lib/cgi-bin/$(USER)_artAppComplete.cgi
-	cp AddMember /usr/lib/cgi-bin/$(USER)_artAppComplete.cgi
+	cp ArtApp /usr/lib/cgi-bin/$(USER)_artAppSearch.cgi
+	cp AddMember /usr/lib/cgi-bin/$(USER)_artAppAddMember.cgi
 
 	echo "Current contents of your cgi-bin directory: "
 	ls -l /usr/lib/cgi-bin/
