@@ -3,8 +3,8 @@
 #include "Member.h"
 #include "UserManager.h"
 #include <iostream>
-// Maybe unnecessary
-#include <string>
+
+#include <string> //so that it's not a cstring
 
 // Stuff for Ajax
 #include "cgicc/Cgicc.h"

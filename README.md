@@ -6,14 +6,18 @@ Kenyon College F19 - SCMP 318 Software Development, Prof. Jim Skon
 
 The full specifications for the original project can be found [here](https://cs.kenyon.edu/do/view/Main/SDProjectThreeArtNetwork).
 
-If you'd like to access the dummy version of the website (remember, it's a dummy, so nothing actually works) AND you're on the Kenyon network, you can try to access it at [bulbasaur.sejinkim.net:8000](http://bulbasaur.sejinkim.net:8000). This site is not guaranteed to be reliable, and you should not expect it to be up 100% of the time.
+If you'd like to access R Schultz's version, click [here](https://cslab.kenyon.edu/class/softdev/schultz4/ArtApp/html/home/).
+If you'd like to access M Brydon's version, click [here](https://cslab.kenyon.edu/class/softdev/brydon1/ArtApp/html/home/).
+If you'd like to access S Kim's version, click [here](https://cslab.kenyon.edu/class/softdev/kim3/ArtLookup/html/home/).
+
+If you'd like to access the dummy version of the website for the pretty pictures (remember, it's a dummy, so nothing actually works) AND you're on the Kenyon network, you can try to access it at [bulbasaur.sejinkim.net:8000](http://bulbasaur.sejinkim.net:8000). This site is not guaranteed to be reliable, and you should not expect it to be up 100% of the time.
 
 # Files
-## /psuedo
-Some pseudo-C++ code. None of this code is truly functional, and it includes a lot of English.
 ## /artlookup
 The primary folder for C++ code and SQL query commands.
 ## /html
 The HTML, CSS, and JS files required for the webpage.
+## /psuedo
+Some pseudo-C++ code. None of this code is functional, and it includes a lot of English.
 ## The License
 The software here is licensed under the MIT license, which can be found in the LICENSE file in /ArtLookup. Some other package licenses may not be present here.
