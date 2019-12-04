@@ -15,7 +15,6 @@ using namespace cgicc;
 using std::cout;
 
 int main(){
-  cout << "Content-Type: text/plain\n\n";
   Cgicc cgi; // Ajax object
 
   JSCommunicator jSCommunicator;
@@ -33,7 +32,7 @@ int main(){
   //result += searchVal + searchCategory;
   cout << result << endl;
 
-  exit(1);
+  exit(1); //Exits to verify that the error is in the above lines of code.
 
   ArtLookup artLookup;
   Query query;
