@@ -1,8 +1,9 @@
 var searchCategory;  //Category to be searched by: Title, Author ...
-var ajaxUser = "brydon1"; //Your username for ajax calls
+
+var ajaxUser = "schultz4"; //Your username for ajax calls
+
 
 $(document).ready(function () {
-  //When an item in the dropdown is clicked set the category
   console.log("ready!");
   /*
   $(".dropdown-item").click(setCategory);
@@ -133,8 +134,6 @@ function getMatches(){
     console.log("hide the homepage");
     $('#search').show();
     console.log("Show seach page");
-
-    var searchTerm = $('#search-field2').val();
 
     console.log("Search Term: " + searchTerm);
     console.log("Search Category: " + searchCategory)
