@@ -10,6 +10,8 @@
 #ifndef JSCOMMUNICATOR_H
 #define JSCOMMUNICATOR_H
 
+using namespace cgicc;
+
 class JSCommunicator{
   public:
     string print(Artwork artwork);
