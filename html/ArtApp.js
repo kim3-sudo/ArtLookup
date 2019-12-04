@@ -1,11 +1,14 @@
 var searchCategory;  //Category to be searched by: Title, Author ...
-
 var ajaxUser = "brydon1"; //Your username for ajax calls
-
 
 $(document).ready(function () {
   //When an item in the dropdown is clicked set the category
   console.log("ready!");
+
+
+
+
+
   $(".dropdown-item").click(setCategory);
   // getMatches when search button is clicked
   $(".action-button").click(getMatches);
@@ -58,9 +61,15 @@ $(document).ready(function () {
 //});
   // Outer layer of click event probably unnecessary
   $("#start-signup").click(function() {
+    console.log("Tell me I am not crazy");
     $("#submit-user-credentials").click(addMember);
   });
 });
+
+
+
+
+
 
 function setCategory(){
   //Set the category to the text of the dropdown-item
