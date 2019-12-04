@@ -4,7 +4,7 @@ var ajaxUser = "brydon1"; //Your username for ajax calls
 $(document).ready(function () {
   //When an item in the dropdown is clicked set the category
   console.log("ready!");
-/*
+  /*
   $(".dropdown-item").click(setCategory);
   // getMatches when search button is clicked
   $(".action-button").click(getMatches);
