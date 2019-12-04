@@ -133,12 +133,17 @@ function getMatches(){
 //Empties photo gallery (again?) builds new gallery using buildGallery function
 function processResults(results) {
     console.log("Results:"+results);
+<<<<<<< Updated upstream
     $('.photo-gallery').empty();
     $('.photo-gallery').append(buildGallery(results));
+=======
+    //$('#artworkResults').empty();
+    $('#artworkResults').append( showPhotos( results ));
+>>>>>>> Stashed changes
 }
 
 //Parses art data from c++. Appends all photos to photo gallery
-function buildGallery(list){
+function showPhotos(list){
 
   var artData = list.split("*");
 
@@ -147,19 +152,32 @@ function buildGallery(list){
 	  return "<h3>Internal Error</h3>";
   } else {
 
-      var result = '<div class="container">';
+      var result = '<div class="row" style="padding-top: 70px;"><div class="col d-flex float-none"><div class="border rounded border-dark" style="width: 100%;">';
 
       var listLength = artData.length;
       console.log("Length of artData List: ");
       console.log(listLength);
       console.log("Appending Results: \n\n");
+<<<<<<< Updated upstream
       for (var i = 7; i < listLength; i+=13){
     	  console.log(i);
     	  console.log("ArtData[i]: ");
     	  console.log(artData[i]);
     	  result += '<div class="col-sm-6 col-md-4 col-lg-3 item"><a data-lightbox="photos" href=' + artData[i] + '><img class="img-fluid" src=' + artData[i] + '></a></div>'
+=======
+
+      for (var i = 7; i < listLength; i+=13){
+        console.log(i);
+    	  console.log("ArtData[i]: ");
+    	  console.log(artData[i]);
+
+        //Creates image
+        result += '<img class="img-fluid" src=' + artData[i] + ' height="100%">';
+        //Creates description
+        result += '<p style="padding-top: 8px;">DESCRIPTION OF ARTWORK STILL NEEDS TO BE CREATED.</p>'
+>>>>>>> Stashed changes
       }
-    result += "</div>";
+    result += '<button class="btn btn-warning text-center" type="button" style="margin-top: 0px;margin-bottom: 10px;">like!</button><form><div class="form-group"><input class="form-control" type="text" placeholder="comment here!"><button class="btn btn-light" type="button" style="margin-bottom: 70px;margin-top: 10px;">submit</button></div></form></div></div></div>';
 
     return result;
   }

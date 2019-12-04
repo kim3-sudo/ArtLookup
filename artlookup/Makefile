@@ -7,7 +7,7 @@ OUT	= ArtApp
 CC	 = g++
 FLAGS	 = -g -c -Wall
 CFLAGS 	 = -std=c++14
-USER     = brydon1
+USER     = schultz4
 
 all: ArtApp AddMember TestArtApp PutCGI PutHTML
 
