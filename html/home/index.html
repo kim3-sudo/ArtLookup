@@ -28,11 +28,111 @@
                     <li class="nav-item" role="presentation"></li>
                     <li class="nav-item" role="presentation"></li>
                     <li class="nav-item" role="presentation"></li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle selection" href="#" id="searchtype" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Select type...
+                    </a>
+                    <div class="select-menu dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="select-menu dropdown-item" role="presentation" href="#">Title</a>
+                        <a class="select-menu dropdown-item" role="presentation" href="#">Author</a>
+                        <a class="select-menu dropdown-item" role="presentation" href="#">Date</a>
+                        <a class="select-menu dropdown-item" role="presentation" href="#">Location</a>
+                        <a class="select-menu dropdown-item" role="presentation" href="#">Technique</a>
+                        <a class="select-menu dropdown-item" role="presentation" href="#">School</a>
+                    </div>
+                </li>
                 </ul>
-                <div class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">Search By...</a>
-                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">Title</a><a class="dropdown-item" role="presentation" href="#">Author</a><a class="dropdown-item" role="presentation" href="#">Date</a><a class="dropdown-item" role="presentation"
-                            href="#">Location</a><a class="dropdown-item" role="presentation" href="#">Technique</a><a class="dropdown-item" role="presentation" href="#">School</a></div>
+                
+                
+                <!--tester comment begin 
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle selection" href="#" id="searchtype" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Select type...
+                    </a>
+                    <div class="main-menu dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="main-menu dropdown-item" role="presentation" href="#">Title</a>
+                        <a class="main-menu dropdown-item" role="presentation" href="#">Author</a>
+                        <a class="main-menu dropdown-item" role="presentation" href="#">Date</a>
+                        <a class="main-menu dropdown-item" role="presentation" href="#">Location</a>
+                        <a class="main-menu dropdown-item" role="presentation" href="#">Technique</a>
+                        <a class="main-menu dropdown-item" role="presentation" href="#">School</a>
+                    </div>
+                </li>
+                tester comment end-->
+                
+                <!--tester comment begin
+                <script>
+                    $(".dropdown-menu a").click(function(){
+                        console.log("pick!"+$(this).text());
+                        if ( $(this).hasClass("select-menu") ) {
+                            $(this).parents(".dropdown").find('.selection').text($(this).text());
+                            operation=$(this).text();
+                            console.log("Main-menu");
+                            changeOperation(operation);
+                            
+                        } /*else if ($(this).hasClass("add-item")) {
+                            $(this).parents(".dropdown").find('.selection').text($(this).text());
+                            console.log($(this).text());
+                        } else if ($(this).hasClass("edit-item")) {
+                            $(this).parents(".dropdown").find('.selection').text($(this).text());
+                            console.log($(this).text());
+                        }
+                        */
+                    });
+                </script>
+                tester comment end-->
+                
+                <!-- tester comment begin 
+                <div class="dropdown">
+                    <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <span id="selectedtype">
+                        Search By...
+                        </span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Title</a></li>
+                        <li><a href="#">Author</a></li>
+                        <li><a href="#">Date</a></li>
+                        <li><a href="#">Location</a></li>
+                        <li><a href="#">Technique</a></li>
+                        <li><a href="#">School</a></li>
+                    </ul>
                 </div>
+                 tester comment end -->
+                
+                
+                <!-- for the dropdown menu? -->
+                <!-- tester comment begin
+                <script>
+                    $('.dropdown-menu a').click(function(){
+                        $('#selectedtype').text($(this).text());
+                    });
+                </script>
+                tester comment end -->
+                
+                <!--tester comment begin
+                <div class="dropdown">
+                    <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">
+                    <span id="selected">Chose option</span><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Option 1</a></li>
+                        <li><a href="#">Option 2</a></li>
+                        <li><a href="#">Option 3</a></li>
+                        <li><a href="#">Option 4</a></li>
+                    </ul>
+                </div>
+                tester comment end-->
+                
+                <!--tester comment begin
+                <script>
+                    $('.dropdown-menu a').click(function(){
+                        $('#selected').text($(this).text());
+                    });
+                </script>
+                tester comment end-->
+                
                 <form class="form-inline ml-auto" target="_self">
                     <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" type="search" id="search-field2" name="search" placeholder="search for art" style="width: 255px;"></div>
                 </form>
@@ -221,16 +321,14 @@
         </footer>
     </div>
     <div class="alert alert-dark" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span><strong>Woah</strong>&nbsp;it's a dismissable alert! Cookies, here we come! <em>(Now I'm just messing around)</em></span></div>
-    </div>
 
 
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-        <script src="../ArtApp.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/js/bs-animation.js?h=fd094abbd1e3dcda2e26014c818b4b4f"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../assets/js/dropdowns.js"></script>
+    <!-- <script src="../ArtApp.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bs-animation.js?h=fd094abbd1e3dcda2e26014c818b4b4f"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
 </body>
 
 </html>
