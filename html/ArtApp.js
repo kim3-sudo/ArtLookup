@@ -26,8 +26,8 @@ $(document).ready(function () {
     $(this).parents(".dropdown").find('.selection').text($(this).text());
     console.log($(this).text());
     }
-    
-  });*/
+    */
+  });
 
 
   $("#start-signup").click(function() {
@@ -179,7 +179,7 @@ function showPhotos(list){
         //Creates image
         result += '<img class="img-fluid" src=' + artData[i] + ' height="100%">';
         //Creates description
-        result += '<p style="padding-top: 8px;">DESCRIPTION OF ARTWORK STILL NEEDS TO BE CREATED.</p>'
+          result += '<p style="padding-top: 8px;">DESCRIPTION OF ARTWORK STILL NEEDS TO BE CREATED.</p>';
       }
     result += '<button class="btn btn-warning text-center" type="button" style="margin-top: 0px;margin-bottom: 10px;">like!</button><form><div class="form-group"><input class="form-control" type="text" placeholder="comment here!"><button class="btn btn-light" type="button" style="margin-bottom: 70px;margin-top: 10px;">submit</button></div></form></div></div></div>';
 
