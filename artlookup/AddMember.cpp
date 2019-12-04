@@ -30,7 +30,7 @@ int main(){
   cout << "Content-Type: text/plain\n\n";
 
   //Sends user data to JavaScript
-  if (userManager.isValidMember(member)){
+  if (userManager.isExistingMember(member)){
     // Add user to database
     userManager.addMember(member);
     cout << "F" << endl;
