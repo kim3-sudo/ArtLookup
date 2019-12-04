@@ -1,6 +1,6 @@
 # Adding Contributions Using Branches and Pull Requests
 
-Branches allow you to more easily revert and track changes. If you make a giant mistake and everything is breaking, you can just kill the branch, saving yourself from making tons of `git reverts` and muddying the project with commits.
+Branches allow you to more easily revert and track changes. If you make a giant mistake and everything is breaking, you can just kill the branch, saving yourself from making tons of `git revert`s and muddying the project with commits.
 
 To use:
 
@@ -23,4 +23,20 @@ To use:
     5. If merging the branch would cause a merge conflict, you'll be prompted to resolve these now; GitHub will report that your branch cannot automatically be merged. Otherwise, you'll see that the active branch has no conflicts with the base branch.
     6. Click the button to merge the pull request, then confirm the merge.
     7. If everything works correctly, you'll see that your branch has been successfully merged, and that the branch can now safely closed and deleted. Please delete your merged branches!
-    
+ 
+## tl;dr
+
+1. Make or checkout a branch.
+2. Make edits to the branch.
+3. When you're done, make a pull request and merge the branch into the origin branch or the master branch.
+4. Delete the branch.
+
+## Merging and Branch Management Cheat Sheet
+
+* `git checkout <branch>`: check out (switch to) an existing <branch>
+* `git checkout -b <branch>`: make and check out a new <branch>
+* `git branch`: list the branches; an asterisk will show up next to the active branch
+* Pull request: think mega-commit that modifies the origin branch. This commit that has lots of "baby-commits" that were done to the active branch
+* Branch: a version of the repository that can be used for editing and testing, before the new code is fully implemented
+* Master branch: exactly what it sounds like, it's the branch that everything comes from and goes back to
+* Origin branch: the branch that a checked-out branch has been checked-out from; the master branch will almost always be the origin branch
