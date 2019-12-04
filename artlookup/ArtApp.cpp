@@ -15,9 +15,8 @@ using namespace cgicc;
 using std::cout;
 
 int main(){
-  cout << "Content-Type: text/plain\n\n";
-  Cgicc cgi; // Ajax object
 
+  Cgicc cgi; // Ajax object
   JSCommunicator jSCommunicator;
 
   //Receive info from web page
@@ -28,9 +27,9 @@ int main(){
   string searchCategory= **itsearchCategory;
   //string searchCategory = jSCommunicator.getElement("searchCategory", cgi);
 
-  //cout << "Content-Type: text/plain\n\n";
+  cout << "Content-Type: text/plain\n\n";
   string result = "Hello";
-  //result += searchVal + searchCategory;
+  result += searchVal + searchCategory;
   cout << result << endl;
 
   exit(1);
@@ -57,7 +56,6 @@ int main(){
     artwork = searchResults.at(i);
     result += jSCommunicator.print(artwork);
   }
-  //cout << "Content-Type: text/plain\n\n";
   cout << result << endl;
 
   return 0;
