@@ -4,11 +4,7 @@ var ajaxUser = "brydon1"; //Your username for ajax calls
 $(document).ready(function () {
   //When an item in the dropdown is clicked set the category
   console.log("ready!");
-
-
-
-
-
+/*
   $(".dropdown-item").click(setCategory);
   // getMatches when search button is clicked
   $(".action-button").click(getMatches);
@@ -20,15 +16,29 @@ $(document).ready(function () {
       operation=$(this).text();
       console.log("Main-menu");
       changeOperation(operation);
-    } /*else if ($(this).hasClass("add-item")) {
+    }*/
+
+    /*else if ($(this).hasClass("add-item")) {
     $(this).parents(".dropdown").find('.selection').text($(this).text());
     console.log($(this).text());
     } else if ($(this).hasClass("edit-item")) {
     $(this).parents(".dropdown").find('.selection').text($(this).text());
     console.log($(this).text());
     }
-    */
+    
+  });*/
+
+/*
+  $("#start-signup").click(function() {
+    console.log("Tell me I am not crazy");
+    $("#submit-user-credentials").click(addMember);
   });
+  */
+
+});
+
+
+
   //trying to add dropdown js - again
 
 
@@ -60,11 +70,6 @@ $(document).ready(function () {
   *///testing comment end
 //});
   // Outer layer of click event probably unnecessary
-  $("#start-signup").click(function() {
-    console.log("Tell me I am not crazy");
-    $("#submit-user-credentials").click(addMember);
-  });
-});
 
 
 
