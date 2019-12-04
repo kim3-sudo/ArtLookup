@@ -1,11 +1,11 @@
 var searchCategory;  //Category to be searched by: Title, Author ...
 
-var ajaxUser = "schultz4"; //Your username for ajax calls
+var ajaxUser = "brydon1"; //Your username for ajax calls
 
 
 $(document).ready(function () {
   console.log("ready!");
-  /*
+
   $(".dropdown-item").click(setCategory);
   // getMatches when search button is clicked
   $(".action-button").click(getMatches);
@@ -17,7 +17,7 @@ $(document).ready(function () {
       operation=$(this).text();
       console.log("Main-menu");
       changeOperation(operation);
-    }*/
+    }
 
     /*else if ($(this).hasClass("add-item")) {
     $(this).parents(".dropdown").find('.selection').text($(this).text());
@@ -29,12 +29,12 @@ $(document).ready(function () {
     
   });*/
 
-/*
+
   $("#start-signup").click(function() {
     console.log("Tell me I am not crazy");
     $("#submit-user-credentials").click(addMember);
   });
-  */
+  
 
 });
 
