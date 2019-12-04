@@ -114,6 +114,7 @@ function getMatches(){
     console.log("Show seach page");
 
     var searchTerm = $('#search-field2').val();
+    console.log(searchTerm);
 
     //Sends search term and category to C++ then calls processResults
     $.ajax({
@@ -126,7 +127,7 @@ function getMatches(){
 
 //Empties photo gallery (again?) builds new gallery using buildGallery function
 function processResults(results) {
-    //console.log("Results:"+results);
+    console.log("Results:"+results);
     $('.photo-gallery').empty();
     $('.photo-gallery').append(buildGallery(results));
 }
