@@ -99,7 +99,7 @@ function addMember(){
   if (password1 === password2) { // strict equality with ===
     console.log("Sending info to server");
     $.ajax({
-      url: '/cgi-bin/'+ajaxUser+'_artAppComplete.cgi?userName='+username+'&email='+email+'&password='+password1,
+      url: '/cgi-bin/'+ajaxUser+'_artAppAddMember.cgi?userName='+username+'&email='+email+'&password='+password1,
       dataType: 'text',
       success: isUsernameAvailable, // cgi should return character T if username not taken; F otherwise
       error: function(){alert("Error: Something went wrong");}
@@ -141,7 +141,7 @@ function getMatches(){
 
     //Sends search term and category to C++ then calls processResults
     $.ajax({
-    	url: '/cgi-bin/'+ajaxUser+'_artAppComplete.cgi?searchVal='+searchTerm+'&searchCategory='+searchCategory,
+    	url: '/cgi-bin/'+ajaxUser+'_artAppSearch.cgi?searchVal='+searchTerm+'&searchCategory='+searchCategory,
     	dataType: 'text',
     	success: processResults,
     	error: function(){alert("Error: Could not search");}
