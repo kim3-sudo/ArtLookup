@@ -114,7 +114,7 @@ function getMatches(){
     console.log("Show seach page");
 
     var searchTerm = $('#search-field2').val();
-    console.log(searchTerm);
+    console.log("Search Term: "+ searchTerm);
 
     //Sends search term and category to C++ then calls processResults
     $.ajax({
