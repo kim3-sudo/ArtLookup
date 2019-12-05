@@ -18,60 +18,76 @@ void UserManager::addMember(Member member){
 	sqlStatement->execute(command);
 }
 
-// Maybe change input to member?? Probably not
-// How do we want this one to work????
-bool UserManager::isExistingMember(Member member){
+bool UserManager::isUsernameTaken(string username){
 	std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
 	std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
-	Query query;
-	string repeatUsersCommand = query.findUsers(member.getUsername(),member.getEmail());
-	sqlStatement->execute(repeatUsersCommand);
+	Query query; // Create query object
+	string findUsernameCommand = query.findUserUsername(username);
+	sqlStatement->execute(findUsernameCommand);
+	std::unique_ptr<sql::ResultSet> usernameMatches; // Create ResultSet objects
+	usernameMatches.reset(sqlStatement->getResultSet());
 	int count(0);
-	std::unique_ptr<sql::ResultSet> searchMatches; // Create ResultSet object
-	
-	searchMatches.reset(sqlStatement->getResultSet());
-
-	while (searchMatches->next()) {
+	while (usernameMatches->next()) {
 		count++;
-		//searchMatches -> getString(userColNames[0]);
     }
-    cout << count << endl;
     if (count == 0){
     	return false;
     } else {
     	return true;
     }
-
-	//searchMatches -> getString(colNames[i])
-
-	// do{
-	// 	
-	// 	count ++;
-	// } while (sqlStatement->getMoreResults());
-	// cout << count << endl;
-
-	
-
-  // do {
-  //   searchMatches.reset(sqlStatement->getResultSet());
-  //   while (searchMatches->next()) {
-  //     // Get results
-  //     intResults[0] = searchMatches -> getInt(colNames[0]); // artId
-  //     for (int i=1;i<12;i++){
-  //       strResults[i-1] = searchMatches -> getString(colNames[i]);
-  //     }
-  //     intResults[1] = searchMatches -> getInt(colNames[12]); // Likes
-
-  //     //Use pointer to dynamically create artwork
-  //     artwork = new Artwork(intResults[0],strResults[0],strResults[1],strResults[2],strResults[3],strResults[4],strResults[5],strResults[6],strResults[7],strResults[8],strResults[9],strResults[10],intResults[1]);
-
-  //     artworkResultList.push_back(*(artwork));
-  //     delete artwork; // Deallocate memory in artwork once finished with object
-  //   }
-  // } while (sqlStatement->getMoreResults());
 }
+// Returns true if username taken; false otherwise
+
+bool UserManager::isEmailTaken(string email){
+	std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
+	std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
+	Query query; // Create query object
+	string findEmailCommand = query.findUserEmail(email);
+	sqlStatement->execute(findEmailCommand);
+	std::unique_ptr<sql::ResultSet> emailMatches; // Create ResultSet objects
+	emailMatches.reset(sqlStatement->getResultSet());
+	int count(0);
+	while (emailMatches->next()) {
+		count++;
+    }
+    if (count == 0){
+    	return false;
+    } else {
+    	return true;
+    }
+}
+// Returns true if email taken; false otherwise
+
+
+
+// Maybe change input to member?? Probably not
+// How do we want this one to work????
+// bool UserManager::isExistingMember(Member member){
+// 	std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
+// 	std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
+// 	Query query;
+
+// 	string findUsernameCommand( query.findUserUsername( member.getUsername() ) ), findEmailCommand( query.findUserEmail( member.getEmail() ) );
+// 	sqlStatement->execute(repeatUsersCommand);
+
+// 	std::unique_ptr<sql::ResultSet> usernameMatches, emailMatches; // Create ResultSet objects
+	
+// 	searchMatches.reset(sqlStatement->getResultSet());
+
+// 	int count(0);
+// 	while (searchMatches->next()) {
+// 		count++;
+//     }
+//     //cout << count << endl;
+//     if (count == 0){
+//     	return false;
+//     } else {
+//     	return true;
+//     }
+// }
 // Returns true if there is a member with username in_username and 
 // password in_password; false otherwise
+
 
 UserManager::UserManager(){
 	userColNames.push_back("userId");
