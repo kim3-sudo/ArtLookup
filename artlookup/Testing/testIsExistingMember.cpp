@@ -1,9 +1,10 @@
 #include "UserManager.h"
 #include "Member.h"
+#include "string"
 using namespace std;
 
 int main(){
-	Member member('user1','password','email@email.com');
+	Member member("user1","password","email@email.com");
 	UserManager userManager;
 	if (userManager.isExistingMember(member)){
 		cout << "True" << endl;
