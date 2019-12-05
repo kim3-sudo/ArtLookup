@@ -20,12 +20,8 @@ int main(){
   JSCommunicator jSCommunicator;
 
   //Receive info from web page
-  form_iterator itsearchVal = cgi.getElement("searchVal");
-  string searchVal = **itsearchVal;
-  //string searchVal = jSCommunicator.getElement("searchVal", cgi);
-  form_iterator itsearchCategory = cgi.getElement("searchCategory");
-  string searchCategory= **itsearchCategory;
-  //string searchCategory = jSCommunicator.getElement("searchCategory", cgi);
+  string searchVal = jSCommunicator.getElement("searchVal", cgi);
+  string searchCategory = jSCommunicator.getElement("searchCategory", cgi);
 
   ArtLookup artLookup;
   Query query;
