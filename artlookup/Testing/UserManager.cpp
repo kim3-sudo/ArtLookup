@@ -29,34 +29,41 @@ bool UserManager::isExistingMember(Member member){
 	int count(0);
 	std::unique_ptr<sql::ResultSet> searchMatches; // Create ResultSet object
 	
-	do{
-		searchMatches.reset(sqlStatement->getResultSet());
-		count ++;
-	} while (sqlStatement->getMoreResults());
-	cout << count << endl;
+	searchMatches.reset(sqlStatement->getResultSet());
+
+	while (searchMatches->next()) {
+		count++;
+		//searchMatches -> getString(userColNames[0]);
+    }
+    cout << count << endl;
+
+	//searchMatches -> getString(colNames[i])
+
+	// do{
+	// 	
+	// 	count ++;
+	// } while (sqlStatement->getMoreResults());
+	// cout << count << endl;
 
 	
-	
-	// searchMatches.reset(sqlStatement->getResultSet())
-  
 
- //  do {
- //    searchMatches.reset(sqlStatement->getResultSet());
- //    while (searchMatches->next()) {
- //      // Get results
- //      intResults[0] = searchMatches -> getInt(colNames[0]); // artId
- //      for (int i=1;i<12;i++){
- //        strResults[i-1] = searchMatches -> getString(colNames[i]);
- //      }
- //      intResults[1] = searchMatches -> getInt(colNames[12]); // Likes
+  // do {
+  //   searchMatches.reset(sqlStatement->getResultSet());
+  //   while (searchMatches->next()) {
+  //     // Get results
+  //     intResults[0] = searchMatches -> getInt(colNames[0]); // artId
+  //     for (int i=1;i<12;i++){
+  //       strResults[i-1] = searchMatches -> getString(colNames[i]);
+  //     }
+  //     intResults[1] = searchMatches -> getInt(colNames[12]); // Likes
 
- //      //Use pointer to dynamically create artwork
- //      artwork = new Artwork(intResults[0],strResults[0],strResults[1],strResults[2],strResults[3],strResults[4],strResults[5],strResults[6],strResults[7],strResults[8],strResults[9],strResults[10],intResults[1]);
+  //     //Use pointer to dynamically create artwork
+  //     artwork = new Artwork(intResults[0],strResults[0],strResults[1],strResults[2],strResults[3],strResults[4],strResults[5],strResults[6],strResults[7],strResults[8],strResults[9],strResults[10],intResults[1]);
 
- //      artworkResultList.push_back(*(artwork));
- //      delete artwork; // Deallocate memory in artwork once finished with object
- //    }
- //  } while (sqlStatement->getMoreResults());
+  //     artworkResultList.push_back(*(artwork));
+  //     delete artwork; // Deallocate memory in artwork once finished with object
+  //   }
+  // } while (sqlStatement->getMoreResults());
 
 	return true;
 }
