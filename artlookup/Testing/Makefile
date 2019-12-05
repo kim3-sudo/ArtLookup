@@ -1,6 +1,6 @@
 #TEST_OBJS = ArtLookupTests.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
 #REAL_OBJS = ArtApp.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
-TEST_IS_EXISTING = testIsExistingMember.o UserManager.o ArtDBCommunicator.o Member.o
+TEST_IS_EXISTING = testIsExistingMember.o UserManager.o ArtDBCommunicator.o Member.o Query.o
 ADD_MEMBER_OBJS = AddMember.o Member.o UserManager.o ArtDBCommunicator.o Query.o
 CC	 = g++
 SQL_FLAGS = -lcgicc -lmysqlcppconn
