@@ -1,6 +1,6 @@
 ART_APP_TEST = ArtAppTest.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
 TEST_OBJS = ArtLookupTests.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
-REAL_OBJS = ArtApp.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
+REAL_OBJS = ArtApp.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o JSCommunicator.o
 ADD_MEMBER_OBJS = AddMember.o Member.o UserManager.o ArtDBCommunicator.o Query.o
 SOURCE	= Artwork.cpp
 HEADER	= Artwork.h ArtDBCommunicator.h
@@ -8,7 +8,7 @@ OUT	= ArtApp
 CC	 = g++
 FLAGS	 = -g -c -Wall
 CFLAGS 	 = -std=c++14
-USER     = brydon1
+USER     = schultz4
 
 all: ArtAppTest ArtApp AddMember TestArtApp PutCGI PutHTML
 
