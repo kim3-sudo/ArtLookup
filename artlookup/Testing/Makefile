@@ -13,11 +13,14 @@ all: testIsExistingMember AddMember
 testIsExistingMember: $(TEST_IS_EXISTING)
 	$(CC) $(TEST_IS_EXISTING) -o testIsExistingMember -L/usr/local/lib $(SQL_FLAGS)
 
+testIsExistingMember.o: testIsExistingMember.cpp UserManager.h
+	$(CC) $(FLAGS) testIsExistingMember.cpp $(CFLAGS)
+
 AddMember: $(ADD_MEMBER_OBJS)
 	$(CC) $(ADD_MEMBER_OBJS) -o AddMember -L/usr/local/lib $(SQL_FLAGS)
 
-testIsExistingMember.o: testIsExistingMember.cpp UserManager.h
-	$(CC) $(FLAGS) testIsExistingMember.cpp $(CFLAGS)
+AddMember.o: AddMember.cpp Member.h UserManager.h
+	$(CC) $(FLAGS) AddMember.cpp $(CFLAGS)
 
 Query.o: Query.cpp Query.h
 	$(CC) $(FLAGS) Query.cpp $(CFLAGS)
