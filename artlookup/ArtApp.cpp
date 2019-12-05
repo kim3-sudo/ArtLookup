@@ -27,13 +27,6 @@ int main(){
   string searchCategory= **itsearchCategory;
   //string searchCategory = jSCommunicator.getElement("searchCategory", cgi);
 
-  cout << "Content-Type: text/plain\n\n";
-  string result = "Hello";
-  result += searchVal + searchCategory;
-  cout << result << endl;
-
-  exit(1); //Exits to verify that the error is in the above lines of code.
-
   ArtLookup artLookup;
   Query query;
   vector<Artwork> searchResults;
@@ -48,14 +41,15 @@ int main(){
     searchResults = artLookup.lookupSingleCommand( query.matchSingleCol( searchVal, searchCategory ) );
     //vector<Artwork> searchResults = artLookup.lookupSingleCommand( query.matchSingleCol( searchVal, searchCategory ) );
   }
-  cout << searchVal + searchCategory << endl;
+
   //Sends artwork data to JavaScript
   Artwork artwork;
-  //string result = "";
+  string result = "";
   for (uint i = 0; i < searchResults.size(); i++){
     artwork = searchResults.at(i);
     result += jSCommunicator.print(artwork);
   }
+  cout << "Content-Type: text/plain\n\n";
   cout << result << endl;
 
   return 0;

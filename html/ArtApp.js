@@ -1,6 +1,6 @@
 var searchCategory;  //Category to be searched by: Title, Author ...
 
-var ajaxUser = "brydon1"; //Your username for ajax calls
+var ajaxUser = "schultz4"; //Your username for ajax calls
 
 
 $(document).ready(function () {
@@ -34,7 +34,7 @@ $(document).ready(function () {
     console.log("Tell me I am not crazy");
     $("#submit-user-credentials").click(addMember);
   });
-  
+
 
 });
 
@@ -171,7 +171,7 @@ function showPhotos(list){
       console.log(listLength);
       console.log("Appending Results: \n\n");
 
-      for (var i = 7; i < listLength; i+=13){
+      for (var i = 6; i < listLength; i+=13){
         console.log(i);
     	  console.log("ArtData[i]: ");
     	  console.log(artData[i]);
@@ -179,9 +179,14 @@ function showPhotos(list){
         //Creates image
         result += '<img class="img-fluid" src=' + artData[i] + ' height="100%">';
         //Creates description
-          result += '<p style="padding-top: 8px;">DESCRIPTION OF ARTWORK STILL NEEDS TO BE CREATED.</p>';
+        result += '<p style="padding-top: 8px;">DESCRIPTION OF ARTWORK STILL NEEDS TO BE CREATED.</p>';
+        //Creates like button
+        result += '<button class="btn btn-warning text-center" type="button" style="margin-top: 0px;margin-bottom: 10px;">like!</button>';
+        //Creates comment field and submit button
+        result += '<form><div class="form-group"><input class="form-control" type="text" placeholder="comment here!"><button class="btn btn-light" type="button" style="margin-bottom: 70px;margin-top: 10px;">submit</button>';
+        //Adds closing tags
+        result += '</div></form></div></div></div>';
       }
-    result += '<button class="btn btn-warning text-center" type="button" style="margin-top: 0px;margin-bottom: 10px;">like!</button><form><div class="form-group"><input class="form-control" type="text" placeholder="comment here!"><button class="btn btn-light" type="button" style="margin-bottom: 70px;margin-top: 10px;">submit</button></div></form></div></div></div>';
 
     return result;
   }
