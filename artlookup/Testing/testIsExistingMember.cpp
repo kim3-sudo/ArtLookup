@@ -4,7 +4,7 @@
 using namespace std;
 
 int main(){
-	Member member("user1","password","email@email.com");
+	Member member("mikki","password","email@email.com");
 	UserManager userManager;
 	if (userManager.isExistingMember(member)){
 		cout << "True" << endl;
