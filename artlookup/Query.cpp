@@ -9,11 +9,15 @@
 
 // Edit if database should be general
 string Query::matchSingleCol(string searchItem, string colName){
-	return "SELECT * FROM art WHERE " + colName + " LIKE  '%" + searchItem + "%'";
+	return "SELECT * FROM art WHERE " + colName + " LIKE  '%" + searchItem + "%';";
 }
 
-string Query::findUser(string username){
-	return "SELECT * FROM users WHERE userName = '" + username + "'";
+string Query::findUserUsername(string username){
+	return "SELECT * FROM users WHERE userName = '" + username + "';";
+}
+
+string Query::findUserEmail(string email){
+	return "SELECT * FROM users WHERE email = '" + email + "';";
 }
 
 string Query::addUser(string username, string password, string email){

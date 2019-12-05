@@ -3,7 +3,7 @@
 //Email Address: schultz4@kenyon.edu, kim3@kenyon.edu, brydon1@kenyon.edu
 //Assignment: Project 3
 //Description: Manages users in user database
-//Last Changed: November 21, 2019
+//Last Changed: Dec 4, 2019
 
 #include "UserManager.h"
 #include "Query.h"
@@ -18,28 +18,83 @@ void UserManager::addMember(Member member){
 	sqlStatement->execute(command);
 }
 
+bool UserManager::isUsernameTaken(string username){
+	std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
+	std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
+	Query query; // Create query object
+	string findUsernameCommand = query.findUserUsername(username);
+	sqlStatement->execute(findUsernameCommand);
+	std::unique_ptr<sql::ResultSet> usernameMatches; // Create ResultSet objects
+	usernameMatches.reset(sqlStatement->getResultSet());
+	int count(0);
+	while (usernameMatches->next()) {
+		count++;
+    }
+    if (count == 0){
+    	return false;
+    } else {
+    	return true;
+    }
+}
+// Returns true if username taken; false otherwise
+
+bool UserManager::isEmailTaken(string email){
+	std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
+	std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
+	Query query; // Create query object
+	string findEmailCommand = query.findUserEmail(email);
+	sqlStatement->execute(findEmailCommand);
+	std::unique_ptr<sql::ResultSet> emailMatches; // Create ResultSet objects
+	emailMatches.reset(sqlStatement->getResultSet());
+	int count(0);
+	while (emailMatches->next()) {
+		count++;
+    }
+    if (count == 0){
+    	return false;
+    } else {
+    	return true;
+    }
+}
+// Returns true if email taken; false otherwise
+
+
+
 // Maybe change input to member?? Probably not
 // How do we want this one to work????
-bool UserManager::isExistingMember(Member member){
-	// FINISH ME!!!!!!
+// bool UserManager::isExistingMember(Member member){
+// 	std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
+// 	std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
+// 	Query query;
 
+// 	string findUsernameCommand( query.findUserUsername( member.getUsername() ) ), findEmailCommand( query.findUserEmail( member.getEmail() ) );
+// 	sqlStatement->execute(repeatUsersCommand);
 
+// 	std::unique_ptr<sql::ResultSet> usernameMatches, emailMatches; // Create ResultSet objects
+	
+// 	searchMatches.reset(sqlStatement->getResultSet());
 
-
-
-
-
-
-
-
-
-
-	return true;
-}
+// 	int count(0);
+// 	while (searchMatches->next()) {
+// 		count++;
+//     }
+//     //cout << count << endl;
+//     if (count == 0){
+//     	return false;
+//     } else {
+//     	return true;
+//     }
+// }
 // Returns true if there is a member with username in_username and 
 // password in_password; false otherwise
 
+
 UserManager::UserManager(){
-	// Default Constructor
-	// Maybe delete?
+	userColNames.push_back("userId");
+	userColNames.push_back("userName");
+	userColNames.push_back("password");
+	userColNames.push_back("email");
 }
+
+
+

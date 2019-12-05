@@ -107,18 +107,24 @@ function addMember(){
     });
 
   } else {
+    console.log("Passwords do not match");
     alert("Passwords do not match."); // I think this is how you do this??
   }
 }
 
 function isUsernameAvailable(results){
+  console.log(results);
 
-  if (results == 'T'){
+  // "Email\nUsername"
+  // "Email"
+  // "Username"
+
+  if (results == 'Success'){
     console.log("Signup successful");
-    alert("Signup successful."); // Maybe change to close modal
+    //alert("Signup successful."); // Maybe change to close modal
   } else {
     console.log("Signup failure.");
-    alert("Username is not available.");
+    //alert("Username is not available.");
   }
 }
 
