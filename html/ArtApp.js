@@ -112,8 +112,13 @@ function addMember(){
 }
 
 function isUsernameAvailable(results){
+  console.log(results);
 
-  if (results == 'T'){
+  // "Email\nUsername"
+  // "Email"
+  // "Username"
+
+  if (results == 'Success'){
     console.log("Signup successful");
     alert("Signup successful."); // Maybe change to close modal
   } else {
