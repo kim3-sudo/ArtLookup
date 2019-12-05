@@ -150,7 +150,7 @@ function getMatches(){
 //Empties photo gallery (again?) builds new gallery using buildGallery function
 function processResults(results) {
     console.log("Results:"+results);
-    //$('#artworkResults').empty();
+    $('#artworkResults').empty();
     $('#artworkResults').append( showPhotos( results ));
 }
 
