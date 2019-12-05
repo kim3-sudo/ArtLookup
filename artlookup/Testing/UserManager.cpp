@@ -36,6 +36,11 @@ bool UserManager::isExistingMember(Member member){
 		//searchMatches -> getString(userColNames[0]);
     }
     cout << count << endl;
+    if (count == 0){
+    	return false;
+    } else {
+    	return true;
+    }
 
 	//searchMatches -> getString(colNames[i])
 
@@ -64,8 +69,6 @@ bool UserManager::isExistingMember(Member member){
   //     delete artwork; // Deallocate memory in artwork once finished with object
   //   }
   // } while (sqlStatement->getMoreResults());
-
-	return true;
 }
 // Returns true if there is a member with username in_username and 
 // password in_password; false otherwise
