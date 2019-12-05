@@ -1,82 +1,82 @@
 $(document).ready(function(){
 
-(function(){
+	(function(){
 
-	if(!('requestAnimationFrame' in window)) return;
-	if(/Mobile|Android/.test(navigator.userAgent)) return;
+		if(!('requestAnimationFrame' in window)) return;
+		if(/Mobile|Android/.test(navigator.userAgent)) return;
 
-	var backgrounds = [];
+		var backgrounds = [];
 
-	$('[data-bs-parallax-bg]').each(function(){
-		var el = $(this);
-		var bg = $('<div>');
+		$('[data-bs-parallax-bg]').each(function(){
+			var el = $(this);
+			var bg = $('<div>');
 
-		bg.css({
-			backgroundImage: el.css('background-image'),
-			backgroundSize: 'cover',
-			backgroundPosition: 'center',
-			position: 'absolute',
-			height:'200%',
-			width:'100%',
-			top:0, left:0,
-			zIndex: -100
+			bg.css({
+				backgroundImage: el.css('background-image'),
+				backgroundSize: 'cover',
+				backgroundPosition: 'center',
+				position: 'absolute',
+				height:'200%',
+				width:'100%',
+				top:0, left:0,
+				zIndex: -100
+			});
+
+			bg.appendTo(el);
+			backgrounds.push(bg[0]);
+
+			el.css({
+				position:'relative',
+				background:'transparent',
+				overflow: 'hidden',
+			});
 		});
 
-		bg.appendTo(el);
-		backgrounds.push(bg[0]);
+		if(!backgrounds.length) return;
 
-		el.css({
-			position:'relative',
-			background:'transparent',
-			overflow: 'hidden',
-		});
-	});
+		var visible = [];
+		var scheduled;
 
-	if(!backgrounds.length) return;
+		$(window).on('scroll resize', scroll);
 
-	var visible = [];
-	var scheduled;
+		scroll();
 
-	$(window).on('scroll resize', scroll);
+		function scroll(){
 
-	scroll();
+			visible.length = 0;
 
-	function scroll(){
+			for(var i = 0; i < backgrounds.length; i++){
+				var rect = backgrounds[i].parentNode.getBoundingClientRect();
 
-		visible.length = 0;
+				if(rect.bottom > 0 && rect.top < window.innerHeight){
+					visible.push({
+						rect: rect,
+						node: backgrounds[i]
+					});
+				}
 
-		for(var i = 0; i < backgrounds.length; i++){
-			var rect = backgrounds[i].parentNode.getBoundingClientRect();
+			}
 
-			if(rect.bottom > 0 && rect.top < window.innerHeight){
-				visible.push({
-					rect: rect,
-					node: backgrounds[i]
-				});
+			cancelAnimationFrame(scheduled);
+
+			if(visible.length){
+				scheduled = requestAnimationFrame(update);
 			}
 
 		}
 
-		cancelAnimationFrame(scheduled);
+		function update(){
 
-		if(visible.length){
-			scheduled = requestAnimationFrame(update);
+			for(var i = 0; i < visible.length; i++){
+				var rect = visible[i].rect;
+				var node = visible[i].node;
+
+				var quot = Math.max(rect.bottom, 0) / (window.innerHeight + rect.height);
+
+				node.style.transform = 'translate3d(0, '+(-50*quot)+'%, 0)';
+			}
+
 		}
 
-	}
-
-	function update(){
-
-		for(var i = 0; i < visible.length; i++){
-			var rect = visible[i].rect;
-			var node = visible[i].node;
-
-			var quot = Math.max(rect.bottom, 0) / (window.innerHeight + rect.height);
-
-			node.style.transform = 'translate3d(0, '+(-50*quot)+'%, 0)';
-		}
-
-	}
-
-})();
+	})();
 });

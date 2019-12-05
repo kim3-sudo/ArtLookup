@@ -3,6 +3,7 @@ $(document).ready(function(){
   // Solution is from https://stackoverflow.com/questions/33413106/show-selected-option-in-bootstrap-dropdown-list-menu
   $('.dropdown-menu a').click(function(){
     $('#selected').text($(this).text());
+    //something is taking precedence over this JS file, but I can't figure out why...
   });
   /*end tester function*/
   /*begin tester function
