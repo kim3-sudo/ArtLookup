@@ -10,13 +10,12 @@ class Query{
     string matchSingleCol(string search, string colName);
     // Returns query command to search all columns with colName like search
 
-    string findUser(string username);
-    // Usernames must be unique; query to see if there are any entries in user table 
-    // with userName = username 
+    string findUsers(string username,string email);
+    // Usernames and emails must be unique; query returns all members with 
+    // userName = username or email = email
 
     string addUser(string username, string password, string email);
     // query to add user to database
-
 };
 
 #endif //QUERY_H

@@ -1,31 +1,33 @@
-ART_APP_TEST = ArtAppTest.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
+#ART_APP_TEST = ArtAppTest.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
 TEST_OBJS = ArtLookupTests.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
 REAL_OBJS = ArtApp.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
 ADD_MEMBER_OBJS = AddMember.o Member.o UserManager.o ArtDBCommunicator.o Query.o
-SOURCE	= Artwork.cpp
-HEADER	= Artwork.h ArtDBCommunicator.h
-OUT	= ArtApp
+#SOURCE	= Artwork.cpp
+#HEADER	= Artwork.h ArtDBCommunicator.h
+#OUT	= ArtApp
 CC	 = g++
+SQL_FLAGS = -lcgicc -lmysqlcppconn
 FLAGS	 = -g -c -Wall
 CFLAGS 	 = -std=c++14
 USER     = brydon1
 
-all: ArtAppTest ArtApp AddMember TestArtApp PutCGI PutHTML
+all: ArtApp AddMember TestArtApp PutCGI PutHTML
 
-ArtAppTest: $(ART_APP_TEST)
-	$(CC) $(ART_APP_TEST) -o ArtAppTest -L/usr/local/lib -lcgicc -lmysqlcppconn
+#all: ArtAppTest ArtApp AddMember TestArtApp PutCGI PutHTML
 
-ArtAppTest.o: ArtLookupTests.cpp ArtLookup.h Query.h
-	$(CC) $(FLAGS) ArtAppTest.cpp $(CFLAGS)
+#ArtAppTest: $(ART_APP_TEST)
+#	$(CC) $(ART_APP_TEST) -o ArtAppTest -L/usr/local/lib -lcgicc -lmysqlcppconn
+#ArtAppTest.o: ArtLookupTests.cpp ArtLookup.h Query.h
+#	$(CC) $(FLAGS) ArtAppTest.cpp $(CFLAGS)
 
 ArtApp: $(REAL_OBJS)
-	$(CC) $(REAL_OBJS) -o $(OUT) -L/usr/local/lib -lcgicc -lmysqlcppconn
+	$(CC) $(REAL_OBJS) -o ArtApp -L/usr/local/lib $(SQL_FLAGS)
 
 AddMember: $(ADD_MEMBER_OBJS)
-	$(CC) $(ADD_MEMBER_OBJS) -o AddMember -L/usr/local/lib -lcgicc -lmysqlcppconn
+	$(CC) $(ADD_MEMBER_OBJS) -o AddMember -L/usr/local/lib $(SQL_FLAGS)
 
 TestArtApp: $(TEST_OBJS)
-	$(CC) $(TEST_OBJS) -o testArtApp -L/usr/local/lib -lcgicc -lmysqlcppconn
+	$(CC) $(TEST_OBJS) -o testArtApp -L/usr/local/lib $(SQL_FLAGS)
 
 ArtApp.o: ArtApp.cpp ArtLookup.h Query.h
 	$(CC) $(FLAGS) ArtApp.cpp $(CFLAGS)
@@ -36,17 +38,17 @@ AddMember.o: AddMember.cpp Member.h UserManager.h
 ArtLookupTests.o: ArtLookupTests.cpp ArtLookup.h
 	$(CC) $(FLAGS) ArtLookupTests.cpp $(CFLAGS)
 
+Query.o: Query.cpp Query.h
+	$(CC) $(FLAGS) Query.cpp $(CFLAGS)
+
 Artwork.o: Artwork.cpp Artwork.h
 	$(CC) $(FLAGS) Artwork.cpp $(CFLAGS)
-
-ArtDBCommunicator.o: ArtDBCommunicator.cpp ArtDBCommunicator.h
-	$(CC) $(FLAGS) ArtDBCommunicator.cpp $(CFLAGS)
 
 ArtLookup.o: ArtLookup.cpp ArtLookup.h ArtDBCommunicator.h Query.h
 	$(CC) $(FLAGS) ArtLookup.cpp $(CFLAGS)
 
-Query.o: Query.cpp Query.h
-	$(CC) $(FLAGS) Query.cpp $(CFLAGS)
+ArtDBCommunicator.o: ArtDBCommunicator.cpp ArtDBCommunicator.h
+	$(CC) $(FLAGS) ArtDBCommunicator.cpp $(CFLAGS)
 
 Member.o: Member.cpp Member.h
 	$(CC) $(FLAGS) Member.cpp $(CFLAGS)
@@ -73,4 +75,5 @@ PutHTML:
 	ls -l /var/www/html/class/softdev/$(USER)/ArtApp
 
 clean:
-	rm -f ArtAppTest ArtApp AddMember TestArtApp $(OUT)
+	rm -f ArtApp AddMember TestArtApp $(OUT)
+#	rm -f ArtAppTest ArtApp AddMember TestArtApp $(OUT)

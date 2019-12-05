@@ -20,7 +20,7 @@ class Member{
     // void commentOnArtwork(string comment, Artwork artwork);
     // //void replyToComment(string reply, Comment comment);
   private:
-    int m_memberId;
+    //int m_memberId;
     string m_username;
     string m_password;
     string m_email;
