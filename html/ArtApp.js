@@ -120,10 +120,10 @@ function isUsernameAvailable(results){
 
   if (results == 'Success'){
     console.log("Signup successful");
-    alert("Signup successful."); // Maybe change to close modal
+    //alert("Signup successful."); // Maybe change to close modal
   } else {
     console.log("Signup failure.");
-    alert("Username is not available.");
+    //alert("Username is not available.");
   }
 }
 
