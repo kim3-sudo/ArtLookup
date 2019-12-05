@@ -4,12 +4,17 @@
 using namespace std;
 
 int main(){
-	Member member("mikki","password","email@email.com");
+	Member member1("user1","password","email@email.com"),member2("mikki","p2","cam@kenyon.edu");
 	UserManager userManager;
-	if (userManager.isExistingMember(member)){
-		cout << "True" << endl;
+	if (userManager.isExistingMember(member1)){
+		cout << "Expected: True" << endl;
 	} else {
-		cout << "False" << endl;
+		cout << "Unexpected: False" << endl;
+	}
+	if (userManager.isExistingMember(member2)){
+		cout << "Unexpected: True" << endl;
+	} else {
+		cout << "Expected: False" << endl;
 	}
 	return 0;
 }
