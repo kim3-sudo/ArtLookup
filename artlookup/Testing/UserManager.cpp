@@ -27,6 +27,7 @@ bool UserManager::isExistingMember(Member member){
 	string repeatUsersCommand = query.findUsers(member.getUsername(),member.getEmail());
 	sqlStatement->execute(repeatUsersCommand);
 	int count(0);
+	std::unique_ptr<sql::ResultSet> searchMatches; // Create ResultSet object
 	
 	do{
 		searchMatches.reset(sqlStatement->getResultSet());
@@ -34,7 +35,7 @@ bool UserManager::isExistingMember(Member member){
 	} while (sqlStatement->getMoreResults());
 	cout << count << endl;
 
-	//std::unique_ptr<sql::ResultSet> searchMatches; // Create ResultSet object
+	
 	
 	// searchMatches.reset(sqlStatement->getResultSet())
   
