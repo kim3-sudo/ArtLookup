@@ -11,7 +11,13 @@ class UserManager: public ArtDBCommunicator{
 	    void addMember(Member member);
 	    // add member to user table in sql database
 
-	    bool isExistingMember(Member member);
+	    bool isUsernameTaken(string username);
+	    // Returns true if username taken; false otherwise
+
+	    bool isEmailTaken(string email);
+	    // Returns true if email taken; false otherwise
+
+	    //bool isExistingMember(Member member);
 	    // Returns true if there is a member with username in_username and 
 	    // password in_password; false otherwise
 	  

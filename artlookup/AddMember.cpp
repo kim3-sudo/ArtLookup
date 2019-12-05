@@ -30,13 +30,31 @@ int main(){
   cout << "Content-Type: text/plain\n\n";
 
   //Sends user data to JavaScript
-  if (userManager.isExistingMember(member)){
+  bool canAddMember(true);
+  if (userManager.isEmailTaken(member.getEmail())){
     // Add user to database
+    canAddMember = false;
+    cout << "Email" << endl;
+  }
+  if (userManager.isUsernameTaken(member.getUsername())){
+    cout << "Username" << endl;
+    canAddMember = false;
+  }
+  if (canAddMember){
     userManager.addMember(member);
-    cout << "F" << endl;
-  } else {
-    cout << "T" << endl;
+    cout << "Success" << endl;
   }
   
   return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
