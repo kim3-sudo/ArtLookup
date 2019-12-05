@@ -107,6 +107,7 @@ function addMember(){
     });
 
   } else {
+    console.log("Passwords do not match");
     alert("Passwords do not match."); // I think this is how you do this??
   }
 }
