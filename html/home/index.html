@@ -140,7 +140,7 @@
                 <form class="form-inline ml-auto" target="_self">
                     <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" type="search" id="search-field2" name="search" placeholder="search for art" style="width: 255px;"></div>
                 </form>
-                <button class="btn btn-light action-button" type="submit" style="background-color: rgb(115,86,198);margin-right: 0.5%;margin-left: .5%;">Search</button>
+                <button class="btn btn-light action-button" type="submit" style="background-color: rgb(115,86,198);margin-right: 0.5%;margin-left: .5%;">Search</button> <!--MAYBE change type to button-->
                 <button id="start-signup" class="btn btn-link" type="button" style="margin-right: 0.5%;margin-left: 0.5%;"
                     data-toggle="modal" data-target="#signupModal">Sign Up</button>
                 <button id="start-login" class="btn btn-link" type="button" style="margin-right: 0.5%;margin-left: 0.5%;" data-toggle="modal" data-target="#loginModal">Log in</button></div>
@@ -179,7 +179,8 @@
                              <p>There is no account with these credentials. Would you like to <a href="#start-signup">sign-up</a>?</p>
                         </div>
                         <div class = "default_login">
-                            <div class="form-group"><button id="loginButton" class="btn btn-primary btn-block" type="submit">Log In</button></div><a class="forgot" href="#">Forgot your email or password?</a>
+                            <!--<div class="form-group"><button id="loginButton" class="btn btn-primary btn-block" type="submit">Log In</button></div><a class="forgot" href="#">Forgot your email or password?</a>-->
+                            <div class="form-group"><button id="loginButton" class="btn btn-primary btn-block" type="button">Log In</button></div><a class="forgot" href="#">Forgot your email or password?</a>
                         </div>
                     </form>
                 </div>
@@ -197,7 +198,9 @@
                         <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email" id="signup-email"></div>
                         <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" id="signup-password"></div>
                         <div class="form-group"><input class="form-control" type="password" name="password-repeat" placeholder="Password (repeat)" id="signup-password-repeated"></div>
-                        <div class="form-group"><button id="submit-user-credentials" class="btn btn-primary btn-block" type="submit">Sign Up</button></div><button class="btn btn-secondary" method="post" data-dismiss="modal">Close</button></form>
+                        <!--<div class="form-group"><button id="submit-user-credentials" class="btn btn-primary btn-block" type="submit">Sign Up</button>-->
+                        <div class="form-group"><button id="submit-user-credentials" class="btn btn-primary btn-block" type="button">Sign Up</button>
+                        </div><button class="btn btn-secondary" method="post" data-dismiss="modal">Close</button></form>
                 </div>
             </div>
         </div>
