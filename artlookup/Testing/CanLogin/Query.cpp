@@ -21,7 +21,7 @@ string Query::findUserEmail(string email){
 }
 
 // EDIT other member functions to have same format
-string numUserLoginInfo(string email,string password){
+string Query::numUserLoginInfo(string email,string password){
 	return "SELECT COUNT(*) FROM `users` WHERE email = '" + email + "' and password = '" + password + "';";
 }
 
