@@ -60,7 +60,7 @@ function loginMember(){
 function processLoginResults(results){
   if (results == 'Invalid'){
     console.log("Login unsuccessful :(");
-    $(#invalid_login).show(); // EVENTUALLY must be hidden again!!!!!!
+    $("#invalid_login").show(); // EVENTUALLY must be hidden again!!!!!!
 
     //alert("Signup successful."); // Maybe change to close modal
   } else {
