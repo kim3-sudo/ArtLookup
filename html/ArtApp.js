@@ -158,7 +158,11 @@ function isUsernameAvailable(results){
   console.log("Results: " + results);
   if (results == "Success"){
     console.log("Signup successful");
-    //alert("Signup successful."); // Maybe change to close modal
+    // CLOSE MODAL 
+    document.getElementById("signupModal").setAttribute("style", "display: none"); 
+    document.getElementById("loginModal").setAttribute("style", "display: block");
+    // Take user to login modal
+    // should it login for them?
   } else {
     console.log("Signup failure.");
     //alert("Username is not available.");
