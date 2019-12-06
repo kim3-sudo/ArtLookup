@@ -155,7 +155,8 @@ function isUsernameAvailable(results){
   // "Email"
   // "Username"
 
-  if (results == 'Success'){
+  console.log("Results: " + results);
+  if (results == "Success"){
     console.log("Signup successful");
     //alert("Signup successful."); // Maybe change to close modal
   } else {
