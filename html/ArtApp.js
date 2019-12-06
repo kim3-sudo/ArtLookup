@@ -51,9 +51,21 @@ function loginMember(){
     $.ajax({
       url: '/cgi-bin/'+ajaxUser+'_artAppSigninMember.cgi?email='+email+'&password='+password,
       dataType: 'text',
-      success: FILL_IN_FUNCTION, 
+      success: processLoginResults, 
       error: function(){alert("Error: Something went wrong");}
     });
+  }
+}
+
+function processLoginResults(results){
+  if (results == 'Invalid'){
+    console.log("Login unsuccessful :(");
+    $(#invalid_login).show(); // EVENTUALLY must be hidden again!!!!!!
+
+    //alert("Signup successful."); // Maybe change to close modal
+  } else {
+    console.log("Login successful!");
+    //alert("Username is not available.");
   }
 }
 

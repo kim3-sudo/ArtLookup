@@ -1,4 +1,4 @@
-#include "Member.h"
+//#include "Member.h"
 #include "UserManager.h"
 #include <iostream>
 #include <string> //so that it's not a cstring
@@ -26,15 +26,12 @@ int main(){
 
   cout << "Content-Type: text/plain\n\n";
 
-
-  // FINISH ME!!!!!!!
-
-
-
-
-
-
-
+  if (userManager.canLogin(email,password)){
+    // Log person in
+    cout << "Valid";
+  } else {
+    cout << "Invalid\n";
+  }
 
 
   // bool canAddMember(true);
