@@ -58,6 +58,38 @@ bool UserManager::isEmailTaken(string email){
 }
 // Returns true if email taken; false otherwise
 
+bool UserManager::canLogin(string email, string password){
+	std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
+	std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
+	Query query; // Create query object
+	string numUsersCommand = query.numUserLoginInfo(email,password);
+	sqlStatement->execute(numUsersCommand);
+
+
+
+	// The SQL statement returns a number; how do I obtain that number?
+
+
+	// std::unique_ptr<sql::ResultSet> loginMatches; // Create ResultSet objects
+	// loginMatches.reset(sqlStatement->getResultSet());
+	// //int count(0);
+	// while (emailMatches->next()) {
+	// 	count++;
+ //    }
+ //    if (count == 0){
+ //    	return false;
+ //    } else {
+ //    	return true;
+ //    }
+}
+
+
+
+
+
+
+
+
 
 
 // Maybe change input to member?? Probably not

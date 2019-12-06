@@ -34,9 +34,33 @@ $(document).ready(function () {
     console.log("Tell me I am not crazy");
     $("#submit-user-credentials").click(addMember);
   });
-  
-
+  $("#loginButton").click(loginMember);
 });
+
+function loginMember(){
+  console.log("Clicked Log In");
+  email = $('#login-email').val();
+  console.log(email);
+  password = $('#login-password').val();
+  console.log(password);
+
+  if (email != "" || password != ""){
+    alert("Invalid entry.");
+  } else {
+    console.log("Sending info to server");
+    $.ajax({
+      url: '/cgi-bin/'+ajaxUser+'_artAppSigninMember.cgi?email='+email+'&password='+password,
+      dataType: 'text',
+      success: FILL_IN_FUNCTION, 
+      error: function(){alert("Error: Something went wrong");}
+    });
+  }
+}
+
+
+
+
+
 
 
 

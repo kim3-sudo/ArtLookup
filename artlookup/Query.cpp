@@ -20,6 +20,11 @@ string Query::findUserEmail(string email){
 	return "SELECT * FROM users WHERE email = '" + email + "';";
 }
 
+// EDIT other member functions to have same format
+string numUserLoginInfo(string email,string password){
+	return "SELECT COUNT(*) FROM users WHERE email = '" + email + "';";
+}
+
 string Query::addUser(string username, string password, string email){
 	return "INSERT INTO `users`(`userId`, `userName`, `password`, `email`) VALUES (NULL,'" + username
 		+ "','" + password + "','" + email + "');";
