@@ -44,7 +44,7 @@ function loginMember(){
   password = $('#login-password').val();
   console.log(password);
 
-  if (email != "" || password != ""){
+  if (email == "" || password == ""){
     alert("Invalid entry.");
   } else {
     console.log("Sending info to server");
@@ -168,7 +168,7 @@ function isUsernameAvailable(results){
 
     //document.getElementsByTagName("body").write('<div class = "modal-backdrop fade show"></div>');
     //document.getElementsByTagName("body").setAttribute("class", "modal-open");
-    
+
     // Take user to login modal
     // should it login for them?
   } else {
