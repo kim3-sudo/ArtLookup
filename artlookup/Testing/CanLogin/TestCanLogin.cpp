@@ -11,12 +11,12 @@ int main(){
 	} else {
 		cout << "Unexpected: False" << endl;
 	}
-	if (userManager.isEmailTaken(member2.getEmail(),member2.getPassword())){
+	if (userManager.canLogin(member2.getEmail(),member2.getPassword())){
 		cout << "Unexpected: True" << endl;
 	} else {
 		cout << "Expected: False" << endl;
 	}
-	if (userManager.isEmailTaken(member3.getEmail(),member3.getPassword())){
+	if (userManager.canLogin(member3.getEmail(),member3.getPassword())){
 		cout << "Unexpected: True" << endl;
 	} else {
 		cout << "Expected: False" << endl;
