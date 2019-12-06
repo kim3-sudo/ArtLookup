@@ -165,8 +165,10 @@ function isUsernameAvailable(results){
     document.getElementById("loginModal").setAttribute("style", "display: block");
     document.getElementById("loginModal").setAttribute("class", "modal fade show");
     // Not sure if this will work???
-    document.getElementsByTagName("body").write('<div class = "modal-backdrop fade show"></div>');
-    document.getElementsByTagName("body").setAttribute("class", "modal-open");
+
+    //document.getElementsByTagName("body").write('<div class = "modal-backdrop fade show"></div>');
+    //document.getElementsByTagName("body").setAttribute("class", "modal-open");
+    
     // Take user to login modal
     // should it login for them?
   } else {
