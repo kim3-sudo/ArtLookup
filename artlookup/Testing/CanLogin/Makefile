@@ -8,7 +8,7 @@ USER     = brydon1
 all: TestCanLogin
 
 TestCanLogin: $(TEST_CAN_LOGIN)
-	$(CC) $(TEST_CAN_LOGIN) -o testIsExistingMember -L/usr/local/lib $(SQL_FLAGS)
+	$(CC) $(TEST_CAN_LOGIN) -o TestCanLogin -L/usr/local/lib $(SQL_FLAGS)
 
 TestCanLogin.o: TestCanLogin.cpp UserManager.h Query.h
 	$(CC) $(FLAGS) TestCanLogin.cpp $(CFLAGS)

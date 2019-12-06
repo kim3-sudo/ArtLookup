@@ -39,11 +39,15 @@ bool UserManager::isUsernameTaken(string username){
 // Returns true if username taken; false otherwise
 
 bool UserManager::isEmailTaken(string email){
+	// Establish connection and create SQL statement
 	std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
 	std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
-	Query query; // Create query object
+	// Create query object and obtain appropriate SQL command
+	Query query; 
 	string findEmailCommand = query.findUserEmail(email);
+	// Execute command
 	sqlStatement->execute(findEmailCommand);
+	// Get resultset
 	std::unique_ptr<sql::ResultSet> emailMatches; // Create ResultSet objects
 	emailMatches.reset(sqlStatement->getResultSet());
 	int count(0);
@@ -67,7 +71,9 @@ bool UserManager::canLogin(string email, string password){
 	sqlStatement->execute(numUsersCommand);
 	std::unique_ptr<sql::ResultSet> loginMatches;
 	loginMatches.reset(sqlStatement->getResultSet());
-	int numUsers = loginMatches -> getInt("Count(*)");
+
+	loginMatches -> next(); // MAYBE wrong
+	int numUsers = loginMatches->getInt("Count(*)");
 
 	// What about more than one??
 	if (numUsers == 1){
