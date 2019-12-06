@@ -39,7 +39,7 @@ AddMember.o: AddMember.cpp Member.h UserManager.h
 	$(CC) $(FLAGS) AddMember.cpp $(CFLAGS)
 
 SigninMember.o: SigninMember.cpp UserManager.h
-	$(CC) $(FLAGS) AddMember.cpp $(CFLAGS)
+	$(CC) $(FLAGS) SigninMember.cpp $(CFLAGS)
 
 ArtLookupTests.o: ArtLookupTests.cpp ArtLookup.h
 	$(CC) $(FLAGS) ArtLookupTests.cpp $(CFLAGS)
