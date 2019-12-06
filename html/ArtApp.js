@@ -157,10 +157,16 @@ function isUsernameAvailable(results){
 
   console.log("Results: " + results);
   if (results == "Success"){
+    var node = document.createElement("DIV");
+    var textNode = document.createTextNode("Water"); 
     console.log("Signup successful");
     // CLOSE MODAL 
     document.getElementById("signupModal").setAttribute("style", "display: none"); 
     document.getElementById("loginModal").setAttribute("style", "display: block");
+    document.getElementById("loginModal").setAttribute("class", "modal fade show");
+    // Not sure if this will work???
+    document.getElementsByTagName("body").appendChild('<div class = "modal-backdrop fade show"></div>');
+    document.getElementsByTagName("body").setAttribute("class", "modal-open");
     // Take user to login modal
     // should it login for them?
   } else {
