@@ -22,7 +22,7 @@ string Query::findUserEmail(string email){
 
 // EDIT other member functions to have same format
 string numUserLoginInfo(string email,string password){
-	return "SELECT COUNT(*) FROM users WHERE email = '" + email + "';";
+	return "SELECT COUNT(*) FROM `users` WHERE email = '" + email + "' and password = '" + password + "';";
 }
 
 string Query::addUser(string username, string password, string email){

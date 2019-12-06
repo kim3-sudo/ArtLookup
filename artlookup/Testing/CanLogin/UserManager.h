@@ -17,6 +17,10 @@ class UserManager: public ArtDBCommunicator{
 	    bool isEmailTaken(string email);
 	    // Returns true if email taken; false otherwise
 
+	    bool canLogin(string email, string password);
+	    // Returns True if member exists with email and password as given
+	    // Returns False otherwise
+
 	    //bool isExistingMember(Member member);
 	    // Returns true if there is a member with username in_username and 
 	    // password in_password; false otherwise

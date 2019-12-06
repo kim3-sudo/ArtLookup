@@ -61,9 +61,24 @@ bool UserManager::isEmailTaken(string email){
 bool UserManager::canLogin(string email, string password){
 	std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
 	std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
+
 	Query query; // Create query object
 	string numUsersCommand = query.numUserLoginInfo(email,password);
 	sqlStatement->execute(numUsersCommand);
+	std::unique_ptr<sql::ResultSet> loginMatches;
+	loginMatches.reset(sqlStatement->getResultSet());
+	int numUsers = loginMatches -> getInt("Count(*)");
+
+	// What about more than one??
+	if (numUsers == 1){
+		return true;
+	} else {
+		return false;
+	}
+
+	// while (emailMatches->next()){
+	// 	cout << 
+	// }
 
 
 
