@@ -42,7 +42,7 @@ int main(){
   }
   if (canAddMember){
     userManager.addMember(member);
-    cout << "Success" << endl;
+    cout << "Success";
   }
   
   return 0;
