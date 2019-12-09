@@ -1,6 +1,6 @@
 var searchCategory;  //Category to be searched by: Title, Author ...
 
-var ajaxUser = "schultz4"; //Your username for ajax calls
+var ajaxUser = "kim3"; //Your username for ajax calls
 
 
 $(document).ready(function () {
@@ -183,7 +183,7 @@ function showPhotos(list){
     	  console.log(artData[i]);
 
         //Creates image
-        result += '<img class="img-fluid" src=' + artData[i] + ' height="100%">';
+        result += '<img class="img-fluid lazyload" src=' + artData[i] + ' height="100%">';
         //Creates description
         result += '<p style="padding-top: 8px;">Title: ' + artData[i-3] + '<br><br>Author: ' + artData[i-5] + ' ' + artData[i-4] + '<br>Location: ' + artData[i-1] + '<br>Date: ' + artData[i+5] + '<br>Technique: ' + artData[i-2] + '<br>School: ' + artData[i+3] + '<br>Type: ' + artData[i+2] + '<br>Form: ' + artData[i+1] + '</p>';
         //Creates like button
