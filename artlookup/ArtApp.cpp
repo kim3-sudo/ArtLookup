@@ -29,7 +29,7 @@ int main(){
 
   //If the user didn't choose to search by category use general lookup to get
   //search results
-  if( searchCategory == "" ){
+  if( searchCategory == "undefined" ){
     searchResults = artLookup.lookupGeneral( searchVal );
   }
   //Else lookup using the category they specified to get search results
