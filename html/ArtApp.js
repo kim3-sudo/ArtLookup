@@ -77,6 +77,7 @@ function processLoginResults(results){
     // CLOSE MODAL 
     document.getElementById("loginModal").setAttribute("style", "display: none");
     document.getElementById("loginModal").setAttribute("class", "modal fade hide"); 
+    $(".modal-backdrop").hide();
     //document.getElementById("loginModal").setAttribute("style", "display: block");
     
     
