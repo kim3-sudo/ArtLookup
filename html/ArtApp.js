@@ -75,9 +75,10 @@ function processLoginResults(results){
     $("#logout").show();
     document.cookie = "username=" + results + ";";
     // CLOSE MODAL 
-    document.getElementById("loginModal").setAttribute("style", "display: none"); 
+    document.getElementById("loginModal").setAttribute("style", "display: none");
+    document.getElementById("loginModal").setAttribute("class", "modal fade hide"); 
     //document.getElementById("loginModal").setAttribute("style", "display: block");
-    //document.getElementById("loginModal").setAttribute("class", "modal fade show");
+    
     
     // still need to close login modal
     // create log out button 
