@@ -35,7 +35,17 @@ $(document).ready(function () {
   //   $("#submit-user-credentials").click(addMember);
   // });
   $("#loginButton").click(loginMember);
+
+  $("#logout").click(logoutMember);
 });
+
+function logoutMember() {
+  //$("#invalid_login").show();
+  $("#start-signup").show();
+  $("#start-login").show();
+  $("#logout").hide();
+  setCookie("username",""); // initialize cookie
+}
 
 function loginMember(){
   console.log("Clicked Log In");
