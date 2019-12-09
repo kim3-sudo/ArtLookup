@@ -73,6 +73,8 @@ function processLoginResults(results){
     $("#start-signup").hide();
     $("#start-login").hide();
     $("#logout").show();
+
+
     document.cookie = "username=" + results + ";";
     // CLOSE MODAL 
     document.getElementById("loginModal").setAttribute("style", "display: none");
@@ -125,6 +127,10 @@ function checkCookie() {
   console.log("Checking cookie!");
   var username = getCookie("username");
   if (username != "") {
+    $("#invalid_login").hide();
+    $("#start-signup").hide();
+    $("#start-login").hide();
+    $("#logout").show();
     // Someone is logged in
     console.log("Someone logged in");
   } else {
