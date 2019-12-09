@@ -7,6 +7,7 @@ $(document).ready(function () {
   //document.cookie = "username=John Doe";
   //checkCookie();
   $(".dropdown-item").click(setCategory);
+
   // getMatches when search button is clicked
   $(".action-button").click(getMatches);
 
@@ -44,7 +45,7 @@ function loginMember(){
     $.ajax({
       url: '/cgi-bin/'+ajaxUser+'_artAppSigninMember.cgi?email='+email+'&password='+password,
       dataType: 'text',
-      success: processLoginResults, 
+      success: processLoginResults,
       error: function(){alert("Error: Something went wrong");}
     });
   }
@@ -69,15 +70,15 @@ function processLoginResults(results){
 
 
     document.cookie = "username=" + results + ";";
-    // CLOSE MODAL 
+    // CLOSE MODAL
     document.getElementById("loginModal").setAttribute("style", "display: none");
-    document.getElementById("loginModal").setAttribute("class", "modal fade hide"); 
+    document.getElementById("loginModal").setAttribute("class", "modal fade hide");
     $(".modal-backdrop").hide();
     //document.getElementById("loginModal").setAttribute("style", "display: block");
-    
-    
+
+
     // still need to close login modal
-    // create log out button 
+    // create log out button
 
     // Add log out button
     // DO SOMETHING TO MAKE LOGIN KNOWN
@@ -181,10 +182,10 @@ function isUsernameAvailable(results){
   console.log("Results: " + results);
   if (results == "Success"){
     //var node = document.createElement("DIV");
-    //var textNode = document.createTextNode("Water"); 
+    //var textNode = document.createTextNode("Water");
     console.log("Signup successful");
-    // CLOSE MODAL 
-    document.getElementById("signupModal").setAttribute("style", "display: none"); 
+    // CLOSE MODAL
+    document.getElementById("signupModal").setAttribute("style", "display: none");
     document.getElementById("loginModal").setAttribute("style", "display: block");
     document.getElementById("loginModal").setAttribute("class", "modal fade show");
 
