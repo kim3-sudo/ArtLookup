@@ -1,7 +1,5 @@
 var searchCategory;  //Category to be searched by: Title, Author ...
-
 var ajaxUser = "brydon1"; //Your username for ajax calls
-
 
 $(document).ready(function () {
   console.log("ready!");
@@ -31,7 +29,7 @@ $(document).ready(function () {
 
 
   $("#start-signup").click(function() {
-    console.log("Tell me I am not crazy");
+    //console.log("Tell me I am not crazy");
     $("#submit-user-credentials").click(addMember);
   });
   $("#loginButton").click(loginMember);
@@ -58,9 +56,10 @@ function loginMember(){
 }
 
 function processLoginResults(results){
-  console.log("Result: ");
+  console.log("Result: "); // Try "Results: ", results
   console.log(results);
-  if (results == 'Invalid'){
+  //if (results == 'Invalid'){
+  if (results == ""){
     console.log("Login unsuccessful :(");
     $("#invalid_login").show(); // EVENTUALLY must be hidden again!!!!!!
 
@@ -68,11 +67,21 @@ function processLoginResults(results){
   } else {
     console.log("Login successful!");
     $("#invalid_login").hide();
+    $("#start-signup").hide();
+    $("#start-login").hide();
+    // FINISH COOKIE STUFF
+    // document.cookie = "username=" + results + ";";
+    document.cookie = "username = John Doe;";
+
+    // Add log out button
     // DO SOMETHING TO MAKE LOGIN KNOWN
-
-
-
     //alert("Username is not available.");
+  }
+  if (document.cookie == "username ="){
+    console.log("No one logged in.");
+  } else {
+  console.log(document.cookie);
+  console.log("is logged in!");
   }
 }
 

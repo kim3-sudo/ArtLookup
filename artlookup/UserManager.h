@@ -11,6 +11,9 @@ class UserManager: public ArtDBCommunicator{
 	    void addMember(Member member);
 	    // add member to user table in sql database
 
+	    Member getLoginMember(string email, string password);
+	    // Given login info, returns member object
+
 	    bool isUsernameTaken(string username);
 	    // Returns true if username taken; false otherwise
 

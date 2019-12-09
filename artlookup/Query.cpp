@@ -20,9 +20,9 @@ string Query::findUserEmail(string email){
 	return "SELECT * FROM users WHERE email = '" + email + "';";
 }
 
-// EDIT other member functions to have same format
-string Query::numUserLoginInfo(string email,string password){
-	return "SELECT COUNT(*) FROM `users` WHERE email = '" + email + "' and password = '" + password + "';";
+string Query::loginResults(string email,string password){
+	return "SELECT * FROM `users` WHERE email = '" + email + "' and password = '" + password + "';";
+	//return "SELECT COUNT(*) FROM `users` WHERE email = '" + email + "' and password = '" + password + "';";
 }
 
 string Query::addUser(string username, string password, string email){

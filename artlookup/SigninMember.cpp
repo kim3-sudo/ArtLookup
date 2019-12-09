@@ -25,29 +25,17 @@ int main(){
   //JSCommunicator jSCommunicator;
 
   cout << "Content-Type: text/plain\n\n";
+  Member member(userManager.getLoginMember());
 
   if (userManager.canLogin(email,password)){
     // Log person in
-    cout << "Valid";
-  } else {
-    cout << "Invalid";
-  }
-
-
-  // bool canAddMember(true);
-  // if (userManager.isEmailTaken(member.getEmail())){
-  //   // Add user to database
-  //   canAddMember = false;
-  //   cout << "Email" << endl;
-  // }
-  // if (userManager.isUsernameTaken(member.getUsername())){
-  //   cout << "Username" << endl;
-  //   canAddMember = false;
-  // }
-  // if (canAddMember){
-  //   userManager.addMember(member);
-  //   cout << "Success" << endl;
-  // }
+    //cout << "Valid";
+    cout << member.getUsername();
+  } 
+  // Else return empty string
+  //else {
+    //cout << "Invalid";
+  //}
   
   return 0;
 }
