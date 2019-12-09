@@ -58,7 +58,7 @@ function loginMember(){
 }
 
 function processLoginResults(results){
-  console.log("Result: " + result);
+  console.log("Result: " + results);
   if (results == 'Invalid'){
     console.log("Login unsuccessful :(");
     $("#invalid_login").show(); // EVENTUALLY must be hidden again!!!!!!
