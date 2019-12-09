@@ -25,7 +25,7 @@ int main(){
   //JSCommunicator jSCommunicator;
 
   cout << "Content-Type: text/plain\n\n";
-  Member member(userManager.getLoginMember());
+  Member member(userManager.getLoginMember(email,password));
 
   if (userManager.canLogin(email,password)){
     // Log person in

@@ -14,7 +14,6 @@ Member::Member(){
     m_email = "";
 }
 
-
 // I want to not input a memberId
 //Member::Member(string memberId, string username, string password, string email){
 Member::Member(string username, string password, string email){
@@ -22,6 +21,12 @@ Member::Member(string username, string password, string email){
     m_username = username;
     m_password = password;
     m_email = email;
+}
+
+Member::Member(Member otherMember){
+    m_username = otherMember.getUsername();
+    m_password = otherMember.getPassword();
+    m_email = otherMember.getEmail();
 }
 
 string Member::getUsername(){
