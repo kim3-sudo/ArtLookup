@@ -24,9 +24,9 @@ Member::Member(string username, string password, string email){
 }
 
 Member::Member(const Member& otherMember){
-    m_username = otherMember.getUsername();
-    m_password = otherMember.getPassword();
-    m_email = otherMember.getEmail();
+    m_username = otherMember.m_username;
+    m_password = otherMember.m_password;
+    m_email = otherMember.m_email;
 }
 
 string Member::getUsername(){
