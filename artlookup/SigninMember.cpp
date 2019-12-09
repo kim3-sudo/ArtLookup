@@ -30,7 +30,7 @@ int main(){
     // Log person in
     cout << "Valid";
   } else {
-    cout << "Invalid\n";
+    cout << "Invalid";
   }
 
 
