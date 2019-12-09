@@ -45,6 +45,7 @@ function logoutMember() {
   $("#start-login").show();
   $("#logout").hide();
   setCookie("username",""); // initialize cookie
+  console.log("Logged out!");
 }
 
 function loginMember(){
@@ -142,6 +143,7 @@ function checkCookie() {
     $("#start-login").hide();
     $("#logout").show();
     // Someone is logged in
+    console.log(username + " logged in.");
     console.log("Someone logged in");
   } else {
     // Show normal homepage
