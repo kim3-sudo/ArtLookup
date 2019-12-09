@@ -63,7 +63,7 @@ function processLoginResults(results){
   //if (results == 'Invalid'){
   if (results == ""){
     console.log("Login unsuccessful :(");
-    document.cookie = "username =";
+    document.cookie = "username=";
     $("#invalid_login").show(); // EVENTUALLY must be hidden again!!!!!!
 
     //alert("Signup successful."); // Maybe change to close modal
@@ -73,17 +73,17 @@ function processLoginResults(results){
     $("#start-signup").hide();
     $("#start-login").hide();
     // FINISH COOKIE STUFF
-    // document.cookie = "username=" + results + ";";
-    document.cookie = "username = John Doe;";
+    document.cookie = "username=" + results + ";";
+    //document.cookie = "username = John Doe;";
 
     // Add log out button
     // DO SOMETHING TO MAKE LOGIN KNOWN
     //alert("Username is not available.");
   }
-  if (document.cookie == "username ="){
+  if (document.cookie == "username="){
     console.log("No one logged in.");
   } else {
-  console.log(document.cookie);
+  console.log(getCookie(username));
   console.log("is logged in!");
   }
 }
