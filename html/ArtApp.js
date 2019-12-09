@@ -83,7 +83,7 @@ function processLoginResults(results){
   if (document.cookie == "username="){
     console.log("No one logged in.");
   } else {
-  console.log(getCookie(username));
+  console.log(getCookie("username"));
   console.log("is logged in!");
   }
 }
