@@ -61,6 +61,7 @@ function processLoginResults(results){
   //if (results == 'Invalid'){
   if (results == ""){
     console.log("Login unsuccessful :(");
+    document.cookie = "username =";
     $("#invalid_login").show(); // EVENTUALLY must be hidden again!!!!!!
 
     //alert("Signup successful."); // Maybe change to close modal
