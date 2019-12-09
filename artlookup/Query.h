@@ -18,7 +18,7 @@ class Query{
 	// Emails must be unique; query returns all members with 
     // email = email
 
-    string numUserLoginInfo(string email,string password);
+    string loginResults(string email,string password);
     // Emails must be unique; query returns all members with 
     // email = email
 
