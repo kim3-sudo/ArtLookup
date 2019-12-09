@@ -67,6 +67,11 @@ function processLoginResults(results){
     //alert("Signup successful."); // Maybe change to close modal
   } else {
     console.log("Login successful!");
+    $("#invalid_login").hide();
+    // DO SOMETHING TO MAKE LOGIN KNOWN
+
+
+
     //alert("Username is not available.");
   }
 }
