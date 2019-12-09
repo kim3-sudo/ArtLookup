@@ -44,7 +44,7 @@ function logoutMember() {
   $("#start-signup").show();
   $("#start-login").show();
   $("#logout").hide();
-  setCookie("username",""); // initialize cookie
+  setCookie("username","Sam"); // initialize cookie
   console.log(getCookie("username"));
   console.log("Logged out!");
 }
