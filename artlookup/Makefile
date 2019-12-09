@@ -1,6 +1,11 @@
 #ART_APP_TEST = ArtAppTest.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
+<<<<<<< HEAD
 #TEST_OBJS = ArtLookupTests.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
 REAL_OBJS = ArtApp.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
+=======
+TEST_OBJS = ArtLookupTests.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
+REAL_OBJS = ArtApp.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o JSCommunicator.o
+>>>>>>> 3f3c181275e385b59d50ddff66af1e936ae3c016
 ADD_MEMBER_OBJS = AddMember.o Member.o UserManager.o ArtDBCommunicator.o Query.o
 SIGNIN_MEMBER_OBJS = SigninMember.o Member.o UserManager.o ArtDBCommunicator.o Query.o
 #SOURCE	= Artwork.cpp
@@ -10,7 +15,7 @@ CC	 = g++
 SQL_FLAGS = -lcgicc -lmysqlcppconn
 FLAGS	 = -g -c -Wall
 CFLAGS 	 = -std=c++14
-USER     = brydon1
+USER     = kim3
 
 all: ArtApp AddMember SigninMember PutCGI PutHTML
 #all: ArtAppTest ArtApp AddMember TestArtApp PutCGI PutHTML

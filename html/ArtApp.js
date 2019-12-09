@@ -1,36 +1,28 @@
 var searchCategory;  //Category to be searched by: Title, Author ...
+<<<<<<< HEAD
 var ajaxUser = "brydon1"; //Your username for ajax calls
+=======
+
+var ajaxUser = "kim3"; //Your username for ajax calls
+>>>>>>> 3f3c181275e385b59d50ddff66af1e936ae3c016
 
 $(document).ready(function () {
+<<<<<<< HEAD
   console.log("ready!");
   checkCookie();
   //document.cookie = "username=John Doe";
   //checkCookie();
+=======
+  //console.log("ready!");
+>>>>>>> 3f3c181275e385b59d50ddff66af1e936ae3c016
 
   $(".dropdown-item").click(setCategory);
   // getMatches when search button is clicked
   $(".action-button").click(getMatches);
-
-  $(".dropdown-menu a").click(function(){
-    console.log("pick!"+$(this).text());
-    if ( $(this).hasClass("select-menu") ) {
-      $(this).parents(".dropdown").find('.selection').text($(this).text());
-      operation=$(this).text();
-      console.log("Main-menu");
-      changeOperation(operation);
-    }
-
-    /*else if ($(this).hasClass("add-item")) {
-    $(this).parents(".dropdown").find('.selection').text($(this).text());
-    console.log($(this).text());
-    } else if ($(this).hasClass("edit-item")) {
-    $(this).parents(".dropdown").find('.selection').text($(this).text());
-    console.log($(this).text());
-    }
-    */
   });
 
 
+<<<<<<< HEAD
   $("#submit-user-credentials").click(addMember);
   // $("#start-signup").click(function() {
   //   //console.log("Tell me I am not crazy");
@@ -39,6 +31,12 @@ $(document).ready(function () {
   $("#loginButton").click(loginMember);
 
   $("#logout").click(logoutMember);
+=======
+  $("#start-signup").click(function() {
+    console.log("Tell me I am not crazy");
+    $("#submit-user-credentials").click(addMember);
+  });
+>>>>>>> 3f3c181275e385b59d50ddff66af1e936ae3c016
 });
 
 function logoutMember() {
@@ -170,52 +168,15 @@ function checkCookie() {
 
 
 
-
-  //trying to add dropdown js - again
-
-
-  /*//testing comment begin - S Kim
-  //dropdown menu
-  $('.dropdown-menu a').click(function(){
-    $('#selectedtype').text($(this).text());
-  });
-  *///testing comment end
-
-
-
-  /*//testing comment begin - S Kim
-  $(".dropdown-menu a").click(function(){
-    console.log("pick!"+$(this).text());
-    if ( $(this).hasClass("main-menu") ) {
-      $(this).parents(".dropdown").find('.selection').text($(this).text());
-      operation=$(this).text();
-      console.log("Main-menu");
-      changeOperation(operation);
-    } else if ($(this).hasClass("add-item")) {
-      $(this).parents(".dropdown").find('.selection').text($(this).text());
-      console.log($(this).text());
-    } else if ($(this).hasClass("edit-item")) {
-      $(this).parents(".dropdown").find('.selection').text($(this).text());
-      console.log($(this).text());
-    }
-  });
-  *///testing comment end
-//});
-  // Outer layer of click event probably unnecessary
-
-
-
-
-
-
 function setCategory(){
   //Set the category to the text of the dropdown-item
   searchCategory = $(this).text();
 }
 
+
+
 // Adds member to user table in SQL database if user does not already exist;
 // Otherwise, shows error message
-
 function addMember(){
   console.log("Clicked-signup");
 
@@ -242,6 +203,8 @@ function addMember(){
     alert("Passwords do not match."); // I think this is how you do this??
   }
 }
+
+
 
 function isUsernameAvailable(results){
   console.log(results);
@@ -273,8 +236,6 @@ function isUsernameAvailable(results){
 
 
 
-
-
 //Switches to search page and displays the photos related to the user's search
 function getMatches(){
     //Hides the search page and shows the homepage
@@ -296,12 +257,16 @@ function getMatches(){
     });
 }
 
+
+
 //Empties photo gallery (again?) builds new gallery using buildGallery function
 function processResults(results) {
     console.log("Results:"+results);
-    //$('#artworkResults').empty();
+    $('#artworkResults').empty();
     $('#artworkResults').append( showPhotos( results ));
 }
+
+
 
 //Parses art data from c++. Appends all photos to photo gallery
 function showPhotos(list){
@@ -320,18 +285,22 @@ function showPhotos(list){
       console.log(listLength);
       console.log("Appending Results: \n\n");
 
-      for (var i = 7; i < listLength; i+=13){
+      for (var i = 6; i < listLength; i+=13){
         console.log(i);
     	  console.log("ArtData[i]: ");
     	  console.log(artData[i]);
 
         //Creates image
-        result += '<img class="img-fluid" src=' + artData[i] + ' height="100%">';
+        result += '<img class="img-fluid lazyload" src=' + artData[i] + ' height="100%">';
         //Creates description
-          result += '<p style="padding-top: 8px;">DESCRIPTION OF ARTWORK STILL NEEDS TO BE CREATED.</p>';
+        result += '<p style="padding-top: 8px;">Title: ' + artData[i-3] + '<br><br>Author: ' + artData[i-5] + ' ' + artData[i-4] + '<br>Location: ' + artData[i-1] + '<br>Date: ' + artData[i+5] + '<br>Technique: ' + artData[i-2] + '<br>School: ' + artData[i+3] + '<br>Type: ' + artData[i+2] + '<br>Form: ' + artData[i+1] + '</p>';
+        //Creates like button
+        result += '<button class="btn btn-warning text-center" type="button" style="margin-top: 0px;margin-bottom: 10px;">like!</button>';
+        //Creates comment field and submit button
+        result += '<form><div class="form-group"><input class="form-control" type="text" placeholder="comment here!"><button class="btn btn-light" type="button" style="margin-bottom: 70px;margin-top: 10px;">submit</button>';
+        //Adds closing tags
+        result += '</div></form></div></div></div>';
       }
-    result += '<button class="btn btn-warning text-center" type="button" style="margin-top: 0px;margin-bottom: 10px;">like!</button><form><div class="form-group"><input class="form-control" type="text" placeholder="comment here!"><button class="btn btn-light" type="button" style="margin-bottom: 70px;margin-top: 10px;">submit</button></div></form></div></div></div>';
-
     return result;
   }
 }
