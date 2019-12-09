@@ -29,10 +29,11 @@ $(document).ready(function () {
   });
 
 
-  $("#start-signup").click(function() {
-    //console.log("Tell me I am not crazy");
-    $("#submit-user-credentials").click(addMember);
-  });
+  $("#submit-user-credentials").click(addMember);
+  // $("#start-signup").click(function() {
+  //   //console.log("Tell me I am not crazy");
+  //   $("#submit-user-credentials").click(addMember);
+  // });
   $("#loginButton").click(loginMember);
 });
 
