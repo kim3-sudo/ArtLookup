@@ -182,10 +182,10 @@
                 <div class="modal-body">
                     <form method="post">
                         <h2 class="text-center"><strong>Create</strong> an account.</h2>
-                        <div class="form-group"><input class="form-control" type="username" name="username" placeholder="Username" id="signup-username"></div>
-                        <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email" id="signup-email"></div>
-                        <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" id="signup-password"></div>
-                        <div class="form-group"><input class="form-control" type="password" name="password-repeat" placeholder="Password (repeat)" id="signup-password-repeated"></div>
+                        <div class="form-group"><input class="form-control" type="username" name="username" placeholder="Username" id="signup-username" required></div>
+                        <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email" id="signup-email" required></div>
+                        <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" id="signup-password" required></div>
+                        <div class="form-group"><input class="form-control" type="password" name="password-repeat" placeholder="Password (repeat)" id="signup-password-repeated" required></div>
                         <div class="form-group"><button id="submit-user-credentials" class="btn btn-primary btn-block" type="submit">Sign Up</button></div><button class="btn btn-secondary" method="post" data-dismiss="modal">Close</button></form>
                 </div>
             </div>
@@ -196,6 +196,7 @@
     <!-- Home page view -->
     <div class="container page" id="home">
         <div data-bs-parallax-bg="true" style="height: 300px;background-image: url(&quot;assets/img/dalipainting.jpg?h=6a9a67462c06878498db8009ca8f0f9d&quot;);background-position: center;background-size: cover;width: 100%;"></div>
+<!--
         <div class="photo-gallery">
             <div class="container">
                 <div class="intro">
@@ -222,6 +223,12 @@
         </div>
         </div>
         </div>
+-->
+	<div style="background-color:lightblue">
+		<h1>Welcome to Art-stagram</h1>
+		<p>To get started, make a search query above. If you'd like, you can also search by some attribute.</p>
+		<p>Not signed up? Click <a href="#" data-toggle="modal" data-target = "#signupModal">here</a> to make a new account!</p>
+	</div>
     </div>
 
 <!-- search page view -->
@@ -314,6 +321,7 @@
 
     <script src="assets/js/dropdown.js"></script>
     <script src="../ArtApp.js"></script>
+    <script src="../lazysizes.min.js" async=""></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-animation.js?h=fd094abbd1e3dcda2e26014c818b4b4f"></script>
