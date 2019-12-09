@@ -4,29 +4,11 @@ var ajaxUser = "kim3"; //Your username for ajax calls
 
 
 $(document).ready(function () {
-  console.log("ready!");
+  //console.log("ready!");
 
   $(".dropdown-item").click(setCategory);
   // getMatches when search button is clicked
   $(".action-button").click(getMatches);
-
-  $(".dropdown-menu a").click(function(){
-    console.log("pick!"+$(this).text());
-    if ( $(this).hasClass("select-menu") ) {
-      $(this).parents(".dropdown").find('.selection').text($(this).text());
-      operation=$(this).text();
-      console.log("Main-menu");
-      changeOperation(operation);
-    }
-
-    /*else if ($(this).hasClass("add-item")) {
-    $(this).parents(".dropdown").find('.selection').text($(this).text());
-    console.log($(this).text());
-    } else if ($(this).hasClass("edit-item")) {
-    $(this).parents(".dropdown").find('.selection').text($(this).text());
-    console.log($(this).text());
-    }
-    */
   });
 
 
@@ -34,47 +16,7 @@ $(document).ready(function () {
     console.log("Tell me I am not crazy");
     $("#submit-user-credentials").click(addMember);
   });
-
-
 });
-
-
-
-  //trying to add dropdown js - again
-
-
-  /*//testing comment begin - S Kim
-  //dropdown menu
-  $('.dropdown-menu a').click(function(){
-    $('#selectedtype').text($(this).text());
-  });
-  *///testing comment end
-
-
-
-  /*//testing comment begin - S Kim
-  $(".dropdown-menu a").click(function(){
-    console.log("pick!"+$(this).text());
-    if ( $(this).hasClass("main-menu") ) {
-      $(this).parents(".dropdown").find('.selection').text($(this).text());
-      operation=$(this).text();
-      console.log("Main-menu");
-      changeOperation(operation);
-    } else if ($(this).hasClass("add-item")) {
-      $(this).parents(".dropdown").find('.selection').text($(this).text());
-      console.log($(this).text());
-    } else if ($(this).hasClass("edit-item")) {
-      $(this).parents(".dropdown").find('.selection').text($(this).text());
-      console.log($(this).text());
-    }
-  });
-  *///testing comment end
-//});
-  // Outer layer of click event probably unnecessary
-
-
-
-
 
 
 function setCategory(){
@@ -82,9 +24,10 @@ function setCategory(){
   searchCategory = $(this).text();
 }
 
+
+
 // Adds member to user table in SQL database if user does not already exist;
 // Otherwise, shows error message
-
 function addMember(){
   console.log("Clicked-signup");
 
@@ -112,6 +55,8 @@ function addMember(){
   }
 }
 
+
+
 function isUsernameAvailable(results){
   console.log(results);
 
@@ -127,8 +72,6 @@ function isUsernameAvailable(results){
     //alert("Username is not available.");
   }
 }
-
-
 
 
 
@@ -153,12 +96,16 @@ function getMatches(){
     });
 }
 
+
+
 //Empties photo gallery (again?) builds new gallery using buildGallery function
 function processResults(results) {
     console.log("Results:"+results);
     $('#artworkResults').empty();
     $('#artworkResults').append( showPhotos( results ));
 }
+
+
 
 //Parses art data from c++. Appends all photos to photo gallery
 function showPhotos(list){
@@ -193,7 +140,6 @@ function showPhotos(list){
         //Adds closing tags
         result += '</div></form></div></div></div>';
       }
-
     return result;
   }
 }
