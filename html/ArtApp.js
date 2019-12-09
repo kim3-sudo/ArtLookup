@@ -1,42 +1,22 @@
 var searchCategory;  //Category to be searched by: Title, Author ...
-<<<<<<< HEAD
 var ajaxUser = "brydon1"; //Your username for ajax calls
-=======
-
-var ajaxUser = "kim3"; //Your username for ajax calls
->>>>>>> 3f3c181275e385b59d50ddff66af1e936ae3c016
 
 $(document).ready(function () {
-<<<<<<< HEAD
   console.log("ready!");
   checkCookie();
   //document.cookie = "username=John Doe";
   //checkCookie();
-=======
-  //console.log("ready!");
->>>>>>> 3f3c181275e385b59d50ddff66af1e936ae3c016
-
   $(".dropdown-item").click(setCategory);
   // getMatches when search button is clicked
   $(".action-button").click(getMatches);
-  });
 
-
-<<<<<<< HEAD
   $("#submit-user-credentials").click(addMember);
   // $("#start-signup").click(function() {
   //   //console.log("Tell me I am not crazy");
   //   $("#submit-user-credentials").click(addMember);
   // });
   $("#loginButton").click(loginMember);
-
   $("#logout").click(logoutMember);
-=======
-  $("#start-signup").click(function() {
-    console.log("Tell me I am not crazy");
-    $("#submit-user-credentials").click(addMember);
-  });
->>>>>>> 3f3c181275e385b59d50ddff66af1e936ae3c016
 });
 
 function logoutMember() {
@@ -162,18 +142,10 @@ function checkCookie() {
   }
 }
 
-
-
-
-
-
-
 function setCategory(){
   //Set the category to the text of the dropdown-item
   searchCategory = $(this).text();
 }
-
-
 
 // Adds member to user table in SQL database if user does not already exist;
 // Otherwise, shows error message
@@ -204,15 +176,8 @@ function addMember(){
   }
 }
 
-
-
 function isUsernameAvailable(results){
   console.log(results);
-
-  // "Email\nUsername"
-  // "Email"
-  // "Username"
-
   console.log("Results: " + results);
   if (results == "Success"){
     //var node = document.createElement("DIV");
@@ -233,8 +198,6 @@ function isUsernameAvailable(results){
     //alert("Username is not available.");
   }
 }
-
-
 
 //Switches to search page and displays the photos related to the user's search
 function getMatches(){
@@ -257,16 +220,12 @@ function getMatches(){
     });
 }
 
-
-
 //Empties photo gallery (again?) builds new gallery using buildGallery function
 function processResults(results) {
     console.log("Results:"+results);
     $('#artworkResults').empty();
     $('#artworkResults').append( showPhotos( results ));
 }
-
-
 
 //Parses art data from c++. Appends all photos to photo gallery
 function showPhotos(list){
@@ -304,8 +263,6 @@ function showPhotos(list){
     return result;
   }
 }
-
-
 
 //Login Function
 //id's login-email login-password
