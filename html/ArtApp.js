@@ -112,6 +112,8 @@ function processLoginResults(results){
 
 function setCookie(cname, cvalue) {
   document.cookie = cname + "=" + cvalue + ";path=/";
+  console.log(document.cookie);
+  console.log(getCookie(cname));
 }
 
 // Maybe will not work
