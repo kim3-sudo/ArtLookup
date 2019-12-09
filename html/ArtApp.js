@@ -3,19 +3,20 @@ var searchCategory;  //Category to be searched by: Title, Author ...
 var ajaxUser = "kim3"; //Your username for ajax calls
 
 
-$(document).ready(function () {
+$(document).ready(function ()
+{
   //console.log("ready!");
 
   $(".dropdown-item").click(setCategory);
+
   // getMatches when search button is clicked
   $(".action-button").click(getMatches);
-  });
-
 
   $("#start-signup").click(function() {
     console.log("Tell me I am not crazy");
     $("#submit-user-credentials").click(addMember);
   });
+
 });
 
 
