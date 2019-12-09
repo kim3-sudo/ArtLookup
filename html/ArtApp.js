@@ -4,6 +4,8 @@ var ajaxUser = "brydon1"; //Your username for ajax calls
 $(document).ready(function () {
   console.log("ready!");
   checkCookie();
+  document.cookie = "username=John Doe";
+  checkCookie();
 
   $(".dropdown-item").click(setCategory);
   // getMatches when search button is clicked
