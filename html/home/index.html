@@ -28,6 +28,28 @@
                     <li class="nav-item" role="presentation"></li>
                     <li class="nav-item" role="presentation"></li>
                     <li class="nav-item" role="presentation"></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle selection" href="#" id="searchtype" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Select type...
+                        </a>
+                        <div class="select-menu dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="select-menu dropdown-item" role="presentation" href="#">Title</a>
+                            <a class="select-menu dropdown-item" role="presentation" href="#">Author</a>
+                            <a class="select-menu dropdown-item" role="presentation" href="#">Date</a>
+                            <a class="select-menu dropdown-item" role="presentation" href="#">Location</a>
+                            <a class="select-menu dropdown-item" role="presentation" href="#">Technique</a>
+                            <a class="select-menu dropdown-item" role="presentation" href="#">School</a>
+                        </div>
+                    </li>
+                </ul>
+
+
+<!-- Swapped my code for Ryan's
+                <ul class="nav navbar-nav">
+                    <li class="nav-item" role="presentation"></li>
+                    <li class="nav-item" role="presentation"></li>
+                    <li class="nav-item" role="presentation"></li>
+-->
                     <!--testing code
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle selection" href="#" id="searchtype" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -43,9 +65,10 @@
                       </div>
                     </li>
                     testing code-->
+
+<!-- Swapped my code for Ryan's  
                 </ul>
-
-
+-->
                 <!--tester comment begin
 
                 <li class="nav-item dropdown">
@@ -88,6 +111,8 @@
                 <!-- tester comment begin-->
                 <!-- solution was from https://stackoverflow.com/questions/33413106/show-selected-option-in-bootstrap-dropdown-list-menu -->
                 <!-- something is taking precedence over the javascript and preventing the selected item from showing correctly, but I can't figure out why... -->
+                
+<!-- Swapped my code for Ryan's
                 <div class="dropdown">
                     <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span id="selectedtype">
@@ -104,6 +129,7 @@
                         <li><a href="#">School</a></li>
                     </ul>
                 </div>
+-->
                 <!--tester comment end -->
 
 
@@ -140,10 +166,11 @@
                 <form class="form-inline ml-auto" target="_self">
                     <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" type="search" id="search-field2" name="search" placeholder="search for art" style="width: 255px;"></div>
                 </form>
-                <button class="btn btn-light action-button" type="submit" style="background-color: rgb(115,86,198);margin-right: 0.5%;margin-left: .5%;">Search</button>
-                <button id="start-signup" class="btn btn-link" type="button" style="margin-right: 0.5%;margin-left: 0.5%;"
+                <button class="btn btn-light action-button" type="submit" style="background-color: rgb(115,86,198);margin-right: 0.5%;margin-left: .5%;">Search</button> <!--MAYBE change type to button-->
+                <button id="start-signup" class="btn btn-light" type="button" style="margin-right: 0.5%;margin-left: 0.5%;"
                     data-toggle="modal" data-target="#signupModal">Sign Up</button>
-                <button id="start-login" class="btn btn-link" type="button" style="margin-right: 0.5%;margin-left: 0.5%;" data-toggle="modal" data-target="#loginModal">Log in</button></div>
+                <button id="start-login" class="btn btn-light" type="button" style="margin-right: 0.5%;margin-left: 0.5%;" data-toggle="modal" data-target="#loginModal">Log in</button>
+                <button id="logout" class="btn btn-light hide" type="button" style="margin-right: 0.5%;margin-left: 0.5%;">Log Out</button></div>
         </div>
     </nav>
     <div class="modal fade" role="dialog" tabindex="-1" id="termsModal" style="height: 300px;background-image: url(&quot;assets/img/dalipainting.jpg?h=6a9a67462c06878498db8009ca8f0f9d&quot;);background-position: center;background-size: cover;width: 100%;">
@@ -166,11 +193,23 @@
                 <div class="modal-body">
                     <p>Please input your email and password to login.</p>
                     <form method="post">
-                        <h2 class="sr-only">Login Form</h2>
-                        <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
-                        <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email" id="login-email"></div>
-                        <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" id="login-password"></div>
-                        <div class="form-group"><button id="loginButton" class="btn btn-primary btn-block" type="submit">Log In</button></div><a class="forgot" href="#">Forgot your email or password?</a></form>
+                        <div class = "default_login">
+                            <h2 class="sr-only">Login Form</h2>
+                            <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+                            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email" id="login-email"></div>
+                            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" id="login-password"></div>
+                        </div>
+
+
+                         <!-- MAYBE wrong ?? -->
+                        <div id = "invalid_login" style = "display: none">
+                             <p>There is no account with these credentials. Would you like to <a href="#start-signup">sign-up</a>?</p>
+                        </div>
+                        <div class = "default_login">
+                            <!--<div class="form-group"><button id="loginButton" class="btn btn-primary btn-block" type="submit">Log In</button></div><a class="forgot" href="#">Forgot your email or password?</a>-->
+                            <div class="form-group"><button id="loginButton" class="btn btn-primary btn-block" type="button">Log In</button></div><a class="forgot" href="#">Forgot your email or password?</a>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -182,11 +221,28 @@
                 <div class="modal-body">
                     <form method="post">
                         <h2 class="text-center"><strong>Create</strong> an account.</h2>
+
+<!-- Make sure this works without yours -->
+<!--
+                        <div class="form-group"><input class="form-control" type="username" name="username" placeholder="Username" id="signup-username"></div>
+                        <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email" id="signup-email"></div>
+                        <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" id="signup-password"></div>
+                        <div class="form-group"><input class="form-control" type="password" name="password-repeat" placeholder="Password (repeat)" id="signup-password-repeated"></div>
+-->
+                        <!--<div class="form-group"><button id="submit-user-credentials" class="btn btn-primary btn-block" type="submit">Sign Up</button>-->
+<!--
+                        <div class="form-group"><button id="submit-user-credentials" class="btn btn-primary btn-block" type="button">Sign Up</button>
+                        </div><button class="btn btn-secondary" method="post" data-dismiss="modal">Close</button></form>
+-->
+
+<!-- Someone else's code --> 
                         <div class="form-group"><input class="form-control" type="username" name="username" placeholder="Username" id="signup-username" required></div>
                         <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email" id="signup-email" required></div>
                         <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" id="signup-password" required></div>
                         <div class="form-group"><input class="form-control" type="password" name="password-repeat" placeholder="Password (repeat)" id="signup-password-repeated" required></div>
                         <div class="form-group"><button id="submit-user-credentials" class="btn btn-primary btn-block" type="submit">Sign Up</button></div><button class="btn btn-secondary" method="post" data-dismiss="modal">Close</button></form>
+<!-- Someone else's code --> 
+
                 </div>
             </div>
         </div>
@@ -233,6 +289,7 @@
 
 <!-- search page view -->
     <div class="container page" id = "search" style="display:none;">
+        <!--
         <nav class="navbar navbar-light navbar-expand-md fixed-top navigation-clean-search" style="background-color: rgb(232,232,232);">
         <div class="container"><a class="navbar-brand" href="#">Art-stagram :)</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse"
@@ -261,6 +318,7 @@
                     data-toggle="modal" data-target="#signupModal">Sign Up</button><button class="btn btn-link" type="button" style="margin-right: 0.5%;margin-left: 0.5%;" data-toggle="modal" data-target="#loginModal">Log in</button></div>
         </div>
         </nav>
+-->
 
 
 <!--
@@ -299,9 +357,6 @@
     </nav>-->
     </div>
 
-
-
-
     <div class="footer-basic">
         <footer style="">
             <ul class="list-inline">
@@ -327,5 +382,5 @@
     <script src="assets/js/bs-animation.js?h=fd094abbd1e3dcda2e26014c818b4b4f"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
   </body>
-
+<!-- -->
 </html>

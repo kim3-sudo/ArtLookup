@@ -18,6 +18,10 @@ class Query{
 	// Emails must be unique; query returns all members with 
     // email = email
 
+    string loginResults(string email,string password);
+    // Emails must be unique; query returns all members with 
+    // email = email
+
     string addUser(string username, string password, string email);
     // query to add user to database
 };
