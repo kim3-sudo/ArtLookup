@@ -1,7 +1,13 @@
 #ART_APP_TEST = ArtAppTest.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
-TEST_OBJS = ArtLookupTests.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
+<<<<<<< HEAD
+#TEST_OBJS = ArtLookupTests.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
 REAL_OBJS = ArtApp.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
+=======
+TEST_OBJS = ArtLookupTests.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
+REAL_OBJS = ArtApp.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o JSCommunicator.o
+>>>>>>> 3f3c181275e385b59d50ddff66af1e936ae3c016
 ADD_MEMBER_OBJS = AddMember.o Member.o UserManager.o ArtDBCommunicator.o Query.o
+SIGNIN_MEMBER_OBJS = SigninMember.o Member.o UserManager.o ArtDBCommunicator.o Query.o
 #SOURCE	= Artwork.cpp
 #HEADER	= Artwork.h ArtDBCommunicator.h
 #OUT	= ArtApp
@@ -9,10 +15,9 @@ CC	 = g++
 SQL_FLAGS = -lcgicc -lmysqlcppconn
 FLAGS	 = -g -c -Wall
 CFLAGS 	 = -std=c++14
-USER     = brydon1
+USER     = kim3
 
-all: ArtApp AddMember TestArtApp PutCGI PutHTML
-
+all: ArtApp AddMember SigninMember PutCGI PutHTML
 #all: ArtAppTest ArtApp AddMember TestArtApp PutCGI PutHTML
 
 #ArtAppTest: $(ART_APP_TEST)
@@ -26,14 +31,20 @@ ArtApp: $(REAL_OBJS)
 AddMember: $(ADD_MEMBER_OBJS)
 	$(CC) $(ADD_MEMBER_OBJS) -o AddMember -L/usr/local/lib $(SQL_FLAGS)
 
-TestArtApp: $(TEST_OBJS)
-	$(CC) $(TEST_OBJS) -o testArtApp -L/usr/local/lib $(SQL_FLAGS)
+SigninMember: $(SIGNIN_MEMBER_OBJS)
+	$(CC) $(SIGNIN_MEMBER_OBJS) -o SigninMember -L/usr/local/lib $(SQL_FLAGS)
+
+# TestArtApp: $(TEST_OBJS)
+# 	$(CC) $(TEST_OBJS) -o testArtApp -L/usr/local/lib $(SQL_FLAGS)
 
 ArtApp.o: ArtApp.cpp ArtLookup.h Query.h
 	$(CC) $(FLAGS) ArtApp.cpp $(CFLAGS)
 
 AddMember.o: AddMember.cpp Member.h UserManager.h
 	$(CC) $(FLAGS) AddMember.cpp $(CFLAGS)
+
+SigninMember.o: SigninMember.cpp UserManager.h
+	$(CC) $(FLAGS) SigninMember.cpp $(CFLAGS)
 
 ArtLookupTests.o: ArtLookupTests.cpp ArtLookup.h
 	$(CC) $(FLAGS) ArtLookupTests.cpp $(CFLAGS)
@@ -59,11 +70,13 @@ UserManager.o: UserManager.cpp UserManager.h Query.h ArtDBCommunicator.h Member.
 JSCommunicator.o: JSCommunicator.cpp JSCommunicator.h Artwork.h
 	$(CC) $(FLAGS) JSCommunicator.cpp $(CFLAGS)
 
-PutCGI: ArtApp AddMember
+PutCGI: ArtApp AddMember SigninMember SigninMember
 	chmod 757 ArtApp
 	chmod 757 AddMember
+	chmod 757 SigninMember
 	cp ArtApp /usr/lib/cgi-bin/$(USER)_artAppSearch.cgi
 	cp AddMember /usr/lib/cgi-bin/$(USER)_artAppAddMember.cgi
+	cp SigninMember /usr/lib/cgi-bin/$(USER)_artAppSigninMember.cgi
 
 	echo "Current contents of your cgi-bin directory: "
 	ls -l /usr/lib/cgi-bin/
@@ -75,5 +88,5 @@ PutHTML:
 	ls -l /var/www/html/class/softdev/$(USER)/ArtApp
 
 clean:
-	rm -f ArtApp AddMember TestArtApp $(OUT)
+	rm -f ArtApp AddMember SigninMember $(OUT)
 #	rm -f ArtAppTest ArtApp AddMember TestArtApp $(OUT)

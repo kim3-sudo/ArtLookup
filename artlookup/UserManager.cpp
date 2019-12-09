@@ -18,6 +18,27 @@ void UserManager::addMember(Member member){
 	sqlStatement->execute(command);
 }
 
+// TEST!!
+// Can only call if user exists!
+Member UserManager::getLoginMember(string email, string password){
+	std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
+	std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
+	Query query;
+	string loginResultsCommand = query.loginResults(email,password);
+	sqlStatement->execute(loginResultsCommand);
+	std::unique_ptr<sql::ResultSet> loginMatches;
+	loginMatches.reset(sqlStatement->getResultSet());
+	Member *member;
+	string username("Dummy");
+	while (loginMatches->next()){
+		// This loop should only run once
+		username = loginMatches -> getString(userColNames[1]);
+	}
+	// MUST get username from SQL results
+	member = new Member(username, password, email);
+	return *member;
+}
+
 bool UserManager::isUsernameTaken(string username){
 	std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
 	std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
@@ -39,11 +60,15 @@ bool UserManager::isUsernameTaken(string username){
 // Returns true if username taken; false otherwise
 
 bool UserManager::isEmailTaken(string email){
+	// Establish connection and create SQL statement
 	std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
 	std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
-	Query query; // Create query object
+	// Create query object and obtain appropriate SQL command
+	Query query; 
 	string findEmailCommand = query.findUserEmail(email);
+	// Execute command
 	sqlStatement->execute(findEmailCommand);
+	// Get resultset
 	std::unique_ptr<sql::ResultSet> emailMatches; // Create ResultSet objects
 	emailMatches.reset(sqlStatement->getResultSet());
 	int count(0);
@@ -57,6 +82,52 @@ bool UserManager::isEmailTaken(string email){
     }
 }
 // Returns true if email taken; false otherwise
+
+
+// TEST ME!!!
+bool UserManager::canLogin(string email, string password){
+	std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
+	std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
+
+	Query query; // Create query object
+	string loginResultsCommand = query.loginResults(email,password);
+	//string numUsersCommand = query.numUserLoginInfo(email,password);
+	sqlStatement->execute(loginResultsCommand);
+	std::unique_ptr<sql::ResultSet> loginMatches;
+	loginMatches.reset(sqlStatement->getResultSet());
+	int count(0);
+	while (loginMatches->next()){
+		count++;
+    }
+    if (count == 0){
+    	return false;
+    } else {
+    	return true;
+    }
+
+	// loginMatches -> next(); // MAYBE wrong
+	// //int numUsers = loginMatches->getInt("Count(*)");
+
+	// // What about more than one??
+	// if (numUsers == 1){
+	// 	return true;
+	// } else {
+	// 	return false;
+	// }
+
+	// while (emailMatches->next()){
+	// 	cout << 
+	// }
+
+	// The SQL statement returns a number; how do I obtain that number?
+}
+
+
+
+
+
+
+
 
 
 
