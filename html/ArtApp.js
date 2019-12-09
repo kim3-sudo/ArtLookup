@@ -72,9 +72,15 @@ function processLoginResults(results){
     $("#invalid_login").hide();
     $("#start-signup").hide();
     $("#start-login").hide();
-    // FINISH COOKIE STUFF
+    $("#logout").show();
     document.cookie = "username=" + results + ";";
-    //document.cookie = "username = John Doe;";
+    // CLOSE MODAL 
+    document.getElementById("loginModal").setAttribute("style", "display: none"); 
+    //document.getElementById("loginModal").setAttribute("style", "display: block");
+    //document.getElementById("loginModal").setAttribute("class", "modal fade show");
+    
+    // still need to close login modal
+    // create log out button 
 
     // Add log out button
     // DO SOMETHING TO MAKE LOGIN KNOWN
@@ -219,14 +225,13 @@ function isUsernameAvailable(results){
 
   console.log("Results: " + results);
   if (results == "Success"){
-    var node = document.createElement("DIV");
-    var textNode = document.createTextNode("Water"); 
+    //var node = document.createElement("DIV");
+    //var textNode = document.createTextNode("Water"); 
     console.log("Signup successful");
     // CLOSE MODAL 
     document.getElementById("signupModal").setAttribute("style", "display: none"); 
     document.getElementById("loginModal").setAttribute("style", "display: block");
     document.getElementById("loginModal").setAttribute("class", "modal fade show");
-    // Not sure if this will work???
 
     //document.getElementsByTagName("body").write('<div class = "modal-backdrop fade show"></div>');
     //document.getElementsByTagName("body").setAttribute("class", "modal-open");
