@@ -153,6 +153,7 @@ function checkCookie() {
     console.log("Someone logged in");
   } else {
     // Show normal homepage
+    $("#logout").hide();
     console.log("Default page");
 
 
