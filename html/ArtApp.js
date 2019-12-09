@@ -4,8 +4,8 @@ var ajaxUser = "brydon1"; //Your username for ajax calls
 $(document).ready(function () {
   console.log("ready!");
   checkCookie();
-  document.cookie = "username=John Doe";
-  checkCookie();
+  //document.cookie = "username=John Doe";
+  //checkCookie();
 
   $(".dropdown-item").click(setCategory);
   // getMatches when search button is clicked
@@ -46,7 +46,8 @@ function logoutMember() {
   $("#start-signup").show();
   $("#start-login").show();
   $("#logout").hide();
-  setCookie("username","Sam"); // initialize cookie
+  document.cookie = "username=";
+  //setCookie("username","Sam"); // initialize cookie
   console.log(getCookie("username"));
   console.log("Logged out!");
 }
@@ -112,16 +113,16 @@ function processLoginResults(results){
   }
 }
 
-function setCookie(cname, cvalue) {
-  document.cookie = cname + "=" + cvalue + ";path=/";
-  console.log(document.cookie);
-  console.log(getCookie(cname));
-}
+// function setCookie(cname, cvalue) {
+//   document.cookie = cname + "=" + cvalue + ";path=/";
+//   console.log(document.cookie);
+//   console.log(getCookie(cname));
+// }
 
 // Maybe will not work
-function addCookie(cname, cvalue) {
-  document.cookie = document.cookie + ";" + cname + "=" + cvalue + ";path=/";
-}
+// function addCookie(cname, cvalue) {
+//   document.cookie = document.cookie + ";" + cname + "=" + cvalue + ";path=/";
+// }
 
 function getCookie(cname) {
   var name = cname + "=";
