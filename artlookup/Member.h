@@ -10,9 +10,9 @@ class Member{
     Member();
     //Member(string memberId, string username, string password, string email);
     Member(string username, string password, string email);
-    Member(Member otherMember);
+    Member(const Member& otherMember);
     // Copy Constructor
-    
+
     string getUsername();
     string getPassword();
     string getEmail();
