@@ -3,6 +3,7 @@ var ajaxUser = "brydon1"; //Your username for ajax calls
 
 $(document).ready(function () {
   console.log("ready!");
+  checkCookie();
 
   $(".dropdown-item").click(setCategory);
   // getMatches when search button is clicked
@@ -83,6 +84,49 @@ function processLoginResults(results){
   } else {
   console.log(document.cookie);
   console.log("is logged in!");
+  }
+}
+
+function setCookie(cname, cvalue) {
+  document.cookie = cname + "=" + cvalue + ";path=/";
+}
+
+// Maybe will not work
+function addCookie(cname, cvalue) {
+  document.cookie = document.cookie + ";" + cname + "=" + cvalue + ";path=/";
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for (var i=0; i<ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function checkCookie() {
+  console.log("Checking cookie!");
+  var username = getCookie("username");
+  if (username != "") {
+    // Someone is logged in
+    console.log("Someone logged in");
+  } else {
+    // Show normal homepage
+    console.log("Default page");
+
+
+    // username = prompt("Please enter your name:", "");
+    // if (username != "" && username != null) {
+    //   setCookie("username", username, 365);
+    // }
   }
 }
 
