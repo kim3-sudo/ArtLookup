@@ -9,7 +9,12 @@ $(document).ready(function () {
   // getMatches when search button is clicked
   $(".action-button").click(getSearchMatches);
   // when submit-user-cred button clicked, addMember
-  $("#submit-user-credentials").click(addMember);
+  $("#start-signup").click(function () {
+    $("#signup-message").hide();
+    $("#submit-user-credentials").click(addMember);
+  });
+
+  // Do something similar to start-signup
   $("#loginButton").click(loginMember);
   $("#logout").click(logoutMember);
 });
@@ -89,6 +94,7 @@ function showPhotos(list){
 // Otherwise, shows error message
 function addMember(){
   console.log("Clicked-signup");
+  $("#signup-message").hide();
 
   username = $('#signup-username').val();
   console.log(username);
@@ -101,32 +107,43 @@ function addMember(){
 
   if (password1 === password2) { // strict equality with ===
     console.log("Sending info to server");
+    $("#signup-message").hide();
     $.ajax({
       url: '/cgi-bin/'+ajaxUser+'_artAppAddMember.cgi?userName='+username+'&email='+email+'&password='+password1,
       dataType: 'text',
-      success: isUsernameAvailable, // cgi should return character T if username not taken; F otherwise
+      success: isUsernameEmailAvailable, // cgi should return character T if username not taken; F otherwise
       error: function(){alert("Error: Something went wrong");}
     });
 
   } else {
     console.log("Passwords do not match");
-    alert("Passwords do not match.");
+    $("#signup-message").text("These passwords do not match.");
+    $("#signup-message").show();
+    //alert("Passwords do not match.");
   }
 }
 
-function isUsernameAvailable(results){
+function isUsernameEmailAvailable(results){
   console.log(results);
   console.log("Results: " + results);
   if (results == "Success"){
-    //var node = document.createElement("DIV");
-    //var textNode = document.createTextNode("Water");
+    $("#signup-message").hide();
     console.log("Signup successful");
     // Close modal
     document.getElementById("signupModal").setAttribute("style", "display: none");
     document.getElementById("loginModal").setAttribute("style", "display: block");
     document.getElementById("loginModal").setAttribute("class", "modal fade show");
+  } else if (results == "Email"){
+    console.log("Email taken.");
+    // Maybe we could have a message div in the signup/login modal
+    // The message changes depending on the situation
+    $("#signup-message").text("You cannot make an account with this email address because it is taken.");
+    $("#signup-message").show();
+    //alert("Email in use.");
   } else {
-    console.log("Signup failure.");
+    console.log("Username taken.");
+    $("#signup-message").text("You cannot make an account with this username because it is taken.");
+    $("#signup-message").show();
   }
 }
 
