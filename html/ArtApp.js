@@ -1,6 +1,8 @@
 var searchCategory;  //Category to be searched by: Title, Author ...
 var ajaxUser = "brydon1"; //Your username for ajax calls
 
+// Small change
+
 $(document).ready(function () {
   console.log("ready!");
   checkCookie();
