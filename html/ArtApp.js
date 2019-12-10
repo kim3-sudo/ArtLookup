@@ -1,5 +1,5 @@
 var searchCategory;  //Category to be searched by: Title, Author ...
-var ajaxUser = "brydon1"; //Your username for ajax calls
+var ajaxUser = "schultz4"; //Your username for ajax calls
 
 $(document).ready(function () {
   console.log("ready!");
@@ -197,7 +197,7 @@ function getCookie(cname) {
   return "";
 }
 
-// 
+//
 function checkCookie() {
   console.log("Checking cookie!");
   var username = getCookie("username");
