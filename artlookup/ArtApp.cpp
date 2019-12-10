@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 
-
 // Stuff for Ajax
 #include "cgicc/Cgicc.h"
 #include "cgicc/HTTPHTMLHeader.h"
