@@ -230,12 +230,17 @@ function logoutMember() {
 
 // Like photo
 function likePhoto() {
-  var artId = $(this).attr('ID');
-  
-  $.ajax({
-    url: '/cgi-bin/'+ajaxUser+'_artAppLikePhoto.cgi?artId=' + artId,
-    dataType: 'text',
-    success: displayLikes,
-    error: function(){alert("Error: Could not like photo");}
-  });
+  var username = getCookie("username");
+  if (username != "") {
+    alert("Please login to be able to like artwork.");
+  } else {
+    var artId = $(this).attr('ID');
+
+    $.ajax({
+      url: '/cgi-bin/'+ajaxUser+'_artAppLikePhoto.cgi?artId=' + artId,
+      dataType: 'text',
+      success: displayLikes,
+      error: function(){alert("Error: Could not like photo");}
+    });
+  }
 }
