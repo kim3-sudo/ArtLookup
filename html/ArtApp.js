@@ -12,6 +12,7 @@ $(document).ready(function () {
   $("#submit-user-credentials").click(addMember);
   $("#loginButton").click(loginMember);
   $("#logout").click(logoutMember);
+  $(".btn btn-warning text-center").click(likePhoto)
 });
 
 function setCategory(){
@@ -227,8 +228,14 @@ function logoutMember() {
   console.log("Logged out!");
 }
 
-//Login Function
-//id's login-email login-password
-
-//Signup Function
-//id's signup-email signup-password signup-password-repeated
+// Like photo
+function likePhoto() {
+  var artId = $(this).attr('ID');
+  
+  $.ajax({
+    url: '/cgi-bin/'+ajaxUser+'_artAppLikePhoto.cgi?artId=' + artId,
+    dataType: 'text',
+    success: displayLikes,
+    error: function(){alert("Error: Could not like photo");}
+  });
+}
