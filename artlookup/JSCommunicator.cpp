@@ -22,3 +22,7 @@ string JSCommunicator::getElement(string element, Cgicc &cgi){
 
   return returnElement;
 }
+
+string sendStringToJS(string stringForJS);{
+  cout << stringForJS;
+}
