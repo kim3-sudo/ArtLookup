@@ -239,8 +239,12 @@ function likePhoto() {
     $.ajax({
       url: '/cgi-bin/'+ajaxUser+'_artAppLikePhoto.cgi?artId=' + artId,
       dataType: 'text',
-      success: displayLikes,
+      success: displayNumLikes,
       error: function(){alert("Error: Could not like photo");}
     });
   }
+}
+
+function displayNumLikes(results) {
+  $(this).text() = results;
 }
