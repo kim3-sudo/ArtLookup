@@ -1,9 +1,15 @@
 var searchCategory;  //Category to be searched by: Title, Author ...
 var ajaxUser = "brydon1"; //Your username for ajax calls
 
+// TO-DO:
+// Change name of checkCookie()
+
+
+
+
 $(document).ready(function () {
   console.log("ready!");
-  checkCookie();
+  checkCookie(); // MAYBE change function name
   // When category chosen from dropdown, setCategory
   $(".dropdown-item").click(setCategory);
   // getMatches when search button is clicked
@@ -95,12 +101,13 @@ function addMember(){
   $("#signup-message").hide();
 
   username = $('#signup-username').val();
-  console.log(username);
   email = $('#signup-email').val();
-  console.log(email);
   password1 = $('#signup-password').val();
-  console.log(password1);
   password2 = $('#signup-password-repeated').val();
+
+  console.log(username);
+  console.log(email);
+  console.log(password1);
   console.log(password2);
 
   if (password1 === password2) { // strict equality with ===
@@ -121,36 +128,62 @@ function addMember(){
   }
 }
 
+// TEST ME!!
 function isUsernameEmailAvailable(results){
   console.log(results);
   console.log("Results: " + results);
-  if (results == "Success"){
+  var parsedResults = results.split(';'); // Hopefully works
+
+  if (parsedResults.length == 0){
     $("#signup-message").hide();
     console.log("Signup successful");
     // Close modal
     document.getElementById("signupModal").setAttribute("style", "display: none");
     document.getElementById("loginModal").setAttribute("style", "display: block");
     document.getElementById("loginModal").setAttribute("class", "modal fade show");
-  } else if (results == "Email"){
-    console.log("Email taken.");
+  } else if (parsedResults.length == 1) {
+    console.log(parsedResults[0] + " taken."); // Check index
+    console.log("taken."); // Maybe delete??
     // Maybe we could have a message div in the signup/login modal
     // The message changes depending on the situation
-    $("#signup-message").text("You cannot make an account with this email address because it is taken.");
+    $("#signup-message").text("You cannot make an account with this " + parsedResults[0] + " because it is taken.");
     $("#signup-message").show();
     //alert("Email in use.");
   } else {
-    console.log("Username taken.");
-    $("#signup-message").text("You cannot make an account with this username because it is taken.");
+    console.log("Email and username taken.");
+    $("#signup-message").text("You cannot make an account with this username or email because they are taken.");
     $("#signup-message").show();
   }
+
+  // if (results == "Success"){
+  //   $("#signup-message").hide();
+  //   console.log("Signup successful");
+  //   // Close modal
+  //   document.getElementById("signupModal").setAttribute("style", "display: none");
+  //   document.getElementById("loginModal").setAttribute("style", "display: block");
+  //   document.getElementById("loginModal").setAttribute("class", "modal fade show");
+  // } else if (results == "Email"){
+  //   console.log("Email taken.");
+  //   // Maybe we could have a message div in the signup/login modal
+  //   // The message changes depending on the situation
+  //   $("#signup-message").text("You cannot make an account with this email address because it is taken.");
+  //   $("#signup-message").show();
+  //   //alert("Email in use.");
+  // } else {
+  //   console.log("Username taken.");
+  //   $("#signup-message").text("You cannot make an account with this username because it is taken.");
+  //   $("#signup-message").show();
+  // }
 }
 
 // Login member
 function loginMember(){
   console.log("Clicked Log In");
+
   email = $('#login-email').val();
-  console.log(email);
   password = $('#login-password').val();
+
+  console.log(email);
   console.log(password);
 
   if (email == "" || password == ""){
@@ -180,7 +213,9 @@ function processLoginResults(results){
     $("#start-signup").hide();
     $("#start-login").hide();
     $("#logout").show();
-    document.cookie = "username=" + results + ";";
+
+    //document.cookie = "username=" + results + ";";
+    document.cookie = results; // Maybe this will work?
 
     // Close login modal
     document.getElementById("loginModal").setAttribute("style", "display: none");
@@ -190,7 +225,9 @@ function processLoginResults(results){
   if (document.cookie == "username="){
     console.log("No one logged in.");
   } else {
+  console.log(getCookie("memberId"));
   console.log(getCookie("username"));
+  console.log(getCookie("username") + " is logged in!");
   console.log("is logged in!");
   }
 }
@@ -212,7 +249,7 @@ function getCookie(cname) {
   return "";
 }
 
-// 
+// Maybe refactor/rename
 function checkCookie() {
   console.log("Checking cookie!");
   var username = getCookie("username");
@@ -242,13 +279,11 @@ function logoutMember() {
   console.log("Logged out!");
 }
 
-
-// FINISH ME!!!!!!!!!!!!
 function commentPhoto() {
   var username = getCookie("username");
   var artId;
   var comment;
-  if (username != "") {
+  if (username == "") {
     alert("Please login to be able to comment on artwork.");
   } else {
     artId = $(this).attr('ID');
@@ -256,19 +291,33 @@ function commentPhoto() {
     console.log(comment);
 
     $.ajax({
-      url: '/cgi-bin/'+ajaxUser+'_artAppCommentPhoto.cgi?artId=' + artId + '&comment=' + comment,
+      url: '/cgi-bin/'+ajaxUser+'_artAppCommentPhoto.cgi?artId=' + artId + '&comment=' + comment + '&username=' + username,
       dataType: 'text',
       success: displayLikes,
+      error: function(){alert("Error: Could not comment on photo");}
+    });
+  }
+}
+
+// Like photo
+function likePhoto() {
+  var username = getCookie("username");
+  if (username != "") {
+    alert("Please login to be able to like artwork.");
+  } else {
+    var artId = $(this).attr('ID');
+
+    $.ajax({
+      url: '/cgi-bin/'+ajaxUser+'_artAppLikePhoto.cgi?artId=' + artId,
+      dataType: 'text',
+      success: displayNumLikes,
       error: function(){alert("Error: Could not like photo");}
     });
   }
 }
 
+// What is this function supposed to do???
+function displayNumLikes(results) {
+  $(this).text() = results;
+}
 
-
-
-//Login Function
-//id's login-email login-password
-
-//Signup Function
-//id's signup-email signup-password signup-password-repeated

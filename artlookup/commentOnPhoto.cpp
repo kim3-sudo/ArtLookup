@@ -18,19 +18,12 @@ int main(){
   Cgicc cgi; // Ajax object
   JSCommunicator jSCommunicator;
   // Ajax objects receive info from web page
-  string artId = jSCommunicator.getElement("artId",cgi), comment = jSCommunicator.getElement("comment",cgi), username = jSCommunicator.getElement("username",cgi);
+  string artId = jSCommunicator.getElement("artId",cgi), comment = jSCommunicator.getElement("comment",cgi), username = jSCommunicator.getElement("username",cgi), memberId = jSCommunicator.getElement("memberId",cgi);
   Query query;
-  // Creates query to search for the artId value in the artId column
-  
+  string addCommentQuery = query.addComment(artId, "artwork", comment, memberId);
 
 
-// FINISH ME!!!!!!!!!!!!!
-// Note: change cookie to spit out user id instead of name
-  //string artIdQuery = query.comment(artId, );
-
-
-
-  matchSingleCol(artId, "artId");
+  // TO-DO: Create comment manager??
 
 
 
@@ -39,18 +32,17 @@ int main(){
 
 
 
+  // ArtLookup artlookup;
+  // // Looks for artwork that match the artId given by the javascript
+  // vector<Artwork> likedArtworks = artlookup.lookupSingleCommand(artIdQuery);
+  // Artwork likedArtwork = likedArtworks.at(0);
 
-  ArtLookup artlookup;
-  // Looks for artwork that match the artId given by the javascript
-  vector<Artwork> likedArtworks = artlookup.lookupSingleCommand(artIdQuery);
-  Artwork likedArtwork = likedArtworks.at(0);
+  // // Likes artwork and gets the new number of likes.
+  // likedArtwork.incrementLikes();
+  // int numLikes = likedArtwork.getNumLikes();
+  // string updatedLikes = to_string(numLikes);
 
-  // Likes artwork and gets the new number of likes.
-  likedArtwork.incrementLikes();
-  int numLikes = likedArtwork.getNumLikes();
-  string updatedLikes = to_string(numLikes);
-
-  // Sends the new number of likes to javascript.
-  jSCommunicator.sendStringToJS(updatedLikes);
+  // // Sends the new number of likes to javascript.
+  // jSCommunicator.sendStringToJS(updatedLikes);
   return 0;
 }
