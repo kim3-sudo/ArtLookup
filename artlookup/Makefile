@@ -64,7 +64,7 @@ UserManager.o: UserManager.cpp UserManager.h Query.h ArtDBCommunicator.h Member.
 JSCommunicator.o: JSCommunicator.cpp JSCommunicator.h Artwork.h
 	$(CC) $(FLAGS) JSCommunicator.cpp $(CFLAGS)
 
-PutCGI: ArtApp AddMember SigninMember SigninMember
+PutCGI: ArtApp AddMember SigninMember
 	chmod 757 ArtApp
 	chmod 757 AddMember
 	chmod 757 SigninMember
