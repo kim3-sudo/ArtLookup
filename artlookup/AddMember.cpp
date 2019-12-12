@@ -1,5 +1,6 @@
 #include "Member.h"
 #include "UserManager.h"
+#include "JSCommunicator.h"
 #include <iostream>
 
 #include <string> //so that it's not a cstring
