@@ -1,7 +1,7 @@
-var searchCategory;  //Category to be searched by: Title, Author ...
+var searchCategory; //Category to be searched by: Title, Author ...
 var ajaxUser = "brydon1"; //Your username for ajax calls
 
-$(document).ready(function () {
+$(document).ready(function() {
   console.log("ready!");
   checkCookie();
   // When category chosen from dropdown, setCategory
@@ -9,7 +9,7 @@ $(document).ready(function () {
   // getMatches when search button is clicked
   $(".action-button").click(getSearchMatches);
   // when submit-user-cred button clicked, addMember
-  $("#start-signup").click(function () {
+  $("#start-signup").click(function() {
     $("#signup-message").hide();
     $("#submit-user-credentials").click(addMember);
   });
@@ -19,42 +19,44 @@ $(document).ready(function () {
   $("#logout").click(logoutMember);
 });
 
-function setCategory(){
+function setCategory() {
   //Set the category to the text of the dropdown-item
   searchCategory = $(this).text();
   $("#searchtype").text(searchCategory);
 }
 
 //Switches to search page and displays the photos related to the user's search
-function getSearchMatches(){
-    //Hides the search page and shows the homepage
-    var searchTerm = $('#search-field2').val();
-    $('#home').hide();
-    console.log("hide the homepage");
-    $('#search').show();
-    console.log("Show seach page");
+function getSearchMatches() {
+  //Hides the search page and shows the homepage
+  var searchTerm = $('#search-field2').val();
+  $('#home').hide();
+  console.log("hide the homepage");
+  $('#search').show();
+  console.log("Show seach page");
 
-    console.log("Search Term: " + searchTerm);
-    console.log("Search Category: " + searchCategory)
+  console.log("Search Term: " + searchTerm);
+  console.log("Search Category: " + searchCategory)
 
-    //Sends search term and category to C++ then calls processResults
-    $.ajax({
-      url: '/cgi-bin/'+ajaxUser+'_artAppSearch.cgi?searchVal='+searchTerm+'&searchCategory='+searchCategory,
-      dataType: 'text',
-      success: processSearchResults,
-      error: function(){alert("Error: Could not search");}
-    });
+  //Sends search term and category to C++ then calls processResults
+  $.ajax({
+    url: '/cgi-bin/' + ajaxUser + '_artAppSearch.cgi?searchVal=' + searchTerm + '&searchCategory=' + searchCategory,
+    dataType: 'text',
+    success: processSearchResults,
+    error: function() {
+      alert("Error: Could not search");
+    }
+  });
 }
 
 //Empties photo gallery (again?) builds new gallery using buildGallery function
 function processSearchResults(results) {
-    console.log("Results:"+results);
-    $('#artworkResults').empty();
-    $('#artworkResults').append(showPhotos(results));
+  console.log("Results:" + results);
+  $('#artworkResults').empty();
+  $('#artworkResults').append(showPhotos(results));
 }
 
 //Parses art data from c++. Appends all photos to photo gallery
-function showPhotos(list){
+function showPhotos(list) {
   var artData = list.split("*");
 
   //If there is nothing from c++ return "Internal Error"
@@ -62,36 +64,36 @@ function showPhotos(list){
     return "<h3>Internal Error</h3>";
   } else {
 
-      var result = '<div class="row" style="padding-top: 70px;"><div class="col d-flex float-none"><div class="border rounded border-dark" style="width: 100%;">';
+    var result = '<div class="row" style="padding-top: 70px;"><div class="col d-flex float-none"><div class="border rounded border-dark" style="width: 100%;">';
 
-      var listLength = artData.length;
-      console.log("Length of artData List: ");
-      console.log(listLength);
-      console.log("Appending Results: \n\n");
+    var listLength = artData.length;
+    console.log("Length of artData List: ");
+    console.log(listLength);
+    console.log("Appending Results: \n\n");
 
-      for (var i = 6; i < listLength; i+=13){
-        console.log(i);
-        console.log("ArtData[i]: ");
-        console.log(artData[i]);
+    for (var i = 6; i < listLength; i += 13) {
+      console.log(i);
+      console.log("ArtData[i]: ");
+      console.log(artData[i]);
 
-        //Creates image
-        result += '<img class="img-fluid lazyload" src=' + artData[i] + ' height="100%" align="left" style = "padding-top: 20px; padding-right: 10px">';
-        //Creates description
-        result += '<p style="padding-top: 20px;">Title: ' + artData[i-3] + '<br><br>Author: ' + artData[i-5] + ' ' + artData[i-4] + '<br>Location: ' + artData[i-1] + '<br>Date: ' + artData[i+5] + '<br>Technique: ' + artData[i-2] + '<br>School: ' + artData[i+3] + '<br>Type: ' + artData[i+2] + '<br>Form: ' + artData[i+1] + '</p>';
-        //Creates like button
-        result += '<button class="btn btn-warning text-center likeClass" type="button" style="margin-top: 0px;margin-bottom: 10px;">like!</button>';
-        //Creates comment field and submit button
-        result += '<form><div class="form-group"><input class="form-control commentClass" style="padding-top: 10px" type="text" placeholder="comment here!"><button class="btn btn-outline-secondary" type="button" style="margin-bottom: 70px;margin-top: 10px;">submit</button>';
-        //Adds closing tags
-        result += '</div></form></div></div></div>';
-      }
+      //Creates image
+      result += '<img class="img-fluid lazyload" src=' + artData[i] + ' height="100%" align="left" style = "padding-top: 20px; padding-right: 10px">';
+      //Creates description
+      result += '<p style="padding-top: 20px;">Title: ' + artData[i - 3] + '<br><br>Author: ' + artData[i - 5] + ' ' + artData[i - 4] + '<br>Location: ' + artData[i - 1] + '<br>Date: ' + artData[i + 5] + '<br>Technique: ' + artData[i - 2] + '<br>School: ' + artData[i + 3] + '<br>Type: ' + artData[i + 2] + '<br>Form: ' + artData[i + 1] + '</p>';
+      //Creates like button
+      result += '<button class="btn btn-warning text-center likeClass" type="button" style="margin-top: 0px;margin-bottom: 10px;">like!</button>';
+      //Creates comment field and submit button
+      result += '<form><div class="form-group"><input class="form-control commentClass" style="padding-top: 10px" type="text" placeholder="comment here!"><button class="btn btn-outline-secondary" type="button" style="margin-bottom: 70px;margin-top: 10px;">submit</button>';
+      //Adds closing tags
+      result += '</div></form></div></div></div>';
+    }
     return result;
   }
 }
 
 // Adds member to user table in SQL database if user does not already exist;
 // Otherwise, shows error message
-function addMember(){
+function addMember() {
   console.log("Clicked-signup");
   $("#signup-message").hide();
 
@@ -108,10 +110,12 @@ function addMember(){
     console.log("Sending info to server");
     $("#signup-message").hide();
     $.ajax({
-      url: '/cgi-bin/'+ajaxUser+'_artAppAddMember.cgi?userName='+username+'&email='+email+'&password='+password1,
+      url: '/cgi-bin/' + ajaxUser + '_artAppAddMember.cgi?userName=' + username + '&email=' + email + '&password=' + password1,
       dataType: 'text',
       success: isUsernameEmailAvailable, // cgi should return character T if username not taken; F otherwise
-      error: function(){alert("Error: Something went wrong");}
+      error: function() {
+        alert("Error: Something went wrong");
+      }
     });
 
   } else {
@@ -122,17 +126,17 @@ function addMember(){
   }
 }
 
-function isUsernameEmailAvailable(results){
+function isUsernameEmailAvailable(results) {
   console.log(results);
   console.log("Results: " + results);
-  if (results == "Success"){
+  if (results == "Success") {
     $("#signup-message").hide();
     console.log("Signup successful");
     // Close modal
     document.getElementById("signupModal").setAttribute("style", "display: none");
     document.getElementById("loginModal").setAttribute("style", "display: block");
     document.getElementById("loginModal").setAttribute("class", "modal fade show");
-  } else if (results == "Email"){
+  } else if (results == "Email") {
     console.log("Email taken.");
     // Maybe we could have a message div in the signup/login modal
     // The message changes depending on the situation
@@ -147,31 +151,33 @@ function isUsernameEmailAvailable(results){
 }
 
 // Login member
-function loginMember(){
+function loginMember() {
   console.log("Clicked Log In");
   email = $('#login-email').val();
   console.log(email);
   password = $('#login-password').val();
   console.log(password);
 
-  if (email == "" || password == ""){
+  if (email == "" || password == "") {
     alert("Invalid entry.");
   } else {
     console.log("Sending info to server");
     $.ajax({
-      url: '/cgi-bin/'+ajaxUser+'_artAppSigninMember.cgi?email='+email+'&password='+password,
+      url: '/cgi-bin/' + ajaxUser + '_artAppSigninMember.cgi?email=' + email + '&password=' + password,
       dataType: 'text',
       success: processLoginResults,
-      error: function(){alert("Error: Something went wrong");}
+      error: function() {
+        alert("Error: Something went wrong");
+      }
     });
   }
 }
 
 // Process login results
-function processLoginResults(results){
+function processLoginResults(results) {
   console.log("Result: ");
   console.log(results);
-  if (results == ""){
+  if (results == "") {
     console.log("Login unsuccessful :(");
     document.cookie = "username=";
     $("#invalid_login").show();
@@ -188,11 +194,11 @@ function processLoginResults(results){
     document.getElementById("loginModal").setAttribute("class", "modal fade hide");
     $(".modal-backdrop").hide();
   }
-  if (document.cookie == "username="){
+  if (document.cookie == "username=") {
     console.log("No one logged in.");
   } else {
-  console.log(getCookie("username"));
-  console.log("is logged in!");
+    console.log(getCookie("username"));
+    console.log("is logged in!");
   }
 }
 
@@ -201,7 +207,7 @@ function getCookie(cname) {
   var name = cname + "=";
   var decodedCookie = decodeURIComponent(document.cookie);
   var ca = decodedCookie.split(';');
-  for (var i=0; i<ca.length; i++) {
+  for (var i = 0; i < ca.length; i++) {
     var c = ca[i];
     while (c.charAt(0) == ' ') {
       c = c.substring(1);
