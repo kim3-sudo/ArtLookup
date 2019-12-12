@@ -2,6 +2,7 @@ TEST_OBJS = ArtLookupTests.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
 REAL_OBJS = ArtApp.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o JSCommunicator.o
 ADD_MEMBER_OBJS = AddMember.o Member.o UserManager.o ArtDBCommunicator.o Query.o
 SIGNIN_MEMBER_OBJS = SigninMember.o Member.o UserManager.o ArtDBCommunicator.o Query.o
+LIKE_PHOTO_OBJS = LikePhoto.o ArtLookup.o JSCommunicator.o Query.o Artwork.o
 #SOURCE	= Artwork.cpp
 #HEADER	= Artwork.h ArtDBCommunicator.h
 #OUT	= ArtApp
@@ -28,10 +29,13 @@ AddMember: $(ADD_MEMBER_OBJS)
 SigninMember: $(SIGNIN_MEMBER_OBJS)
 	$(CC) $(SIGNIN_MEMBER_OBJS) -o SigninMember -L/usr/local/lib $(SQL_FLAGS)
 
+LikePhoto: $(LIKE_PHOTO_OBJS)
+	$(CC) $(LIKE_PHOTO_OBJS) -o LikePhoto -L/usr/local/lib $(SQL_FLAGS)
+
 # TestArtApp: $(TEST_OBJS)
 # 	$(CC) $(TEST_OBJS) -o testArtApp -L/usr/local/lib $(SQL_FLAGS)
 
-ArtApp.o: ArtApp.cpp ArtLookup.h Query.h
+ArtApp.o: ArtApp.cpp ArtLookup.h JSCommunicator.h Query.h
 	$(CC) $(FLAGS) ArtApp.cpp $(CFLAGS)
 
 AddMember.o: AddMember.cpp Member.h UserManager.h
@@ -39,6 +43,9 @@ AddMember.o: AddMember.cpp Member.h UserManager.h
 
 SigninMember.o: SigninMember.cpp UserManager.h
 	$(CC) $(FLAGS) SigninMember.cpp $(CFLAGS)
+
+LikePhoto.o: LikePhoto.cpp Artlookup.h JSCommunicator.h Query.h
+	$(CC) $(FLAGS) LikePhoto.cpp $(CFLAGS)
 
 ArtLookupTests.o: ArtLookupTests.cpp ArtLookup.h
 	$(CC) $(FLAGS) ArtLookupTests.cpp $(CFLAGS)
@@ -71,6 +78,7 @@ PutCGI: ArtApp AddMember SigninMember SigninMember
 	cp ArtApp /usr/lib/cgi-bin/$(USER)_artAppSearch.cgi
 	cp AddMember /usr/lib/cgi-bin/$(USER)_artAppAddMember.cgi
 	cp SigninMember /usr/lib/cgi-bin/$(USER)_artAppSigninMember.cgi
+	cp LikePhoto /usr/lib/cgi-bin/$(USER)_artAppLikePhoto.cgi
 
 	echo "Current contents of your cgi-bin directory: "
 	ls -l /usr/lib/cgi-bin/
