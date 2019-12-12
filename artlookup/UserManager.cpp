@@ -8,13 +8,13 @@
 #include "UserManager.h"
 #include "Query.h"
 
-void UserManager::addMember(Member member){
+void addMember(string username, string email, string password){
 	std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
 	std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
 	Query query;
 
 	// if member username and email not already in user database, add member
-	string command = query.addUser(member.getUsername(),member.getPassword(),member.getEmail());
+	string command = query.addUser(username,password,email);
 	sqlStatement->execute(command);
 }
 
