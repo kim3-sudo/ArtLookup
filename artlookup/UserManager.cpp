@@ -3,7 +3,7 @@
 //Email Address: schultz4@kenyon.edu, kim3@kenyon.edu, brydon1@kenyon.edu
 //Assignment: Project 3
 //Description: Manages users in user database
-//Last Changed: Dec 4, 2019
+//Last Changed: Dec 12, 2019
 
 #include "UserManager.h"
 #include "Query.h"
@@ -18,7 +18,7 @@ void UserManager::addMember(Member member){
 	sqlStatement->execute(command);
 }
 
-// TEST!!
+//TEST!!!!
 // Can only call if user exists!
 Member UserManager::getLoginMember(string email, string password){
 	std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
@@ -28,14 +28,16 @@ Member UserManager::getLoginMember(string email, string password){
 	sqlStatement->execute(loginResultsCommand);
 	std::unique_ptr<sql::ResultSet> loginMatches;
 	loginMatches.reset(sqlStatement->getResultSet());
-	Member *member;
-	string username("Dummy");
+	int memberId;
+	string username;
 	while (loginMatches->next()){
 		// This loop should only run once
+		memberId = loginMatches -> getInt(userColNames[0]);
 		username = loginMatches -> getString(userColNames[1]);
 	}
 	// MUST get username from SQL results
-	member = new Member(username, password, email);
+	Member *member;
+	member = new Member(memberId, username, password, email);
 	return *member;
 }
 

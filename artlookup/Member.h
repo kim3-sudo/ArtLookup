@@ -8,7 +8,6 @@ using namespace std;
 class Member{
   public:
     Member();
-    //Member(string memberId, string username, string password, string email);
     Member(int memberId, string username, string password, string email);
     Member(const Member& otherMember);
     // Copy Constructor
