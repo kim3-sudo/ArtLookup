@@ -231,7 +231,7 @@ function logoutMember() {
 // Like photo
 function likePhoto() {
   var username = getCookie("username");
-  if (username != "") {
+  if (username == "") {
     alert("Please login to be able to like artwork.");
   } else {
     var artId = $(this).attr('ID');
