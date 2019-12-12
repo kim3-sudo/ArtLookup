@@ -36,6 +36,7 @@ int main(){
   string updatedLikes = to_string(numLikes);
 
   // Sends the new number of likes to javascript.
+  jsCommunicator.sendStringToJS("Content-Type: text/plain\n\n");
   jSCommunicator.sendStringToJS(updatedLikes);
   return 0;
 }
