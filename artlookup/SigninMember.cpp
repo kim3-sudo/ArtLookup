@@ -26,13 +26,17 @@ int main(){
   JSCommunicator jSCommunicator;
   string email = jSCommunicator.getElement("email",cgi), password = jSCommunicator.getElement("password",cgi);
   
-  cout << "Content-Type: text/plain\n\n";
+  //cout << "Content-Type: text/plain\n\n";
   UserManager userManager;
   Member member(userManager.getLoginMember(email,password));
+  string returnToJS("");
 
   if (userManager.canLogin(email,password)){
-    cout << "memberId=" << member.getId() << ";username=" << member.getUsername() << ";";
+    //cout << "memberId=" << member.getId() << ";username=" << member.getUsername() << ";";
+    // Try without ; at end
+    returnToJS += "memberId=" + member.getId() + ";username=" + member.getUsername();
   }
+  jSCommunicator.sendStringToJS(returnToJS);
 
   return 0;
 }

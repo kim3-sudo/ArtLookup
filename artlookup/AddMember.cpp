@@ -22,28 +22,28 @@ int main(){
 
   //form_iterator itUsername = cgi.getElement("username"),itEmail = cgi.getElement("email"),itPassword = cgi.getElement("password");
   //string username(**itUsername), email(**itEmail), password(**itPassword);
-  
   //Member member(username,password,email); // constructor requires memberId now
-  UserManager userManager;
-
-  cout << "Content-Type: text/plain\n\n";
+  //cout << "Content-Type: text/plain\n\n";
 
   //Sends user data to JavaScript
+  UserManager userManager;
+  string returnToJs("");
   bool canAddMember(true);
   if (userManager.isEmailTaken(email)){
     // Add user to database
+    returnToJs += "Email;";
     canAddMember = false;
-    cout << "Email;";
   }
   if (userManager.isUsernameTaken(username)){
-    cout << "Username";
+    returnToJs += "Username";
     canAddMember = false;
   }
   if (canAddMember){
     userManager.addMember(username, email, password);
     // Maybe return nothing in this case?
-    cout << "Success";
+    returnToJs += "Success";
   }
+  jSCommunicator.sendStringToJS(returnToJs);
   
   return 0;
 }

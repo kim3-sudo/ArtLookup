@@ -44,8 +44,9 @@ int main(){
     artwork = searchResults.at(i);
     result += jSCommunicator.print(artwork);
   }
-  cout << "Content-Type: text/plain\n\n";
-  cout << result << endl;
+  jSCommunicator.sendStringToJS(result);
+  // cout << "Content-Type: text/plain\n\n";
+  // cout << result << endl;
 
   return 0;
 }
