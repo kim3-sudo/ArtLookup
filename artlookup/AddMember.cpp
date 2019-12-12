@@ -1,5 +1,3 @@
-//#include "ArtLookup.h"
-//#include "Query.h"
 #include "Member.h"
 #include "UserManager.h"
 #include <iostream>
@@ -18,30 +16,31 @@ using std::cout;
 int main(){
   Cgicc cgi; // Ajax object
   // Ajax objects receive info from web page
-  form_iterator itUsername = cgi.getElement("username"),itEmail = cgi.getElement("email"),itPassword = cgi.getElement("password");
+  JSCommunicator jSCommunicator;
+  string username = jSCommunicator.getElement("username",cgi), email = jSCommunicator.getElement("email",cgi), password = jSCommunicator.getElement("password",cgi);
+
+  //form_iterator itUsername = cgi.getElement("username"),itEmail = cgi.getElement("email"),itPassword = cgi.getElement("password");
+  //string username(**itUsername), email(**itEmail), password(**itPassword);
   
-  string username(**itUsername), email(**itEmail), password(**itPassword);
-  Member member(username,password,email);
+  //Member member(username,password,email); // constructor requires memberId now
   UserManager userManager;
-  //Query query;
-  //Artwork artwork;
-  //JSCommunicator jSCommunicator;
 
   cout << "Content-Type: text/plain\n\n";
 
   //Sends user data to JavaScript
   bool canAddMember(true);
-  if (userManager.isEmailTaken(member.getEmail())){
+  if (userManager.isEmailTaken(email)){
     // Add user to database
     canAddMember = false;
-    cout << "Email" << endl;
+    cout << "Email;";
   }
-  if (userManager.isUsernameTaken(member.getUsername())){
-    cout << "Username" << endl;
+  if (userManager.isUsernameTaken(username)){
+    cout << "Username";
     canAddMember = false;
   }
   if (canAddMember){
-    userManager.addMember(member);
+    userManager.addMember(username, email, password);
+    // Maybe return nothing in this case?
     cout << "Success";
   }
   
