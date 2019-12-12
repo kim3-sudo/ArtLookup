@@ -22,7 +22,6 @@ $(document).ready(function () {
 function setCategory(){
   //Set the category to the text of the dropdown-item
   searchCategory = $(this).text();
-  // Maybe will not work???
   $("#searchtype").text(searchCategory);
 }
 
