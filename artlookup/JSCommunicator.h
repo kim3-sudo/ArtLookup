@@ -26,7 +26,7 @@ class JSCommunicator{
     //Preconditions: stringForJS must be a string that is intended to be sent
     //to a JavaScript file linked through Ajax.
     //Postconditions: String will be sent to a JavaScript file using a cout
-    string sendStringToJS(string stringForJS);
+    void sendStringToJS(string stringForJS);
 };
 
 #endif //JSCOMMUNICATOR_H

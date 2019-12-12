@@ -44,7 +44,7 @@ AddMember.o: AddMember.cpp Member.h UserManager.h
 SigninMember.o: SigninMember.cpp UserManager.h
 	$(CC) $(FLAGS) SigninMember.cpp $(CFLAGS)
 
-LikePhoto.o: LikePhoto.cpp Artlookup.h JSCommunicator.h Query.h
+LikePhoto.o: LikePhoto.cpp ArtLookup.h JSCommunicator.h Query.h
 	$(CC) $(FLAGS) LikePhoto.cpp $(CFLAGS)
 
 ArtLookupTests.o: ArtLookupTests.cpp ArtLookup.h
@@ -71,10 +71,11 @@ UserManager.o: UserManager.cpp UserManager.h Query.h ArtDBCommunicator.h Member.
 JSCommunicator.o: JSCommunicator.cpp JSCommunicator.h Artwork.h
 	$(CC) $(FLAGS) JSCommunicator.cpp $(CFLAGS)
 
-PutCGI: ArtApp AddMember SigninMember SigninMember
+PutCGI: ArtApp AddMember SigninMember SigninMember LikePhoto
 	chmod 757 ArtApp
 	chmod 757 AddMember
 	chmod 757 SigninMember
+	chmod 757 LikePhoto
 	cp ArtApp /usr/lib/cgi-bin/$(USER)_artAppSearch.cgi
 	cp AddMember /usr/lib/cgi-bin/$(USER)_artAppAddMember.cgi
 	cp SigninMember /usr/lib/cgi-bin/$(USER)_artAppSigninMember.cgi
