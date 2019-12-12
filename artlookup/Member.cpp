@@ -8,27 +8,29 @@
 #include "Member.h"
 
 Member::Member(){
-	//m_memberId = 0;
+	m_memberId = 0;
     m_username = "";
     m_password = "";
     m_email = "";
 }
 
-// I want to not input a memberId
-//Member::Member(string memberId, string username, string password, string email){
-Member::Member(string username, string password, string email){
-	//m_memberId = memberId;
+Member::Member(int memberId, string username, string password, string email){
+	m_memberId = memberId;
     m_username = username;
     m_password = password;
     m_email = email;
 }
 
 Member::Member(const Member& otherMember){
+    m_memberId = otherMember.m_memberId;
     m_username = otherMember.m_username;
     m_password = otherMember.m_password;
     m_email = otherMember.m_email;
 }
 
+int Member::getId(){
+    return m_memberId;
+}
 string Member::getUsername(){
 	return m_username;
 }
