@@ -12,7 +12,7 @@ FLAGS	 = -g -c -Wall
 CFLAGS 	 = -std=c++14
 USER     = schultz4
 
-all: ArtApp AddMember SigninMember PutCGI PutHTML
+all: ArtApp AddMember SigninMember LikePhoto PutCGI PutHTML
 #all: ArtAppTest ArtApp AddMember TestArtApp PutCGI PutHTML
 
 #ArtAppTest: $(ART_APP_TEST)
