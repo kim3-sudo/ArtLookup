@@ -15,9 +15,10 @@ vector<Artwork> ArtLookup::lookupGeneral(string search){
 
   vector<Artwork> authorMatches = lookupSingleCommand(authorCommand), titleMatches = lookupSingleCommand(titleCommand), techniqueMatches = lookupSingleCommand(techniqueCommand), locationMatches = lookupSingleCommand(locationCommand), formMatches = lookupSingleCommand(formCommand), typeMatches = lookupSingleCommand(typeCommand), schoolMatches = lookupSingleCommand(schoolCommand), timeframeMatches = lookupSingleCommand(timeframeCommand), dateMatches = lookupSingleCommand(dateCommand);
 
-  //Concatenate vectors https://stackoverflow.com/questions/201718/concatenating-two-stdvectors vector1.insert( vector1.end(), vector2.begin(), vector2.end() );
+  //Concatenate vectors https://stackoverflow.com/questions/201718/concatenating-two-stdvectors
+  //vector1.insert( vector1.end(), vector2.begin(), vector2.end() );
   vector<Artwork> allMatches = authorMatches;
-  //allMatches.insert( allMatches.end(), lifespanMatches.begin(), lifespanMatches.end() );
+
   allMatches.insert( allMatches.end(), titleMatches.begin(), titleMatches.end() );
   allMatches.insert( allMatches.end(), techniqueMatches.begin(), techniqueMatches.end() );
   allMatches.insert( allMatches.end(), locationMatches.begin(), locationMatches.end() );
