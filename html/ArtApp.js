@@ -126,12 +126,17 @@ function addMember(){
   }
 }
 
+
+
+
+
+// ERRORS!!!!!!!!!!!!!!
 function closeModal(modalType){
   document.getElementById(modalType).setAttribute("style", "display: none");
   document.getElementById(modalType).setAttribute("class", "modal fade hide");
   document.getElementById(modalType).setAttribute("aria-modal", "false");
   document.getElementById(modalType).setAttribute("aria-hidden", "true");
-  $("body").setAttribute("class", "");
+  $("body").attr("class", "");
   $("body").removeChild($("body").lastChild); // Removes div showing background fade
 }
 
@@ -140,7 +145,7 @@ function openModal(modalType){
   document.getElementById(modalType).setAttribute("class", "modal fade show");
   document.getElementById(modalType).setAttribute("aria-modal", "true");
   document.getElementById(modalType).setAttribute("aria-hidden", "false");
-  $("body").setAttribute("class", "modal-open");
+  $("body").attr("class", "modal-open");
   var node = document.createElement("DIV");
   node.class = "modal-backdrop fade show";
   $("body").appendChild(node); // Adds div showing background fade
