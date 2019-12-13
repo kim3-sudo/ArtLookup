@@ -137,6 +137,7 @@ function isUsernameEmailAvailable(results){
     console.log("Signup successful");
     // Close modal
     document.getElementById("signupModal").setAttribute("style", "display: none");
+    document.getElementById("signupModal").setAttribute("class", "modal fade hide");
     document.getElementById("loginModal").setAttribute("style", "display: block");
     document.getElementById("loginModal").setAttribute("class", "modal fade show");
     $("#loginClose").click(function () {
