@@ -318,6 +318,12 @@ function clearCookie() {
   document.cookie = "username=";
 }
 
+
+
+
+
+
+// NOT WORKING!!!!!!
 function commentPhoto(commentSubmitButton) {
   var memberId = getCookie("memberId");
   var artId;
