@@ -152,7 +152,7 @@ function openModal(modalType){
   document.getElementsByTagName("BODY")[0].setAttribute("class", "modal-open");
   //$("body").attr("class", "modal-open");
   var node = document.createElement("DIV");
-  node.class = "modal-backdrop fade show";
+  node.setAttribute("class","modal-backdrop fade show");
   document.getElementsByTagName("BODY")[0].appendChild(node);
   //$("body").appendChild(node); // Adds div showing background fade
 }
@@ -243,7 +243,7 @@ function processLoginResults(results){
     console.log("No one logged in.");
   } else {
     // DO SOMETHING!!!
-    alert("Welcome back" + getCookie("username") + "!");
+    alert("Welcome back " + getCookie("username") + "!");
     console.log(getCookie("memberId"));
     console.log(getCookie("username") + " is logged in!");
   }
