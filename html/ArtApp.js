@@ -338,21 +338,21 @@ function commentPhoto() {
 
 
     // How to access the comment?
-    comment = $(this).prev().value;
+    comment = $(this).prev().text();
     //comment = commentTextField.text(); // check
     console.log(comment);
 
     $.ajax({
       url: '/cgi-bin/'+ajaxUser+'_artAppCommentPhoto.cgi?artId=' + artId + '&comment=' + comment + '&commentOnType=artwork&memberId=' + memberId,
       dataType: 'text',
-      success: commentSubmitted(emptyString, commentTextField), // is emptyString necessary?
+      success: commentSubmitted(commentTextField), // is emptyString necessary?
       error: function(){alert("Error: Could not comment on photo");}
     });
   }
 }
 
 // Maybe need space for results as input?
-function commentSubmitted(emptyString, commentNode){
+function commentSubmitted(results, commentNode){
   console.log("Comment made!");
 }
 
