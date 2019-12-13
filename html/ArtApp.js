@@ -131,7 +131,7 @@ function isUsernameEmailAvailable(results){
   console.log("Results: " + results);
   var parsedResults = results.split(';'); // Hopefully works
 
-  if (parsedResults[0] == ";"){
+  if (parsedResults[0] == ""){
     $("#signup-message").hide();
     console.log("Signup successful");
     // Close modal
