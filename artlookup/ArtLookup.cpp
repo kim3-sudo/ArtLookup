@@ -6,6 +6,7 @@
 //with art table in our database
 //Last Changed: November 16, 2019
 
+#include "ArtDBCommunicator.h"
 #include "ArtLookup.h"
 #include "Query.h"
 
@@ -33,7 +34,7 @@ vector<Artwork> ArtLookup::lookupGeneral(string search){
 
 // General search
 vector<Artwork> ArtLookup::lookupSingleCommand(string command){
-  std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
+  std::unique_ptr<sql::Connection> connectionToDB = ArtDBCommunicator::establishDBConnection();
   // Not sure why sqlStatement(connectionToDB...) works but not sqlStatement = connectionToDB...
   std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
 
