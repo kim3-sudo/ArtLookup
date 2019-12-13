@@ -54,7 +54,14 @@ function processSearchResults(results) {
     console.log("Results:"+results);
     $('#artworkResults').empty();
     $('#artworkResults').append(showPhotos(results));
-    $('.commentSubmit').click(commentPhoto);
+    
+    $('.commentSubmit').click(function () {
+      if (getCookie("username") == ""){
+        alert("Login or signup to make comments.");
+      } else {
+        commentPhoto();
+      }
+    });
 }
 
 //Parses art data from c++. Appends all photos to photo gallery
