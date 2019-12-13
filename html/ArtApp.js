@@ -66,7 +66,7 @@ function processSearchResults(results) {
 
 //Parses art data from c++. Appends all photos to photo gallery
 function showPhotos(list){
-  var artData = list.split("*");
+  var artData = list.split('*'); //changed "" to ''
 
   //If there is nothing from c++ return "Internal Error"
   if (artData.length < 1) {
