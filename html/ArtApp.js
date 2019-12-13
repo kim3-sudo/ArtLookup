@@ -106,7 +106,8 @@ function showPhotos(list){
       //Creates like button
       result += '<button class="btn btn-warning text-center" type="button" style="margin-top: 0px;" id = "' + artData[i-6] + '">Like</button>';
       //Creates comment field and submit button
-      result += '<form><div class="form-group"><input class="form-control" type="text" placeholder="comment here!" style="margin-top: 10px;"><button class="btn btn-light commentSubmit" id = "' + artData[i-6] + '" type="button" style="margin-bottom: 70px;margin-top: 10px;">submit</button>';
+      // Input id is artId with C at the end
+      result += '<form><div class="form-group"><input id="'+ artData[i-1] +C'" class="form-control" type="text" placeholder="comment here!" style="margin-top: 10px;"><button class="btn btn-light commentSubmit" id = "' + artData[i-6] + '" type="button" style="margin-bottom: 70px;margin-top: 10px;">submit</button>';
       //Adds closing tags
       result += '</div></form></div></div></div>';
     }
@@ -148,11 +149,6 @@ function addMember(){
   }
 }
 
-
-
-
-
-// ERRORS!!!!!!!!!!!!!!
 function closeModal(modalType){
   document.getElementById(modalType).setAttribute("style", "display: none");
   document.getElementById(modalType).setAttribute("class", "modal fade hide");
@@ -289,10 +285,6 @@ function getCookie(cname) {
   return "";
 }
 
-
-
-
-
 function setNavButtonView() {
   var username = getCookie("username");
   if (username != "") { // Someone logged in
@@ -333,11 +325,6 @@ function clearCookie() {
   document.cookie = "username=";
 }
 
-
-
-
-
-
 // NOT WORKING!!!!!!
 function commentPhoto(commentSubmitButton) {
   var memberId = getCookie("memberId");
@@ -346,12 +333,10 @@ function commentPhoto(commentSubmitButton) {
   if (getCookie("username") == "") {
     alert("Please login to be able to comment on artwork.");
   } else {
-
-
-
-
     artId = $(commentSubmitButton).attr('ID');
     console.log(artId);
+
+
 
     // BUG!!!!!!!!!!!!
     //commentTextField = $(this).previousSibling;
@@ -359,16 +344,17 @@ function commentPhoto(commentSubmitButton) {
     //this.previousSibling; // Not sure if valid
 
     // How to access the comment?
-    comment = $(commentSubmitButton).prev().text();
+    comment = $("#" + artId + "C").val();
     //comment = commentTextField.text(); // check
     console.log(comment);
 
-    $.ajax({
-      url: '/cgi-bin/'+ajaxUser+'_artAppCommentPhoto.cgi?artId=' + artId + '&comment=' + comment + '&commentOnType=artwork&memberId=' + memberId,
-      dataType: 'text',
-      success: commentSubmitted(commentTextField), // is emptyString necessary?
-      error: function(){alert("Error: Could not comment on photo");}
-    });
+// Lets just make sure we can get the comment first
+    // $.ajax({
+    //   url: '/cgi-bin/'+ajaxUser+'_artAppCommentPhoto.cgi?artId=' + artId + '&comment=' + comment + '&commentOnType=artwork&memberId=' + memberId,
+    //   dataType: 'text',
+    //   success: commentSubmitted(commentTextField), // is emptyString necessary?
+    //   error: function(){alert("Error: Could not comment on photo");}
+    // });
   }
 }
 
