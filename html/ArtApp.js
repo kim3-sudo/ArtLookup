@@ -53,7 +53,9 @@ function getSearchMatches(){
 function processSearchResults(results) {
     console.log("Results:"+results);
     $('#artworkResults').empty();
+    console.log("About to show photos");
     $('#artworkResults').append(showPhotos(results));
+    console.log("Finished show photos");
     
     $('.commentSubmit').click(function () {
       if (getCookie("username") == ""){
@@ -66,6 +68,8 @@ function processSearchResults(results) {
 
 //Parses art data from c++. Appends all photos to photo gallery
 function showPhotos(list){
+
+  // Why is this suddenly broken?
   var artData = list.split('*'); //changed "" to ''
 
   //If there is nothing from c++ return "Internal Error"
