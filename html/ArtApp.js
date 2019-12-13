@@ -326,7 +326,13 @@ function commentPhoto() {
     alert("Please login to be able to comment on artwork.");
   } else {
     artId = $(this).attr('ID');
-    commentTextField = $(this).previousSibling;
+    console.log(artId);
+
+
+
+    // BUG!!!!!!!!!!!!
+    //commentTextField = $(this).previousSibling;
+    commentTextField = this.previousSibling; // Not sure if valid
     comment = commentTextField.text(); // check
     console.log(comment);
 
