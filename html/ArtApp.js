@@ -9,7 +9,10 @@ $(document).ready(function () {
   // When category chosen from dropdown, setCategory
   $(".dropdown-item").click(setCategory);
   // getMatches when search button is clicked
-  $(".action-button").click(getSearchMatches(this));
+  $(".action-button").click(function () {
+    console.log("About to search");
+    getSearchMatches(this)
+  });
   // when submit-user-cred button clicked, addMember
   $("#start-signup").click(function () {
     console.log("Ready to sign-up.");
