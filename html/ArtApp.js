@@ -3,6 +3,7 @@ var ajaxUser = "brydon1"; //Your username for ajax calls
 
 // TO-DO:
 // Change name of checkCookie()
+// Create a close login/signup modal function
 
 $(document).ready(function () {
   console.log("ready!");
@@ -138,6 +139,11 @@ function isUsernameEmailAvailable(results){
     document.getElementById("signupModal").setAttribute("style", "display: none");
     document.getElementById("loginModal").setAttribute("style", "display: block");
     document.getElementById("loginModal").setAttribute("class", "modal fade show");
+    $("#loginClose").click(function () {
+      document.getElementById("loginModal").setAttribute("style", "display: none");
+      document.getElementById("loginModal").setAttribute("class", "modal fade hide");
+      $(".modal-backdrop").hide();
+    });
   } else if (parsedResults.length == 1) {
     console.log(parsedResults[0] + " taken."); // Check index
     console.log("taken."); // Maybe delete??
@@ -211,7 +217,6 @@ function processLoginResults(results){
     $("#start-login").hide();
     $("#logout").show();
     console.log("Username before:", getCookie("username"));
-    //document.cookie = "username=" + results + ";";
     var parsedResults = results.split(' ');
     document.cookie = parsedResults[0]; // adds memberId cookie
     document.cookie = parsedResults[1]; // adds username cookie
