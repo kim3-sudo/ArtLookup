@@ -11,7 +11,10 @@ $(document).ready(function () {
   // getMatches when search button is clicked
   $(".action-button").click(getSearchMatches(this));
   // when submit-user-cred button clicked, addMember
-  $("#start-signup").click($("#signup-message").hide());
+  $("#start-signup").click(function () {
+    console.log("Ready to sign-up.");
+    $("#signup-message").hide();
+  });
   $("#submit-user-credentials").click(addMember);
 
   // // $("#start-signup").click(function () {
