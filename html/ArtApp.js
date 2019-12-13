@@ -332,8 +332,10 @@ function commentPhoto() {
 
     // BUG!!!!!!!!!!!!
     //commentTextField = $(this).previousSibling;
-    commentTextField = this.previousSibling; // Not sure if valid
-    comment = commentTextField.text(); // check
+    commentTextField = $(this).closest("form").children("input")[0];
+    //this.previousSibling; // Not sure if valid
+    comment = $(this).closest("form").children("input")[0].text();
+    //comment = commentTextField.text(); // check
     console.log(comment);
 
     $.ajax({
