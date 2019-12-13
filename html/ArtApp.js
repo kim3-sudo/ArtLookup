@@ -1,24 +1,23 @@
 var searchCategory;  //Category to be searched by: Title, Author ...
 var ajaxUser = "brydon1"; //Your username for ajax calls
 
-// TO-DO:
-// Change name of checkCookie()
-// Create a close login/signup modal function
-
 $(document).ready(function () {
   console.log("ready!");
-  checkCookie(); // MAYBE change function name
+  setNavButtonView(); // CHANGE function name
+
   // When category chosen from dropdown, setCategory
   $(".dropdown-item").click(setCategory);
   // getMatches when search button is clicked
   $(".action-button").click(getSearchMatches);
   // when submit-user-cred button clicked, addMember
-  $("#start-signup").click(function () {
-    $("#signup-message").hide();
-    $("#submit-user-credentials").click(addMember);
-  });
+  $("#start-signup").click($("#signup-message").hide());
+  $("#submit-user-credentials").click(addMember);
 
-  // Do something similar to start-signup
+  // $("#start-signup").click(function () {
+  //   $("#signup-message").hide();
+  //   $("#submit-user-credentials").click(addMember);
+  // });
+
   $("#loginButton").click(loginMember);
   $("#logout").click(logoutMember);
 });
@@ -127,7 +126,26 @@ function addMember(){
   }
 }
 
-// TEST ME!!
+function closeModal(modalType){
+  document.getElementById(modalType).setAttribute("style", "display: none");
+  document.getElementById(modalType).setAttribute("class", "modal fade hide");
+  document.getElementById(modalType).setAttribute("aria-modal", "false");
+  document.getElementById(modalType).setAttribute("aria-hidden", "true");
+  $("body").setAttribute("class", "");
+  $("body").removeChild($("body").lastChild); // Removes div showing background fade
+}
+
+function openModal(modalType){
+  document.getElementById(modalType).setAttribute("style", "display: block");
+  document.getElementById(modalType).setAttribute("class", "modal fade show");
+  document.getElementById(modalType).setAttribute("aria-modal", "true");
+  document.getElementById(modalType).setAttribute("aria-hidden", "false");
+  $("body").setAttribute("class", "modal-open");
+  var node = document.createElement("DIV");
+  node.class = "modal-backdrop fade show";
+  $("body").appendChild(node); // Adds div showing background fade
+}
+
 function isUsernameEmailAvailable(results){
   console.log("Results: " + results);
   var parsedResults = results.split(';'); // Hopefully works
@@ -135,15 +153,21 @@ function isUsernameEmailAvailable(results){
   if (parsedResults[0] == ""){
     $("#signup-message").hide();
     console.log("Signup successful");
-    // Close modal
-    document.getElementById("signupModal").setAttribute("style", "display: none");
-    document.getElementById("signupModal").setAttribute("class", "modal fade hide");
-    document.getElementById("loginModal").setAttribute("style", "display: block");
-    document.getElementById("loginModal").setAttribute("class", "modal fade show");
+    // Close signup modal
+    closeModal("signupModal");
+    openModal("loginModal");
+
+    // document.getElementById("signupModal").setAttribute("style", "display: none");
+    // document.getElementById("signupModal").setAttribute("class", "modal fade hide");
+    // document.getElementById("loginModal").setAttribute("style", "display: block");
+    // document.getElementById("loginModal").setAttribute("class", "modal fade show");
     $("#loginClose").click(function () {
-      document.getElementById("loginModal").setAttribute("style", "display: none");
-      document.getElementById("loginModal").setAttribute("class", "modal fade hide");
-      $(".modal-backdrop").hide();
+      closeModal("loginModal");
+
+      // document.getElementById("loginModal").setAttribute("style", "display: none");
+      // document.getElementById("loginModal").setAttribute("class", "modal fade hide");
+      // $("body").setAttribute("class",""); // Not sure if valid
+      // $(".modal-backdrop").hide();
     });
   } else if (parsedResults.length == 1) {
     console.log(parsedResults[0] + " taken."); // Check index
@@ -158,26 +182,6 @@ function isUsernameEmailAvailable(results){
     $("#signup-message").text("You cannot make an account with this username or email because they are taken.");
     $("#signup-message").show();
   }
-
-  // if (results == "Success"){
-  //   $("#signup-message").hide();
-  //   console.log("Signup successful");
-  //   // Close modal
-  //   document.getElementById("signupModal").setAttribute("style", "display: none");
-  //   document.getElementById("loginModal").setAttribute("style", "display: block");
-  //   document.getElementById("loginModal").setAttribute("class", "modal fade show");
-  // } else if (results == "Email"){
-  //   console.log("Email taken.");
-  //   // Maybe we could have a message div in the signup/login modal
-  //   // The message changes depending on the situation
-  //   $("#signup-message").text("You cannot make an account with this email address because it is taken.");
-  //   $("#signup-message").show();
-  //   //alert("Email in use.");
-  // } else {
-  //   console.log("Username taken.");
-  //   $("#signup-message").text("You cannot make an account with this username because it is taken.");
-  //   $("#signup-message").show();
-  // }
 }
 
 // Login member
@@ -186,7 +190,6 @@ function loginMember(){
 
   email = $('#login-email').val();
   password = $('#login-password').val();
-
   console.log(email);
   console.log(password);
 
@@ -205,18 +208,14 @@ function loginMember(){
 
 // Process login results
 function processLoginResults(results){
-  console.log("Result: ");
-  console.log(results);
+  console.log("Result:", results);
   if (results == ""){
     console.log("Login unsuccessful :(");
-    document.cookie = "username=";
+    clearCookie(); // Clear username and memberId
     $("#invalid_login").show();
   } else {
     console.log("Login successful!");
-    $("#invalid_login").hide();
-    $("#start-signup").hide();
-    $("#start-login").hide();
-    $("#logout").show();
+    loggedInNavButtonView();
     console.log("Username before:", getCookie("username"));
     var parsedResults = results.split(' ');
     document.cookie = parsedResults[0]; // adds memberId cookie
@@ -224,17 +223,18 @@ function processLoginResults(results){
     console.log("Username after:", getCookie("username"));
 
     // Close login modal
-    document.getElementById("loginModal").setAttribute("style", "display: none");
-    document.getElementById("loginModal").setAttribute("class", "modal fade hide");
-    $(".modal-backdrop").hide();
+    closeModal("loginModal");
+    // document.getElementById("loginModal").setAttribute("style", "display: none");
+    // document.getElementById("loginModal").setAttribute("class", "modal fade hide");
+    // $(".modal-backdrop").hide();
   }
   if (getCookie("username") == ""){
     console.log("No one logged in.");
   } else {
-  console.log(getCookie("memberId"));
-  console.log(getCookie("username"));
-  console.log(getCookie("username") + " is logged in!");
-  console.log("is logged in!");
+    // DO SOMETHING!!!
+    alert("Welcome back" + getCookie("username") + "!");
+    console.log(getCookie("memberId"));
+    console.log(getCookie("username") + " is logged in!");
   }
 }
 
@@ -255,34 +255,48 @@ function getCookie(cname) {
   return "";
 }
 
-// Maybe refactor/rename
-function checkCookie() {
-  console.log("Checking cookie!");
+
+
+
+
+function setNavButtonView() {
   var username = getCookie("username");
-  if (username != "") {
-    $("#invalid_login").hide();
-    $("#start-signup").hide();
-    $("#start-login").hide();
-    $("#logout").show();
-    // Someone is logged in
+  if (username != "") { // Someone logged in
+    loggedInNavButtonView();
     console.log(username + " logged in.");
-    console.log("Someone logged in");
   } else {
-    // Show normal homepage
-    $("#logout").hide();
+    defaultNavButtonView();
+    //$("#logout").hide();
     console.log("Default page");
   }
 }
 
-// Logout member
-function logoutMember() {
+// Hide logout buttons; show login/signup
+function defaultNavButtonView(){
   $("#invalid_login").hide(); // Maybe unnecessary
   $("#start-signup").show();
   $("#start-login").show();
   $("#logout").hide();
+}
+
+// Hide login/signup buttons; show logout
+function loggedInNavButtonView(){
+  $("#invalid_login").hide(); // Maybe unnecessary
+  $("#start-signup").hide();
+  $("#start-login").hide();
+  $("#logout").show();
+}
+
+// Logout member
+function logoutMember() {
+  defaultNavButtonView();
+  clearCookie();
+  console.log("Logged out!");
+}
+
+function clearCookie() {
   document.cookie = "memberId=";
   document.cookie = "username=";
-  console.log("Logged out!");
 }
 
 function commentPhoto() {
@@ -310,6 +324,10 @@ function commentPhoto() {
 // Maybe need space for results as input?
 function commentSubmitted(results, commentNode){
   console.log("Comment made!");
+
+
+
+
 
 
 }
