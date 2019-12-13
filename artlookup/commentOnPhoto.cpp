@@ -1,7 +1,6 @@
-#include "ArtLookup.h"
 #include "JSCommunicator.h"
+#include "CommentManager.h"
 #include "Query.h"
-#include "Artwork.h"
 #include <iostream>
 #include <string>
 
@@ -15,34 +14,25 @@ using namespace cgicc;
 using std::cout;
 
 int main(){
-  Cgicc cgi; // Ajax object
-  JSCommunicator jSCommunicator;
-  // Ajax objects receive info from web page
-  string artId = jSCommunicator.getElement("artId",cgi), comment = jSCommunicator.getElement("comment",cgi), username = jSCommunicator.getElement("username",cgi), memberId = jSCommunicator.getElement("memberId",cgi);
-  Query query;
-  string addCommentQuery = query.addComment(artId, "artwork", comment, memberId);
+    Cgicc cgi; // Ajax object
+    JSCommunicator jSCommunicator;
+    // Ajax objects receive info from web page
+    // Maybe do not send username
+    string artId = jSCommunicator.getElement("artId",cgi), comment = jSCommunicator.getElement("comment",cgi), username = jSCommunicator.getElement("username",cgi), memberId = jSCommunicator.getElement("memberId",cgi);
+    CommentManager commentManager;
+    commentManager.addComment(artId, comment, memberId);
 
+    // ArtLookup artlookup;
+    // // Looks for artwork that match the artId given by the javascript
+    // vector<Artwork> likedArtworks = artlookup.lookupSingleCommand(artIdQuery);
+    // Artwork likedArtwork = likedArtworks.at(0);
 
-  // TO-DO: Create comment manager??
+    // // Likes artwork and gets the new number of likes.
+    // likedArtwork.incrementLikes();
+    // int numLikes = likedArtwork.getNumLikes();
+    // string updatedLikes = to_string(numLikes);
 
-
-
-
-
-
-
-
-  // ArtLookup artlookup;
-  // // Looks for artwork that match the artId given by the javascript
-  // vector<Artwork> likedArtworks = artlookup.lookupSingleCommand(artIdQuery);
-  // Artwork likedArtwork = likedArtworks.at(0);
-
-  // // Likes artwork and gets the new number of likes.
-  // likedArtwork.incrementLikes();
-  // int numLikes = likedArtwork.getNumLikes();
-  // string updatedLikes = to_string(numLikes);
-
-  // // Sends the new number of likes to javascript.
-  // jSCommunicator.sendStringToJS(updatedLikes);
+    // // Sends the new number of likes to javascript.
+    jSCommunicator.sendStringToJS("");
   return 0;
 }

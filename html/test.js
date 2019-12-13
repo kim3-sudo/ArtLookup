@@ -4,12 +4,13 @@ $(document).ready(function () {
   // document.cookie = "John=done";
   // document.cookie = "Michaela=crazy";
   //var decodedCookie = decodeURIComponent(document.cookie);
-  var emptyString = "";
-  var parsed = emptyString.split(';');
-  console.log("Split Empty String Length: ", parsed.length);
-  console.log(parsed[0] == "");
+  // var emptyString = "";
+  // var parsed = emptyString.split(';');
+  // console.log("Split Empty String Length: ", parsed.length);
+  // console.log(parsed[0] == "");
   // for (var i=0; i<parsed.length; i++) {
   //   console.log(parsed[i]);
   // }
-  console.log("Done");
+
+  //console.log("Done");
 });
