@@ -334,7 +334,11 @@ function commentPhoto() {
     //commentTextField = $(this).previousSibling;
     commentTextField = $(this).closest("form").children("input")[0];
     //this.previousSibling; // Not sure if valid
-    comment = $(this).closest("div").children("input")[0].value;
+
+
+
+    // How to access the comment?
+    comment = $(this).prev().value;
     //comment = commentTextField.text(); // check
     console.log(comment);
 
