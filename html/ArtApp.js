@@ -325,7 +325,6 @@ function clearCookie() {
   document.cookie = "username=";
 }
 
-// NOT WORKING!!!!!!
 function commentPhoto(commentSubmitButton) {
   var memberId = getCookie("memberId");
   var artId;
@@ -335,26 +334,15 @@ function commentPhoto(commentSubmitButton) {
   } else {
     artId = $(commentSubmitButton).attr('ID');
     console.log(artId);
-
-
-
-    // BUG!!!!!!!!!!!!
-    //commentTextField = $(this).previousSibling;
-    //commentTextField = $(commentSubmitButton).closest("form").children("input")[0];
-    //this.previousSibling; // Not sure if valid
-
-    // How to access the comment?
     comment = $("#" + artId + "C").val();
-    //comment = commentTextField.text(); // check
     console.log(comment);
 
-// Lets just make sure we can get the comment first
-    // $.ajax({
-    //   url: '/cgi-bin/'+ajaxUser+'_artAppCommentPhoto.cgi?artId=' + artId + '&comment=' + comment + '&commentOnType=artwork&memberId=' + memberId,
-    //   dataType: 'text',
-    //   success: commentSubmitted(commentTextField), // is emptyString necessary?
-    //   error: function(){alert("Error: Could not comment on photo");}
-    // });
+    $.ajax({
+      url: '/cgi-bin/'+ajaxUser+'_artAppCommentPhoto.cgi?artId=' + artId + '&comment=' + comment + '&commentOnType=artwork&memberId=' + memberId,
+      dataType: 'text',
+      success: commentSubmitted(commentTextField), // is emptyString necessary?
+      error: function(){alert("Error: Could not comment on photo");}
+    });
   }
 }
 
