@@ -12,7 +12,7 @@ $(document).ready(function () {
   $("#submit-user-credentials").click(addMember);
   $("#loginButton").click(loginMember);
   $("#logout").click(logoutMember);
-  $(".btn btn-warning text-center").click(likePhoto)
+  $(".btn btn-warning text-center").click(likePhoto);
 });
 
 function setCategory(){
@@ -230,6 +230,7 @@ function logoutMember() {
 
 // Like photo
 function likePhoto() {
+  console.log("Like Button clicked.")
   var username = getCookie("username");
   if (username == "") {
     alert("Please login to be able to like artwork.");
