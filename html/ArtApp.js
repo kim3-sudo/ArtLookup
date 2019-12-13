@@ -44,13 +44,13 @@ function getSearchMatches(){
     $.ajax({
       url: '/cgi-bin/'+ajaxUser+'_artAppSearch.cgi?searchVal='+searchTerm+'&searchCategory='+searchCategory,
       dataType: 'text',
-      success: processSearchResults,
+      success: processSearchResults(commentSubmitButton),
       error: function(){alert("Error: Could not search");}
     });
 }
 
 //Empties photo gallery (again?) builds new gallery using buildGallery function
-function processSearchResults(results) {
+function processSearchResults(results,commentSubmitButton) {
     console.log("Results:"+results);
     $('#artworkResults').empty();
     $('#artworkResults').append(showPhotos(results));
@@ -59,7 +59,7 @@ function processSearchResults(results) {
       if (getCookie("username") == ""){
         alert("Login or signup to make comments.");
       } else {
-        commentPhoto();
+        commentPhoto(commentSubmitButton);
       }
     });
 }
@@ -318,27 +318,27 @@ function clearCookie() {
   document.cookie = "username=";
 }
 
-function commentPhoto() {
+function commentPhoto(commentSubmitButton) {
   var memberId = getCookie("memberId");
   var artId;
   var comment;
   if (getCookie("username") == "") {
     alert("Please login to be able to comment on artwork.");
   } else {
-    artId = $(this).attr('ID');
+
+
+
+
+    artId = $(commentSubmitButton).attr('ID');
     console.log(artId);
-
-
 
     // BUG!!!!!!!!!!!!
     //commentTextField = $(this).previousSibling;
-    commentTextField = $(this).closest("form").children("input")[0];
+    //commentTextField = $(commentSubmitButton).closest("form").children("input")[0];
     //this.previousSibling; // Not sure if valid
 
-
-
     // How to access the comment?
-    comment = $(this).prev().text();
+    comment = $(commentSubmitButton).prev().text();
     //comment = commentTextField.text(); // check
     console.log(comment);
 
