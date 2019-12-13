@@ -4,9 +4,6 @@ var ajaxUser = "brydon1"; //Your username for ajax calls
 // TO-DO:
 // Change name of checkCookie()
 
-
-
-
 $(document).ready(function () {
   console.log("ready!");
   checkCookie(); // MAYBE change function name
@@ -57,6 +54,7 @@ function processSearchResults(results) {
     console.log("Results:"+results);
     $('#artworkResults').empty();
     $('#artworkResults').append(showPhotos(results));
+    $('.commentSubmit').click(commentPhoto);
 }
 
 //Parses art data from c++. Appends all photos to photo gallery
@@ -86,7 +84,7 @@ function showPhotos(list){
       //Creates like button
       result += '<button class="btn btn-warning text-center" type="button" style="margin-top: 0px;margin-bottom: 10px;" id = "' + artData[i-6] + '">Like</button>';
       //Creates comment field and submit button
-      result += '<form><div class="form-group"><input class="form-control" type="text" placeholder="comment here!"><button class="btn btn-light" id = "' + artData[i-6] + '" type="button" style="margin-bottom: 70px;margin-top: 10px;">submit</button>';
+      result += '<form><div class="form-group"><input class="form-control" type="text" placeholder="comment here!"><button class="btn btn-light commentSubmit" id = "' + artData[i-6] + '" type="button" style="margin-bottom: 70px;margin-top: 10px;">submit</button>';
       //Adds closing tags
       result += '</div></form></div></div></div>';
     }
@@ -134,7 +132,7 @@ function isUsernameEmailAvailable(results){
   console.log("Results: " + results);
   var parsedResults = results.split(';'); // Hopefully works
 
-  if (parsedResults.length == 0){
+  if (parsedResults[0] == ""){
     $("#signup-message").hide();
     console.log("Signup successful");
     // Close modal
@@ -274,29 +272,42 @@ function logoutMember() {
   $("#start-signup").show();
   $("#start-login").show();
   $("#logout").hide();
+  document.cookie = "memberId=";
   document.cookie = "username=";
+
+  console.log("Should see two blank lines:");
+  console.log(getCookie("memberId"));
   console.log(getCookie("username"));
   console.log("Logged out!");
 }
 
 function commentPhoto() {
   var username = getCookie("username");
+  var memberId = getCookie("memberId");
   var artId;
   var comment;
   if (username == "") {
     alert("Please login to be able to comment on artwork.");
   } else {
     artId = $(this).attr('ID');
-    comment = $(this).previousSibling.text(); // check
+    commentTextField = $(this).previousSibling;
+    comment = commentTextField.text(); // check
     console.log(comment);
 
     $.ajax({
-      url: '/cgi-bin/'+ajaxUser+'_artAppCommentPhoto.cgi?artId=' + artId + '&comment=' + comment + '&username=' + username,
+      url: '/cgi-bin/'+ajaxUser+'_artAppCommentPhoto.cgi?artId=' + artId + '&comment=' + comment + '&username=' + username + '&memberId=' + memberId,
       dataType: 'text',
-      success: displayLikes,
+      success: commentSubmitted(results, commentTextField),
       error: function(){alert("Error: Could not comment on photo");}
     });
   }
+}
+
+// Maybe need space for results as input?
+function commentSubmitted(results, commentNode){
+  console.log("Comment made!");
+
+
 }
 
 // Like photo

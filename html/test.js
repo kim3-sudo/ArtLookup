@@ -7,6 +7,7 @@ $(document).ready(function () {
   var emptyString = "";
   var parsed = emptyString.split(';');
   console.log("Split Empty String Length: ", parsed.length);
+  console.log(parsed[0] == "");
   // for (var i=0; i<parsed.length; i++) {
   //   console.log(parsed[i]);
   // }
