@@ -8,7 +8,7 @@ $(document).ready(function () {
   // When category chosen from dropdown, setCategory
   $(".dropdown-item").click(setCategory);
   // getMatches when search button is clicked
-  $(".action-button").click(getSearchMatches);
+  $(".action-button").click(getSearchMatches(this));
   // when submit-user-cred button clicked, addMember
   $("#start-signup").click($("#signup-message").hide());
   $("#submit-user-credentials").click(addMember);
@@ -29,7 +29,7 @@ function setCategory(){
 }
 
 //Switches to search page and displays the photos related to the user's search
-function getSearchMatches(){
+function getSearchMatches(commentSubmitButton){
     //Hides the search page and shows the homepage
     var searchTerm = $('#search-field2').val();
     $('#home').hide();
