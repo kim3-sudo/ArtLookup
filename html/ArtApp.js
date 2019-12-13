@@ -44,7 +44,7 @@ function getSearchMatches(){
     $.ajax({
       url: '/cgi-bin/'+ajaxUser+'_artAppSearch.cgi?searchVal='+searchTerm+'&searchCategory='+searchCategory,
       dataType: 'text',
-      success: processSearchResults(commentSubmitButton),
+      success: processSearchResults(),
       error: function(){alert("Error: Could not search");}
     });
 }
