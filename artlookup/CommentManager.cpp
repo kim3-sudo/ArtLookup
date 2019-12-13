@@ -9,13 +9,13 @@
 #include "Query.h"
 
 // This is nearly identical to addMember in UserManager
-void CommentManager::addComment(string artId, string comment, string memberId){
+void CommentManager::addComment(string artId, string commentOnType, string comment, string memberId){
 	std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
 	std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
 	Query query;
 
 	// if member username and email not already in user database, add member
-	string addCommentQuery = query.addComment(artId, "artwork", comment, memberId);
+	string addCommentQuery = query.addComment(artId, commentOnType, comment, memberId);
 	sqlStatement->execute(command);
 }
 

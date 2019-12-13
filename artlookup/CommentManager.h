@@ -7,7 +7,7 @@
 
 class CommentManager: public ArtDBCommunicator{
 	public:
-	    void addComment(string artId, string comment, string memberId);
+	    void addComment(string artId, string commentOnType, string comment, string memberId);
 	    // add comment to user table in sql database
 
 	    //Member getLoginMember(string email, string password);

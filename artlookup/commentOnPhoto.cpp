@@ -17,10 +17,9 @@ int main(){
     Cgicc cgi; // Ajax object
     JSCommunicator jSCommunicator;
     // Ajax objects receive info from web page
-    // Maybe do not send username
-    string artId = jSCommunicator.getElement("artId",cgi), comment = jSCommunicator.getElement("comment",cgi), username = jSCommunicator.getElement("username",cgi), memberId = jSCommunicator.getElement("memberId",cgi);
+    string artId = jSCommunicator.getElement("artId",cgi), comment = jSCommunicator.getElement("comment",cgi), commentOnType = jSCommunicator.getElement("commentOnType",cgi), memberId = jSCommunicator.getElement("memberId",cgi);
     CommentManager commentManager;
-    commentManager.addComment(artId, comment, memberId);
+    commentManager.addComment(artId, commentOnType, comment, memberId);
 
     // ArtLookup artlookup;
     // // Looks for artwork that match the artId given by the javascript

@@ -312,7 +312,7 @@ function clearCookie() {
 }
 
 function commentPhoto() {
-  var username = getCookie("username");
+  //var username = getCookie("username");
   var memberId = getCookie("memberId");
   var artId;
   var comment;
@@ -325,23 +325,17 @@ function commentPhoto() {
     console.log(comment);
 
     $.ajax({
-      url: '/cgi-bin/'+ajaxUser+'_artAppCommentPhoto.cgi?artId=' + artId + '&comment=' + comment + '&username=' + username + '&memberId=' + memberId,
+      url: '/cgi-bin/'+ajaxUser+'_artAppCommentPhoto.cgi?artId=' + artId + '&comment=' + comment + '&commentOnType=artwork&memberId=' + memberId,
       dataType: 'text',
-      success: commentSubmitted(results, commentTextField),
+      success: commentSubmitted(emptyString, commentTextField), // is emptyString necessary?
       error: function(){alert("Error: Could not comment on photo");}
     });
   }
 }
 
 // Maybe need space for results as input?
-function commentSubmitted(results, commentNode){
+function commentSubmitted(emptyString, commentNode){
   console.log("Comment made!");
-
-
-
-
-
-
 }
 
 // Like photo
