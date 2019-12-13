@@ -29,7 +29,7 @@ function setCategory(){
 }
 
 //Switches to search page and displays the photos related to the user's search
-function getSearchMatches(commentSubmitButton){
+function getSearchMatches(){
     //Hides the search page and shows the homepage
     var searchTerm = $('#search-field2').val();
     $('#home').hide();
@@ -50,7 +50,7 @@ function getSearchMatches(commentSubmitButton){
 }
 
 //Empties photo gallery (again?) builds new gallery using buildGallery function
-function processSearchResults(results,commentSubmitButton) {
+function processSearchResults(results) {
     console.log("Results:"+results);
     $('#artworkResults').empty();
     $('#artworkResults').append(showPhotos(results));
@@ -59,7 +59,7 @@ function processSearchResults(results,commentSubmitButton) {
       if (getCookie("username") == ""){
         alert("Login or signup to make comments.");
       } else {
-        commentPhoto(commentSubmitButton);
+        commentPhoto(this); // maybe wrong
       }
     });
 }
