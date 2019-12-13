@@ -1,5 +1,4 @@
 #include "ArtDBCommunicator.h"
-#include "Member.h"
 #include <vector>
 
 #ifndef COMMENT_MANAGER_H

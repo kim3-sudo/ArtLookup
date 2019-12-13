@@ -1,6 +1,5 @@
 #include "JSCommunicator.h"
 #include "CommentManager.h"
-#include "Query.h"
 #include <iostream>
 #include <string>
 
