@@ -84,7 +84,7 @@ function showPhotos(list){
       //Creates like button
       result += '<button class="btn btn-warning text-center" type="button" style="margin-top: 0px;margin-bottom: 10px;" id = "' + artData[i-6] + '">Like</button>';
       //Creates comment field and submit button
-      result += '<form><div class="form-group"><input class="form-control" type="text" placeholder="comment here!" style="margin-top: 100px;"><button class="btn btn-light commentSubmit" id = "' + artData[i-6] + '" type="button" style="margin-bottom: 70px;margin-top: 10px;">submit</button>';
+      result += '<form><div class="form-group"><input class="form-control" type="text" placeholder="comment here!" style="margin-top: 10px;"><button class="btn btn-light commentSubmit" id = "' + artData[i-6] + '" type="button" style="margin-bottom: 70px;margin-top: 10px;">submit</button>';
       //Adds closing tags
       result += '</div></form></div></div></div>';
     }
