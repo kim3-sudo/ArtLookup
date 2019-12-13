@@ -1,7 +1,7 @@
 TEST_OBJS = ArtLookupTests.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
 REAL_OBJS = ArtApp.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o JSCommunicator.o
 ADD_MEMBER_OBJS = AddMember.o Member.o UserManager.o Artwork.o ArtDBCommunicator.o Query.o JSCommunicator.o
-SIGNIN_MEMBER_OBJS = SigninMember.o Member.o UserManager.o ArtDBCommunicator.o Query.o JSCommunicator.o
+SIGNIN_MEMBER_OBJS = SigninMember.o Member.o UserManager.o Artwork.o ArtDBCommunicator.o Query.o JSCommunicator.o
 LIKE_PHOTO_OBJS = LikePhoto.o ArtLookup.o JSCommunicator.o Query.o Artwork.o
 #SOURCE	= Artwork.cpp
 #HEADER	= Artwork.h ArtDBCommunicator.h
