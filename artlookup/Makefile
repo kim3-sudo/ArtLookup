@@ -74,7 +74,7 @@ UserManager.o: UserManager.cpp UserManager.h Query.h ArtDBCommunicator.h
 	$(CC) $(FLAGS) UserManager.cpp $(CFLAGS)
 
 CommentManager.o: CommentManager.cpp CommentManager.h Query.h ArtDBCommunicator.h Member.h
-	$(CC) $(FLAGS) UserManager.cpp $(CFLAGS)
+	$(CC) $(FLAGS) CommentManager.cpp $(CFLAGS)
 
 JSCommunicator.o: JSCommunicator.cpp JSCommunicator.h Artwork.h
 	$(CC) $(FLAGS) JSCommunicator.cpp $(CFLAGS)
