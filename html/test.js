@@ -1,4 +1,10 @@
 $(document).ready(function () {
+  document.createElement("INPUT");
+  
+
+
+
+
   //document.cookie = "memberId=4;username=sammy";
   // document.cookie = "Michaela=gone";
   // document.cookie = "John=done";

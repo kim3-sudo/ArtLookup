@@ -1,4 +1,3 @@
-
 #include "ArtDBCommunicator.h"
 #include "Member.h"
 #include <vector>

@@ -12,6 +12,7 @@
 using namespace cgicc;
 using std::cout;
 
+// Change name of program to CommentOn.cpp
 int main(){
     Cgicc cgi; // Ajax object
     JSCommunicator jSCommunicator;
