@@ -319,11 +319,10 @@ function clearCookie() {
 }
 
 function commentPhoto() {
-  //var username = getCookie("username");
   var memberId = getCookie("memberId");
   var artId;
   var comment;
-  if (username == "") {
+  if (getCookie("username") == "") {
     alert("Please login to be able to comment on artwork.");
   } else {
     artId = $(this).attr('ID');
