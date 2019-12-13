@@ -29,19 +29,24 @@ int main(){
   UserManager userManager;
   string returnToJs("");
   bool canAddMember(true);
+  int numViolations(0);
   if (userManager.isEmailTaken(email)){
     // Add user to database
-    returnToJs += "Email;";
+    returnToJs += "Email";
+    numViolations++;
     canAddMember = false;
   }
   if (userManager.isUsernameTaken(username)){
+    if (numViolations == 1){
+      returnToJs += ";";
+    }
     returnToJs += "Username";
     canAddMember = false;
   }
   if (canAddMember){
     userManager.addMember(username, email, password);
     // Maybe return nothing in this case?
-    returnToJs += "Success";
+    //returnToJs += "Success";
   }
   jSCommunicator.sendStringToJS(returnToJs);
   
