@@ -54,7 +54,7 @@ function processSearchResults(results) {
     console.log("Results:"+results);
     $('#artworkResults').empty();
     console.log("About to show photos");
-    $('#artworkResults').append(showPhotos(results));
+    //$('#artworkResults').append(showPhotos(results));
     console.log("Finished show photos");
     
     $('.commentSubmit').click(function () {
