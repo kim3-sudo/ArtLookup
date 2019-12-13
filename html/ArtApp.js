@@ -211,16 +211,17 @@ function processLoginResults(results){
     $("#start-signup").hide();
     $("#start-login").hide();
     $("#logout").show();
-
+    console.log("Username before: ", getCookie("username"));
     //document.cookie = "username=" + results + ";";
     document.cookie = results; // Maybe this will work?
+    console.log("Username after: ", getCookie("username"));
 
     // Close login modal
     document.getElementById("loginModal").setAttribute("style", "display: none");
     document.getElementById("loginModal").setAttribute("class", "modal fade hide");
     $(".modal-backdrop").hide();
   }
-  if (document.cookie == "username="){
+  if (getCookie("username") == ""){
     console.log("No one logged in.");
   } else {
   console.log(getCookie("memberId"));
@@ -274,10 +275,6 @@ function logoutMember() {
   $("#logout").hide();
   document.cookie = "memberId=";
   document.cookie = "username=";
-
-  console.log("Should see two blank lines:");
-  console.log(getCookie("memberId"));
-  console.log(getCookie("username"));
   console.log("Logged out!");
 }
 
