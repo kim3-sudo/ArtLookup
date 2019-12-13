@@ -12,7 +12,6 @@ $(document).ready(function () {
   $("#submit-user-credentials").click(addMember);
   $("#loginButton").click(loginMember);
   $("#logout").click(logoutMember);
-  $(".btn btn-warning text-center").click(likePhoto);
 });
 
 function setCategory(){
@@ -83,6 +82,7 @@ function showPhotos(list){
         result += '</div></form></div></div></div>';
       }
     return result;
+    $(".btn btn-warning text-center").click(likePhoto);
   }
 }
 
