@@ -1,6 +1,8 @@
 #include "ArtDBCommunicator.h"
 #include <vector>
 
+using std::vector;
+
 #ifndef COMMENT_MANAGER_H
 #define COMMENT_MANAGER_H
 

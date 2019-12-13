@@ -16,7 +16,7 @@ void CommentManager::addComment(string artId, string commentOnType, string comme
 
 	// if member username and email not already in user database, add member
 	string addCommentQuery = query.addComment(artId, commentOnType, comment, memberId);
-	sqlStatement->execute(command);
+	sqlStatement->execute(addCommentQuery);
 }
 
 CommentManager::CommentManager(){
