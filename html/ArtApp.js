@@ -3,7 +3,7 @@ var ajaxUser = "brydon1"; //Your username for ajax calls
 
 $(document).ready(function () {
   console.log("ready!");
-  //setNavButtonView(); // CHANGE function name
+  setNavButtonView(); // CHANGE function name
   // $("#home").show();
 
   // When category chosen from dropdown, setCategory
