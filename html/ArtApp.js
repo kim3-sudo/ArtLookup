@@ -136,8 +136,12 @@ function closeModal(modalType){
   document.getElementById(modalType).setAttribute("class", "modal fade hide");
   document.getElementById(modalType).setAttribute("aria-modal", "false");
   document.getElementById(modalType).setAttribute("aria-hidden", "true");
-  $("body").attr("class", "");
-  $("body").removeChild($("body").lastChild); // Removes div showing background fade
+  document.getElementsByTagName("BODY")[0].setAttribute("class", "");
+  var bodyNode = document.getElementsByTagName("BODY")[0];
+  bodyNode.removeChild(bodyNode.lastChild);
+
+  //$("body").attr("class", "");
+  //$("body").removeChild($("body").lastChild); // Removes div showing background fade
 }
 
 function openModal(modalType){
@@ -145,10 +149,12 @@ function openModal(modalType){
   document.getElementById(modalType).setAttribute("class", "modal fade show");
   document.getElementById(modalType).setAttribute("aria-modal", "true");
   document.getElementById(modalType).setAttribute("aria-hidden", "false");
-  $("body").attr("class", "modal-open");
+  document.getElementsByTagName("BODY")[0].setAttribute("class", "modal-open");
+  //$("body").attr("class", "modal-open");
   var node = document.createElement("DIV");
   node.class = "modal-backdrop fade show";
-  $("body").appendChild(node); // Adds div showing background fade
+  document.getElementsByTagName("BODY")[0].appendChild(node);
+  //$("body").appendChild(node); // Adds div showing background fade
 }
 
 function isUsernameEmailAvailable(results){
