@@ -12,7 +12,7 @@ class Member{
     Member(const Member& otherMember);
     // Copy Constructor
 
-    string getId();
+    int getId();
     string getUsername();
     string getPassword();
     string getEmail();
