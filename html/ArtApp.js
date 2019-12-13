@@ -3,25 +3,29 @@ var ajaxUser = "brydon1"; //Your username for ajax calls
 
 $(document).ready(function () {
   console.log("ready!");
-  setNavButtonView(); // CHANGE function name
-  $("#home").show();
+  // setNavButtonView(); // CHANGE function name
+  // $("#home").show();
 
-  // When category chosen from dropdown, setCategory
-  $(".dropdown-item").click(setCategory);
-  // getMatches when search button is clicked
-  $(".action-button").click(getSearchMatches(this));
-  // when submit-user-cred button clicked, addMember
-  $("#start-signup").click($("#signup-message").hide());
-  $("#submit-user-credentials").click(addMember);
+  // // When category chosen from dropdown, setCategory
+  // $(".dropdown-item").click(setCategory);
+  // // getMatches when search button is clicked
+  // $(".action-button").click(getSearchMatches(this));
+  // // when submit-user-cred button clicked, addMember
+  // $("#start-signup").click($("#signup-message").hide());
+  // $("#submit-user-credentials").click(addMember);
 
-  // $("#start-signup").click(function () {
-  //   $("#signup-message").hide();
-  //   $("#submit-user-credentials").click(addMember);
-  // });
+  // // $("#start-signup").click(function () {
+  // //   $("#signup-message").hide();
+  // //   $("#submit-user-credentials").click(addMember);
+  // // });
 
-  $("#loginButton").click(loginMember);
-  $("#logout").click(logoutMember);
+  // $("#loginButton").click(loginMember);
+  // $("#logout").click(logoutMember);
 });
+
+
+
+
 
 function setCategory(){
   //Set the category to the text of the dropdown-item
