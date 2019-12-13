@@ -48,7 +48,7 @@ int main(){
     // Maybe return nothing in this case?
     //returnToJs += "Success";
   }
-  jSCommunicator.sendStringToJS(returnToJs);
+  jSCommunicator.sendStringToJS(returnToJs + ";");
   
   return 0;
 }
