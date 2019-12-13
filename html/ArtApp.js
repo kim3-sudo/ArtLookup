@@ -212,7 +212,9 @@ function processLoginResults(results){
     $("#logout").show();
     console.log("Username before: ", getCookie("username"));
     //document.cookie = "username=" + results + ";";
-    document.cookie = results; // Maybe this will work?
+    var parsedResults = results.split(' ');
+    document.cookie = parsedResults[0]; // adds memberId cookie
+    document.cookie = parsedResults[1]; // adds username cookie
     console.log("Username after: ", getCookie("username"));
 
     // Close login modal

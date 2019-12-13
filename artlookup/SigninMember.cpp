@@ -34,7 +34,7 @@ int main(){
   if (userManager.canLogin(email,password)){
     //cout << "memberId=" << member.getId() << ";username=" << member.getUsername() << ";";
     // Try without ; at end
-    returnToJS += "memberId=" + to_string(member.getId()) + ";username=" + member.getUsername() + ";";
+    returnToJS += "memberId=" + to_string(member.getId()) + "; username=" + member.getUsername() + ";";
   }
   jSCommunicator.sendStringToJS(returnToJS);
 
