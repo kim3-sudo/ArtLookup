@@ -46,8 +46,8 @@ AddMember.o: AddMember.cpp Member.h UserManager.h
 SigninMember.o: SigninMember.cpp UserManager.h
 	$(CC) $(FLAGS) SigninMember.cpp $(CFLAGS)
 
-CommentOnPhoto.o: commentOnPhoto.cpp CommentManager.h JSCommunicator.h
-	$(CC) $(FLAGS) commentOnPhoto.cpp $(CFLAGS)
+CommentOnPhoto.o: CommentOnPhoto.cpp CommentManager.h JSCommunicator.h
+	$(CC) $(FLAGS) CommentOnPhoto.cpp $(CFLAGS)
 
 # LikePhoto.o: LikePhoto.cpp ArtLookup.h JSCommunicator.h Query.h
 # 	$(CC) $(FLAGS) LikePhoto.cpp $(CFLAGS)
