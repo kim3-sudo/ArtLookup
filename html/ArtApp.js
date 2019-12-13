@@ -19,8 +19,8 @@ $(document).ready(function () {
   // //   $("#submit-user-credentials").click(addMember);
   // // });
 
-  // $("#loginButton").click(loginMember);
-  // $("#logout").click(logoutMember);
+  $("#loginButton").click(loginMember);
+  $("#logout").click(logoutMember);
 });
 
 
