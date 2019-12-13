@@ -91,5 +91,5 @@ PutHTML:
 	ls -l /var/www/html/class/softdev/$(USER)/ArtApp
 
 clean:
-	rm -f ArtApp AddMember SigninMember $(OUT)
+	rm -f ArtApp AddMember SigninMember LikePhoto $(OUT)
 #	rm -f ArtAppTest ArtApp AddMember TestArtApp $(OUT)
