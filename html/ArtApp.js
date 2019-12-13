@@ -340,14 +340,14 @@ function commentPhoto(commentSubmitButton) {
     $.ajax({
       url: '/cgi-bin/'+ajaxUser+'_artAppCommentPhoto.cgi?artId=' + artId + '&comment=' + comment + '&commentOnType=artwork&memberId=' + memberId,
       dataType: 'text',
-      success: commentSubmitted(commentTextField), // is emptyString necessary?
+      success: commentSubmitted(), // is emptyString necessary?
       error: function(){alert("Error: Could not comment on photo");}
     });
   }
 }
 
 // Maybe need space for results as input?
-function commentSubmitted(results, commentNode){
+function commentSubmitted(results){
   console.log("Comment made!");
 }
 
