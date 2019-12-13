@@ -210,12 +210,12 @@ function processLoginResults(results){
     $("#start-signup").hide();
     $("#start-login").hide();
     $("#logout").show();
-    console.log("Username before: ", getCookie("username"));
+    console.log("Username before:", getCookie("username"));
     //document.cookie = "username=" + results + ";";
     var parsedResults = results.split(' ');
     document.cookie = parsedResults[0]; // adds memberId cookie
     document.cookie = parsedResults[1]; // adds username cookie
-    console.log("Username after: ", getCookie("username"));
+    console.log("Username after:", getCookie("username"));
 
     // Close login modal
     document.getElementById("loginModal").setAttribute("style", "display: none");
