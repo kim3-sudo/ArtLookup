@@ -2,6 +2,7 @@ TEST_OBJS = ArtLookupTests.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
 REAL_OBJS = ArtApp.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o JSCommunicator.o
 ADD_MEMBER_OBJS = AddMember.o Member.o UserManager.o ArtDBCommunicator.o Query.o
 SIGNIN_MEMBER_OBJS = SigninMember.o Member.o UserManager.o ArtDBCommunicator.o Query.o
+LIKE_PHOTO_OBJS = LikePhoto.o ArtLookup.o JSCommunicator.o Query.o Artwork.o
 #SOURCE	= Artwork.cpp
 #HEADER	= Artwork.h ArtDBCommunicator.h
 #OUT	= ArtApp
@@ -12,6 +13,7 @@ CFLAGS 	 = -std=c++14
 USER     = brydon1
 
 all: ArtApp AddMember SigninMember PutCGI PutHTML
+#all: ArtApp AddMember SigninMember LikePhoto PutCGI PutHTML
 #all: ArtAppTest ArtApp AddMember TestArtApp PutCGI PutHTML
 
 #ArtAppTest: $(ART_APP_TEST)
@@ -28,6 +30,9 @@ AddMember: $(ADD_MEMBER_OBJS)
 SigninMember: $(SIGNIN_MEMBER_OBJS)
 	$(CC) $(SIGNIN_MEMBER_OBJS) -o SigninMember -L/usr/local/lib $(SQL_FLAGS)
 
+# LikePhoto: $(LIKE_PHOTO_OBJS)
+# 	$(CC) $(LIKE_PHOTO_OBJS) -o LikePhoto -L/usr/local/lib $(SQL_FLAGS)
+
 # TestArtApp: $(TEST_OBJS)
 # 	$(CC) $(TEST_OBJS) -o testArtApp -L/usr/local/lib $(SQL_FLAGS)
 
@@ -39,6 +44,9 @@ AddMember.o: AddMember.cpp Member.h UserManager.h
 
 SigninMember.o: SigninMember.cpp UserManager.h
 	$(CC) $(FLAGS) SigninMember.cpp $(CFLAGS)
+
+# LikePhoto.o: LikePhoto.cpp ArtLookup.h JSCommunicator.h Query.h
+# 	$(CC) $(FLAGS) LikePhoto.cpp $(CFLAGS)
 
 ArtLookupTests.o: ArtLookupTests.cpp ArtLookup.h
 	$(CC) $(FLAGS) ArtLookupTests.cpp $(CFLAGS)
