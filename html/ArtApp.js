@@ -6,13 +6,13 @@ $(document).ready(function () {
   setNavButtonView(); // CHANGE function name
   // $("#home").show();
 
-  // // When category chosen from dropdown, setCategory
-  // $(".dropdown-item").click(setCategory);
-  // // getMatches when search button is clicked
-  // $(".action-button").click(getSearchMatches(this));
-  // // when submit-user-cred button clicked, addMember
-  // $("#start-signup").click($("#signup-message").hide());
-  // $("#submit-user-credentials").click(addMember);
+  // When category chosen from dropdown, setCategory
+  $(".dropdown-item").click(setCategory);
+  // getMatches when search button is clicked
+  $(".action-button").click(getSearchMatches(this));
+  // when submit-user-cred button clicked, addMember
+  $("#start-signup").click($("#signup-message").hide());
+  $("#submit-user-credentials").click(addMember);
 
   // // $("#start-signup").click(function () {
   // //   $("#signup-message").hide();
