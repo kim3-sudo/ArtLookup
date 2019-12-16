@@ -97,7 +97,9 @@ function showPhotos(list){
       console.log(artData[i]);
       //Creates div
       if (i=6){
-        var topPadding = '70';
+        topPadding = '70';
+      } else {
+        topPadding = '10';
       }
       result += '<div class="row" style="padding-top: '+ topPadding +'px;"><div class="col d-flex float-none"><div style="width: 100%;">';
       //Creates image
