@@ -1,11 +1,11 @@
 .commentSubmit {
-	background-color: #DBD9D9; /* Grey */
+	background-color: #B7B7B7; /* Grey */
  	color: white;
 }
 
 /* #4CAF50 Green */
 
 .commentSubmit:hover {
-	background-color: #B7B7B7; /* Darker Grey */
+	background-color: #9E9E9E; /* Darker Grey */
  	color: white;
 }
