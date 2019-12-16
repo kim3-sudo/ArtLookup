@@ -111,7 +111,7 @@ function showPhotos(list){
       //Creates title
       result += '<h5>' + artData[i-3] + '</h5>';
       //Creates image
-      result += '<img class="img-fluid lazyload" src=' + artData[i] + ' height="100%" align="left" style = "padding-top: 20px; padding-right: 10px; padding-bottom: 10px;">';
+      result += '<img class="img-fluid lazyload" src=' + artData[i] + ' height="100%" align="left" style = "padding-top: 10px; padding-right: 10px; padding-bottom: 10px;">';
       //Creates description
       result += '<p style="padding-top: 20px;"><b>Title:</b> ' + artData[i-3] + '<br><br><b>Author:</b> ' + artData[i-5] + ' ' + artData[i-4] + '<br><b>Location:</b> ' + artData[i-1] + '<br><b>Date:</b> ' + artData[i+5] + '<br><b>Technique:</b> ' + artData[i-2] + '<br><b>School:</b> ' + artData[i+3] + '<br><b>Type:</b> ' + artData[i+2] + '<br><b>Form:</b> ' + artData[i+1] + '</p>';
       //Creates like button
