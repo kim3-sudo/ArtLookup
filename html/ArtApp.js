@@ -29,10 +29,6 @@ $(document).ready(function () {
   $("#logout").click(logoutMember);
 });
 
-
-
-
-
 function setCategory(){
   //Set the category to the text of the dropdown-item
   searchCategory = $(this).text();
@@ -102,7 +98,7 @@ function showPhotos(list){
       //Creates image
       result += '<img class="img-fluid lazyload" src=' + artData[i] + ' height="100%" align="left" style = "padding-top: 20px; padding-right: 10px; padding-bottom: 10px;">';
       //Creates description
-      result += '<p style="padding-top: 8px;">Title: ' + artData[i-3] + '<br><br>Author: ' + artData[i-5] + ' ' + artData[i-4] + '<br>Location: ' + artData[i-1] + '<br>Date: ' + artData[i+5] + '<br>Technique: ' + artData[i-2] + '<br>School: ' + artData[i+3] + '<br>Type: ' + artData[i+2] + '<br>Form: ' + artData[i+1] + '</p>';
+      result += '<p style="padding-top: 20px;">Title: ' + artData[i-3] + '<br><br>Author: ' + artData[i-5] + ' ' + artData[i-4] + '<br>Location: ' + artData[i-1] + '<br>Date: ' + artData[i+5] + '<br>Technique: ' + artData[i-2] + '<br>School: ' + artData[i+3] + '<br>Type: ' + artData[i+2] + '<br>Form: ' + artData[i+1] + '</p>';
       //Creates like button
       result += '<button class="btn btn-warning text-center" type="button" style="margin-top: 0px;" id = "' + artData[i-6] + '">Like</button>';
       //Creates comment field and submit button
@@ -340,7 +336,7 @@ function commentPhoto(commentSubmitButton) {
     $.ajax({
       url: '/cgi-bin/'+ajaxUser+'_artAppCommentPhoto.cgi?artId=' + artId + '&comment=' + comment + '&commentOnType=artwork&memberId=' + memberId,
       dataType: 'text',
-      success: commentSubmitted(), // is emptyString necessary?
+      success: commentSubmitted, // is emptyString necessary?
       error: function(){alert("Error: Could not comment on photo");}
     });
   }
