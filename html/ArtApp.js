@@ -103,7 +103,7 @@ function showPhotos(list){
       }
       //Creates div
       if (i==6){
-        topPadding = '80';
+        topPadding = '85';
       } else {
         topPadding = '5';
       }
