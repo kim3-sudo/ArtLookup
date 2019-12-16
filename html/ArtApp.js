@@ -83,8 +83,8 @@ function showPhotos(list){
   if (artData.length < 1) {
     return "<h3>Internal Error</h3>";
   } else {
-    var result = '<div class="row" style="padding-top: 70px;"><div class="col d-flex float-none"><div class="border rounded border-dark" style="width: 100%;">';
-
+    //var result = '<div class="row" style="padding-top: 70px;"><div class="col d-flex float-none"><div class="border rounded border-dark" style="width: 100%;">';
+    var result="";
     var listLength = artData.length;
     console.log("Length of artData List: ");
     console.log(listLength);
@@ -94,7 +94,8 @@ function showPhotos(list){
       console.log(i);
       console.log("ArtData[i]: ");
       console.log(artData[i]);
-
+      //Creates div
+      result = '<div class="row" style="padding-top: 70px;"><div class="col d-flex float-none"><div class="border rounded border-dark" style="width: 100%;">';
       //Creates image
       result += '<img class="img-fluid lazyload" src=' + artData[i] + ' height="100%" align="left" style = "padding-top: 20px; padding-right: 10px; padding-bottom: 10px;">';
       //Creates description
@@ -103,7 +104,7 @@ function showPhotos(list){
       result += '<button class="btn btn-warning text-center" type="button" style="margin-top: 0px;" id = "' + artData[i-6] + '">Like</button>';
       //Creates comment field and submit button
       // Input id is artId with C at the end
-      result += '<form><div class="form-group"><input id="'+ artData[i-6] +'C" class="form-control" type="text" placeholder="comment here!" style="margin-top: 10px;"><button class="btn btn-light commentSubmit" id = "' + artData[i-6] + '" type="button" style="margin-bottom: 70px;margin-top: 10px;">submit</button>';
+      result += '<form><div class="form-group"><input id="'+ artData[i-6] +'C" class="form-control" type="text" placeholder="comment here!" style="margin-top: 10px;"><button class="btn btn-light commentSubmit" id = "' + artData[i-6] + '" type="button" style="margin-bottom: 50px;margin-top: 10px;">submit</button>';
       //Adds closing tags
       result += '</div></form></div></div></div>';
     }
