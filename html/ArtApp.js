@@ -116,7 +116,7 @@ function showPhotos(list){
       result += '<button class="btn btn-warning text-center" type="button" style="margin-top: 0px;" id = "' + artData[i-6] + '">Like</button>';
       //Creates comment field and submit button
       // Input id is artId with C at the end
-      result += '<form><div class="form-group"><input id="'+ artData[i-6] +'C" class="form-control" type="text" placeholder="comment here!" style="margin-top: 10px;"><button class="btn btn-light commentSubmit" align="left" id = "' + artData[i-6] + '" type="button" style="margin-bottom: 10px;margin-top: 10px;">submit</button><button class="btn btm-primary viewComments" id = "' + artData[i-6] + 'VC" type="button" style="margin-bottom: 10px;margin-top: 10px;">View Comments</button>';
+      result += '<form><div class="form-group"><input id="'+ artData[i-6] +'C" class="form-control" type="text" placeholder="comment here!" style="margin-top: 10px;"><button class="btn btn-light commentSubmit" align="left" id = "' + artData[i-6] + '" type="button" style="margin-bottom: 10px;margin-top: 10px;">submit</button><button class="btn btn-primary viewComments" id = "' + artData[i-6] + 'VC" type="button" style="margin-bottom: 10px;margin-top: 10px;">View Comments</button>';
       //Adds closing tags
       result += '</div></form></div></div></div>';
     }
