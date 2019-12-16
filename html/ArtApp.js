@@ -108,6 +108,8 @@ function showPhotos(list){
         topPadding = '10';
       }
       result += '<div class="row" style="padding-top: ' + topPadding + 'px;"><div class="col d-flex float-none"><div style="width: 100%;">';
+      //Creates title
+      result += '<h5>' + artData[i-3] + '</h5>';
       //Creates image
       result += '<img class="img-fluid lazyload" src=' + artData[i] + ' height="100%" align="left" style = "padding-top: 20px; padding-right: 10px; padding-bottom: 10px;">';
       //Creates description
