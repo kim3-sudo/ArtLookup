@@ -95,7 +95,7 @@ function showPhotos(list){
       console.log("ArtData[i]: ");
       console.log(artData[i]);
       //Creates div
-      result += '<div class="row" style="padding-top: 70px;"><div class="col d-flex float-none"><div class="border rounded border-dark" style="width: 100%;">';
+      result += '<div class="row" style="padding-top: 70px;"><div class="col d-flex float-none"><div style="width: 100%;">';
       //Creates image
       result += '<img class="img-fluid lazyload" src=' + artData[i] + ' height="100%" align="left" style = "padding-top: 20px; padding-right: 10px; padding-bottom: 10px;">';
       //Creates description
