@@ -85,6 +85,7 @@ function showPhotos(list){
   } else {
     //var result = '<div class="row" style="padding-top: 70px;"><div class="col d-flex float-none"><div class="border rounded border-dark" style="width: 100%;">';
     var result="";
+    var topPadding = '10';
     var listLength = artData.length;
     console.log("Length of artData List: ");
     console.log(listLength);
@@ -95,7 +96,10 @@ function showPhotos(list){
       console.log("ArtData[i]: ");
       console.log(artData[i]);
       //Creates div
-      result += '<div class="row" style="padding-top: 10px;"><div class="col d-flex float-none"><div style="width: 100%;">';
+      if (i=6){
+        var topPadding = '70';
+      }
+      result += '<div class="row" style="padding-top: '+ topPadding +'px;"><div class="col d-flex float-none"><div style="width: 100%;">';
       //Creates image
       result += '<img class="img-fluid lazyload" src=' + artData[i] + ' height="100%" align="left" style = "padding-top: 20px; padding-right: 10px; padding-bottom: 10px;">';
       //Creates description
