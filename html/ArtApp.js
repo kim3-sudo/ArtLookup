@@ -103,9 +103,9 @@ function showPhotos(list){
       }
       //Creates div
       if (i==6){
-        topPadding = '70';
+        topPadding = '80';
       } else {
-        topPadding = '10';
+        topPadding = '5';
       }
       result += '<div class="row" style="padding-top: ' + topPadding + 'px;"><div class="col d-flex float-none"><div style="width: 100%;">';
       //Creates title
