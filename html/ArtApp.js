@@ -120,6 +120,7 @@ function showPhotos(list){
       //Adds closing tags
       result += '</div></form></div></div></div>';
     }
+    console.log("Number of results:", count);
     return result;
   }
 }
