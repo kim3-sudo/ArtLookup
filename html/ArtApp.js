@@ -96,12 +96,12 @@ function showPhotos(list){
       console.log("ArtData[i]: ");
       console.log(artData[i]);
       //Creates div
-      if (i=6){
-        topPadding = '70';
-      } else {
-        topPadding = '10';
-      }
-      result += '<div class="row" style="padding-top: '+ topPadding +'px;"><div class="col d-flex float-none"><div style="width: 100%;">';
+      // if (i=6){
+      //   topPadding = '70';
+      // } else {
+      //   topPadding = '10';
+      // }
+      result += '<div class="row" style="padding-top: 70px;"><div class="col d-flex float-none"><div style="width: 100%;">';
       //Creates image
       result += '<img class="img-fluid lazyload" src=' + artData[i] + ' height="100%" align="left" style = "padding-top: 20px; padding-right: 10px; padding-bottom: 10px;">';
       //Creates description
@@ -114,8 +114,6 @@ function showPhotos(list){
       //Adds closing tags
       result += '</div></form></div></div></div>';
     }
-
-
     return result;
   }
 }
