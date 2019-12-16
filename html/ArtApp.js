@@ -78,6 +78,7 @@ function showPhotos(list){
 
   // Why is this suddenly broken?
   var artData = list.split('*'); //changed "" to ''
+  var count = 0;
 
   //If there is nothing from c++ return "Internal Error"
   if (artData.length < 1) {
@@ -95,6 +96,10 @@ function showPhotos(list){
       console.log(i);
       console.log("ArtData[i]: ");
       console.log(artData[i]);
+      if (count == 10){
+        console.log("Aborting loop.");
+        break;
+      }
       //Creates div
       // if (i=6){
       //   topPadding = '70';
