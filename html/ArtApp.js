@@ -97,7 +97,7 @@ function showPhotos(list){
       console.log("ArtData[i]: ");
       console.log(artData[i]);
       count++;
-      if (count == 10){
+      if (count == 2000){
         console.log("Aborting loop.");
         break;
       }
