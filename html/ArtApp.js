@@ -47,6 +47,8 @@ function processSearchResults(results) {
     console.log("Results:"+results);
     $('#artworkResults').empty();
     $('#artworkResults').append(showPhotos(results));
+    $(".likeButton").click(likePhoto);
+    console.log("like button click event was created.");
 }
 
 //Parses art data from c++. Appends all photos to photo gallery
@@ -75,14 +77,13 @@ function showPhotos(list){
         //Creates description
         result += '<p style="padding-top: 8px;">Title: ' + artData[i-3] + '<br><br>Author: ' + artData[i-5] + ' ' + artData[i-4] + '<br>Location: ' + artData[i-1] + '<br>Date: ' + artData[i+5] + '<br>Technique: ' + artData[i-2] + '<br>School: ' + artData[i+3] + '<br>Type: ' + artData[i+2] + '<br>Form: ' + artData[i+1] + '</p>';
         //Creates like button
-        result += '<button class="btn btn-warning text-center" type="button" style="margin-top: 0px;margin-bottom: 10px;" id = "' + artData[i-6] + '">Like</button>';
+        result += '<button class="btn btn-warning text-center likeButton" type="button" style="margin-top: 0px;margin-bottom: 10px;" id="' + artData[i-6] + '">Like</button>';
         //Creates comment field and submit button
         result += '<form><div class="form-group"><input class="form-control" type="text" placeholder="comment here!"><button class="btn btn-light" type="button" style="margin-bottom: 70px;margin-top: 10px;">submit</button>';
         //Adds closing tags
         result += '</div></form></div></div></div>';
       }
     return result;
-    $(".btn btn-warning text-center").click(likePhoto);
   }
 }
 
@@ -230,22 +231,40 @@ function logoutMember() {
 
 // Like photo
 function likePhoto() {
-  console.log("Like Button clicked.")
+  console.log("Like Button clicked.");
   var username = getCookie("username");
   if (username == "") {
     alert("Please login to be able to like artwork.");
   } else {
+    console.log("Username cookie exists");
     var artId = $(this).attr('ID');
-
+    console.log("Got art ID." + artId);
     $.ajax({
       url: '/cgi-bin/'+ajaxUser+'_artAppLikePhoto.cgi?artId=' + artId,
       dataType: 'text',
       success: displayNumLikes,
       error: function(){alert("Error: Could not like photo");}
     });
+    console.log("Ajax was called.");
   }
 }
 
 function displayNumLikes(results) {
-  $(this).text() = results;
+  console.log("Results"+results);
+  var likesAndId = results.split("*");
+  var numLikes = likesAndId[0];
+  var artId = likesAndId[1];
+
+  console.log("ArtID:",artId);
+  console.log("Likes:",numLikes);
+  $("#"+artId).text(numLikes);
+
+  //document.querySelector('#17556').value = 'Hide';
+  //document.querySelector('#' + artId).innerText = 'Hide';
+  //document.querySelector('#' + artId).textContent = 'Hide';
+  //$('#' + artId).empty();
+  //$('#' + artId).text(results);
+  console.log("Text of button should be changed.")
+  //document.getElementById(artId).name = results;
+  //.text(text)
 }
