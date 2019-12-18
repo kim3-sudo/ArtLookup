@@ -38,5 +38,7 @@ int main(){
   // Sends the new number of likes to javascript.
   jSCommunicator.sendStringToJS("Content-Type: text/plain\n\n");
   jSCommunicator.sendStringToJS(updatedLikes);
+  jSCommunicator.sendStringToJS("*");
+  jSCommunicator.sendStringToJS(artId);
   return 0;
 }
