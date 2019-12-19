@@ -46,7 +46,7 @@ vector<Comment> CommentManager::getComments(int commentOnId, string commentOnTyp
       numLikes = searchMatches -> getInt(commentColNames[5]);
 
       //Use pointer to dynamically create comment
-      comment = new Comment(commentId,comment,commentOnId,commentOnType,userId,numLikes);
+      comment = new Comment(commentId,commentText,commentOnId,commentOnType,userId,numLikes);
 
       commentResultList.push_back(*(comment));
       delete comment; // Deallocate memory in comment once finished with object
