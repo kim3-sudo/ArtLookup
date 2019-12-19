@@ -1,7 +1,7 @@
-var searchCategory;  //Category to be searched by: Title, Author ...
+var searchCategory; //Category to be searched by: Title, Author ...
 var ajaxUser = "brydon1"; //Your username for ajax calls
 
-$(document).ready(function () {
+$(document).ready(function() {
   console.log("ready!");
   setNavButtonView(); // CHANGE function name
   // $("#home").show();
@@ -32,7 +32,6 @@ $(document).ready(function () {
 
 
 
-
 function setCategory(){
   //Set the category to the text of the dropdown-item
   searchCategory = $(this).text();
@@ -40,28 +39,31 @@ function setCategory(){
 }
 
 //Switches to search page and displays the photos related to the user's search
-function getSearchMatches(){
-    //Hides the search page and shows the homepage
-    var searchTerm = $('#search-field2').val();
-    $('#home').hide();
-    console.log("hide the homepage");
-    $('#search').show();
-    console.log("Show seach page");
+function getSearchMatches() {
+  //Hides the search page and shows the homepage
+  var searchTerm = $('#search-field2').val();
+  $('#home').hide();
+  console.log("hide the homepage");
+  $('#search').show();
+  console.log("Show seach page");
 
-    console.log("Search Term: " + searchTerm);
-    console.log("Search Category: " + searchCategory)
+  console.log("Search Term: " + searchTerm);
+  console.log("Search Category: " + searchCategory)
 
-    //Sends search term and category to C++ then calls processResults
-    $.ajax({
-      url: '/cgi-bin/'+ajaxUser+'_artAppSearch.cgi?searchVal='+searchTerm+'&searchCategory='+searchCategory,
-      dataType: 'text',
-      success: processSearchResults,
-      error: function(){alert("Error: Could not search");}
-    });
+  //Sends search term and category to C++ then calls processResults
+  $.ajax({
+    url: '/cgi-bin/' + ajaxUser + '_artAppSearch.cgi?searchVal=' + searchTerm + '&searchCategory=' + searchCategory,
+    dataType: 'text',
+    success: processSearchResults,
+    error: function() {
+      alert("Error: Could not search");
+    }
+  });
 }
 
 //Empties photo gallery (again?) builds new gallery using buildGallery function
 function processSearchResults(results) {
+
     console.log("Results:"+results);
     $('#artworkResults').empty();
     console.log("About to show photos");
@@ -95,6 +97,7 @@ function showPhotos(list){
     console.log("Appending Results: \n\n");
 
     for (var i = 6; i < listLength; i+=13){
+
       console.log(i);
       console.log("ArtData[i]: ");
       console.log(artData[i]);
@@ -117,7 +120,7 @@ function showPhotos(list){
 
 // Adds member to user table in SQL database if user does not already exist;
 // Otherwise, shows error message
-function addMember(){
+function addMember() {
   console.log("Clicked-signup");
   $("#signup-message").hide();
 
@@ -135,10 +138,12 @@ function addMember(){
     console.log("Sending info to server");
     $("#signup-message").hide();
     $.ajax({
-      url: '/cgi-bin/'+ajaxUser+'_artAppAddMember.cgi?userName='+username+'&email='+email+'&password='+password1,
+      url: '/cgi-bin/' + ajaxUser + '_artAppAddMember.cgi?userName=' + username + '&email=' + email + '&password=' + password1,
       dataType: 'text',
       success: isUsernameEmailAvailable, // cgi should return character T if username not taken; F otherwise
-      error: function(){alert("Error: Something went wrong");}
+      error: function() {
+        alert("Error: Something went wrong");
+      }
     });
 
   } else {
@@ -215,7 +220,7 @@ function isUsernameEmailAvailable(results){
 }
 
 // Login member
-function loginMember(){
+function loginMember() {
   console.log("Clicked Log In");
 
   email = $('#login-email').val();
@@ -223,15 +228,17 @@ function loginMember(){
   console.log(email);
   console.log(password);
 
-  if (email == "" || password == ""){
+  if (email == "" || password == "") {
     alert("Invalid entry.");
   } else {
     console.log("Sending info to server");
     $.ajax({
-      url: '/cgi-bin/'+ajaxUser+'_artAppSigninMember.cgi?email='+email+'&password='+password,
+      url: '/cgi-bin/' + ajaxUser + '_artAppSigninMember.cgi?email=' + email + '&password=' + password,
       dataType: 'text',
       success: processLoginResults,
-      error: function(){alert("Error: Something went wrong");}
+      error: function() {
+        alert("Error: Something went wrong");
+      }
     });
   }
 }
@@ -273,7 +280,7 @@ function getCookie(cname) {
   var name = cname + "=";
   var decodedCookie = decodeURIComponent(document.cookie);
   var ca = decodedCookie.split(';');
-  for (var i=0; i<ca.length; i++) {
+  for (var i = 0; i < ca.length; i++) {
     var c = ca[i];
     while (c.charAt(0) == ' ') {
       c = c.substring(1);
