@@ -3,6 +3,8 @@
 #include <vector>
 
 using std::vector;
+using std::string;
+//using std::to_string;
 
 #ifndef COMMENT_MANAGER_H
 #define COMMENT_MANAGER_H

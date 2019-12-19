@@ -8,6 +8,8 @@
 #include "CommentManager.h"
 #include "Query.h"
 
+using std::to_string;
+
 // This is nearly identical to addMember in UserManager
 void CommentManager::addComment(string artId, string commentOnType, string comment, string memberId){
 	std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
@@ -29,6 +31,8 @@ vector<Comment> getComments(int commentOnId, string commentOnType){
 	std::unique_ptr<sql::ResultSet> searchMatches;
 	Comment *comment;
 	vector<Comment> commentResultList;
+	int commentId, commentOnId, userId, numLikes;
+	string comment, commentOnType;
 
 	do {
 	searchMatches.reset(sqlStatement->getResultSet());
