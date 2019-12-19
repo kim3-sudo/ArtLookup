@@ -421,7 +421,7 @@ function showComments(results){
   var commentInfoSplit = results.split("*");
   var artId = commentInfoSplit[0];
   var displayComments = '';
-  for (int i=1;i<(commentInfoSplit.length);i=i+3){
+  for (var i=1;i<(commentInfoSplit.length);i+=3){
     commentText = commentInfoSplit[i];
     userId = commentInfoSplit[i+1];
     numLikes = commentInfoSplit[i+2];
