@@ -82,7 +82,7 @@ function processSearchResults(results) {
 function showPhotos(list){
 
   // Why is this suddenly broken?
-  var artDatboba = list.split('*'); //changed "" to ''
+  var artData = list.split('*'); //changed "" to ''
   var count = 0;
 
   //If there is nothing from c++ return "Internal Error"
