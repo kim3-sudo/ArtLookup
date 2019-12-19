@@ -22,19 +22,16 @@ int main(){
     CommentManager commentManager;
     vector<Comment> matchingComments = commentManager.getComments(artId,"artwork");
 
-    string results 
+    string commentInfoString(""), sep("*");
 
-    // ArtLookup artlookup;
-    // // Looks for artwork that match the artId given by the javascript
-    // vector<Artwork> likedArtworks = artlookup.lookupSingleCommand(artIdQuery);
-    // Artwork likedArtwork = likedArtworks.at(0);
+    for (int i=0;i<matchingComments.length();i++){
+        if (i != 0){
+            commentInfoString += sep;
+        }
+        commentInfoString += matchingComments[i].getComment() + sep + matchingComments[i].getUserId() + sep + to_string(matchingComments[i].getNumLikes());
+    }
 
-    // // Likes artwork and gets the new number of likes.
-    // likedArtwork.incrementLikes();
-    // int numLikes = likedArtwork.getNumLikes();
-    // string updatedLikes = to_string(numLikes);
-
-    // // Sends the new number of likes to javascript.
-    jSCommunicator.sendStringToJS("");
+    // Sends the comments to javascript
+    jSCommunicator.sendStringToJS(commentInfoString);
   return 0;
 }
