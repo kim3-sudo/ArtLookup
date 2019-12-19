@@ -31,19 +31,19 @@ vector<Comment> getComments(int commentOnId, string commentOnType){
 	std::unique_ptr<sql::ResultSet> searchMatches;
 	Comment *comment;
 	vector<Comment> commentResultList;
-	int commentId, commentOnId, userId, numLikes;
-	string comment, commentOnType;
+	int commentId, userId, numLikes;
+	string commentText;
 
 	do {
 	searchMatches.reset(sqlStatement->getResultSet());
     while (searchMatches->next()) {
       // Get results
-      commentId = searchMatches -> getInt(colNames[0]); 
-      commentOnId = searchMatches -> getInt(colNames[1]);
-      commentOnType = searchMatches -> getString(colNames[2]);
-      comment = searchMatches -> getString(colNames[3]);
-      userId = searchMatches -> getInt(colNames[4]);
-      numLikes = searchMatches -> getInt(colNames[5]);
+      commentId = searchMatches -> getInt(commentColNames[0]); 
+      //commentOnId = searchMatches -> getInt(commentColNames[1]);
+      //commentOnType = searchMatches -> getString(commentColNames[2]);
+      commentText = searchMatches -> getString(commentColNames[3]);
+      userId = searchMatches -> getInt(commentColNames[4]);
+      numLikes = searchMatches -> getInt(commentColNames[5]);
 
       //Use pointer to dynamically create comment
       comment = new Comment(commentId,commentOnId,commentOnType,comment,userId,numLikes);
