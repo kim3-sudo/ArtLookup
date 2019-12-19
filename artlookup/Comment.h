@@ -1,4 +1,5 @@
 #include <string>
+using std::string;
 
 #ifndef COMMENT_H
 #define COMMENT_H
