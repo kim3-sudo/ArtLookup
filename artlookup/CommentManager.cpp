@@ -19,6 +19,38 @@ void CommentManager::addComment(string artId, string commentOnType, string comme
 	sqlStatement->execute(addCommentQuery);
 }
 
+vector<Comment> getComments(int commentOnId, string commentOnType){
+	std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
+	std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
+	Query query;
+	string getCommentsQuery = query.getComments(to_string(commentOnId), commentOnType);
+	sqlStatement->execute(getCommentsQuery);
+
+	std::unique_ptr<sql::ResultSet> searchMatches;
+	Comment *comment;
+	vector<Comment> commentResultList;
+
+	do {
+	searchMatches.reset(sqlStatement->getResultSet());
+    while (searchMatches->next()) {
+      // Get results
+      commentId = searchMatches -> getInt(colNames[0]); 
+      commentOnId = searchMatches -> getInt(colNames[1]);
+      commentOnType = searchMatches -> getString(colNames[2]);
+      comment = searchMatches -> getString(colNames[3]);
+      userId = searchMatches -> getInt(colNames[4]);
+      numLikes = searchMatches -> getInt(colNames[5]);
+
+      //Use pointer to dynamically create comment
+      comment = new Comment(commentId,commentOnId,commentOnType,comment,userId,numLikes);
+
+      commentResultsList.push_back(*(comment));
+      delete comment; // Deallocate memory in comment once finished with object
+    }
+  } while (sqlStatement->getMoreResults());
+  return commentResultsList;
+}
+
 CommentManager::CommentManager(){
 	commentColNames.push_back("commentId");
 	commentColNames.push_back("commentOnId");

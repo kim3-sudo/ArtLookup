@@ -1,4 +1,5 @@
 #include "ArtDBCommunicator.h"
+#include "Comment.h"
 #include <vector>
 
 using std::vector;
@@ -11,8 +12,8 @@ class CommentManager: public ArtDBCommunicator{
 	    void addComment(string artId, string commentOnType, string comment, string memberId);
 	    // add comment to user table in sql database
 
-	    //Member getLoginMember(string email, string password);
-	    // Given login info, returns member object
+	    vector<Comment> getComments(int commentOnId, string commentOnType);
+	    // Returns comments associated with either a specific artwork or comment
 	  
 	    CommentManager();
 	    // Default Constructor
