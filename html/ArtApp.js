@@ -20,10 +20,10 @@ $(document).ready(function () {
   });
   $("#submit-user-credentials").click(addMember);
 
-  // // $("#start-signup").click(function () {
-  // //   $("#signup-message").hide();
-  // //   $("#submit-user-credentials").click(addMember);
-  // // });
+  // $("#start-signup").click(function () {
+  //   $("#signup-message").hide();
+  //   $("#submit-user-credentials").click(addMember);
+  // });
 
   $("#loginButton").click(loginMember);
   $("#logout").click(logoutMember);
@@ -70,6 +70,11 @@ function processSearchResults(results) {
       } else {
         commentPhoto(this); // maybe wrong
       }
+    });
+
+    // FINISH ME!!!!!
+    $(".viewComments").click(function (){
+      getComments(this);
     });
 }
 
@@ -118,7 +123,10 @@ function showPhotos(list){
       result += '<button class="btn btn-warning text-center" type="button" style="margin-top: 0px;" id = "' + artData[i-6] + '">Like</button>';
       //Creates comment field and submit button
       // Input id is artId with C at the end
-      result += '<form><div class="form-group"><input id="'+ artData[i-6] +'C" class="form-control" type="text" placeholder="What do you think?" style="margin-top: 10px;"><button class="btn btn-light commentSubmit" align="left" id = "' + artData[i-6] + '" type="button" style="margin-bottom: 10px;margin-top: 10px;">Submit</button><button class="btn btn-primary viewComments" id = "' + artData[i-6] + 'VC" type="button" style="margin-bottom: 10px;margin-top: 10px;">View Comments</button>';
+      // Maybe remove id from div w/ name
+      result += '<form><div class="form-group"><input id="'+ artData[i-6] +'C" class="form-control" type="text" placeholder="What do you think?" style="margin-top: 10px;"><div name="' + artData[i-6] + '"id="' + artData[i-6] + '_DisplayComments"></div><input type="reset" class="btn btn-light commentSubmit" id = "' + artData[i-6] + '" align="left" style="margin-bottom: 10px;margin-top: 10px;" value="Submit"><button class="btn btn-primary viewComments" id = "' + artData[i-6] + 'VC" type="button" style="margin-bottom: 10px;margin-top: 10px;">View Comments</button>'; // Try Submit button as reset
+        //"<button class="btn btn-light commentSubmit" align="left" id = "' + artData[i-6] + '" type="button" style="margin-bottom: 10px;margin-top: 10px;">Submit</button>
+
       //Adds closing tags
       result += '</div></form></div></div></div>';
     }
@@ -362,6 +370,28 @@ function commentPhoto(commentSubmitButton) {
 function commentSubmitted(results){
   console.log("Comment made!");
 }
+
+// TEST/FINISH
+function getComments(commentViewButton) {
+  var artId = $(commentSubmitButton).attr('NAME'); // Maybe will not work
+  console.log(artId);
+  //comment = $("#" + artId + "C").val();
+  //console.log(comment);
+
+  $.ajax({
+    url: '/cgi-bin/'+ajaxUser+'_artAppCommentPhoto.cgi?artId=' + artId,
+    dataType: 'text',
+    success: parseComments, // is emptyString necessary?
+    error: function(){alert("Error: Could not comment on photo");}
+  });
+}
+
+// FINISH
+function parseComments(results){
+  console.log("Parsing comments!");
+}
+
+
 
 // Like photo
 function likePhoto() {
