@@ -255,8 +255,8 @@ function displayNumLikes(results) {
   var numLikes = likesAndId[0];
   var artId = likesAndId[1];
 
-  //console.log("ArtID:",artId);
-  //console.log("Likes:",numLikes);
+  console.log("ArtID:",artId);
+  console.log("Likes:",numLikes);
   $("#"+artId).text(numLikes);
-  //console.log("Text of button should be changed.")
+  console.log("Text of button should be changed.")
 }
