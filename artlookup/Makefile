@@ -2,7 +2,7 @@ TEST_OBJS = ArtLookupTests.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
 REAL_OBJS = ArtApp.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o JSCommunicator.o
 ADD_MEMBER_OBJS = AddMember.o Member.o UserManager.o Artwork.o ArtDBCommunicator.o Query.o JSCommunicator.o
 SIGNIN_MEMBER_OBJS = SigninMember.o Member.o UserManager.o Artwork.o ArtDBCommunicator.o Query.o JSCommunicator.o
-COMMENT_ON_PHOTO = CommentOnPhoto.o ArtDBCommunicator.o CommentManager.o JSCommunicator.o Artwork.o Query.o
+COMMENT_ON_PHOTO = CommentOnPhoto.o ArtDBCommunicator.o CommentManager.o JSCommunicator.o Artwork.o Query.o Comment.o
 LIKE_PHOTO_OBJS = LikePhoto.o ArtLookup.o JSCommunicator.o Query.o Artwork.o
 #SOURCE	= Artwork.cpp
 #HEADER	= Artwork.h ArtDBCommunicator.h
@@ -73,7 +73,10 @@ Member.o: Member.cpp Member.h
 UserManager.o: UserManager.cpp UserManager.h Query.h ArtDBCommunicator.h
 	$(CC) $(FLAGS) UserManager.cpp $(CFLAGS)
 
-CommentManager.o: CommentManager.cpp CommentManager.h Query.h ArtDBCommunicator.h Member.h
+Comment.o: Comment.cpp Comment.h
+	$(CC) $(FLAGS) Comment.cpp $(CFLAGS)
+
+CommentManager.o: CommentManager.cpp CommentManager.h Query.h Comment.h ArtDBCommunicator.h Member.h
 	$(CC) $(FLAGS) CommentManager.cpp $(CFLAGS)
 
 JSCommunicator.o: JSCommunicator.cpp JSCommunicator.h Artwork.h
