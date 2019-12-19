@@ -82,7 +82,7 @@ function processSearchResults(results) {
 function showPhotos(list){
 
   // Why is this suddenly broken?
-  var artData = list.split('*'); //changed "" to ''
+  var artDatboba = list.split('*'); //changed "" to ''
   var count = 0;
 
   //If there is nothing from c++ return "Internal Error"
@@ -124,8 +124,10 @@ function showPhotos(list){
       //Creates comment field and submit button
       // Input id is artId with C at the end
       // Maybe remove id from div w/ name
-      result += '<form><div class="form-group"><input id="'+ artData[i-6] +'C" class="form-control" type="text" placeholder="What do you think?" style="margin-top: 10px;"><div name="' + artData[i-6] + '"id="' + artData[i-6] + '_DisplayComments"></div><input type="reset" class="btn btn-light commentSubmit" id = "' + artData[i-6] + '" align="left" style="margin-bottom: 10px;margin-top: 10px;" value="Submit"><button class="btn btn-primary viewComments" id = "' + artData[i-6] + 'VC" type="button" style="margin-bottom: 10px;margin-top: 10px;">View Comments</button>'; // Try Submit button as reset
-        //"<button class="btn btn-light commentSubmit" align="left" id = "' + artData[i-6] + '" type="button" style="margin-bottom: 10px;margin-top: 10px;">Submit</button>
+      result += '<form><div class="form-group"><input id="'+ artData[i-6] +'C" class="form-control" type="text" placeholder="What do you think?" style="margin-top: 10px;"><div name="' + artData[i-6] + '"id="' + artData[i-6] + '_DisplayComments"></div>' +
+
+      //<input type="reset" class="btn btn-light commentSubmit" id = "' + artData[i-6] + '" align="left" style="margin-bottom: 10px;margin-top: 10px;" value="Submit"><button class="btn btn-primary viewComments" id = "' + artData[i-6] + 'VC" type="button" style="margin-bottom: 10px;margin-top: 10px;">View Comments</button>'; // Try Submit button as reset
+        '"<button class="btn btn-light commentSubmit" align="left" id = "' + artData[i-6] + '" type="button" style="margin-bottom: 10px;margin-top: 10px;">Submit</button><button class="btn btn-primary viewComments" id = "' + artData[i-6] + 'VC" type="button" style="margin-bottom: 10px;margin-top: 10px;">View Comments</button>';
 
       //Adds closing tags
       result += '</div></form></div></div></div>';
