@@ -33,3 +33,13 @@ string Query::addUser(string username, string password, string email){
 string Query::addComment(string artId, string commentOnType, string comment, string userId){
 	return "INSERT INTO `comments`(`commentId`, `commentOnId`, `commentOnType`, `comment`, `userId`, `numLikes`) VALUES (NULL,'"+ artId +"','" + commentOnType +"','" + comment + "','" + userId + "',0);";
 }
+
+string Query::getComments(string commentOnId, string commentOnType){
+	return "SELECT * FROM comments WHERE commentOnId = '" + commentOnId + "' and commentOnType = '" + commentOnType + "';";
+}
+
+
+
+
+
+

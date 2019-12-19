@@ -27,6 +27,9 @@ class Query{
 
     string addComment(string artId, string commentOnType, string comment, string userId);
     // query to add comment to database
+
+    string getComments(string commentOnId, string commentOnType);
+    // query to select comments on a specific artwork or comment
 };
 
 #endif //QUERY_H
