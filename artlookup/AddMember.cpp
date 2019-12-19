@@ -1,7 +1,6 @@
-//#include "ArtLookup.h"
-//#include "Query.h"
 #include "Member.h"
 #include "UserManager.h"
+#include "JSCommunicator.h"
 #include <iostream>
 
 #include <string> //so that it's not a cstring
@@ -16,37 +15,43 @@ using namespace cgicc;
 using std::cout;
 
 int main(){
-  Cgicc cgi; // Ajax object
-  // Ajax objects receive info from web page
-  form_iterator itUsername = cgi.getElement("username"),itEmail = cgi.getElement("email"),itPassword = cgi.getElement("password");
-  
-  string username(**itUsername), email(**itEmail), password(**itPassword);
-  Member member(username,password,email);
-  UserManager userManager;
-  //Query query;
-  //Artwork artwork;
-  //JSCommunicator jSCommunicator;
+    Cgicc cgi; // Ajax object
+    // Ajax objects receive info from web page
+    JSCommunicator jSCommunicator;
+    string username = jSCommunicator.getElement("username",cgi), email = jSCommunicator.getElement("email",cgi), password = jSCommunicator.getElement("password",cgi);
 
-  cout << "Content-Type: text/plain\n\n";
+    //form_iterator itUsername = cgi.getElement("username"),itEmail = cgi.getElement("email"),itPassword = cgi.getElement("password");
+    //string username(**itUsername), email(**itEmail), password(**itPassword);
+    //Member member(username,password,email); // constructor requires memberId now
+    //cout << "Content-Type: text/plain\n\n";
 
-  //Sends user data to JavaScript
-  bool canAddMember(true);
-  if (userManager.isEmailTaken(member.getEmail())){
-    // Add user to database
-    canAddMember = false;
-    cout << "Email" << endl;
-  }
-  if (userManager.isUsernameTaken(member.getUsername())){
-    cout << "Username" << endl;
-    canAddMember = false;
-  }
-  if (canAddMember){
-    userManager.addMember(member);
-    cout << "Success";
-  }
-  
-  return 0;
-}
+    //Sends user data to JavaScript
+    UserManager userManager;
+    string returnToJs("");
+    bool canAddMember(true);
+    int numViolations(0);
+    if (userManager.isEmailTaken(email)){
+        // Add user to database
+        returnToJs += "Email";
+        numViolations++;
+        canAddMember = false;
+    }
+    if (userManager.isUsernameTaken(username)){
+        if (numViolations == 1){
+          returnToJs += ";";
+        }
+        returnToJs += "Username";
+        canAddMember = false;
+    }
+    if (canAddMember){
+        userManager.addMember(username, email, password);
+        // Maybe return nothing in this case?
+        //returnToJs += "Success";
+    }
+    jSCommunicator.sendStringToJS(returnToJs);
+
+    return 0;
+    }
 
 
 

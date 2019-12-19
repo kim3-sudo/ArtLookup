@@ -24,6 +24,9 @@ class Query{
 
     string addUser(string username, string password, string email);
     // query to add user to database
+
+    string addComment(string artId, string commentOnType, string comment, string userId);
+    // query to add comment to database
 };
 
 #endif //QUERY_H

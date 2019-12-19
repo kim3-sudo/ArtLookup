@@ -87,7 +87,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Login</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <!-- Not working when signing in triggers login -->
+                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>-->
+                    <button type="button" class="close" id="loginClose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                 </div>
                 <div class="modal-body">
                     <p>Please input your email and password to login.</p>
@@ -193,9 +195,10 @@
         </footer>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
     <script src="assets/js/dropdown.js"></script>
     <script src="../ArtApp.js"></script>
+    <!-- Following js for testing purposes only
+    <script src="../test.js"></script> -->
     <script src="../lazysizes.min.js" async=""></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>

@@ -1,7 +1,9 @@
 TEST_OBJS = ArtLookupTests.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
 REAL_OBJS = ArtApp.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o JSCommunicator.o
-ADD_MEMBER_OBJS = AddMember.o Member.o UserManager.o ArtDBCommunicator.o Query.o
-SIGNIN_MEMBER_OBJS = SigninMember.o Member.o UserManager.o ArtDBCommunicator.o Query.o
+ADD_MEMBER_OBJS = AddMember.o Member.o UserManager.o Artwork.o ArtDBCommunicator.o Query.o JSCommunicator.o
+SIGNIN_MEMBER_OBJS = SigninMember.o Member.o UserManager.o Artwork.o ArtDBCommunicator.o Query.o JSCommunicator.o
+COMMENT_ON_PHOTO = CommentOnPhoto.o ArtDBCommunicator.o CommentManager.o JSCommunicator.o Artwork.o Query.o
+LIKE_PHOTO_OBJS = LikePhoto.o ArtLookup.o JSCommunicator.o Query.o Artwork.o
 #SOURCE	= Artwork.cpp
 #HEADER	= Artwork.h ArtDBCommunicator.h
 #OUT	= ArtApp
@@ -11,7 +13,8 @@ FLAGS	 = -g -c -Wall
 CFLAGS 	 = -std=c++14
 USER     = brydon1
 
-all: ArtApp AddMember SigninMember PutCGI PutHTML
+all: ArtApp AddMember SigninMember CommentOnPhoto PutCGI PutHTML
+#all: ArtApp AddMember SigninMember LikePhoto PutCGI PutHTML
 #all: ArtAppTest ArtApp AddMember TestArtApp PutCGI PutHTML
 
 #ArtAppTest: $(ART_APP_TEST)
@@ -28,6 +31,9 @@ AddMember: $(ADD_MEMBER_OBJS)
 SigninMember: $(SIGNIN_MEMBER_OBJS)
 	$(CC) $(SIGNIN_MEMBER_OBJS) -o SigninMember -L/usr/local/lib $(SQL_FLAGS)
 
+CommentOnPhoto: $(COMMENT_ON_PHOTO)
+	$(CC) $(COMMENT_ON_PHOTO) -o CommentOnPhoto -L/usr/local/lib $(SQL_FLAGS)
+
 # TestArtApp: $(TEST_OBJS)
 # 	$(CC) $(TEST_OBJS) -o testArtApp -L/usr/local/lib $(SQL_FLAGS)
 
@@ -39,6 +45,12 @@ AddMember.o: AddMember.cpp Member.h UserManager.h
 
 SigninMember.o: SigninMember.cpp UserManager.h
 	$(CC) $(FLAGS) SigninMember.cpp $(CFLAGS)
+
+CommentOnPhoto.o: CommentOnPhoto.cpp CommentManager.h JSCommunicator.h
+	$(CC) $(FLAGS) CommentOnPhoto.cpp $(CFLAGS)
+
+# LikePhoto.o: LikePhoto.cpp ArtLookup.h JSCommunicator.h Query.h
+# 	$(CC) $(FLAGS) LikePhoto.cpp $(CFLAGS)
 
 ArtLookupTests.o: ArtLookupTests.cpp ArtLookup.h
 	$(CC) $(FLAGS) ArtLookupTests.cpp $(CFLAGS)
@@ -58,19 +70,24 @@ ArtDBCommunicator.o: ArtDBCommunicator.cpp ArtDBCommunicator.h
 Member.o: Member.cpp Member.h
 	$(CC) $(FLAGS) Member.cpp $(CFLAGS)
 
-UserManager.o: UserManager.cpp UserManager.h Query.h ArtDBCommunicator.h Member.h
+UserManager.o: UserManager.cpp UserManager.h Query.h ArtDBCommunicator.h
 	$(CC) $(FLAGS) UserManager.cpp $(CFLAGS)
+
+CommentManager.o: CommentManager.cpp CommentManager.h Query.h ArtDBCommunicator.h Member.h
+	$(CC) $(FLAGS) CommentManager.cpp $(CFLAGS)
 
 JSCommunicator.o: JSCommunicator.cpp JSCommunicator.h Artwork.h
 	$(CC) $(FLAGS) JSCommunicator.cpp $(CFLAGS)
 
-PutCGI: ArtApp AddMember SigninMember SigninMember
+PutCGI: ArtApp AddMember SigninMember CommentOnPhoto
 	chmod 757 ArtApp
 	chmod 757 AddMember
 	chmod 757 SigninMember
+	chmod 757 CommentOnPhoto
 	cp ArtApp /usr/lib/cgi-bin/$(USER)_artAppSearch.cgi
 	cp AddMember /usr/lib/cgi-bin/$(USER)_artAppAddMember.cgi
 	cp SigninMember /usr/lib/cgi-bin/$(USER)_artAppSigninMember.cgi
+	cp CommentOnPhoto /usr/lib/cgi-bin/$(USER)_artAppCommentPhoto.cgi
 
 	echo "Current contents of your cgi-bin directory: "
 	ls -l /usr/lib/cgi-bin/
@@ -82,5 +99,5 @@ PutHTML:
 	ls -l /var/www/html/class/softdev/$(USER)/ArtApp
 
 clean:
-	rm -f ArtApp AddMember SigninMember $(OUT)
+	rm -f ArtApp AddMember SigninMember CommentOnPhoto $(OUT)
 #	rm -f ArtAppTest ArtApp AddMember TestArtApp $(OUT)
