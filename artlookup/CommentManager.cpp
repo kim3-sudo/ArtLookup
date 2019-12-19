@@ -21,11 +21,11 @@ void CommentManager::addComment(string artId, string commentOnType, string comme
 	sqlStatement->execute(addCommentQuery);
 }
 
-vector<Comment> CommentManager::getComments(int commentOnId, string commentOnType){
+vector<Comment> CommentManager::getComments(string commentOnId, string commentOnType){
 	std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
 	std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
 	Query query;
-	string getCommentsQuery = query.getComments(to_string(commentOnId), commentOnType);
+	string getCommentsQuery = query.getComments(commentOnId, commentOnType);
 	sqlStatement->execute(getCommentsQuery);
 
 	std::unique_ptr<sql::ResultSet> searchMatches;

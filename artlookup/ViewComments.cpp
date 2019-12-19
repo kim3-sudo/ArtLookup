@@ -1,7 +1,7 @@
 #include "JSCommunicator.h"
 #include "CommentManager.h"
 #include <iostream>
-#include <string>
+//#include <string>
 
 // Stuff for Ajax
 #include "cgicc/Cgicc.h"
@@ -20,8 +20,9 @@ int main(){
     // Ajax objects receive info from web page
     string artId = jSCommunicator.getElement("artId",cgi);
     CommentManager commentManager;
-    // NEEDS to be added to commentManager; Also, maybe will not return string
-    string comments = commentManager.getComments(artId);
+    vector<Comment> matchingComments = commentManager.getComments(artId,"artwork");
+
+    string results 
 
     // ArtLookup artlookup;
     // // Looks for artwork that match the artId given by the javascript

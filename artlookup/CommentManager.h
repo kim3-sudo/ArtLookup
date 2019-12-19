@@ -13,7 +13,7 @@ class CommentManager: public ArtDBCommunicator{
 	    void addComment(string artId, string commentOnType, string comment, string memberId);
 	    // add comment to user table in sql database
 
-	    vector<Comment> getComments(int commentOnId, string commentOnType);
+	    vector<Comment> getComments(string commentOnId, string commentOnType);
 	    // Returns comments associated with either a specific artwork or comment
 	  
 	    CommentManager();
