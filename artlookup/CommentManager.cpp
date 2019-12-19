@@ -46,13 +46,13 @@ vector<Comment> CommentManager::getComments(int commentOnId, string commentOnTyp
       numLikes = searchMatches -> getInt(commentColNames[5]);
 
       //Use pointer to dynamically create comment
-      comment = new Comment(commentId,commentOnId,commentOnType,comment,userId,numLikes);
+      comment = new Comment(commentId,comment,commentOnId,commentOnType,userId,numLikes);
 
-      commentResultsList.push_back(*(comment));
+      commentResultList.push_back(*(comment));
       delete comment; // Deallocate memory in comment once finished with object
     }
   } while (sqlStatement->getMoreResults());
-  return commentResultsList;
+  return commentResultList;
 }
 
 CommentManager::CommentManager(){
