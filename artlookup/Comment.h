@@ -7,22 +7,22 @@ using std::string;
 class Comment {
 	public:
 		// Accesor Functions
-		int getCommentId();
+		string getCommentId();
 		string getComment();
-		int getCommentOnId();
+		string getCommentOnId();
 		string getCommentOnType();
-		int getUserId();
+		string getUserId();
 		int getNumLikes();
 
 		// Constructors
-		Comment(int commentId, string comment, int commentOnId, string commentOnType, int userId, int numLikes);
+		Comment(string commentId, string comment, string commentOnId, string commentOnType, string userId, int numLikes);
 		Comment();
 	private:
-    	int m_commentId;
+    	string m_commentId;
 		string m_comment;
-		int m_commentOnId;
+		string m_commentOnId;
 		string m_commentOnType;
-		int m_userId;
+		string m_userId;
 		int m_numLikes;
 };
 

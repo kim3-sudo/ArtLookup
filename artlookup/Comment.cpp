@@ -7,7 +7,7 @@
 
 #include "Comment.h"
 
-int Comment::getCommentId(){
+string Comment::getCommentId(){
 	return m_commentId;
 }
 
@@ -15,7 +15,7 @@ string Comment::getComment(){
 	return m_comment;
 }
 
-int Comment::getCommentOnId(){
+string Comment::getCommentOnId(){
 	return m_commentOnId;
 }
 
@@ -23,7 +23,7 @@ string Comment::getCommentOnType(){
 	return m_commentOnType;
 }
 
-int Comment::getUserId(){
+string Comment::getUserId(){
 	return m_userId;
 }
 
@@ -31,7 +31,7 @@ int Comment::getNumLikes(){
 	return m_numLikes;
 }
 
-Comment::Comment(int commentId, string comment, int commentOnId, string commentOnType, int userId, int numLikes){
+Comment::Comment(string commentId, string comment, string commentOnId, string commentOnType, string userId, int numLikes){
 	m_commentId = commentId;
 	m_comment = comment;
 	m_commentOnId = commentOnId;
@@ -41,11 +41,11 @@ Comment::Comment(int commentId, string comment, int commentOnId, string commentO
 }
 
 Comment::Comment(){
-	m_commentId = 0;
+	m_commentId = "";
 	m_comment = "";
-	m_commentOnId = 0;
+	m_commentOnId = "";
 	m_commentOnType = "";
-	m_userId = 0;
+	m_userId = "";
 	m_numLikes = 0;
 }
 
