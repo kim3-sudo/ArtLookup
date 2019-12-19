@@ -29,3 +29,7 @@ string Query::addUser(string username, string password, string email){
 	return "INSERT INTO `users`(`userId`, `userName`, `password`, `email`) VALUES (NULL,'" + username
 		+ "','" + password + "','" + email + "');";
 }
+
+string Query::updateNumLikes(string numLikes, string artId){
+	return "UPDATE art SET Likes = " + numLikes + "WHERE artId = " + artId + ";";
+}
