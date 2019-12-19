@@ -21,39 +21,39 @@ void CommentManager::addComment(string artId, string commentOnType, string comme
 	sqlStatement->execute(addCommentQuery);
 }
 
-vector<Comment> getComments(int commentOnId, string commentOnType){
-	std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
-	std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
-	Query query;
-	string getCommentsQuery = query.getComments(to_string(commentOnId), commentOnType);
-	sqlStatement->execute(getCommentsQuery);
+// vector<Comment> getComments(int commentOnId, string commentOnType){
+// 	std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
+// 	std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
+// 	Query query;
+// 	string getCommentsQuery = query.getComments(to_string(commentOnId), commentOnType);
+// 	sqlStatement->execute(getCommentsQuery);
 
-	std::unique_ptr<sql::ResultSet> searchMatches;
-	Comment *comment;
-	vector<Comment> commentResultList;
-	int commentId, userId, numLikes;
-	string commentText;
+// 	std::unique_ptr<sql::ResultSet> searchMatches;
+// 	Comment *comment;
+// 	vector<Comment> commentResultList;
+// 	int commentId, userId, numLikes;
+// 	string commentText;
 
-	do {
-	searchMatches.reset(sqlStatement->getResultSet());
-    while (searchMatches->next()) {
-      // Get results
-      commentId = searchMatches -> getInt(commentColNames[0]); 
-      //commentOnId = searchMatches -> getInt(commentColNames[1]);
-      //commentOnType = searchMatches -> getString(commentColNames[2]);
-      commentText = searchMatches -> getString(commentColNames[3]);
-      userId = searchMatches -> getInt(commentColNames[4]);
-      numLikes = searchMatches -> getInt(commentColNames[5]);
+// 	do {
+// 	searchMatches.reset(sqlStatement->getResultSet());
+//     while (searchMatches->next()) {
+//       // Get results
+//       commentId = searchMatches -> getInt(commentColNames[0]); 
+//       //commentOnId = searchMatches -> getInt(commentColNames[1]);
+//       //commentOnType = searchMatches -> getString(commentColNames[2]);
+//       commentText = searchMatches -> getString(commentColNames[3]);
+//       userId = searchMatches -> getInt(commentColNames[4]);
+//       numLikes = searchMatches -> getInt(commentColNames[5]);
 
-      //Use pointer to dynamically create comment
-      comment = new Comment(commentId,commentOnId,commentOnType,comment,userId,numLikes);
+//       //Use pointer to dynamically create comment
+//       comment = new Comment(commentId,commentOnId,commentOnType,comment,userId,numLikes);
 
-      commentResultsList.push_back(*(comment));
-      delete comment; // Deallocate memory in comment once finished with object
-    }
-  } while (sqlStatement->getMoreResults());
-  return commentResultsList;
-}
+//       commentResultsList.push_back(*(comment));
+//       delete comment; // Deallocate memory in comment once finished with object
+//     }
+//   } while (sqlStatement->getMoreResults());
+//   return commentResultsList;
+// }
 
 CommentManager::CommentManager(){
 	commentColNames.push_back("commentId");
