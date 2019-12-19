@@ -82,6 +82,28 @@ ArtLookup::ArtLookup(){
   colNames.push_back("Likes");
 }
 
+
+void ArtLookup::updateTable(string updateCommand){
+  // Connects to database
+  std::unique_ptr<sql::Connection> connectionToDB = ArtDBCommunicator::establishDBConnection();
+
+  // Creates statement
+  std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
+
+  // Executes command
+  sqlStatement->execute(updateCommand);
+
+  return;
+}
+
+
+
+
+
+
+
+
+
 /****** OLD CODE ****************************************************/
 
 /*
