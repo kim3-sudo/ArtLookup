@@ -1,9 +1,15 @@
 TEST_OBJS = ArtLookupTests.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o
+
 REAL_OBJS = ArtApp.o Artwork.o ArtDBCommunicator.o ArtLookup.o Query.o JSCommunicator.o
+
 ADD_MEMBER_OBJS = AddMember.o Member.o UserManager.o Artwork.o ArtDBCommunicator.o Query.o JSCommunicator.o
+
 SIGNIN_MEMBER_OBJS = SigninMember.o Member.o UserManager.o Artwork.o ArtDBCommunicator.o Query.o JSCommunicator.o
+
 COMMENT_ON_PHOTO = CommentOnPhoto.o ArtDBCommunicator.o CommentManager.o JSCommunicator.o Artwork.o Query.o
+
 LIKE_PHOTO_OBJS = LikePhoto.o ArtLookup.o JSCommunicator.o Query.o Artwork.o ArtDBCommunicator.o
+
 #SOURCE	= Artwork.cpp
 #HEADER	= Artwork.h ArtDBCommunicator.h
 #OUT	= ArtApp
@@ -22,6 +28,53 @@ all: ArtApp AddMember SigninMember CommentOnPhoto LikePhoto PutCGI PutHTML
 #ArtAppTest.o: ArtLookupTests.cpp ArtLookup.h Query.h
 #	$(CC) $(FLAGS) ArtAppTest.cpp $(CFLAGS)
 
+# TestArtApp: $(TEST_OBJS)
+# 	$(CC) $(TEST_OBJS) -o testArtApp -L/usr/local/lib $(SQL_FLAGS)
+
+ArtDBCommunicator.o: ArtDBCommunicator.cpp ArtDBCommunicator.h
+	$(CC) $(FLAGS) ArtDBCommunicator.cpp $(CFLAGS)
+
+ArtLookup.o: ArtLookup.cpp ArtLookup.h ArtDBCommunicator.h Query.h
+	$(CC) $(FLAGS) ArtLookup.cpp $(CFLAGS)
+
+Artwork.o: Artwork.cpp Artwork.h
+	$(CC) $(FLAGS) Artwork.cpp $(CFLAGS)
+
+JSCommunicator.o: JSCommunicator.cpp JSCommunicator.h Artwork.h
+	$(CC) $(FLAGS) JSCommunicator.cpp $(CFLAGS)
+
+Query.o: Query.cpp Query.h
+	$(CC) $(FLAGS) Query.cpp $(CFLAGS)
+
+ArtApp.o: ArtApp.cpp ArtLookup.h JSCommunicator.h Query.h
+	$(CC) $(FLAGS) ArtApp.cpp $(CFLAGS)
+
+Member.o: Member.cpp Member.h
+	$(CC) $(FLAGS) Member.cpp $(CFLAGS)
+
+UserManager.o: UserManager.cpp UserManager.h Query.h ArtDBCommunicator.h
+	$(CC) $(FLAGS) UserManager.cpp $(CFLAGS)
+
+AddMember.o: AddMember.cpp Member.h UserManager.h
+	$(CC) $(FLAGS) AddMember.cpp $(CFLAGS)
+
+SigninMember.o: SigninMember.cpp UserManager.h
+	$(CC) $(FLAGS) SigninMember.cpp $(CFLAGS)
+
+CommentManager.o: CommentManager.cpp CommentManager.h Query.h ArtDBCommunicator.h Member.h
+	$(CC) $(FLAGS) CommentManager.cpp $(CFLAGS)
+
+CommentOnPhoto.o: CommentOnPhoto.cpp CommentManager.h JSCommunicator.h
+	$(CC) $(FLAGS) CommentOnPhoto.cpp $(CFLAGS)
+
+LikePhoto.o: LikePhoto.cpp ArtLookup.h JSCommunicator.h Query.h
+	$(CC) $(FLAGS) LikePhoto.cpp $(CFLAGS)
+
+ArtLookupTests.o: ArtLookupTests.cpp ArtLookup.h
+	$(CC) $(FLAGS) ArtLookupTests.cpp $(CFLAGS)
+
+
+#Linking after compiling
 ArtApp: $(REAL_OBJS)
 	$(CC) $(REAL_OBJS) -o ArtApp -L/usr/local/lib $(SQL_FLAGS)
 
@@ -37,50 +90,6 @@ CommentOnPhoto: $(COMMENT_ON_PHOTO)
 LikePhoto: $(LIKE_PHOTO_OBJS)
 	$(CC) $(LIKE_PHOTO_OBJS) -o LikePhoto -L/usr/local/lib $(SQL_FLAGS)
 
-# TestArtApp: $(TEST_OBJS)
-# 	$(CC) $(TEST_OBJS) -o testArtApp -L/usr/local/lib $(SQL_FLAGS)
-
-ArtApp.o: ArtApp.cpp ArtLookup.h JSCommunicator.h Query.h
-	$(CC) $(FLAGS) ArtApp.cpp $(CFLAGS)
-
-AddMember.o: AddMember.cpp Member.h UserManager.h
-	$(CC) $(FLAGS) AddMember.cpp $(CFLAGS)
-
-SigninMember.o: SigninMember.cpp UserManager.h
-	$(CC) $(FLAGS) SigninMember.cpp $(CFLAGS)
-
-CommentOnPhoto.o: CommentOnPhoto.cpp CommentManager.h JSCommunicator.h
-	$(CC) $(FLAGS) CommentOnPhoto.cpp $(CFLAGS)
-
-LikePhoto.o: LikePhoto.cpp ArtLookup.h JSCommunicator.h Query.h
-	$(CC) $(FLAGS) LikePhoto.cpp $(CFLAGS)
-
-ArtLookupTests.o: ArtLookupTests.cpp ArtLookup.h
-	$(CC) $(FLAGS) ArtLookupTests.cpp $(CFLAGS)
-
-Query.o: Query.cpp Query.h
-	$(CC) $(FLAGS) Query.cpp $(CFLAGS)
-
-Artwork.o: Artwork.cpp Artwork.h
-	$(CC) $(FLAGS) Artwork.cpp $(CFLAGS)
-
-ArtLookup.o: ArtLookup.cpp ArtLookup.h ArtDBCommunicator.h Query.h
-	$(CC) $(FLAGS) ArtLookup.cpp $(CFLAGS)
-
-ArtDBCommunicator.o: ArtDBCommunicator.cpp ArtDBCommunicator.h
-	$(CC) $(FLAGS) ArtDBCommunicator.cpp $(CFLAGS)
-
-Member.o: Member.cpp Member.h
-	$(CC) $(FLAGS) Member.cpp $(CFLAGS)
-
-UserManager.o: UserManager.cpp UserManager.h Query.h ArtDBCommunicator.h
-	$(CC) $(FLAGS) UserManager.cpp $(CFLAGS)
-
-CommentManager.o: CommentManager.cpp CommentManager.h Query.h ArtDBCommunicator.h Member.h
-	$(CC) $(FLAGS) CommentManager.cpp $(CFLAGS)
-
-JSCommunicator.o: JSCommunicator.cpp JSCommunicator.h Artwork.h
-	$(CC) $(FLAGS) JSCommunicator.cpp $(CFLAGS)
 
 PutCGI: ArtApp AddMember SigninMember CommentOnPhoto
 	chmod 757 ArtApp
