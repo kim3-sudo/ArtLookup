@@ -24,5 +24,5 @@ string JSCommunicator::getElement(string element, Cgicc &cgi){
 }
 
 void JSCommunicator::sendStringToJS(string stringForJS){
-  cout << stringForJS;
+  cout << "Content-Type: text/plain\n\n" << stringForJS;
 }

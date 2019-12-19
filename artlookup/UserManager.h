@@ -1,4 +1,3 @@
-
 #include "ArtDBCommunicator.h"
 #include "Member.h"
 #include <vector>
@@ -8,7 +7,8 @@
 
 class UserManager: public ArtDBCommunicator{
 	public:
-	    void addMember(Member member);
+	    //void addMember(Member member); // Cannot create member object requires id num
+	    void addMember(string username, string email, string password);
 	    // add member to user table in sql database
 
 	    Member getLoginMember(string email, string password);

@@ -30,6 +30,10 @@ string Query::addUser(string username, string password, string email){
 		+ "','" + password + "','" + email + "');";
 }
 
+string Query::addComment(string artId, string commentOnType, string comment, string userId){
+	return "INSERT INTO `comments`(`commentId`, `commentOnId`, `commentOnType`, `comment`, `userId`, `numLikes`) VALUES (NULL,'"+ artId +"','" + commentOnType +"','" + comment + "','" + userId + "',0);";
+}
+
 string Query::updateNumLikes(string numLikes, string artId){
 	return "UPDATE art SET Likes = " + numLikes + "WHERE artId = " + artId + ";";
 }

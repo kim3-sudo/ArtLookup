@@ -41,9 +41,6 @@ int main(){
   //artlookup.updateTable(updateLikesQuery);
 
   // Sends the new number of likes to javascript.
-  jSCommunicator.sendStringToJS("Content-Type: text/plain\n\n");
-  jSCommunicator.sendStringToJS(updatedLikes);
-  jSCommunicator.sendStringToJS("*");
-  jSCommunicator.sendStringToJS(artId);
+  jSCommunicator.sendStringToJS(updatedLikes + "*" + artId);
   return 0;
 }

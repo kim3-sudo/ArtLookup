@@ -25,6 +25,9 @@ class Query{
     string addUser(string username, string password, string email);
     // query to add user to database
 
+    string addComment(string artId, string commentOnType, string comment, string userId);
+    // query to add comment to database
+
     string updateNumLikes(string numLikes, string artId);
     // query to update the number of likes in art table
 };
