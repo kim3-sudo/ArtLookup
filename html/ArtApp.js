@@ -142,7 +142,7 @@ function showPhotos(list){
       result += '<button class="btn btn-primary viewComments" id = "' + artData[i-6] + 'VC" type="button" style="margin-bottom: 10px;margin-top: 10px;">View Comments</button>';
 
       // viewComments button
-      result += '<button class="btn btn-primary hideComments hide" id = "' + artData[i-6] + 'HC" type="button" name = "' + artData[i-6] +'"style="margin-bottom: 10px;margin-top: 10px;">Hide Comments</button>';
+      result += '<button class="btn btn-primary hide hideComments" id = "' + artData[i-6] + 'HC" type="button" name = "' + artData[i-6] +'"style="margin-bottom: 10px;margin-top: 10px;">Hide Comments</button>';
 
       //Adds closing tags
       //result += '</div></form></div></div></div>';
@@ -390,7 +390,7 @@ function commentSubmitted(results){
 }
 
 function getComments(commentViewButton) {
-  var artId = $(commentSubmitButton).attr('NAME'); // Maybe will not work
+  var artId = $(commentViewButton).attr('NAME'); // Maybe will not work
   console.log(artId);
   //comment = $("#" + artId + "C").val();
   //console.log(comment);
