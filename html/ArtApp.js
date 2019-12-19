@@ -74,9 +74,16 @@ function processSearchResults(results) {
       }
     });
 
-    // FINISH ME!!!!!
     $(".viewComments").click(function (){
       getComments(this);
+    });
+
+    $('.hideComments').click(function () {
+      console.log("Hiding comments");
+      var artId = $(this).attr("NAME");
+      $('#' + artId + '_commentResults').hide();
+      $('#' + artId + 'HC').hide();
+      $('#' + artId + 'VC').show();
     });
 }
 
@@ -123,16 +130,23 @@ function showPhotos(list){
       result += '<p style="padding-top: 5px;"><b>Author:</b> ' + artData[i-5] + ' ' + artData[i-4] + '<br><b>Location:</b> ' + artData[i-1] + '<br><b>Date:</b> ' + artData[i+5] + '<br><b>Technique:</b> ' + artData[i-2] + '<br><b>School:</b> ' + artData[i+3] + '<br><b>Type:</b> ' + artData[i+2] + '<br><b>Form:</b> ' + artData[i+1] + '</p>';
       //Creates like button
       result += '<button class="btn btn-warning text-center" type="button" style="margin-top: 0px;" id = "' + artData[i-6] + '">Like</button>';
-      //Creates comment field and submit button
+      
       // Input id is artId with C at the end
       // Maybe remove id from div w/ name
-      result += '<form><div class="form-group"><input id="'+ artData[i-6] +'C" class="form-control" type="text" placeholder="What do you think?" style="margin-top: 10px;"><div name="' + artData[i-6] + '"id="' + artData[i-6] + '"_DisplayComments"></div>' +
-
-        '<input type="reset" class="btn btn-light commentSubmit" id = "' + artData[i-6] + '" align="left" style="margin-bottom: 10px;margin-top: 10px;" value="Submit"><button class="btn btn-primary viewComments" id = "' + artData[i-6] + 'VC" type="button" style="margin-bottom: 10px;margin-top: 10px;">View Comments</button>'; // Try Submit button as reset
+      // Fill with comments if view comments button clicked
+      result += '<div class="container" id = "' + artData[i-6] + '_commentResults" style = "background-color:#FFFFFF;"></div>';
+      //Creates comment field and submit button
+      result += '<form><div class="form-group"><input id="'+ artData[i-6] +'C" class="form-control" type="text" placeholder="What do you think?" style="margin-top: 10px;"><div name="' + artData[i-6] + '"id="' + artData[i-6] + '"_DisplayComments"></div><input type="reset" class="btn btn-light commentSubmit" id = "' + artData[i-6] + '" align="left" style="margin-bottom: 10px;margin-top: 10px;" value="Submit"></div></form>'; // Try Submit button as reset
         //'<button class="btn btn-light commentSubmit" align="left" id = "' + artData[i-6] + '" type="button" style="margin-bottom: 10px;margin-top: 10px;">Submit</button><button class="btn btn-primary viewComments" id = "' + artData[i-6] + 'VC" type="button" style="margin-bottom: 10px;margin-top: 10px;">View Comments</button>';
+      // viewComments button
+      result += '<button class="btn btn-primary viewComments" id = "' + artData[i-6] + 'VC" type="button" style="margin-bottom: 10px;margin-top: 10px;">View Comments</button>';
+
+      // viewComments button
+      result += '<button class="btn btn-primary hideComments hide" id = "' + artData[i-6] + 'HC" type="button" name = "' + artData[i-6] +'"style="margin-bottom: 10px;margin-top: 10px;">Hide Comments</button>';
 
       //Adds closing tags
-      result += '</div></form></div></div></div>';
+      //result += '</div></form></div></div></div>';
+      result += '</div></div></div>';
     }
     console.log("Number of results:", count);
     return result;
@@ -375,7 +389,6 @@ function commentSubmitted(results){
   console.log("Comment made!");
 }
 
-// TEST/FINISH
 function getComments(commentViewButton) {
   var artId = $(commentSubmitButton).attr('NAME'); // Maybe will not work
   console.log(artId);
@@ -383,19 +396,38 @@ function getComments(commentViewButton) {
   //console.log(comment);
 
   $.ajax({
-    url: '/cgi-bin/'+ajaxUser+'_artAppCommentPhoto.cgi?artId=' + artId,
+    url: '/cgi-bin/'+ajaxUser+'_artAppGetCommentsPhoto.cgi?artId=' + artId,
     dataType: 'text',
-    success: parseComments, // is emptyString necessary?
+    success: processCommentResults, // is emptyString necessary?
     error: function(){alert("Error: Could not comment on photo");}
   });
 }
 
-// FINISH
-function parseComments(results){
-  console.log("Parsing comments!");
+function processCommentResults(results) {
+    console.log("Results:",results);
+    var commentInfoSplit = results.split("*")
+    $('#' + results[0] + '_commentResults').empty(); // results[0] is artId
+    console.log("About to show comments");
+    $('#' + results[0] + '_commentResults').append(showComments(results));
+    console.log("Finished show comments");
+
+    // Hide viewComments and show hideComments
+    $('#' + artId + 'VC').hide();
+    $('#' + artId + 'HC').show();
 }
 
-
+function showComments(results){
+  console.log("Parsing comments!");
+  var commentInfoSplit = results.split("*");
+  var artId = commentInfoSplit[0];
+  var displayComments = '';
+  for (int i=1;i<(commentInfoSplit.length);i=i+3){
+    commentText = commentInfoSplit[i];
+    userId = commentInfoSplit[i+1];
+    numLikes = commentInfoSplit[i+2];
+    displayComments += '<p>' + numLikes + ' ' + '<div class="arrow" id="' + artId + '_upVote" align="left"></div> ' + userId + ': ' + commentText + '</p>'
+  }
+}
 
 // Like photo
 function likePhoto() {

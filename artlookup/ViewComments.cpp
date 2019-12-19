@@ -12,7 +12,10 @@
 using namespace cgicc;
 using std::cout;
 
-// Change name of program to CommentOn.cpp
+
+// Returns string to js, starting with commentOnId, then comment, userid, numLikes repeated
+// Separated by *
+
 int main(){
     Cgicc cgi; // Ajax object
     JSCommunicator jSCommunicator;
@@ -22,13 +25,13 @@ int main(){
     CommentManager commentManager;
     vector<Comment> matchingComments = commentManager.getComments(artId,"artwork");
 
-    string commentInfoString(""), sep("*");
+    string commentInfoString(artId), sep("*");
 
     for (int i=0;i<matchingComments.length();i++){
-        if (i != 0){
-            commentInfoString += sep;
-        }
-        commentInfoString += matchingComments[i].getComment() + sep + matchingComments[i].getUserId() + sep + to_string(matchingComments[i].getNumLikes());
+        // if (i != 0){
+        //     commentInfoString += sep;
+        // }
+        commentInfoString += sep + matchingComments[i].getComment() + sep + matchingComments[i].getUserId() + sep + to_string(matchingComments[i].getNumLikes());
     }
 
     // Sends the comments to javascript
