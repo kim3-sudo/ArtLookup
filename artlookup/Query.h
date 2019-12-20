@@ -28,8 +28,14 @@ class Query{
     string addComment(string artId, string commentOnType, string comment, string userId);
     // query to add comment to database
 
+    string addLike(string likeId, string itemId, string userId);
+    // query to add like to database
+
     string getComments(string commentOnId, string commentOnType);
     // query to select comments on a specific artwork or comment
+
+    string getLikes(string itemId);
+    // query to select likes on a specific artwork
 
     string getUsername(string userId);
     // query to select user with userId

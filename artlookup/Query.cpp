@@ -34,8 +34,16 @@ string Query::addComment(string artId, string commentOnType, string comment, str
 	return "INSERT INTO `comments`(`commentId`, `commentOnId`, `commentOnType`, `comment`, `userId`, `numLikes`) VALUES (NULL,'"+ artId +"','" + commentOnType +"','" + comment + "','" + userId + "',0);";
 }
 
+string Query::addLike(string likeId, string itemId, string userId){
+	return "INSERT INTO `likes`(`likeId`, `userId`, `itemId`, `itemType`) VALUES (NULL,'"+ userId +"','" + itemId +"','" + "',artwork);";
+}
+
 string Query::getComments(string commentOnId, string commentOnType){
 	return "SELECT * FROM comments WHERE commentOnId = '" + commentOnId + "' and commentOnType = '" + commentOnType + "';";
+}
+
+string Query::getLikes(string itemId){
+	return "SELECT * FROM likes WHERE commentOnId = '" + itemId + "';";
 }
 
 string Query::getUsername(string userId){
@@ -45,4 +53,3 @@ string Query::getUsername(string userId){
 string Query::updateNumLikes(string numLikes, string artId){
 	return "UPDATE art SET Likes = " + numLikes + " WHERE artId = '" + artId + "';";
 }
-
