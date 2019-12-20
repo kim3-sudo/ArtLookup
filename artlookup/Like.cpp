@@ -13,20 +13,20 @@ Artwork::Artwork(){
   m_itemId = -1;
 }
 
-Artwork::Like(int likeId, int userId, int itemId){
+Artwork::Like(string likeId, string userId, string itemId){
   m_likeId = likeId;
   m_userId = userId;
   m_itemId = itemId;
 }
 
-int Like::getlikeId(){
+string Like::getlikeId(){
   return m_likeId;
 }
 
-int Like::getuserId(){
+string Like::getuserId(){
   return m_userId;
 }
 
-int Like::getitemId(){
+string Like::getitemId(){
   return m_itemId;
 }

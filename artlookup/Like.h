@@ -9,16 +9,16 @@ using namespace std;
 class Like{
   public:
     Like();
-    Like(int likeId, int userId, int itemId);
+    Like(string likeId, string userId, string itemId);
 
-    int getlikeId();
-    int getuserId();
-    int getitemId();
+    string getlikeId();
+    string getuserId();
+    string getitemId();
 
   private:
-    int m_likeId;
-    int m_userId;
-    int m_itemId;
+    string m_likeId;
+    string m_userId;
+    string m_itemId;
     //We will not have liking comments implemented so the
     //only thing we can like are artworks
     const string m_itemType = "artwork";
