@@ -53,7 +53,7 @@ SigninMember.o: SigninMember.cpp UserManager.h
 CommentOnPhoto.o: CommentOnPhoto.cpp CommentManager.h JSCommunicator.h
 	$(CC) $(FLAGS) CommentOnPhoto.cpp $(CFLAGS)
 
-ViewComments.o: ViewComments.cpp ViewComments.h CommentManager.h JSCommunicator.h
+ViewComments.o: ViewComments.cpp CommentManager.h JSCommunicator.h
 	$(CC) $(FLAGS) ViewComments.cpp $(CFLAGS)
 
 # LikePhoto.o: LikePhoto.cpp ArtLookup.h JSCommunicator.h Query.h
