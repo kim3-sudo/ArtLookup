@@ -19,7 +19,7 @@ CC	 = g++
 SQL_FLAGS = -lcgicc -lmysqlcppconn
 FLAGS	 = -g -c -Wall
 CFLAGS 	 = -std=c++14
-USER     = brydon1
+USER     = schultz4
 
 all: ArtApp AddMember SigninMember CommentOnPhoto ViewComments LikePhoto PutCGI PutHTML
 

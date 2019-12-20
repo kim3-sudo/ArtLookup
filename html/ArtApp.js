@@ -1,5 +1,5 @@
 var searchCategory; //Category to be searched by: Title, Author ...
-var ajaxUser = "brydon1"; //Your username for ajax calls
+var ajaxUser = "schultz4"; //Your username for ajax calls
 
 $(document).ready(function() {
   //console.log("ready!");
@@ -136,7 +136,7 @@ function showPhotos(list){
       result += '<p style="padding-top: 5px;"><b>Author:</b> ' + artData[i-5] + ' ' + artData[i-4] + '<br><b>Location:</b> ' + artData[i-1] + '<br><b>Date:</b> ' + artData[i+5] + '<br><b>Technique:</b> ' + artData[i-2] + '<br><b>School:</b> ' + artData[i+3] + '<br><b>Type:</b> ' + artData[i+2] + '<br><b>Form:</b> ' + artData[i+1] + '</p>';
       //Creates like button
       result += '<button class="btn btn-warning text-center likeButton" type="button" style="margin-top: 0px;margin-bottom: 10px;" id="' + artData[i-6] + '">Like</button>';
-      
+
       // Input id is artId with C at the end
       // Maybe remove id from div w/ name
 
