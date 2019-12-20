@@ -16,7 +16,7 @@ class LikeManager: public ArtDBCommunicator{
 	    vector<Like> getLikes(string itemId);
 	    // Returns likes associated with a specific artwork
 
-	    CommentManager();
+	    LikeManager();
 	    // Default Constructor
 	private:
 		//We do not plan on changing columns in our like table.
