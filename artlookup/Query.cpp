@@ -42,8 +42,7 @@ string Query::getUsername(string userId){
 	return "SELECT * FROM `users` WHERE userId = '" + userId + "';";
 }
 
-
-
-
-
+string Query::updateNumLikes(string numLikes, string artId){
+	return "UPDATE art SET Likes = " + numLikes + "WHERE artId = " + artId + ";";
+}
 

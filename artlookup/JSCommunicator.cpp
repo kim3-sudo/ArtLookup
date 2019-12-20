@@ -7,7 +7,7 @@
 
 #include "JSCommunicator.h"
 
-string JSCommunicator::print(Artwork artwork){
+string JSCommunicator::printArtwork(Artwork artwork){
   string result, sep("*");
   result +=  to_string(artwork.getArtId()) + sep + artwork.getArtistInfo().author + sep + artwork.getArtistInfo().birthDeath + sep + artwork.getTitle() + sep + artwork.getArtStyle().technique + sep + artwork.getArtSetting().location + sep + artwork.getUrl() + sep + artwork.getArtStyle().form + sep + artwork.getArtStyle().type + sep + artwork.getArtStyle().school + sep + artwork.getArtSetting().timeframe + sep + artwork.getArtSetting().date + sep + to_string(artwork.getNumLikes()) + sep;
 

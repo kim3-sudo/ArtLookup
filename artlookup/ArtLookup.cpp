@@ -6,6 +6,7 @@
 //with art table in our database
 //Last Changed: November 16, 2019
 
+#include "ArtDBCommunicator.h"
 #include "ArtLookup.h"
 #include "Query.h"
 
@@ -15,9 +16,10 @@ vector<Artwork> ArtLookup::lookupGeneral(string search){
 
   vector<Artwork> authorMatches = lookupSingleCommand(authorCommand), titleMatches = lookupSingleCommand(titleCommand), techniqueMatches = lookupSingleCommand(techniqueCommand), locationMatches = lookupSingleCommand(locationCommand), formMatches = lookupSingleCommand(formCommand), typeMatches = lookupSingleCommand(typeCommand), schoolMatches = lookupSingleCommand(schoolCommand), timeframeMatches = lookupSingleCommand(timeframeCommand), dateMatches = lookupSingleCommand(dateCommand);
 
-  //Concatenate vectors https://stackoverflow.com/questions/201718/concatenating-two-stdvectors vector1.insert( vector1.end(), vector2.begin(), vector2.end() );
+  //Concatenate vectors https://stackoverflow.com/questions/201718/concatenating-two-stdvectors
+  //vector1.insert( vector1.end(), vector2.begin(), vector2.end() );
   vector<Artwork> allMatches = authorMatches;
-  //allMatches.insert( allMatches.end(), lifespanMatches.begin(), lifespanMatches.end() );
+
   allMatches.insert( allMatches.end(), titleMatches.begin(), titleMatches.end() );
   allMatches.insert( allMatches.end(), techniqueMatches.begin(), techniqueMatches.end() );
   allMatches.insert( allMatches.end(), locationMatches.begin(), locationMatches.end() );
@@ -32,7 +34,7 @@ vector<Artwork> ArtLookup::lookupGeneral(string search){
 
 // General search
 vector<Artwork> ArtLookup::lookupSingleCommand(string command){
-  std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
+  std::unique_ptr<sql::Connection> connectionToDB = ArtDBCommunicator::establishDBConnection();
   // Not sure why sqlStatement(connectionToDB...) works but not sqlStatement = connectionToDB...
   std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
 
@@ -79,6 +81,28 @@ ArtLookup::ArtLookup(){
   colNames.push_back("Date");
   colNames.push_back("Likes");
 }
+
+
+void ArtLookup::updateTable(string updateCommand){
+  // Connects to database
+  std::unique_ptr<sql::Connection> connectionToDB = ArtDBCommunicator::establishDBConnection();
+
+  // Creates statement
+  std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
+
+  // Executes command
+  sqlStatement->execute(updateCommand);
+
+  return;
+}
+
+
+
+
+
+
+
+
 
 /****** OLD CODE ****************************************************/
 

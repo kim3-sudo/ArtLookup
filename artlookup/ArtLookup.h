@@ -14,11 +14,14 @@ class ArtLookup: public ArtDBCommunicator{
 	  //vector<Artwork> lookupSingle(string search, string colName);
 	  vector<Artwork> lookupSingleCommand(string command);
     // Returns vector of Artwork results given a valid SQL command
-  	
+
+    void updateTable(string updateCommand);
+    // Executes a command to update a value of the table
+
   	// Maybe delete topLikedLookup altogether
     // We can call lookupSingleCommand(topLikedCommand) instead
   	// vector<Artwork> topLikedLookup();
-	
+
 	  ArtLookup();
   	// Default Constructor
   private:

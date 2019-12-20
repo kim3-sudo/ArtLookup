@@ -1,8 +1,8 @@
-var searchCategory;  //Category to be searched by: Title, Author ...
-var ajaxUser = "brydon1"; //Your username for ajax calls
+var searchCategory; //Category to be searched by: Title, Author ...
+var ajaxUser = "schultz4"; //Your username for ajax calls
 
-$(document).ready(function () {
-  console.log("ready!");
+$(document).ready(function() {
+  //console.log("ready!");
   setNavButtonView(); // CHANGE function name
   // $("#home").show();
 
@@ -10,12 +10,12 @@ $(document).ready(function () {
   $(".dropdown-item").click(setCategory);
   // getMatches when search button is clicked
   $(".action-button").click(function () {
-    console.log("About to search");
+    //console.log("About to search");
     getSearchMatches(this)
   });
   // when submit-user-cred button clicked, addMember
   $("#start-signup").click(function () {
-    console.log("Ready to sign-up.");
+    //console.log("Ready to sign-up.");
     $("#signup-message").hide();
   });
   $("#submit-user-credentials").click(addMember);
@@ -36,33 +36,38 @@ function setCategory(){
 }
 
 //Switches to search page and displays the photos related to the user's search
-function getSearchMatches(){
-    //Hides the search page and shows the homepage
-    var searchTerm = $('#search-field2').val();
-    $('#home').hide();
-    console.log("hide the homepage");
-    $('#search').show();
-    console.log("Show seach page");
+function getSearchMatches() {
+  //Hides the search page and shows the homepage
+  var searchTerm = $('#search-field2').val();
+  $('#home').hide();
+  //console.log("hide the homepage");
+  $('#search').show();
+  //console.log("Show seach page");
 
-    console.log("Search Term: " + searchTerm);
-    console.log("Search Category: " + searchCategory)
+  //console.log("Search Term: " + searchTerm);
+  //console.log("Search Category: " + searchCategory)
 
-    //Sends search term and category to C++ then calls processResults
-    $.ajax({
-      url: '/cgi-bin/'+ajaxUser+'_artAppSearch.cgi?searchVal='+searchTerm+'&searchCategory='+searchCategory,
-      dataType: 'text',
-      success: processSearchResults,
-      error: function(){alert("Error: Could not search");}
-    });
+  //Sends search term and category to C++ then calls processResults
+  $.ajax({
+    url: '/cgi-bin/' + ajaxUser + '_artAppSearch.cgi?searchVal=' + searchTerm + '&searchCategory=' + searchCategory,
+    dataType: 'text',
+    success: processSearchResults,
+    error: function() {
+      alert("Error: Could not search");
+    }
+  });
 }
 
 //Empties photo gallery (again?) builds new gallery using buildGallery function
 function processSearchResults(results) {
-    console.log("Results:"+results);
+
+    //console.log("Results:"+results);
     $('#artworkResults').empty();
-    console.log("About to show photos");
+    //console.log("About to show photos");
     $('#artworkResults').append(showPhotos(results));
     console.log("Finished show photos");
+    $(".likeButton").click(likePhoto);
+    console.log("like button click event was created.");
 
     $('.commentSubmit').click(function () {
       //var inputId = $(this).attr("ID") + C;
@@ -81,8 +86,6 @@ function processSearchResults(results) {
     $('.hideComments').click(function () {
       console.log("Hiding comments");
 
-
-      // Check!
       var artId = $(this).attr("NAME");
       $('#' + artId + '_commentResults').hide();
       $('#' + artId + 'HC').hide();
@@ -105,21 +108,21 @@ function showPhotos(list){
     var result="";
     var topPadding = '10';
     var listLength = artData.length;
-    console.log("Length of artData List: ");
-    console.log(listLength);
-    console.log("Appending Results: \n\n");
+    //console.log("Length of artData List: ");
+    //console.log(listLength);
+    //console.log("Appending Results: \n\n");
 
     for (var i = 6; i < listLength; i+=13){
-      console.log(i);
-      console.log("ArtData[i]: ");
-      console.log(artData[i]);
+      // console.log(i);
+      // console.log("ArtData[i]: ");
+      // console.log(artData[i]);
       count++;
       if (count == 2000){
         console.log("Aborting loop.");
         break;
       }
       //Creates div
-      if (i==6){
+      if (i == 6){
         topPadding = '85';
       } else {
         topPadding = '5';
@@ -132,10 +135,11 @@ function showPhotos(list){
       //Creates description
       result += '<p style="padding-top: 5px;"><b>Author:</b> ' + artData[i-5] + ' ' + artData[i-4] + '<br><b>Location:</b> ' + artData[i-1] + '<br><b>Date:</b> ' + artData[i+5] + '<br><b>Technique:</b> ' + artData[i-2] + '<br><b>School:</b> ' + artData[i+3] + '<br><b>Type:</b> ' + artData[i+2] + '<br><b>Form:</b> ' + artData[i+1] + '</p>';
       //Creates like button
-      result += '<button class="btn btn-warning text-center" type="button" style="margin-top: 0px;" id = "' + artData[i-6] + '">Like</button>';
+      result += '<button class="btn btn-warning text-center likeButton" type="button" style="margin-top: 0px;margin-bottom: 10px;" id="' + artData[i-6] + '">Like</button>';
       
       // Input id is artId with C at the end
       // Maybe remove id from div w/ name
+
       // Fill with comments if view comments button clicked
       result += '<div class="container" id = "' + artData[i-6] + '_commentResults" style = "background-color:#FFFFFF;"></div>';
       //Creates comment field and submit button
@@ -158,8 +162,8 @@ function showPhotos(list){
 
 // Adds member to user table in SQL database if user does not already exist;
 // Otherwise, shows error message
-function addMember(){
-  console.log("Clicked-signup");
+function addMember() {
+  //console.log("Clicked-signup");
   $("#signup-message").hide();
 
   username = $('#signup-username').val();
@@ -167,23 +171,25 @@ function addMember(){
   password1 = $('#signup-password').val();
   password2 = $('#signup-password-repeated').val();
 
-  console.log(username);
-  console.log(email);
-  console.log(password1);
-  console.log(password2);
+  //console.log(username);
+  //console.log(email);
+  //console.log(password1);
+  //console.log(password2);
 
   if (password1 === password2) { // strict equality with ===
-    console.log("Sending info to server");
+    //console.log("Sending info to server");
     $("#signup-message").hide();
     $.ajax({
-      url: '/cgi-bin/'+ajaxUser+'_artAppAddMember.cgi?userName='+username+'&email='+email+'&password='+password1,
+      url: '/cgi-bin/' + ajaxUser + '_artAppAddMember.cgi?userName=' + username + '&email=' + email + '&password=' + password1,
       dataType: 'text',
       success: isUsernameEmailAvailable, // cgi should return character T if username not taken; F otherwise
-      error: function(){alert("Error: Something went wrong");}
+      error: function() {
+        alert("Error: Something went wrong");
+      }
     });
 
   } else {
-    console.log("Passwords do not match");
+    //console.log("Passwords do not match");
     $("#signup-message").text("These passwords do not match.");
     $("#signup-message").show();
     //alert("Passwords do not match.");
@@ -217,12 +223,12 @@ function openModal(modalType){
 }
 
 function isUsernameEmailAvailable(results){
-  console.log("Results: " + results);
+  //console.log("Results: " + results);
   var parsedResults = results.split(';'); // Hopefully works
 
   if (parsedResults[0] == ""){
     $("#signup-message").hide();
-    console.log("Signup successful");
+    //console.log("Signup successful");
     // Close signup modal
     closeModal("signupModal");
     openModal("loginModal");
@@ -232,7 +238,7 @@ function isUsernameEmailAvailable(results){
     // document.getElementById("loginModal").setAttribute("style", "display: block");
     // document.getElementById("loginModal").setAttribute("class", "modal fade show");
     $("#loginClose").click(function () {
-      console.log("Attempting to close login modal.");
+      //console.log("Attempting to close login modal.");
       closeModal("loginModal");
 
       // document.getElementById("loginModal").setAttribute("style", "display: none");
@@ -241,53 +247,55 @@ function isUsernameEmailAvailable(results){
       // $(".modal-backdrop").hide();
     });
   } else if (parsedResults.length == 1) {
-    console.log(parsedResults[0] + " taken."); // Check index
-    console.log("taken."); // Maybe delete??
+    //console.log(parsedResults[0] + " taken."); // Check index
+    //console.log("taken."); // Maybe delete??
     // Maybe we could have a message div in the signup/login modal
     // The message changes depending on the situation
     $("#signup-message").text("You cannot make an account with this " + parsedResults[0] + " because it is taken.");
     $("#signup-message").show();
     //alert("Email in use.");
   } else {
-    console.log("Email and username taken.");
+    //console.log("Email and username taken.");
     $("#signup-message").text("You cannot make an account with this username or email because they are taken.");
     $("#signup-message").show();
   }
 }
 
 // Login member
-function loginMember(){
-  console.log("Clicked Log In");
+function loginMember() {
+  //console.log("Clicked Log In");
 
   email = $('#login-email').val();
   password = $('#login-password').val();
-  console.log(email);
-  console.log(password);
+  //console.log(email);
+  //console.log(password);
 
-  if (email == "" || password == ""){
+  if (email == "" || password == "") {
     alert("Invalid entry.");
   } else {
-    console.log("Sending info to server");
+    //console.log("Sending info to server");
     $.ajax({
-      url: '/cgi-bin/'+ajaxUser+'_artAppSigninMember.cgi?email='+email+'&password='+password,
+      url: '/cgi-bin/' + ajaxUser + '_artAppSigninMember.cgi?email=' + email + '&password=' + password,
       dataType: 'text',
       success: processLoginResults,
-      error: function(){alert("Error: Something went wrong");}
+      error: function() {
+        alert("Error: Something went wrong");
+      }
     });
   }
 }
 
 // Process login results
 function processLoginResults(results){
-  console.log("Result:", results);
+  //console.log("Result:", results);
   if (results == ""){
-    console.log("Login unsuccessful :(");
+    //console.log("Login unsuccessful :(");
     clearCookie(); // Clear username and memberId
     $("#invalid_login").show();
   } else {
-    console.log("Login successful!");
+    //console.log("Login successful!");
     loggedInNavButtonView();
-    console.log("Username before:", getCookie("username"));
+    //console.log("Username before:", getCookie("username"));
     var parsedResults = results.split(' ');
     document.cookie = parsedResults[0]; // adds memberId cookie
     document.cookie = parsedResults[1]; // adds username cookie
@@ -300,12 +308,12 @@ function processLoginResults(results){
     // $(".modal-backdrop").hide();
   }
   if (getCookie("username") == ""){
-    console.log("No one logged in.");
+    //console.log("No one logged in.");
   } else {
     // Do something!
     alert("Welcome back " + getCookie("username") + "!");
-    console.log(getCookie("memberId"));
-    console.log(getCookie("username") + " is logged in!");
+    //console.log(getCookie("memberId"));
+    //console.log(getCookie("username") + " is logged in!");
   }
 }
 
@@ -314,7 +322,7 @@ function getCookie(cname) {
   var name = cname + "=";
   var decodedCookie = decodeURIComponent(document.cookie);
   var ca = decodedCookie.split(';');
-  for (var i=0; i<ca.length; i++) {
+  for (var i = 0; i < ca.length; i++) {
     var c = ca[i];
     while (c.charAt(0) == ' ') {
       c = c.substring(1);
@@ -330,11 +338,11 @@ function setNavButtonView() {
   var username = getCookie("username");
   if (username != "") { // Someone logged in
     loggedInNavButtonView();
-    console.log(username + " logged in.");
+    //console.log(username + " logged in.");
   } else {
     defaultNavButtonView();
     //$("#logout").hide();
-    console.log("Default page");
+    //console.log("Default page");
   }
 }
 
@@ -358,8 +366,9 @@ function loggedInNavButtonView(){
 function logoutMember() {
   defaultNavButtonView();
   clearCookie();
-  console.log("Logged out!");
+  //console.log("Logged out!");
 }
+
 
 function clearCookie() {
   document.cookie = "memberId=";
@@ -374,9 +383,9 @@ function commentPhoto(commentSubmitButton) {
     alert("Please login to be able to comment on artwork.");
   } else {
     artId = $(commentSubmitButton).attr('ID');
-    console.log(artId);
+    //console.log(artId);
     comment = $("#" + artId + "C").val();
-    console.log(comment);
+    //console.log(comment);
 
     $.ajax({
       url: '/cgi-bin/'+ajaxUser+'_artAppCommentPhoto.cgi?artId=' + artId + '&comment=' + comment + '&commentOnType=artwork&memberId=' + memberId,
@@ -389,7 +398,7 @@ function commentPhoto(commentSubmitButton) {
 
 // Maybe need space for results as input?
 function commentSubmitted(results){
-  console.log("Comment made!");
+  //console.log("Comment made!");
 }
 
 function getComments(commentViewButton) {
@@ -448,11 +457,14 @@ function showComments(comments){
 
 // Like photo
 function likePhoto() {
+  console.log("Like Button clicked.");
   var username = getCookie("username");
-  if (username != "") {
+  if (username == "") {
     alert("Please login to be able to like artwork.");
   } else {
+    console.log("Username cookie exists");
     var artId = $(this).attr('ID');
+    console.log("Got art ID." + artId);
 
     $.ajax({
       url: '/cgi-bin/'+ajaxUser+'_artAppLikePhoto.cgi?artId=' + artId,
@@ -460,11 +472,18 @@ function likePhoto() {
       success: displayNumLikes,
       error: function(){alert("Error: Could not like photo");}
     });
+    console.log("Ajax was called.");
   }
 }
 
-// What is this function supposed to do???
 function displayNumLikes(results) {
-  $(this).text() = results;
-}
+  console.log("Results"+results);
+  var likesAndId = results.split("*");
+  var numLikes = likesAndId[0];
+  var artId = likesAndId[1];
 
+  console.log("ArtID:",artId);
+  console.log("Likes:",numLikes);
+  $("#"+artId).text(numLikes);
+  console.log("Text of button should be changed.")
+}

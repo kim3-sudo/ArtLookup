@@ -11,15 +11,15 @@ class Query{
     // Returns query command to search all columns with colName like search
 
     string findUserUsername(string username);
-    // Usernames must be unique; query returns all members with 
+    // Usernames must be unique; query returns all members with
     // userName = username
 
 	string findUserEmail(string email);
-	// Emails must be unique; query returns all members with 
+	// Emails must be unique; query returns all members with
     // email = email
 
     string loginResults(string email,string password);
-    // Emails must be unique; query returns all members with 
+    // Emails must be unique; query returns all members with
     // email = email
 
     string addUser(string username, string password, string email);
@@ -33,6 +33,10 @@ class Query{
 
     string getUsername(string userId);
     // query to select user with userId
+
+    string updateNumLikes(string numLikes, string artId);
+    // query to update the number of likes in art table
+
 };
 
 #endif //QUERY_H

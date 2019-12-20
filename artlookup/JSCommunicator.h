@@ -16,7 +16,7 @@ class JSCommunicator{
   public:
     //Preconditions: artwork must be an Artwork object
     //Postconditions: Returns artwork info delimited by * as a string
-    string print(Artwork artwork);
+    string printArtwork(Artwork artwork);
 
     //Preconditions: element must be a string corresponding to an ajax element
     //sent from JavaScript. cgi is a Cgicc ajax object.

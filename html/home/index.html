@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
+    <meta name="theme-color" content="#FFED8B">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>ArtLookup</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
@@ -19,20 +20,23 @@
     <!--<link rel="stylesheet" href="assets/css/styles.css?h=d41d8cd98f00b204e9800998ecf8427e">-->
 </head>
 
-<body style="background-color: rgb(0,0,0);">
+<body style="background-color: rgb(50,50,50);">
+    
     <!-- Nav bar for all pages -->
     <nav class="navbar navbar-light navbar-expand-md fixed-top navigation-clean-search" style="background-color: rgb(232,232,232);">
-        <div class="container"><a class="navbar-brand" href="#">Art-stagram :)</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse"
-                id="navcol-1">
+        <!-- Construct the nav-bar -->
+        <div class="container"><a class="navbar-brand" href="#">Art-stagram :)</a>
+            <!-- Add the collapsable function for the nav-bar -->
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav">
-                    <!--<li class="nav-item" role="presentation"></li>
-                    <li class="nav-item" role="presentation"></li>
-                    <li class="nav-item" role="presentation"></li>-->
+                    <!-- add the dropdown menu -->
                     <li class="nav-item dropdown">
+                        <!-- add the selection mechanism for the dropdown menu -->
                         <a class="nav-link dropdown-toggle selection" href="#" id="searchtype" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Select type...
                         </a>
+                        <!-- add the dropdown item elements -->
                         <div class="select-menu dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="select-menu dropdown-item" role="presentation" href="#">Title</a>
                             <a class="select-menu dropdown-item" role="presentation" href="#">Author</a>
@@ -44,28 +48,47 @@
                     </li>
                 </ul>
 
+                <!-- add the floating search field -->
+
+<!-- Leaving in -->
                 <form class="form-inline ml-auto" target="_self">
-                    <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" type="search" id="search-field2" name="search" placeholder="search for art" style="width: 255px;"></div>
+                    <div class="form-group">
+                        <label for="search-field"><i class="fa fa-search"></i></label>
+                        <input class="form-control search-field" type="search" id="search-field2" name="search" placeholder="search for art" style="width: 255px;">
+                    </div>
                 </form>
-                <button class="btn btn-light action-button" type="submit" style="background-color: rgb(115,86,198);margin-right: 0.5%;margin-left: .5%;">Search</button> <!--MAYBE change type to button-->
+<!-- Leaving in -->
+
+                <button class="btn btn-light action-button" type="submit" style="background-color: rgb(115,86,198);margin-right: 0.5%;margin-left: .5%;">Search</button> 
+                <!--MAYBE change type to button-->
+                <!-- Add the buttons that show up on the right side for sign up, login, and log out -->
                 <button id="start-signup" class="btn btn-light hide" type="button" style="margin-right: 0.5%;margin-left: 0.5%;"
                     data-toggle="modal" data-target="#signupModal">Sign Up</button>
                 <button id="start-login" class="btn btn-light hide" type="button" style="margin-right: 0.5%;margin-left: 0.5%;" data-toggle="modal" data-target="#loginModal">Log in</button>
-                <button id="logout" class="btn btn-light hide" type="button" style="margin-right: 0.5%;margin-left: 0.5%;">Log Out</button></div>
+                <button id="logout" class="btn btn-light hide" type="button" style="margin-right: 0.5%;margin-left: 0.5%;">Log Out</button>
+            </div>
         </div>
     </nav>
+    
+    <!-- make a modal for the TOC? -->
     <div class="modal fade" role="dialog" tabindex="-1" id="termsModal" style="height: 300px;background-image: url(&quot;assets/img/dalipainting.jpg?h=6a9a67462c06878498db8009ca8f0f9d&quot;);background-position: center;background-size: cover;width: 100%;">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Terms</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
-                <div class="modal-body">
-                    <p>You really think I feel like typing a TOS out? Just read the MIT license if you're bored. Once you've finished with that, read the Apache 2.0 license, just for fun.</p>
+                    <h4 class="modal-title">Terms</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button></div>
+                <div class="modal-body">
+                    <p>It's the honor code. If you want to read something, go read the Apache 2 license.</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-light" type="button" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
+    
+    <!-- make a modal for the login process -->
     <div class="modal fade" role="dialog" tabindex="-1" id="loginModal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -78,58 +101,86 @@
                 <div class="modal-body">
                     <p>Please input your email and password to login.</p>
                     <form method="post">
-                        <div class = "default_login">
+                        <div class="default_login">
                             <h2 class="sr-only">Login Form</h2>
                             <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
-                            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email" id="login-email"></div>
-                            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" id="login-password"></div>
+                            <div class="form-group">
+                                <input class="form-control" type="email" name="email" placeholder="Email" id="login-email">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="password" name="password" placeholder="Password" id="login-password">
+                            </div>
                         </div>
 
-
-                         <!-- MAYBE wrong ?? -->
-                        <div id = "invalid_login" style = "display: none">
-                             <p>There is no account with these credentials. Would you like to <a href="#start-signup">sign-up</a>?</p>
+                        <!-- If the login is not right... -->
+                        <div id="invalid_login" style="display: none">
+                            <p>There is no account with these credentials. Would you like to <a href="#start-signup">sign-up</a>?</p>
                         </div>
-                        <div class = "default_login">
+                        <div class="default_login">
                             <!--<div class="form-group"><button id="loginButton" class="btn btn-primary btn-block" type="submit">Log In</button></div><a class="forgot" href="#">Forgot your email or password?</a>-->
-                            <div class="form-group"><button id="loginButton" class="btn btn-primary btn-block" type="button">Log In</button></div><a class="forgot" href="#">Forgot your email or password?</a>
+                            <div class="form-group">
+                                <button id="loginButton" class="btn btn-primary btn-block" type="button">Log In</button>
+                            </div><a class="forgot" href="#">Forgot your email or password?</a>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    
+    <!-- add the modal to create an account -->
     <div class="modal fade" role="dialog" tabindex="-1" id="signupModal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
                 <div class="modal-body">
                     <form method="post">
                         <h2 class="text-center"><strong>Create</strong> an account.</h2>
 
-<!-- Someone else's code --> 
-                        <div class="form-group"><input class="form-control" type="username" name="username" placeholder="Username" id="signup-username" required></div>
+
+<!-- Probably can delete; not as nice looking --> 
+<!--                         <div class="form-group"><input class="form-control" type="username" name="username" placeholder="Username" id="signup-username" required></div>
                         <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email" id="signup-email" required></div>
                         <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" id="signup-password" required></div>
                         <div class="form-group"><input class="form-control" type="password" name="password-repeat" placeholder="Password (repeat)" id="signup-password-repeated" required></div>
-                        <div class="form-group hide" id="signup-message"></div> <!-- For error messages -->
-                        <div class="form-group"><button id="submit-user-credentials" class="btn btn-primary btn-block" type="button">Sign Up</button></div><button class="btn btn-secondary" method="post" data-dismiss="modal">Close</button></form>
-<!-- Someone else's code --> 
+                        <div class="form-group hide" id="signup-message"></div> --> <!-- For error messages -->
+<!--                        <div class="form-group"><button id="submit-user-credentials" class="btn btn-primary btn-block" type="button">Sign Up</button></div><button class="btn btn-secondary" method="post" data-dismiss="modal">Close</button></form> -->
 
+                        <div class="form-group">
+                            <input class="form-control" type="username" name="username" placeholder="Username" id="signup-username" required>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="email" name="email" placeholder="Email" id="signup-email" required>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="password" name="password" placeholder="Password" id="signup-password" required>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="password" name="password-repeat" placeholder="Password (repeat)" id="signup-password-repeated" required>
+                        </div>
+                        <div class="form-group hide" id="signup-message"></div>
+                        <!-- For error messages -->
+                        <div class="form-group">
+                            <button id="submit-user-credentials" class="btn btn-primary btn-block" type="button">Sign Up</button>
+                        </div>
+                        <button class="btn btn-secondary" method="post" data-dismiss="modal">Close</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
-
     <!-- Home page view -->
     <div class="container page" id="home">
         <div data-bs-parallax-bg="true" style="height: 300px;background-image: url(&quot;assets/img/dalipainting.jpg?h=6a9a67462c06878498db8009ca8f0f9d&quot;);background-position: center;background-size: cover;width: 100%;"></div>
-	<div style="background-color: white;">
-		<h1 class="text-center">Welcome to Art-stagram</h1>
-		<p class="text-center">To get started, make a search query above. If you'd like, you can also search by some attribute.</p>
-		<!--<p>Not signed up? Click <a href="#" data-toggle="modal" data-target = "#signupModal">here</a> to make a new account!</p>-->
-	</div>
+
+    	<div style="background-color: white;">
+    		<h1 class="text-center">Welcome to Art-stagram</h1>
+    		<p class="text-center">To get started, make a search query above. If you'd like, you can also search by some attribute.</p>
+    		<!--<p>Not signed up? Click <a href="#" data-toggle="modal" data-target = "#signupModal">here</a> to make a new account!</p>-->
+    	</div>
     </div>
 
 <!-- search page view -->
@@ -151,8 +202,33 @@
     <!--<nav class="navbar navbar-light navbar-expand-md fixed-bottom navigation-clean-button" style="background-color: rgb(0,0,0);">
         <div class="container">
             <p class="text-center">Copr. 2019 Ryan Schultz, Michaela Brydon, Sejin Kim | Scientific Computing @ Kenyon College</p>
+
+        <div style="background-color: white;">
+            <h1 class="text-center">Welcome to Art-stagram</h1>
+            <p class="text-center">To get started, make a search query above. If you'd like, you can also search by some attribute.</p>
+            <p class="text-center">Not signed up? Click <a href="#" data-toggle="modal" data-target = "#signupModal">here</a> to make a new account!</p>
         </div>
-    </nav>-->
+    </div>
+
+
+MAYBE UNCOMMENT
+ search page view 
+    <div class="container page" id="search" style="display:none;">
+        <div>
+            <div class="container" id="artworkResults" style="background-color:#FFFFFF;">
+            </div>
+        </div>
+        <div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"></div>
+                </div>
+            </div> -->
+
+
+        </div>
     </div>
 
     <div class="footer-basic">
@@ -180,6 +256,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-animation.js?h=fd094abbd1e3dcda2e26014c818b4b4f"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
-  </body>
-<!-- -->
+</body>
+
 </html>

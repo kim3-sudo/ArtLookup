@@ -38,11 +38,14 @@ ArtStyle Artwork::getArtStyle(){
     return artStyle;
 }
 
+/*
+Testing Purposes
 void Artwork::print(){
   cout << "Art Id: " << artId << endl;
   cout << "Title: " << title << endl;
   cout << "Num Likes: " << numLikes << endl;
 }
+*/
 
 void Artwork::incrementLikes(){
   numLikes++;
@@ -81,4 +84,3 @@ Artwork::Artwork(int artIdFromDB, string authorFromDB, string birthDeathFromDB, 
   artStyle.type = typeFromDB;
   artStyle.form = formFromDB;
 }
-

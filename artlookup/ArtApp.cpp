@@ -42,7 +42,7 @@ int main(){
   string result = "";
   for (uint i = 0; i < searchResults.size(); i++){
     artwork = searchResults.at(i);
-    result += jSCommunicator.print(artwork);
+    result += jSCommunicator.printArtwork(artwork);
   }
   jSCommunicator.sendStringToJS(result);
   // cout << "Content-Type: text/plain\n\n";
