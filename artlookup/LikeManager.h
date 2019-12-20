@@ -10,7 +10,7 @@ using std::vector;
 
 class LikeManager: public ArtDBCommunicator{
 	public:
-	    void addLike(string likeId, string itemId, string userId);
+	    void addLike(string itemId, string userId);
 	    // add like to like table in sql database
 
 	    vector<Like> getLikes(string itemId);
