@@ -38,9 +38,9 @@ int main(){
   string updatedLikes = to_string(numLikes);
 
   // Updates number of likes in art table in database
-  //string updateLikesQuery = query.updateNumLikes(updatedLikes, artId);
+  string updateLikesQuery = query.updateNumLikes(updatedLikes, artId);
 
-  //artlookup.updateTable(updateLikesQuery);
+  artlookup.updateTable(updateLikesQuery);
 
   // Sends the new number of likes to javascript.
   jSCommunicator.sendStringToJS(updatedLikes + "*" + artId);
