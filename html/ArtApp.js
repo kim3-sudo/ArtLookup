@@ -462,17 +462,24 @@ function likePhoto() {
   if (username == "") {
     alert("Please login to be able to like artwork.");
   } else {
-    console.log("Username cookie exists");
-    var artId = $(this).attr('ID');
-    console.log("Got art ID." + artId);
+    var btnText = $(this).text();
+    //console.log("Text of button: '" + btnText + "'");
+    if ( btnText != "Like"){
+      alert("You have already liked this artwork.");
+    }
+    else{
+      //console.log("Username cookie exists");
+      var artId = $(this).attr('ID');
+      //console.log("Got art ID." + artId);
 
-    $.ajax({
-      url: '/cgi-bin/'+ajaxUser+'_artAppLikePhoto.cgi?artId=' + artId,
-      dataType: 'text',
-      success: displayNumLikes,
-      error: function(){alert("Error: Could not like photo");}
-    });
-    console.log("Ajax was called.");
+      $.ajax({
+        url: '/cgi-bin/'+ajaxUser+'_artAppLikePhoto.cgi?artId=' + artId,
+        dataType: 'text',
+        success: displayNumLikes,
+        error: function(){alert("Error: Could not like photo");}
+      });
+      console.log("Ajax was called.");
+    }
   }
 }
 
@@ -482,8 +489,8 @@ function displayNumLikes(results) {
   var numLikes = likesAndId[0];
   var artId = likesAndId[1];
 
-  console.log("ArtID:",artId);
-  console.log("Likes:",numLikes);
+  //console.log("ArtID:",artId);
+  //console.log("Likes:",numLikes);
   $("#"+artId).text(numLikes);
-  console.log("Text of button should be changed.")
+  //console.log("Text of button should be changed.")
 }
