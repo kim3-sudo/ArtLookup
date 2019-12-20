@@ -418,6 +418,8 @@ function processCommentResults(results) {
     $('#' + artId + '_commentResults').empty(); // results[0] is artId
     console.log("About to show comments");
     $('#' + artId + '_commentResults').append(showComments(results));
+    $('#' + artId + '_commentResults').show();
+
     console.log("Finished show comments");
 
     // Hide viewComments and show hideComments
