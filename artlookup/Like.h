@@ -1,4 +1,5 @@
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -8,25 +9,19 @@ using namespace std;
 class Like{
   public:
     Like();
+    Like(int likeId, int userId, int itemId);
 
-    // Member(string username, string password, string email);
-    // Member(const Member& otherMember);
-    // // Copy Constructor
+    int getlikeId();
+    int getuserId();
+    int getitemId();
 
-    // string getUsername();
-    // string getPassword();
-    // string getEmail();
-
-
-    // void likeArtwork(Artwork artwork);
-    // //void likeComment(Comment comment);
-    // void commentOnArtwork(string comment, Artwork artwork);
-    // //void replyToComment(string reply, Comment comment);
   private:
     int m_likeId;
-    //string m_username;
-    //string m_password;
-    //string m_email;
+    int m_userId;
+    int m_itemId;
+    //We will not have liking comments implemented so the
+    //only thing we can like are artworks
+    const string m_itemType = "artwork";
 };
 
 #endif
