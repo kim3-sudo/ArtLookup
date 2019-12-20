@@ -20,7 +20,7 @@ int main(){
     JSCommunicator jSCommunicator;
 
     // Ajax objects receive info from web page
-    string artId = jSCommunicator.getElement("artId",cgi);
+    //string artId = jSCommunicator.getElement("artId",cgi);
     string artId = "17556";
     CommentManager commentManager;
     vector<Comment> matchingComments = commentManager.getComments(artId,"artwork");
