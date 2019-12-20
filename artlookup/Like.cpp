@@ -7,13 +7,13 @@
 
 #include "Like.h"
 
-Artwork::Artwork(){
+Like::Like(){
   m_likeId = -1;
   m_userId = -1;
   m_itemId = -1;
 }
 
-Artwork::Like(string likeId, string userId, string itemId){
+Like::Like(string likeId, string userId, string itemId){
   m_likeId = likeId;
   m_userId = userId;
   m_itemId = itemId;
