@@ -4,6 +4,7 @@ ADD_MEMBER_OBJS = AddMember.o Member.o UserManager.o Artwork.o ArtDBCommunicator
 SIGNIN_MEMBER_OBJS = SigninMember.o Member.o UserManager.o Artwork.o ArtDBCommunicator.o Query.o JSCommunicator.o
 COMMENT_ON_PHOTO = CommentOnPhoto.o ArtDBCommunicator.o CommentManager.o JSCommunicator.o Artwork.o Query.o Comment.o
 LIKE_PHOTO_OBJS = LikePhoto.o ArtLookup.o JSCommunicator.o Query.o Artwork.o
+VIEW_COMMENTS = ViewComments.o JSCommunicator.o CommentManager.o Query.o Comment.o Artwork.o
 #SOURCE	= Artwork.cpp
 #HEADER	= Artwork.h ArtDBCommunicator.h
 #OUT	= ArtApp
@@ -13,7 +14,7 @@ FLAGS	 = -g -c -Wall
 CFLAGS 	 = -std=c++14
 USER     = brydon1
 
-all: ArtApp AddMember SigninMember CommentOnPhoto PutCGI PutHTML
+all: ArtApp AddMember SigninMember CommentOnPhoto ViewComments PutCGI PutHTML
 #all: ArtApp AddMember SigninMember LikePhoto PutCGI PutHTML
 #all: ArtAppTest ArtApp AddMember TestArtApp PutCGI PutHTML
 
@@ -34,6 +35,9 @@ SigninMember: $(SIGNIN_MEMBER_OBJS)
 CommentOnPhoto: $(COMMENT_ON_PHOTO)
 	$(CC) $(COMMENT_ON_PHOTO) -o CommentOnPhoto -L/usr/local/lib $(SQL_FLAGS)
 
+ViewComments: $(VIEW_COMMENTS)
+	$(CC) $(VIEW_COMMENTS) -o ViewComments -L/usr/local/lib $(SQL_FLAGS)
+
 # TestArtApp: $(TEST_OBJS)
 # 	$(CC) $(TEST_OBJS) -o testArtApp -L/usr/local/lib $(SQL_FLAGS)
 
@@ -48,6 +52,9 @@ SigninMember.o: SigninMember.cpp UserManager.h
 
 CommentOnPhoto.o: CommentOnPhoto.cpp CommentManager.h JSCommunicator.h
 	$(CC) $(FLAGS) CommentOnPhoto.cpp $(CFLAGS)
+
+ViewComments.o: ViewComments.cpp ViewComments.h CommentManager.h JSCommunicator.h
+	$(CC) $(FLAGS) ViewComments.cpp $(CFLAGS)
 
 # LikePhoto.o: LikePhoto.cpp ArtLookup.h JSCommunicator.h Query.h
 # 	$(CC) $(FLAGS) LikePhoto.cpp $(CFLAGS)
@@ -82,15 +89,17 @@ CommentManager.o: CommentManager.cpp CommentManager.h Query.h Comment.h ArtDBCom
 JSCommunicator.o: JSCommunicator.cpp JSCommunicator.h Artwork.h
 	$(CC) $(FLAGS) JSCommunicator.cpp $(CFLAGS)
 
-PutCGI: ArtApp AddMember SigninMember CommentOnPhoto
+PutCGI: ArtApp AddMember SigninMember CommentOnPhoto ViewComments
 	chmod 757 ArtApp
 	chmod 757 AddMember
 	chmod 757 SigninMember
 	chmod 757 CommentOnPhoto
+	chmod 757 ViewComments
 	cp ArtApp /usr/lib/cgi-bin/$(USER)_artAppSearch.cgi
 	cp AddMember /usr/lib/cgi-bin/$(USER)_artAppAddMember.cgi
 	cp SigninMember /usr/lib/cgi-bin/$(USER)_artAppSigninMember.cgi
 	cp CommentOnPhoto /usr/lib/cgi-bin/$(USER)_artAppCommentPhoto.cgi
+	cp ViewComments /usr/lib/cgi-bin/$(USER)_artAppGetCommentsPhoto.cgi
 
 	echo "Current contents of your cgi-bin directory: "
 	ls -l /usr/lib/cgi-bin/
@@ -102,5 +111,5 @@ PutHTML:
 	ls -l /var/www/html/class/softdev/$(USER)/ArtApp
 
 clean:
-	rm -f ArtApp AddMember SigninMember CommentOnPhoto $(OUT)
+	rm -f ArtApp AddMember SigninMember CommentOnPhoto ViewComments $(OUT)
 #	rm -f ArtAppTest ArtApp AddMember TestArtApp $(OUT)
