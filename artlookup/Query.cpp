@@ -34,7 +34,7 @@ string Query::addComment(string artId, string commentOnType, string comment, str
 	return "INSERT INTO `comments`(`commentId`, `commentOnId`, `commentOnType`, `comment`, `userId`, `numLikes`) VALUES (NULL,'"+ artId +"','" + commentOnType +"','" + comment + "','" + userId + "',0);";
 }
 
-string Query::addLike(string likeId, string itemId, string userId){
+string Query::addLike(string itemId, string userId){
 	return "INSERT INTO `likes`(`likeId`, `userId`, `itemId`, `itemType`) VALUES (NULL,'"+ userId +"','" + itemId +"','" + "',artwork);";
 }
 

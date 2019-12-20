@@ -28,7 +28,7 @@ class Query{
     string addComment(string artId, string commentOnType, string comment, string userId);
     // query to add comment to database
 
-    string addLike(string likeId, string itemId, string userId);
+    string addLike(string itemId, string userId);
     // query to add like to database
 
     string getComments(string commentOnId, string commentOnType);
