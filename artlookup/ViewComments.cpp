@@ -27,7 +27,7 @@ int main(){
 
     string commentInfoString(artId), sep("*");
 
-    for (int i=0;i<matchingComments.length();i++){
+    for (int i=0;i<matchingComments.size();i++){
         // if (i != 0){
         //     commentInfoString += sep;
         // }
