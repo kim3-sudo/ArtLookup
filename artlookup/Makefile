@@ -75,6 +75,9 @@ ViewComments.o: ViewComments.cpp CommentManager.h JSCommunicator.h UserManager.h
 Like.o: Like.cpp Like.h
 	$(CC) $(FLAGS) Like.cpp $(CFLAGS)
 
+LikeManager.o: LikeManager.cpp LikeManager.h Like.h Query.h ArtDBCommunicator.h
+	$(CC) $(FLAGS) LikeManager.cpp $(CFLAGS)
+
 LikePhoto.o: LikePhoto.cpp ArtLookup.h JSCommunicator.h Query.h
 	$(CC) $(FLAGS) LikePhoto.cpp $(CFLAGS)
 
