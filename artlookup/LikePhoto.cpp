@@ -28,6 +28,8 @@ int main(){
   ArtLookup artlookup;
   // Looks for artwork that match the artId given by the javascript
   vector<Artwork> likedArtworks = artlookup.lookupSingleCommand(artIdQuery);
+
+  // Did we need to overload the copy constructor?
   Artwork likedArtwork = likedArtworks.at(0);
 
   // Likes artwork and gets the new number of likes.
