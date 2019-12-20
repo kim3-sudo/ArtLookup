@@ -34,7 +34,7 @@ int main(){
         //     commentInfoString += sep;
         // }
         username = userManager.getUsernameById(matchingComments[i].getUserId());
-        commentInfoString += sep + matchingComments[i].getComment() + sep + matchingComments[i].getUserId() + sep + to_string(matchingComments[i].getNumLikes());
+        commentInfoString += sep + matchingComments[i].getComment() + sep + username + sep + to_string(matchingComments[i].getNumLikes());
     }
 
     // Sends the comments to javascript
