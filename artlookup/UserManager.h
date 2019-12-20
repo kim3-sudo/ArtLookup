@@ -14,6 +14,9 @@ class UserManager: public ArtDBCommunicator{
 	    Member getLoginMember(string email, string password);
 	    // Given login info, returns member object
 
+	    string getUsernameById(string userId);
+	    // Given userId, returns username
+
 	    bool isUsernameTaken(string username);
 	    // Returns true if username taken; false otherwise
 

@@ -41,6 +41,21 @@ Member UserManager::getLoginMember(string email, string password){
 	return *member;
 }
 
+string UserManager::getUsernameById(string userId){
+	std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
+	std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());
+	Query query;
+	string loginResultsCommand = query.getUsername(userId);
+	sqlStatement->execute(loginResultsCommand);
+	std::unique_ptr<sql::ResultSet> loginMatches;
+	loginMatches.reset(sqlStatement->getResultSet());
+	string username;
+	while (loginMatches->next()){
+		username = loginMatches -> getString(userColNames[1]);
+	}
+	return username;
+}
+
 bool UserManager::isUsernameTaken(string username){
 	std::unique_ptr<sql::Connection> connectionToDB = establishDBConnection();
 	std::unique_ptr<sql::Statement> sqlStatement(connectionToDB->createStatement());

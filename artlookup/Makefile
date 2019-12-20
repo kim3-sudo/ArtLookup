@@ -4,7 +4,7 @@ ADD_MEMBER_OBJS = AddMember.o Member.o UserManager.o Artwork.o ArtDBCommunicator
 SIGNIN_MEMBER_OBJS = SigninMember.o Member.o UserManager.o Artwork.o ArtDBCommunicator.o Query.o JSCommunicator.o
 COMMENT_ON_PHOTO = CommentOnPhoto.o ArtDBCommunicator.o CommentManager.o JSCommunicator.o Artwork.o Query.o Comment.o
 LIKE_PHOTO_OBJS = LikePhoto.o ArtLookup.o JSCommunicator.o Query.o Artwork.o
-VIEW_COMMENTS = ViewComments.o ArtDBCommunicator.o JSCommunicator.o CommentManager.o Query.o Comment.o Artwork.o Member.o
+VIEW_COMMENTS = ViewComments.o ArtDBCommunicator.o JSCommunicator.o CommentManager.o Query.o Comment.o Artwork.o Member.o UserManager.o
 #SOURCE	= Artwork.cpp
 #HEADER	= Artwork.h ArtDBCommunicator.h
 #OUT	= ArtApp
@@ -53,7 +53,7 @@ SigninMember.o: SigninMember.cpp UserManager.h
 CommentOnPhoto.o: CommentOnPhoto.cpp CommentManager.h JSCommunicator.h
 	$(CC) $(FLAGS) CommentOnPhoto.cpp $(CFLAGS)
 
-ViewComments.o: ViewComments.cpp CommentManager.h JSCommunicator.h
+ViewComments.o: ViewComments.cpp CommentManager.h JSCommunicator.h UserManager.h
 	$(CC) $(FLAGS) ViewComments.cpp $(CFLAGS)
 
 # LikePhoto.o: LikePhoto.cpp ArtLookup.h JSCommunicator.h Query.h

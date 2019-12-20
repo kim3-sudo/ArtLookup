@@ -1,5 +1,6 @@
 #include "JSCommunicator.h"
 #include "CommentManager.h"
+#include "UserManager.h"
 #include <iostream>
 //#include <string>
 
@@ -12,7 +13,6 @@
 using namespace cgicc;
 using std::cout;
 
-
 // Returns string to js, starting with commentOnId, then comment, userid, numLikes repeated
 // Separated by *
 
@@ -23,15 +23,17 @@ int main(){
     // Ajax objects receive info from web page
     string artId = jSCommunicator.getElement("artId",cgi);
     CommentManager commentManager;
+    UserManager userManager;
     vector<Comment> matchingComments = commentManager.getComments(artId,"artwork");
 
-    string commentInfoString(artId), sep("*");
+    string commentInfoString(artId), sep("*"),username;
 
     for (uint i=0;i<matchingComments.size();i++){
         // if (i != 0){
         //     commentInfoString += sep;
         // }
-        commentInfoString += sep + matchingComments[i].getComment() + sep + matchingComments[i].getUserId() + sep + to_string(matchingComments[i].getNumLikes());
+        username = userManager.getUsernameById(matchingComments[i].getUserId());
+        commentInfoString += sep + matchingComments[i].getComment() + sep + username + sep + to_string(matchingComments[i].getNumLikes());
     }
 
     // Sends the comments to javascript

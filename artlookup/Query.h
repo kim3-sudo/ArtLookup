@@ -30,6 +30,9 @@ class Query{
 
     string getComments(string commentOnId, string commentOnType);
     // query to select comments on a specific artwork or comment
+
+    string getUsername(string userId);
+    // query to select user with userId
 };
 
 #endif //QUERY_H

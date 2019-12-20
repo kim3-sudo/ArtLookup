@@ -38,6 +38,10 @@ string Query::getComments(string commentOnId, string commentOnType){
 	return "SELECT * FROM comments WHERE commentOnId = '" + commentOnId + "' and commentOnType = '" + commentOnType + "';";
 }
 
+string Query::getUsername(string userId){
+	return "SELECT * FROM `users` WHERE userId = '" + userId + "';";
+}
+
 
 
 
