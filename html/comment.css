@@ -1,13 +1,13 @@
 .commentSubmit {
 	background-color: #B7B7B7; /* Grey */
- 	color: white;
+ 	color: #111111;
 }
 
 /* #4CAF50 Green */
 
 .commentSubmit:hover {
 	background-color: #9E9E9E; /* Darker Grey */
- 	color: white;
+ 	color: black;
 }
 
 .arrow {
