@@ -2,6 +2,8 @@
 #include "JSCommunicator.h"
 #include "Query.h"
 #include "Artwork.h"
+#include "Like.h"
+#include "LikeManager.h"
 #include <iostream>
 #include <string>
 

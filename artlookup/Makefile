@@ -78,7 +78,7 @@ Like.o: Like.cpp Like.h
 LikeManager.o: LikeManager.cpp LikeManager.h Like.h Query.h ArtDBCommunicator.h
 	$(CC) $(FLAGS) LikeManager.cpp $(CFLAGS)
 
-LikePhoto.o: LikePhoto.cpp ArtLookup.h JSCommunicator.h Query.h
+LikePhoto.o: LikePhoto.cpp ArtLookup.h JSCommunicator.h Query.h Like.h LikeManager.h
 	$(CC) $(FLAGS) LikePhoto.cpp $(CFLAGS)
 
 ArtLookupTests.o: ArtLookupTests.cpp ArtLookup.h
