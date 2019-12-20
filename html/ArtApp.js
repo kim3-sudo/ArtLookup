@@ -458,6 +458,7 @@ function showComments(comments){
 // Like photo
 function likePhoto() {
   console.log("Like Button clicked.");
+  var memberId = getCookie("memberId");
   var username = getCookie("username");
   if (username == "") {
     alert("Please login to be able to like artwork.");
@@ -473,7 +474,7 @@ function likePhoto() {
       //console.log("Got art ID." + artId);
 
       $.ajax({
-        url: '/cgi-bin/'+ajaxUser+'_artAppLikePhoto.cgi?artId=' + artId,
+        url: '/cgi-bin/'+ajaxUser+'_artAppLikePhoto.cgi?artId=' + artId + '&memberId=' + memberId,
         dataType: 'text',
         success: displayNumLikes,
         error: function(){alert("Error: Could not like photo");}

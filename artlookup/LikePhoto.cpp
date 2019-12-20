@@ -22,6 +22,7 @@ int main(){
   JSCommunicator jSCommunicator;
   // Ajax objects receive info from web page
   string artId = jSCommunicator.getElement( "artId", cgi );
+  string memberId = jSCommunicator.getElement("memberId",cgi);
 
   Query query;
   // Creates query to search for the artId value in the artId column
@@ -41,8 +42,13 @@ int main(){
 
   // Updates number of likes in art table in database
   string updateLikesQuery = query.updateNumLikes(updatedLikes, artId);
-
   artlookup.updateTable(updateLikesQuery);
+
+
+
+  // Creates new like in likes table in database
+  //LikeManager likeManager;
+  //likeManager.addLike(artId, memberId);
 
   // Sends the new number of likes to javascript.
   jSCommunicator.sendStringToJS(updatedLikes + "*" + artId);
