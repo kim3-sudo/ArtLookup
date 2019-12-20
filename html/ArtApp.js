@@ -80,6 +80,9 @@ function processSearchResults(results) {
 
     $('.hideComments').click(function () {
       console.log("Hiding comments");
+
+
+      // Check!
       var artId = $(this).attr("NAME");
       $('#' + artId + '_commentResults').hide();
       $('#' + artId + 'HC').hide();
@@ -139,7 +142,7 @@ function showPhotos(list){
       result += '<form><div class="form-group"><input id="'+ artData[i-6] +'C" class="form-control" type="text" placeholder="What do you think?" style="margin-top: 10px;"><div name="' + artData[i-6] + '"id="' + artData[i-6] + '"_DisplayComments"></div><input type="reset" class="btn btn-light commentSubmit" id = "' + artData[i-6] + '" align="left" style="margin-bottom: 10px;margin-top: 10px;" value="Submit"></div></form>'; // Try Submit button as reset
         //'<button class="btn btn-light commentSubmit" align="left" id = "' + artData[i-6] + '" type="button" style="margin-bottom: 10px;margin-top: 10px;">Submit</button><button class="btn btn-primary viewComments" id = "' + artData[i-6] + 'VC" type="button" style="margin-bottom: 10px;margin-top: 10px;">View Comments</button>';
       // viewComments button
-      result += '<button class="btn btn-primary viewComments" id = "' + artData[i-6] + 'VC" align="left" type="button" style="margin-bottom: 10px;margin-top: 10px;">View Comments</button>';
+      result += '<button class="btn btn-primary viewComments" id = "' + artData[i-6] + 'VC" name = "' + artData[i-6] + '"align="left" type="button" style="margin-bottom: 10px;margin-top: 10px;">View Comments</button>';
 
       // viewComments button
       result += '<button class="btn btn-primary hideComments" id = "' + artData[i-6] + 'HC" align="left" type="button" name = "' + artData[i-6] +'"style="margin-bottom: 10px;margin-top: 10px; display: none;">Hide Comments</button>';
@@ -299,7 +302,7 @@ function processLoginResults(results){
   if (getCookie("username") == ""){
     console.log("No one logged in.");
   } else {
-    // DO SOMETHING!!!
+    // Do something!
     alert("Welcome back " + getCookie("username") + "!");
     console.log(getCookie("memberId"));
     console.log(getCookie("username") + " is logged in!");
@@ -390,8 +393,11 @@ function commentSubmitted(results){
 }
 
 function getComments(commentViewButton) {
+  //parseInt();
+
   var artId = $(commentViewButton).attr('NAME'); // Maybe will not work
-  console.log(artId);
+  console.log("Sending artId:",artId); // I am guessing this is the problem?
+
   //comment = $("#" + artId + "C").val();
   //console.log(comment);
 
@@ -419,9 +425,9 @@ function processCommentResults(results) {
     $('#' + artId + 'HC').show();
 }
 
-function showComments(results){
+function showComments(comments){
   console.log("Parsing comments!");
-  var commentInfoSplit = results.split("*");
+  var commentInfoSplit = comments.split("*");
   var artId = commentInfoSplit[0];
   var displayComments = '';
   for (var i=1;i<(commentInfoSplit.length);i+=3){
