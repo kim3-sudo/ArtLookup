@@ -408,6 +408,7 @@ function processCommentResults(results) {
     var commentInfoSplit = results.split("*");
     var artId = results[0];
     console.log("ArtId:",artId);
+    console.log("Results:",results);
     $('#' + artId + '_commentResults').empty(); // results[0] is artId
     console.log("About to show comments");
     $('#' + artId + '_commentResults').append(showComments(results));
