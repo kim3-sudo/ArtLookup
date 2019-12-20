@@ -1,4 +1,4 @@
-VIEW_COMMENTS = TestViewComments.o ArtDBCommunicator.o JSCommunicator.o CommentManager.o Query.o Comment.o Artwork.o Member.o
+VIEW_COMMENTS = TestViewComments.o ArtDBCommunicator.o JSCommunicator.o CommentManager.o Query.o Comment.o Artwork.o Member.o UserManager.o
 #SOURCE	= Artwork.cpp
 #HEADER	= Artwork.h ArtDBCommunicator.h
 #OUT	= ArtApp
@@ -13,7 +13,7 @@ all: TestViewComments
 TestViewComments: $(VIEW_COMMENTS)
 	$(CC) $(VIEW_COMMENTS) -o TestViewComments -L/usr/local/lib $(SQL_FLAGS)
 
-TestViewComments.o: TestViewComments.cpp CommentManager.h JSCommunicator.h
+TestViewComments.o: TestViewComments.cpp CommentManager.h JSCommunicator.h UserManager.h
 	$(CC) $(FLAGS) TestViewComments.cpp $(CFLAGS)
 
 Query.o: Query.cpp Query.h

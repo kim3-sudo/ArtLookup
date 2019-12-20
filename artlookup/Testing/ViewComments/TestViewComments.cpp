@@ -1,5 +1,6 @@
 #include "JSCommunicator.h"
 #include "CommentManager.h"
+#include "UserManager.h"
 #include <iostream>
 //#include <string>
 
@@ -23,14 +24,16 @@ int main(){
     //string artId = jSCommunicator.getElement("artId",cgi);
     string artId = "17556";
     CommentManager commentManager;
+    UserManager userManager;
     vector<Comment> matchingComments = commentManager.getComments(artId,"artwork");
 
-    string commentInfoString(artId), sep("*");
+    string commentInfoString(artId), sep("*"),username;
 
     for (uint i=0;i<matchingComments.size();i++){
         // if (i != 0){
         //     commentInfoString += sep;
         // }
+        username = userManager.getUsernameById(matchingComments[i].getUserId());
         commentInfoString += sep + matchingComments[i].getComment() + sep + matchingComments[i].getUserId() + sep + to_string(matchingComments[i].getNumLikes());
     }
 
