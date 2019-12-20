@@ -435,8 +435,10 @@ function showComments(comments){
     console.log("Comment:",commentText);
     userId = commentInfoSplit[i+1];
     numLikes = commentInfoSplit[i+2];
-    displayComments += '<p>' + numLikes + ' ' + '<div class="arrow" id="' + artId + '_upVote" align="left"></div> ' + userId + ': ' + commentText + '</p>'
+    //displayComments += '<p>' + numLikes + ' ' + '<div class="arrow" id="' + artId + '_upVote" align="left"></div> ' + userId + ': ' + commentText + '</p>'
     //displayComments += '<p>' + numLikes + ' ' + userId + ': ' + commentText + '</p>'
+    // No likes for now
+    displayComments += '<p>' + userId + ': ' + commentText + '</p>'
   }
   console.log(displayComments);
   return displayComments;
