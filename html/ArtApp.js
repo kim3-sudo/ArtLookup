@@ -405,10 +405,11 @@ function getComments(commentViewButton) {
 
 function processCommentResults(results) {
     console.log("Results:",results);
-    var commentInfoSplit = results.split("*")
-    $('#' + results[0] + '_commentResults').empty(); // results[0] is artId
+    var commentInfoSplit = results.split("*");
+    var artId = results[0];
+    $('#' + artId + '_commentResults').empty(); // results[0] is artId
     console.log("About to show comments");
-    $('#' + results[0] + '_commentResults').append(showComments(results));
+    $('#' + artId + '_commentResults').append(showComments(results));
     console.log("Finished show comments");
 
     // Hide viewComments and show hideComments
