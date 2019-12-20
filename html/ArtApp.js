@@ -412,7 +412,7 @@ function getComments(commentViewButton) {
 function processCommentResults(results) {
     console.log("Results:",results);
     var commentInfoSplit = results.split("*");
-    var artId = results[0];
+    var artId = commentInfoSplit[0];
     console.log("ArtId:",artId);
     console.log("Results:",results);
     $('#' + artId + '_commentResults').empty(); // results[0] is artId
