@@ -407,6 +407,7 @@ function processCommentResults(results) {
     console.log("Results:",results);
     var commentInfoSplit = results.split("*");
     var artId = results[0];
+    console.log("ArtId:",artId);
     $('#' + artId + '_commentResults').empty(); // results[0] is artId
     console.log("About to show comments");
     $('#' + artId + '_commentResults').append(showComments(results));
@@ -428,6 +429,7 @@ function showComments(results){
     numLikes = commentInfoSplit[i+2];
     displayComments += '<p>' + numLikes + ' ' + '<div class="arrow" id="' + artId + '_upVote" align="left"></div> ' + userId + ': ' + commentText + '</p>'
   }
+  return displayComments;
 }
 
 // Like photo
