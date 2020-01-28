@@ -5,6 +5,8 @@
 //Description: Implementation file for Comment class
 //Last Changed: Dec 19, 2019
 
+// Added a comment
+
 #include "Comment.h"
 
 string Comment::getCommentId(){
